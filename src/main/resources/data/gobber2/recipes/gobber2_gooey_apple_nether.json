@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "ABB",
+        "BBB",
+        "BBB"
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_goo_nether"
+        },
+        
+        "B":
+        {
+            "item": "minecraft:apple"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_gooey_apple_nether",
+        "count": 8
+    }
+}

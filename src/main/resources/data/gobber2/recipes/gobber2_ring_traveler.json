@@ -1,0 +1,40 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " A ",
+        "DCE",
+        " B "
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_ring_acceleration"
+        },
+        "B":
+        {
+            "item": "gobber2:gobber2_ring_leaping"
+        },
+        "C":
+        {
+            "item": "gobber2:gobber2_ring_end"
+        },
+        "D":
+        {
+            "item": "gobber2:gobber2_boots_nether"
+        },
+        "E":
+        {
+            "item": "gobber2:gobber2_leggings_nether"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_ring_traveler",
+        "count": 1
+    }
+}

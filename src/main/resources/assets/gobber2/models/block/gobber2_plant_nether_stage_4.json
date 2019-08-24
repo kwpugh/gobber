@@ -1,0 +1,6 @@
+{
+    "parent": "block/crop",
+    "textures": {
+        "crop": "gobber2:block/gobber2_plant_nether_stage_4"
+    }
+}

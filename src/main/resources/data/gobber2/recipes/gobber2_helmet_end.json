@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "GGG",
+        "G G",
+        "   "
+    ],
+    
+    "key":
+    {
+        "G":
+        {
+            "item": "gobber2:gobber2_links_end"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_helmet_end",
+        "count": 1
+    }
+}

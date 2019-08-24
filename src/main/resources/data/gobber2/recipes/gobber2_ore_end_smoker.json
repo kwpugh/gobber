@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "gobber2:gobber2_ore_end"
+  },
+  "result": "gobber2:gobber2_glob_end",
+  "experience": 1.5,
+  "cookingtime": 200
+}

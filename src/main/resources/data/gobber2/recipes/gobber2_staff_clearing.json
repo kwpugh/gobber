@@ -1,0 +1,33 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " CA",
+        " BC",
+        "B  "
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "minecraft:wheat_seeds"
+        },
+        
+        "B":
+        {
+            "item": "gobber2:gobber2_rod"
+        },
+        "C":
+        {
+            "item": "minecraft:green_dye"
+        } 
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_staff_clearing",
+        "count": 1
+    }
+}

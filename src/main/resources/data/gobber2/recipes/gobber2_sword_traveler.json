@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "gobber2:gobber2_sword_end"
+    },
+    {
+      "item": "gobber2:gobber2_ring_traveler"
+    }
+  ],
+  "result": {
+    "item": "gobber2:gobber2_sword_traveler"
+  }
+}

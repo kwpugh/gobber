@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "BCB",
+        "CAC",
+        "BCB"
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_ring_nether"
+        },
+        "B":
+        {
+            "item": "minecraft:magma_cream"
+        },
+        "C":
+        {
+            "item": "minecraft:redstone"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_ring_phoenix",
+        "count": 1
+    }
+}

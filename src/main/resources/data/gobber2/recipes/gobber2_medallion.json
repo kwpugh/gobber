@@ -1,0 +1,19 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		" I ",
+		"III",
+		" I "
+	],
+	
+	"key":
+	{
+		"I": { "item": "gobber2:gobber2_ingot" }
+	},
+	
+	"result": { "item": "gobber2:gobber2_medallion",
+	"count": 1
+	}
+}

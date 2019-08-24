@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "AAA",
+        "ABA",
+        "AAA"
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "minecraft:bone_block"
+        },
+        "B":
+        {
+            "item": "gobber2:gobber2_ring"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_ring_farmer",
+        "count": 1
+    }
+}

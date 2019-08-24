@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "AAA",
+        " B ",
+        " B "
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_block"
+        },      
+        "B":
+        {
+            "item": "gobber2:gobber2_rod"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_hammer",
+        "count": 1
+    }
+}

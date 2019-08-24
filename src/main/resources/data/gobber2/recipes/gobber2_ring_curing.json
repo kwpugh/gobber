@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "CBC",
+        "BAB",
+        "CBC"
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_ring_nether"
+        },
+        "B":
+        {
+            "item": "minecraft:fermented_spider_eye"
+        },
+        "C":
+        {
+            "item": "minecraft:glowstone_dust"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_ring_curing",
+        "count": 1
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "BCB",
+        " A ",
+        "BAB"
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_ingot"
+        },
+        "B":
+        {
+            "item": "minecraft:black_concrete"
+        },
+        "C":
+        {
+            "item": "gobber2:gobber2_ring"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:block_healer",
+        "count": 1
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "BCA",
+        " D ",
+        " D "
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_pickaxe_nether"
+        },
+        
+        "B":
+        {
+            "item": "gobber2:gobber2_axe_nether"
+        },
+                
+        "C":
+        {
+            "item": "gobber2:gobber2_shovel_nether"
+        },      
+        "D":
+        {
+            "item": "gobber2:gobber2_rod_nether"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_paxel_nether",
+        "count": 1
+    }
+}

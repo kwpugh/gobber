@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " B ",
+        " A ",
+        "   "
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_ring_nether"
+        },
+        "B":
+        {
+            "item": "minecraft:emerald"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_ring_haste",
+        "count": 1
+    }
+}

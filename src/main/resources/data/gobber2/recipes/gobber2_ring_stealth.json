@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "CBC",
+        "BAB",
+        "CBC"
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_ring_end"
+        },
+        "B":
+        {
+            "item": "minecraft:experience_bottle"
+        },
+        "C":
+        {
+            "item": "minecraft:fermented_spider_eye"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_ring_stealth",
+        "count": 1
+    }
+}

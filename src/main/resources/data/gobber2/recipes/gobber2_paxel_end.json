@@ -1,0 +1,38 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "BCA",
+        " D ",
+        " D "
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_pickaxe_end"
+        },
+        
+        "B":
+        {
+            "item": "gobber2:gobber2_axe_end"
+        },
+                
+        "C":
+        {
+            "item": "gobber2:gobber2_shovel_end"
+        },      
+        "D":
+        {
+            "item": "gobber2:gobber2_rod_end"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_paxel_end",
+        "count": 1
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "AAA",
+        "ABA",
+        "AAA"
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "minecraft:feather"
+        },
+        
+        "B":
+        {
+            "item": "gobber2:gobber2_ring"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_ring_ascent",
+        "count": 1
+    }
+}

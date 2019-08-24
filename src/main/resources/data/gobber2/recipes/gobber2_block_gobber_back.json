@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"   ",
+		" B ",
+		"   "
+	],
+	
+	"key":
+	{
+		"B": { "item": "gobber2:gobber2_block" }	
+	},
+	
+	"result": { "item": "gobber2:gobber2_ingot",
+	"count": 9 }
+}

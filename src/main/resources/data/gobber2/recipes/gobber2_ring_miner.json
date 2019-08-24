@@ -1,0 +1,24 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"DBE",
+		"CAC",
+		"EBD"
+	],
+	
+	"key":
+	{
+		"A": { "item": "gobber2:gobber2_ring" },
+		"B": { "item": "minecraft:iron_ore" },
+		"C": { "item": "minecraft:gold_ore" },
+		"D": { "item": "minecraft:diamond_ore" },
+		"E": { "item": "minecraft:emerald_ore" }
+		
+	},
+	
+	"result": { "item": "gobber2:gobber2_ring_miner",
+	"count": 1
+	}
+}

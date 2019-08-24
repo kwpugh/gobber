@@ -1,0 +1,20 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"ABB",
+		"BBB",
+		"BBB"
+	],
+	
+	"key":
+	{
+		"A": { "item": "gobber2:gobber2_glob_nether"  },
+		"B": { "item": "gobber2:gobber2_foo"  }
+	},
+	
+	"result": { "item": "gobber2:gobber2_foo_nether",
+	"count": 8
+	}
+}

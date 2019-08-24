@@ -1,0 +1,20 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"GBB",
+		"BBB",
+		"BBB"
+	],
+	
+	"key":
+	{
+		"G": { "item": "gobber2:gobber2_goo"    },
+		"B": { "item": "minecraft:bread"        }
+	},
+	
+	"result": { "item": "gobber2:gobber2_gooey_bread",
+	"count": 8
+	}
+}

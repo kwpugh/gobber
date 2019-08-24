@@ -1,0 +1,57 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "name": "gobber2:gobber2_lucky_block",
+      "rolls": 1,
+      "entries": [
+		{
+		  "type": "minecraft:item",
+		  "weight": 50,
+		  "name": "gobber2:gobber2_gooey_bread"
+		},
+		{
+		  "type": "minecraft:item",
+		  "weight": 40,
+		  "name": "gobber2:gobber2_gooey_beef"
+		},
+		{
+		  "type": "minecraft:item",
+		  "weight": 20,
+		  "name": "gobber2:gobber2_gooey_beefstew"
+		},
+		{
+		  "type": "minecraft:item",
+		  "weight": 50,
+		  "name": "gobber2:gobber2_goo"
+		},
+		{
+		  "type": "minecraft:item",
+		  "weight": 20,
+		  "name": "gobber2:gobber2_gooey_bread_nether"
+		},
+		{
+		  "type": "minecraft:item",
+		  "weight": 20,
+		  "name": "gobber2:gobber2_gooey_beef_nether"
+		},
+		{
+		  "type": "minecraft:item",
+		  "weight": 10,
+		  "name": "gobber2:gobber2_gooey_beefstew_nether"
+		},
+		{
+		  "type": "minecraft:item",
+		  "weight": 20,
+		  "name": "gobber2:gobber2_goo_nether"
+		}
+		
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "GB ",
+        "BA ",
+        "   "
+    ],
+    
+    "key":
+    {
+        "G":
+        {
+            "item": "gobber2:gobber2_glob_nether"
+        },
+        
+        "A":
+        {
+            "item": "minecraft:blaze_rod"
+        },
+        
+        "B":
+        {
+            "item": "gobber2:gobber2_ingot"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_ingot_nether",
+        "count": 3
+    }
+}

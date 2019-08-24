@@ -1,0 +1,22 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"GD ",
+		"IB ",
+		"   "
+	],
+	
+	"key":
+	{
+		"G": { "item": "gobber2:gobber2_glob" },
+		"D": { "item": "minecraft:diamond"    },
+		"I": { "item": "minecraft:iron_ingot" },
+		"B": { "item": "minecraft:gold_ingot" }	
+	},
+	
+	"result": { "item": "gobber2:gobber2_ingot",
+	"count": 3
+	}
+}

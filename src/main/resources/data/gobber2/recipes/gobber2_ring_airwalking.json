@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "BCB",
+        "CAC",
+        "BCB"
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_ring_end"
+        },
+        "B":
+        {
+            "item": "minecraft:feather"
+        },
+        "C":
+        {
+            "item": "minecraft:ghast_tear"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_ring_airwalking",
+        "count": 1
+    }
+}

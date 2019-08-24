@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "gobber2:gobber2_sword_end"
+    },
+    {
+      "item": "gobber2:gobber2_staff_sniper"
+    }
+  ],
+  "result": {
+    "item": "gobber2:gobber2_sword_sniper"
+  }
+}

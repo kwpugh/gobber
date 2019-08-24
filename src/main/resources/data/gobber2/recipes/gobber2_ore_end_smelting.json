@@ -1,0 +1,7 @@
+{
+	"type": "minecraft:smelting",
+	"ingredient": { "tag": "gobber2:gobber2_ore_end" },
+	"result": "gobber2:gobber2_glob_end",
+	"experience": 3.0,
+	"cookingtime": 100
+}

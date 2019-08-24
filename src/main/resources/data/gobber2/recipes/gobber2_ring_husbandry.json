@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "BAB",
+        "ACA",
+        "BAB"
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "minecraft:wheat"
+        },
+        "B":
+        {
+            "item": "minecraft:red_dye"
+        },
+        "C":
+        {
+            "item": "gobber2:gobber2_ring"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_ring_husbandry",
+        "count": 1
+    }
+}

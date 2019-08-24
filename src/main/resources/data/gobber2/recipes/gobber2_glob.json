@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "AAA",
+        "AAA",
+        "AAA"
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_globette"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_glob",
+        "count": 1
+    }
+}

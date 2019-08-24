@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "ABB",
+        "BBB",
+        "BBB"
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_goo_nether"
+        },
+        
+        "B":
+        {
+            "item": "minecraft:cooked_beef"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_gooey_beef_nether",
+        "count": 8
+    }
+}

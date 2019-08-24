@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "AAA",
+        "BAB",
+        "AAA"
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_ring_end"
+        },
+        "B":
+        {
+            "item": "minecraft:nether_star"
+        }    
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_links_end",
+        "count": 8
+    }
+}

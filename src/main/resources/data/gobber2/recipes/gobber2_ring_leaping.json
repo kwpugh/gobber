@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "BAB",
+        "ACA",
+        "BAB"
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "minecraft:rabbit_foot"
+        },
+        "B":
+        {
+            "item": "minecraft:golden_apple"
+        },
+        "C":
+        {
+            "item": "gobber2:gobber2_ring_nether"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_ring_leaping",
+        "count": 1
+    }
+}

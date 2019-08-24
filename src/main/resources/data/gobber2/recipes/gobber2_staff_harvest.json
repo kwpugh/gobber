@@ -1,0 +1,34 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " CA",
+        " BC",
+        "B  "
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_glob"
+        },
+        
+        "B":
+        {
+            "item": "gobber2:gobber2_rod"
+        },
+        "C":
+        {
+            "item": "minecraft:yellow_dye"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_staff_harvest",
+        "count": 1
+    }
+}

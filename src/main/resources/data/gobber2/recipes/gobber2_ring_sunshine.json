@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "AAA",
+        "ABA",
+        "AAA"
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "minecraft:sunflower"
+        },
+        "B":
+        {
+            "item": "gobber2:gobber2_ring"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_ring_sunshine",
+        "count": 1
+    }
+}

@@ -1,0 +1,42 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " D ",
+        "BAC",
+        " E "
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_goo_nether"
+        },        
+        "B":
+        {
+            "item": "minecraft:carrot"
+        },
+        "C":
+        {
+            "item": "minecraft:potato"
+        },
+        "D":
+        {
+            "item": "gobber2:gobber2_gooey_beef_nether"
+        },
+        "E":
+        {
+            "item": "minecraft:bowl"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_gooey_beefstew_nether",
+        "count": 1
+    }
+}
+
+

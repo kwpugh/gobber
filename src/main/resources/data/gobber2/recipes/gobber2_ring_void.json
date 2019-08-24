@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "AAA",
+        "ABA",
+        "AAA"
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "minecraft:ender_eye"
+        },
+        "B":
+        {
+            "item": "gobber2:gobber2_ring_end"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_ring_void",
+        "count": 1
+    }
+}

@@ -1,0 +1,22 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"BBC",
+		"BAC",
+		"BCC"
+	],
+	
+	"key":
+	{
+		"A": { "item": "gobber2:gobber2_ring" },
+		"B": { "item": "minecraft:lapis_lazuli" },
+		"C": { "item": "minecraft:redstone" }
+		
+	},
+	
+	"result": { "item": "gobber2:gobber2_ring_attraction",
+	"count": 1
+	}
+}

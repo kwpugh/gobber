@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "GSG",
+        "G G",
+        "G G"
+    ],
+    
+    "key":
+    {
+        "G":
+        {
+            "item": "gobber2:gobber2_ingot_nether"
+        },
+        "S":
+        {
+            "item": "minecraft:nether_star"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_leggings_nether",
+        "count": 1
+    }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "gobber2:gobber2_seed"
+    },
+    {
+      "item": "gobber2:gobber2_glob_nether"
+    }
+  ],
+  "result": {
+    "item": "gobber2:gobber2_seed_nether"
+  }
+}

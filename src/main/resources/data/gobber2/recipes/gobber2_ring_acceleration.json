@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "ABA",
+        "ACA",
+        "A A"
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "minecraft:tnt"
+        },
+        "B":
+        {
+            "item": "minecraft:black_wool"
+        },
+        "C":
+        {
+            "item": "gobber2:gobber2_ring_nether"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_ring_acceleration",
+        "count": 1
+    }
+}

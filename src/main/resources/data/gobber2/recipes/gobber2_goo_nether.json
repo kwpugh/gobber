@@ -1,0 +1,22 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"GD ",
+		"IB ",
+		"   "
+	],
+	
+	"key":
+	{
+		"G": { "item": "gobber2:gobber2_glob_nether"  },
+		"D": { "item": "minecraft:egg"          	  },
+		"I": { "item": "minecraft:sugar"   			  },
+		"B": { "item": "minecraft:magma_cream"  	  }	
+	},
+	
+	"result": { "item": "gobber2:gobber2_goo_nether",
+	"count": 3
+	}
+}

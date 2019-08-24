@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "CBC",
+        "BAB",
+        "CBC"
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_ring_nether"
+        },
+        "B":
+        {
+            "item": "minecraft:nether_wart"
+        },
+        "C":
+        {
+            "item": "minecraft:golden_carrot"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_ring_vision",
+        "count": 1
+    }
+}

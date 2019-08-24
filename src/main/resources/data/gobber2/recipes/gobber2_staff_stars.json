@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		" CD",
+		" BC",
+		"A  "
+	],
+	
+	"key":
+	{
+		"A": { "item": "gobber2:gobber2_rod_nether" },
+		"B": { "item": "minecraft:blaze_rod" },
+		"C": { "item": "minecraft:redstone" },		
+		"D": { "item": "minecraft:glowstone_dust" }
+	},
+	
+	"result": { "item": "gobber2:gobber2_staff_stars",
+	"count": 1 }
+}

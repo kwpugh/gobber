@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " B ",
+        "BCB",
+        " B "
+    ],
+    
+    "key":
+    {
+        "B":
+        {
+            "item": "minecraft:ender_chest"
+        },
+        "C":
+        {
+            "item": "gobber2:gobber2_ring_end"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_ring_enderchest",
+        "count": 1
+    }
+}

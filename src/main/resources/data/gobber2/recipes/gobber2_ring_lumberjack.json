@@ -1,0 +1,24 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"DBE",
+		"CAC",
+		"EBD"
+	],
+	
+	"key":
+	{
+		"A": { "item": "gobber2:gobber2_ring" },
+		"B": { "item": "minecraft:oak_sapling" },
+		"C": { "item": "minecraft:jungle_sapling" },
+		"D": { "item": "minecraft:dark_oak_sapling" },
+		"E": { "item": "minecraft:acacia_sapling" }
+		
+	},
+	
+	"result": { "item": "gobber2:gobber2_ring_lumberjack",
+	"count": 1
+	}
+}

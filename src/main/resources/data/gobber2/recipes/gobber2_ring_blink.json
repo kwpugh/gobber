@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "AAA",
+        "ABA",
+        "AAA"
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "minecraft:ender_pearl"
+        },
+        "B":
+        {
+            "item": "gobber2:gobber2_ring_end"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_ring_blink",
+        "count": 1
+    }
+}

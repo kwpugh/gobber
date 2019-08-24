@@ -1,0 +1,32 @@
+modLoader="javafml" #mandatory
+
+loaderVersion="[27,)" #mandatory (24 is current forge version)
+
+credits="Thanks to Harry Talks for his amazing tutorials and Udemy for great Java courses." #optional
+
+authors="kwpugh" #optional
+
+[[mods]] #mandatory
+modId="gobber2" #mandatory
+version="2.1.85" #mandatory
+displayName="Gobber 2" #mandatory
+description='''
+Gobber into 1.14.4, a new beginning!
+'''
+
+
+[[dependencies.gobber2]] #optional
+    modId="forge" #mandatory
+    mandatory=true #mandatory
+    versionRange="[28,)" #mandatory
+    ordering="NONE"
+    side="BOTH"
+
+
+# Here's another dependency
+[[dependencies.gobber2]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.14.3, 1.14.4]"
+    ordering="NONE"
+    side="BOTH"

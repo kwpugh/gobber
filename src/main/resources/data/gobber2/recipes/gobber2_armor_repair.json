@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "AB ",
+        "BA ",
+        "   "
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_ingot"
+        },
+        "B":
+        {
+            "item": "gobber2:gobber2_ingot_nether"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_armor_repair",
+        "count": 4
+    }
+}
