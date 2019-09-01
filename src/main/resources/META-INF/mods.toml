@@ -8,7 +8,7 @@ authors="kwpugh" #optional
 
 [[mods]] #mandatory
 modId="gobber2" #mandatory
-version="2.1.86" #mandatory
+version="2.1.87" #mandatory
 displayName="Gobber 2" #mandatory
 description='''
 Gobber into 1.14.4, a new beginning!

@@ -11,6 +11,7 @@ import com.kwpugh.gobber2.blocks.BlockGobberPlantEnd;
 import com.kwpugh.gobber2.blocks.BlockGobberPlantNether;
 import com.kwpugh.gobber2.blocks.BlockHealer;
 import com.kwpugh.gobber2.blocks.BlockNetherBlock;
+import com.kwpugh.gobber2.blocks.BlockProtector;
 import com.kwpugh.gobber2.lists.BlockList;
 
 import net.minecraft.block.Block;
@@ -50,7 +51,8 @@ public class BlockInit
 				BlockList.gobber2_plant_nether = new BlockGobberPlantNether("gobber2_plant_nether", Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0f, 0.0f).lightValue(15).sound(SoundType.CROP)).setRegistryName(location("gobber2_plant_nether")),
 				BlockList.gobber2_plant_end = new BlockGobberPlantEnd("gobber2_plant_end", Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0f, 0.0f).lightValue(15).sound(SoundType.CROP)).setRegistryName(location("gobber2_plant_end")),
 				
-				BlockList.block_healer = new BlockHealer(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).lightValue(15).sound(SoundType.METAL)).setRegistryName(location("block_healer"))
+				BlockList.block_healer = new BlockHealer(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).lightValue(15).sound(SoundType.METAL)).setRegistryName(location("block_healer")),
+				BlockList.block_protector = new BlockProtector(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).lightValue(15).sound(SoundType.METAL)).setRegistryName(location("block_protector"))
 			);
 			Gobber2.logger.info("Gobber Blocks registered.");
 		}

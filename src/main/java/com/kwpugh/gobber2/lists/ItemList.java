@@ -160,4 +160,5 @@ public class ItemList
 	public static Item gobber2_seed_end;
 	
 	public static Item block_healer;
+	public static Item block_protector;
 }

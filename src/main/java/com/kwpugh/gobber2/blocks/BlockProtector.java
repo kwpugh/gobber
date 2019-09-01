@@ -45,19 +45,21 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class BlockHealer extends Block
+public class BlockProtector extends Block
 {
-	public BlockHealer(Properties properties)
+
+	public BlockProtector(Properties properties)
 	{
 		super(properties);
 	}
+
 
 	int minTickTime = 5;
 	
 	public boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit)
 	{
 		world.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), 5);
-		player.sendMessage(new StringTextComponent("The Healer is active for players in a range of 64 blocks"));
+		player.sendMessage(new StringTextComponent("The Protector is active for players in a range of 64 blocks"));
 		return true;
 	}
 	   
@@ -151,7 +153,9 @@ public class BlockHealer extends Block
 	public void addInformation(ItemStack stack, @Nullable IBlockReader world, List<ITextComponent> tooltip, ITooltipFlag flag)
 	{
 		super.addInformation(stack, world, tooltip, flag);				
-		tooltip.add(new StringTextComponent(TextFormatting.BLUE + "The Healer provides a slow, but steady health regen"));
+		tooltip.add(new StringTextComponent(TextFormatting.BLUE + "The Protector provides a slow, but steady health regen"));
+		tooltip.add(new StringTextComponent(TextFormatting.BLUE + "and eliminates many, annoying hostile mobs"));
 		tooltip.add(new StringTextComponent(TextFormatting.GREEN + "Range: 64 blocks"));
 	}
 }
+

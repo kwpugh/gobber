@@ -22,4 +22,5 @@ public class BlockList
 	public static Block gobber2_plant_end;
 	
 	public static Block block_healer;
+	public static Block block_protector;
 }

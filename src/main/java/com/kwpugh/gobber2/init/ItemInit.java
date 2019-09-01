@@ -249,7 +249,8 @@ public class ItemInit
 				ItemList.gobber2_staff_stars = new ItemCustomStaffStars(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_staff_stars")),
 				ItemList.gobber2_staff_sniper = new ItemCustomStaffSniper(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_staff_sniper")),
 				
-				ItemList.block_healer = new BlockItem(BlockList.block_healer, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.block_healer.getRegistryName())
+				ItemList.block_healer = new BlockItem(BlockList.block_healer, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.block_healer.getRegistryName()),
+				ItemList.block_protector = new BlockItem(BlockList.block_protector, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.block_protector.getRegistryName())
 				
 			);		
 			Gobber2.logger.info("Gobber Items registered.");
