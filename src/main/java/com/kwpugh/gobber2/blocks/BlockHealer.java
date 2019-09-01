@@ -100,51 +100,6 @@ public class BlockHealer extends Block
 				}
 			}
 		}
-		
-		if(!world.isRemote)
-		{
-			int radius = 64;
-			
-			List<Entity> entities = world.getEntitiesWithinAABB(LivingEntity.class, new AxisAlignedBB(pos.getX() - radius, pos.getY() - radius, pos.getZ() - radius, pos.getX() + radius, pos.getY() + radius, pos.getZ() + radius), e -> (e instanceof LivingEntity || e instanceof IProjectile));
-			for(Entity entity : entities)
-			{
-				// These types of mobs are excluded 
-				if(entity instanceof PlayerEntity || 
-						entity instanceof VillagerEntity || 
-						entity instanceof WanderingTraderEntity ||
-						entity instanceof AnimalEntity || 
-						entity instanceof DolphinEntity ||
-						entity instanceof WaterMobEntity ||
-						entity instanceof GuardianEntity ||
-						entity instanceof ElderGuardianEntity ||
-						entity instanceof SpellcastingIllagerEntity ||
-						entity instanceof VexEntity ||
-						entity instanceof VindicatorEntity ||
-						entity instanceof GhastEntity ||
-						entity instanceof BlazeEntity ||
-						entity instanceof WitherSkeletonEntity ||
-						entity instanceof WitherEntity ||
-						entity instanceof EnderDragonEntity)
-				{
-					continue;
-				}
-				
-				double distanceSqA = entity.getDistanceSq((double) pos.getX(), (double) pos.getY(), (double) pos.getZ());
-				double distance = Math.sqrt(distanceSqA);
-				
-//				double distance = entity.getDistance((double) pos.getX(), (double) pos.getY(), (double) pos.getZ());
-				
-				if(distance < radius && distance != 0)
-				{
-					if(entity instanceof LivingEntity)
-					{
-						((MobEntity) entity).spawnExplosionParticle();
-						((LivingEntity) entity).setHealth(0);
-						//world.addEntity(new ExperienceOrbEntity(world, pos.getX(), pos.getY(), pos.getZ(), 1));
-					}
-				}
-			}
-		}
     }
   
 	@OnlyIn(Dist.CLIENT)
