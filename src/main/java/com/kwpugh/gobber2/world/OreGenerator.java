@@ -31,22 +31,21 @@ public class OreGenerator
     
     public static void setupNetherOregen()
     {
-        if(GeneralModConfig.GOBBER2_ORE_NETHER_GENERATION.get())
-           Biomes.NETHER.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Biome.createDecoratedFeature(Feature.ORE, new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NETHERRACK, BlockList.gobber2_ore_nether.getDefaultState(), GeneralModConfig.GOBBER2_ORE_NETHER_SIZE.get().intValue()), COUNT_RANGE, new CountRangeConfig(GeneralModConfig.GOBBER2_ORE_NETHER_CHANCE.get(), GeneralModConfig.GOBBER2_ORE_NETHER_MIN_HEIGHT.get(), GeneralModConfig.GOBBER2_ORE_NETHER_MIN_HEIGHT.get(), GeneralModConfig.GOBBER2_ORE_NETHER_MAX_HEIGHT.get())));   
+    	if(GeneralModConfig.GOBBER2_ORE_NETHER_GENERATION.get())
+            Biomes.NETHER.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Biome.createDecoratedFeature(Feature.ORE, new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NETHERRACK, BlockList.gobber2_ore_nether.getDefaultState(), GeneralModConfig.GOBBER2_ORE_NETHER_SIZE.get().intValue()), COUNT_RANGE, new CountRangeConfig(GeneralModConfig.GOBBER2_ORE_NETHER_CHANCE.get(), GeneralModConfig.GOBBER2_ORE_NETHER_MIN_HEIGHT.get(), GeneralModConfig.GOBBER2_ORE_NETHER_MIN_HEIGHT.get(), GeneralModConfig.GOBBER2_ORE_NETHER_MAX_HEIGHT.get())));    	
     }
     
    
     
     public static void setupEndOregen()
     {
+    	if(GeneralModConfig.GOBBER2_ORE_END_GENERATION.get())
+            Biomes.END_HIGHLANDS.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, Biome.createDecoratedFeature(END_OREGEN, new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockList.gobber2_ore_end.getDefaultState(), GeneralModConfig.GOBBER2_ORE_END_SIZE.get().intValue()), COUNT_RANGE, new CountRangeConfig(GeneralModConfig.GOBBER2_ORE_END_CHANCE.get(), GeneralModConfig.GOBBER2_ORE_END_MIN_HEIGHT.get(), GeneralModConfig.GOBBER2_ORE_END_MIN_HEIGHT.get(), GeneralModConfig.GOBBER2_ORE_END_MAX_HEIGHT.get())));   
+     
         if(GeneralModConfig.GOBBER2_ORE_END_GENERATION.get())
-           Biomes.END_HIGHLANDS.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, Biome.createDecoratedFeature(END_OREGEN, new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockList.gobber2_ore_end.getDefaultState(), GeneralModConfig.GOBBER2_ORE_END_SIZE.get().intValue()), COUNT_RANGE, new CountRangeConfig(GeneralModConfig.GOBBER2_ORE_END_CHANCE.get(), GeneralModConfig.GOBBER2_ORE_END_MIN_HEIGHT.get(), GeneralModConfig.GOBBER2_ORE_END_MIN_HEIGHT.get(), GeneralModConfig.GOBBER2_ORE_END_MAX_HEIGHT.get())));   
-    
+             Biomes.END_MIDLANDS.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, Biome.createDecoratedFeature(END_OREGEN, new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockList.gobber2_ore_end.getDefaultState(), GeneralModConfig.GOBBER2_ORE_END_SIZE.get().intValue()), COUNT_RANGE, new CountRangeConfig(GeneralModConfig.GOBBER2_ORE_END_CHANCE.get(), GeneralModConfig.GOBBER2_ORE_END_MIN_HEIGHT.get(), GeneralModConfig.GOBBER2_ORE_END_MIN_HEIGHT.get(), GeneralModConfig.GOBBER2_ORE_END_MAX_HEIGHT.get())));
+     
         if(GeneralModConfig.GOBBER2_ORE_END_GENERATION.get())
-            Biomes.END_MIDLANDS.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, Biome.createDecoratedFeature(END_OREGEN, new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockList.gobber2_ore_end.getDefaultState(), GeneralModConfig.GOBBER2_ORE_END_SIZE.get().intValue()), COUNT_RANGE, new CountRangeConfig(GeneralModConfig.GOBBER2_ORE_END_CHANCE.get(), GeneralModConfig.GOBBER2_ORE_END_MIN_HEIGHT.get(), GeneralModConfig.GOBBER2_ORE_END_MIN_HEIGHT.get(), GeneralModConfig.GOBBER2_ORE_END_MAX_HEIGHT.get())));
-    
-        if(GeneralModConfig.GOBBER2_ORE_END_GENERATION.get())
-            Biomes.THE_END.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, Biome.createDecoratedFeature(END_OREGEN, new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockList.gobber2_ore_end.getDefaultState(), GeneralModConfig.GOBBER2_ORE_END_SIZE.get().intValue()), COUNT_RANGE, new CountRangeConfig(GeneralModConfig.GOBBER2_ORE_END_CHANCE.get(), GeneralModConfig.GOBBER2_ORE_END_MIN_HEIGHT.get(), GeneralModConfig.GOBBER2_ORE_END_MIN_HEIGHT.get(), GeneralModConfig.GOBBER2_ORE_END_MAX_HEIGHT.get())));   
-        
+             Biomes.THE_END.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, Biome.createDecoratedFeature(END_OREGEN, new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockList.gobber2_ore_end.getDefaultState(), GeneralModConfig.GOBBER2_ORE_END_SIZE.get().intValue()), COUNT_RANGE, new CountRangeConfig(GeneralModConfig.GOBBER2_ORE_END_CHANCE.get(), GeneralModConfig.GOBBER2_ORE_END_MIN_HEIGHT.get(), GeneralModConfig.GOBBER2_ORE_END_MIN_HEIGHT.get(), GeneralModConfig.GOBBER2_ORE_END_MAX_HEIGHT.get()))); 		   
     }
 }

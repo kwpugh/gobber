@@ -12,6 +12,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.CactusBlock;
 import net.minecraft.block.CropsBlock;
 import net.minecraft.block.MelonBlock;
+import net.minecraft.block.NetherWartBlock;
 import net.minecraft.block.PumpkinBlock;
 import net.minecraft.block.SugarCaneBlock;
 import net.minecraft.client.util.ITooltipFlag;
@@ -67,6 +68,7 @@ public class ItemCustomStaffHarvest extends Item
 						
 						if(block instanceof CropsBlock ||
 								block instanceof CactusBlock ||
+								block instanceof NetherWartBlock ||
 								block instanceof SugarCaneBlock ||
 								block instanceof BambooBlock ||
 								block instanceof MelonBlock ||
@@ -90,6 +92,7 @@ public class ItemCustomStaffHarvest extends Item
 					//These plants are simply broken with drops
 					if(block instanceof CactusBlock ||
 							block instanceof SugarCaneBlock ||
+							block instanceof NetherWartBlock ||
 							block instanceof BambooBlock ||
 							block instanceof MelonBlock ||
 							block instanceof PumpkinBlock)
@@ -108,6 +111,7 @@ public class ItemCustomStaffHarvest extends Item
 							world.setBlockState(targetPos, defaultState);	
 						}
 					}
+					
 					
 					//Gobber plants are checked separately because they do not have natural drops (intentionally) and Globettes need to be spawned manually
 					if(block == BlockList.gobber2_plant || 
