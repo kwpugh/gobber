@@ -18,6 +18,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.boss.WitherEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonEntity;
+import net.minecraft.entity.item.ArmorStandEntity;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.entity.merchant.villager.WanderingTraderEntity;
 import net.minecraft.entity.monster.BlazeEntity;
@@ -111,7 +112,8 @@ public class BlockProtector extends Block
 			for(Entity entity : entities)
 			{
 				// These types of mobs are excluded 
-				if(entity instanceof PlayerEntity || 
+				if(entity instanceof PlayerEntity ||
+						entity instanceof ArmorStandEntity ||
 						entity instanceof VillagerEntity || 
 						entity instanceof WanderingTraderEntity ||
 						entity instanceof AnimalEntity || 
