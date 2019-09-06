@@ -46,7 +46,7 @@ public class BlockInit
 				BlockList.gobber2_glass = new BlockGobberGlass(Block.Properties.create(Material.GLASS).hardnessAndResistance(3.0f, 3.0f).lightValue(15).sound(SoundType.METAL)).setRegistryName(location("gobber2_glass")),
 				BlockList.gobber2_glass_nether = new BlockGobberGlassNether(Block.Properties.create(Material.GLASS).hardnessAndResistance(3.0f, 3.0f).lightValue(15).sound(SoundType.METAL)).setRegistryName(location("gobber2_glass_nether")),
 				BlockList.gobber2_glass_end = new BlockGobberGlassEnd(Block.Properties.create(Material.GLASS).hardnessAndResistance(3.0f, 3.0f).lightValue(15).sound(SoundType.METAL)).setRegistryName(location("gobber2_glass_end")),
-				//BlockList.gobber2_glass_witherproof = new BlockGobberGlassWitherproof(Block.Properties.create(Material.GLASS).hardnessAndResistance(-1.0F, 3600000.0F).lightValue(15).sound(SoundType.METAL)).setRegistryName(location("gobber2_glass_witherproof")),
+				//BlockList.gobber2_glass_witherproof = new BlockGobberGlassWitherproof(Block.Properties.create(Material.GLASS).hardnessAndResistance(-1.0F, 3600000.0F).lightValue(15).sound(SoundType.METAL)).setWitherproof(true).setRegistryName(location("gobber2_glass_witherproof")),
 				
 				BlockList.gobber2_plant = new BlockGobberPlant("gobber2_plant", Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0f, 0.0f).lightValue(15).sound(SoundType.CROP)).setRegistryName(location("gobber2_plant")),
 				BlockList.gobber2_plant_nether = new BlockGobberPlantNether("gobber2_plant_nether", Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0f, 0.0f).lightValue(15).sound(SoundType.CROP)).setRegistryName(location("gobber2_plant_nether")),
