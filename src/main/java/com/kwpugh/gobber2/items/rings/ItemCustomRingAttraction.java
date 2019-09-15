@@ -58,7 +58,7 @@ public class ItemCustomRingAttraction extends Item
 			List<ItemEntity> items = entity.world.getEntitiesWithinAABB(ItemEntity.class, new AxisAlignedBB(x - range, y - range, z - range, x + range, y + range, z + range));
 			for(ItemEntity e: items)
 			{
-				if(!player.isSneaking() && !e.getPersistantData().getBoolean("PreventRemoteMovement"))
+				if(!player.isSneaking() && !e.getPersistentData().getBoolean("PreventRemoteMovement"))
 				//if(!player.isSneaking())
 				{
 					isPulling = true;							
