@@ -43,12 +43,15 @@ public class RepairTickHandler
 		for(int slot = 0; slot < inv.getSizeInventory(); slot++)
 		{
 			ItemStack target = inv.getStackInSlot(slot);
-			if (!target.isEmpty() && target.getItem().isRepairable(target))
+			if (!target.isEmpty())
 			{
-				if (target.isDamaged())
+				if (!(player.isSwingInProgress && target == player.getHeldItemMainhand()))
 				{
-					target.setDamage(target.getDamage() - 1);
-					return; 
+					if (target.isDamaged() && target.getItem().isRepairable(target))
+					{
+						target.setDamage(target.getDamage() - 1);
+						return; 
+					}
 				}
 			}
 		}
