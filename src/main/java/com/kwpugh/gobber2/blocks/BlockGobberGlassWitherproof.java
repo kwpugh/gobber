@@ -11,13 +11,16 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.boss.WitherEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -59,11 +62,32 @@ public class BlockGobberGlassWitherproof extends Block
     }
 
     @Override
-    public boolean canEntityDestroy(BlockState state, IBlockReader world, BlockPos pos, Entity entity) {
+    public boolean canEntityDestroy(BlockState state, IBlockReader world, BlockPos pos, Entity entity)
+    {
         if (witherproof)
             return !(entity instanceof WitherEntity) && super.canEntityDestroy(state, world, pos, entity);
 
         return super.canEntityDestroy(state, world, pos, entity);
+    }
+    
+    @Override
+    public void onExplosionDestroy(World worldIn, BlockPos pos, Explosion explosionIn)
+    {
+        if (!witherproof)
+            super.onExplosionDestroy(worldIn, pos, explosionIn);
+    }
+    
+    @Override
+    @OnlyIn(Dist.CLIENT)
+    public BlockRenderLayer getRenderLayer()
+    {
+        return transparent ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.SOLID;
+    }
+
+    @Override
+    public int getOpacity(BlockState state, IBlockReader worldIn, BlockPos pos)
+    {
+        return transparent ? 0 : super.getOpacity(state, worldIn, pos);
     }
     
 	@OnlyIn(Dist.CLIENT)

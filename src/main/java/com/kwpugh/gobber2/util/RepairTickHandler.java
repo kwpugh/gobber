@@ -45,7 +45,7 @@ public class RepairTickHandler
 			ItemStack target = inv.getStackInSlot(slot);
 			if (!target.isEmpty())
 			{
-				if (!(player.isSwingInProgress && target == player.getHeldItemMainhand()))
+				if (!(target == player.getHeldItemMainhand()))
 				{
 					if (target.isDamaged() && target.getItem().isRepairable(target))
 					{
