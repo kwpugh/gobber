@@ -42,9 +42,10 @@ public class ItemCustomRingFarmer extends Item
         }
 
     	PlayerEntity player = (PlayerEntity)entity;
-        ItemStack equipped = player.getHeldItemMainhand();
+        ItemStack equippedMain = player.getHeldItemMainhand();
+        ItemStack equippedOff = player.getHeldItemOffhand();
         
-        if(stack == equipped)
+        if(stack == equippedMain || stack == equippedOff)
         {
             int range = 7;
             for(int x = -range; x < range+1; x++)
