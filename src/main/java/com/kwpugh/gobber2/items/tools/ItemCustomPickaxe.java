@@ -54,11 +54,14 @@ public class ItemCustomPickaxe extends PickaxeItem
 		return super.onItemRightClick(world, player, hand);
 	}
 
-	@Override
-	public boolean isBookEnchantable(ItemStack stack, ItemStack book)
+	public void checkEffect(PlayerEntity player, ItemStack stack)
 	{
-		return true;
+		 if(!EnableUtil.isEnabled(stack))
+			{
+			 	player.removeActivePotionEffect(Effects.NIGHT_VISION);		 		
+		    }
 	}
+
 
 	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)

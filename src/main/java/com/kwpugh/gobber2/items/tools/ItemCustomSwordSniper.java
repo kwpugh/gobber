@@ -15,8 +15,6 @@ import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.SwordItem;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
@@ -57,7 +55,7 @@ public class ItemCustomSwordSniper extends SwordItem
 			}	
 		    else
 		    {
-		    	player.addPotionEffect(new EffectInstance(Effects.STRENGTH, (int) 2400, (int) 4));
+		    	//TBD
 		    }
 		    return new ActionResult<ItemStack>(ActionResultType.PASS, player.getHeldItem(hand));
 		}

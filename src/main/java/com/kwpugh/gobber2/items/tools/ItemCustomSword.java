@@ -9,8 +9,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
@@ -31,7 +29,7 @@ public class ItemCustomSword extends SwordItem
     {
         if (!worldIn.isRemote)
         {
-        	playerIn.addPotionEffect(new EffectInstance(Effects.STRENGTH, (int) 2400, (int) 2));
+        	//TBD
         }
         return new ActionResult<ItemStack>(ActionResultType.PASS, playerIn.getHeldItem(handIn));
     }
@@ -52,6 +50,6 @@ public class ItemCustomSword extends SwordItem
 	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
 	{
 		super.addInformation(stack, world, list, flag);				
-		list.add(new StringTextComponent(TextFormatting.GREEN + "Right-click for extra strength"));
+		list.add(new StringTextComponent(TextFormatting.GREEN + "A nice sword indeed"));
 	} 
 }

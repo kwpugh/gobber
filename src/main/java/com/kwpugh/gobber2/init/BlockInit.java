@@ -6,7 +6,6 @@ import com.kwpugh.gobber2.blocks.BlockGobberBlock;
 import com.kwpugh.gobber2.blocks.BlockGobberGlass;
 import com.kwpugh.gobber2.blocks.BlockGobberGlassEnd;
 import com.kwpugh.gobber2.blocks.BlockGobberGlassNether;
-import com.kwpugh.gobber2.blocks.BlockGobberGlassWitherproof;
 import com.kwpugh.gobber2.blocks.BlockGobberPlant;
 import com.kwpugh.gobber2.blocks.BlockGobberPlantEnd;
 import com.kwpugh.gobber2.blocks.BlockGobberPlantNether;
@@ -19,6 +18,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -33,9 +33,9 @@ public class BlockInit
 		{
 			event.getRegistry().registerAll
 			(
-				BlockList.gobber2_ore = new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).lightValue(15).sound(SoundType.METAL)).setRegistryName(location("gobber2_ore")),
-				BlockList.gobber2_ore_nether = new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).lightValue(15).sound(SoundType.METAL)).setRegistryName(location("gobber2_ore_nether")),
-				BlockList.gobber2_ore_end = new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).lightValue(15).sound(SoundType.METAL)).setRegistryName(location("gobber2_ore_end")),
+				BlockList.gobber2_ore = new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).lightValue(2).harvestTool(ToolType.PICKAXE).harvestLevel(3).sound(SoundType.STONE)).setRegistryName(location("gobber2_ore")),
+				BlockList.gobber2_ore_nether = new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).lightValue(2).harvestTool(ToolType.PICKAXE).harvestLevel(4).sound(SoundType.STONE)).setRegistryName(location("gobber2_ore_nether")),
+				BlockList.gobber2_ore_end = new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).lightValue(2).harvestTool(ToolType.PICKAXE).harvestLevel(4).sound(SoundType.STONE)).setRegistryName(location("gobber2_ore_end")),
 				
 				BlockList.gobber2_block = new BlockGobberBlock(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).lightValue(15).sound(SoundType.METAL)).setRegistryName(location("gobber2_block")),
 				BlockList.gobber2_block_nether = new BlockNetherBlock(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).lightValue(15).sound(SoundType.METAL)).setRegistryName(location("gobber2_block_nether")),
