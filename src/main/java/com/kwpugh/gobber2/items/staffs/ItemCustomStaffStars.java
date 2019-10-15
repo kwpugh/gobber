@@ -9,6 +9,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
 import net.minecraft.util.ActionResultType;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
@@ -63,14 +65,16 @@ public class ItemCustomStaffStars extends Item
     	}
     	
     	if(iuc.getWorld().getBlockState(torchPos).isAir())
-    	{
+    	{		
     		if (isWallTorch)
     		{
     			iuc.getWorld().setBlockState(torchPos, Blocks.WALL_TORCH.getDefaultState().with(HorizontalBlock.HORIZONTAL_FACING, iuc.getFace()));
+    			iuc.getWorld().playSound(null, iuc.getPlayer().getPosition(), SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.NEUTRAL, 8.0F, (float) (0.7F + (Math.random()*0.3D)));
     		}
     		else
     		{
     			iuc.getWorld().setBlockState(torchPos, Blocks.TORCH.getDefaultState());
+    			iuc.getWorld().playSound(null, iuc.getPlayer().getPosition(), SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.NEUTRAL, 8.0F, (float) (0.7F + (Math.random()*0.3D)));
     		}
     		return ActionResultType.SUCCESS;
     	}

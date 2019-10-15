@@ -68,7 +68,7 @@ public class HammerUtil
         
         if(isEffective && !witherImmune)	
         {
-        	world.destroyBlock(pos, true);  //true or false?
+        	world.destroyBlock(pos, false);  //true or false?
 	    	Block.spawnDrops(state, world, pos, null, player, player.getHeldItemMainhand());
         }
     }
