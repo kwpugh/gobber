@@ -90,6 +90,6 @@ public class BlockGobberGlassEnd extends GlassBlock
 		tooltip.add(new StringTextComponent(TextFormatting.GREEN + "Players can walk through, mobs cannot"));
 		tooltip.add(new StringTextComponent(TextFormatting.GREEN + "Player can sneak to break or walk on glass"));
 		tooltip.add(new StringTextComponent(TextFormatting.GREEN + "Spiders cannot climb the glass"));
-		tooltip.add(new StringTextComponent(TextFormatting.RED + "WARNING: NOT WITHER PROOF YET!"));
+		tooltip.add(new StringTextComponent(TextFormatting.RED + "WARNING: NOT WITHER PROOF!"));
 	}
 }

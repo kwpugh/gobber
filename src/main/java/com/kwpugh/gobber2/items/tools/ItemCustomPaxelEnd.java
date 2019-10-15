@@ -59,6 +59,7 @@ public class ItemCustomPaxelEnd extends ToolItem
 			Blocks.LIGHT_GRAY_CONCRETE_POWDER, Blocks.CYAN_CONCRETE_POWDER, Blocks.PURPLE_CONCRETE_POWDER,
 			Blocks.BLUE_CONCRETE_POWDER, Blocks.BROWN_CONCRETE_POWDER, Blocks.GREEN_CONCRETE_POWDER,
 			Blocks.RED_CONCRETE_POWDER, Blocks.BLACK_CONCRETE_POWDER,Blocks.BAMBOO, Blocks.CACTUS, Blocks.MELON, Blocks.PUMPKIN, 
+			Blocks.COARSE_DIRT, Blocks.DIRT, Blocks.GRASS_BLOCK, Blocks.GRASS_PATH,
 			BlockList.gobber2_glass);
 	
 	public ItemCustomPaxelEnd(float attackDamageIn, float attackSpeedIn, IItemTier tier, Set<Block> effectiveBlocksIn,

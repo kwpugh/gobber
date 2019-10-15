@@ -136,6 +136,6 @@ public class ItemCustomArmorEnd extends ArmorItem
 		list.add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + "Chestplate: Conduit Power in water, fire protection, and knockback resistance"));
 		list.add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + "Leggings: No fall damage"));
 		list.add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + "Boots: TBD"));
-		list.add(new StringTextComponent(TextFormatting.GOLD + "Full suit bonus: Negative effect protection and flight only in the End"));
+		list.add(new StringTextComponent(TextFormatting.GOLD + "Full suit bonus: Negative effect protection"));
 	}
 }
