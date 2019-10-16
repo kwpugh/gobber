@@ -40,12 +40,11 @@ public class ItemCustomSwordNether extends SwordItem
 	@Override
     public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker)
     {
-		stack.setDamage(1);
-        
         if(target instanceof WitherSkeletonEntity)
         {
-        	target.remove();
+        	target.setHealth(0);
         	target.entityDropItem(Items.WITHER_SKELETON_SKULL, 1);
+        	//stack.setDamage(1);
         }
         return true;
     }

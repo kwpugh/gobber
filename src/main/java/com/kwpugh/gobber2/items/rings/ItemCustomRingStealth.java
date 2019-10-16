@@ -28,7 +28,7 @@ public class ItemCustomRingStealth extends Item
 
 			ItemStack equipped = player.getHeldItemMainhand();
 
-			if(!world.isRemote)
+			if(!world.isRemote && !player.isCreative())
 			{
 				if(stack == equipped)
 		        {
