@@ -32,7 +32,5 @@ public class ItemCustomSeedEnd extends BlockNamedItem
 	{
 		super.addInformation(stack, world, list, flag);				
 		list.add(new StringTextComponent(TextFormatting.BLUE + "Plant on Farmland to grow End Plant"));
-		list.add(new StringTextComponent(TextFormatting.GREEN + "Right-click to harvest when plant is mature"));
-		list.add(new StringTextComponent(TextFormatting.GOLD + "Breaking plant does not drop crop or seed!"));
 	} 
 }

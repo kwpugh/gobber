@@ -109,6 +109,6 @@ public class ItemCustomArmorNether extends ArmorItem
 		list.add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + "Chestplate: Water breathing, fire protection, and knockback resistance"));
 		list.add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + "Leggings: No fall damage"));
 		list.add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + "Boots: TBD"));
-		list.add(new StringTextComponent(TextFormatting.GOLD + "Full suit bonus: Posion and Wither protection "));
+		list.add(new StringTextComponent(TextFormatting.GOLD + "Full suit bonus: Poison and Wither protection "));
 	}
 }
