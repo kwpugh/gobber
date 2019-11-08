@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import com.kwpugh.gobber2.util.Gobber2_Group;
 import com.kwpugh.gobber2.util.GobberConfig;
 import com.kwpugh.gobber2.util.SpecialAbilities;
+import com.kwpugh.gobber2.util.SupportMods;
 import com.kwpugh.gobber2.world.OreGenerator;
 
 import top.theillusivec4.curios.api.CuriosAPI;
@@ -73,7 +74,10 @@ public class Gobber2
 	
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
-        InterModComms.sendTo("curios", CuriosAPI.IMC.REGISTER_TYPE, () -> new CurioIMCMessage("ring").setSize(2));
+        if (SupportMods.CURIOS.isLoaded())
+        {
+        	InterModComms.sendTo("curios", CuriosAPI.IMC.REGISTER_TYPE, () -> new CurioIMCMessage("ring").setSize(2));
+        } 
     }
 }
 

@@ -35,7 +35,18 @@ public class RepairTickHandler
 					repair(player, inv2);
        		 	} 
 			}
-		}	
+		}
+		
+		if (SupportMods.CURIOS.isLoaded())
+	    {
+			if (UtilCurios.findItem(ItemList.gobber2_ring_repair, player) != ItemStack.EMPTY)
+			{
+				if (player.ticksExisted % 90 == 0)
+	    		{
+					repair(player, inv2);
+	   		 	}  
+		    }
+	    }  
 	}
 	
 	private static void repair(PlayerEntity player, PlayerInventory inv)
