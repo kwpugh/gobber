@@ -31,6 +31,7 @@ import net.minecraft.entity.monster.VindicatorEntity;
 import net.minecraft.entity.monster.WitherSkeletonEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.DolphinEntity;
+import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.passive.WaterMobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -117,6 +118,7 @@ public class BlockProtector extends Block
 						entity instanceof VillagerEntity || 
 						entity instanceof WanderingTraderEntity ||
 						entity instanceof AnimalEntity || 
+						entity instanceof IronGolemEntity || 
 						entity instanceof DolphinEntity ||
 						entity instanceof WaterMobEntity ||
 						entity instanceof GuardianEntity ||
