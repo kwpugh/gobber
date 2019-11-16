@@ -77,7 +77,7 @@ public class BlockProtector extends Block
 				for(Entity entity : entities)
 				{
 					PlayerEntity player = (PlayerEntity)entity;
-					if(entity instanceof PlayerEntity)
+					if(entity instanceof PlayerEntity || entity instanceof VillagerEntity)
 					{
 						double distanceSqA = entity.getDistanceSq((double) pos.getX(), (double) pos.getY(), (double) pos.getZ());
 						double distance = Math.sqrt(distanceSqA);
@@ -142,7 +142,7 @@ public class BlockProtector extends Block
 				
 				if(distance < radius && distance != 0)
 				{
-					if(entity instanceof LivingEntity)
+					if(entity instanceof MobEntity)
 					{
 						((MobEntity) entity).spawnExplosionParticle();
 						((LivingEntity) entity).setHealth(0);
