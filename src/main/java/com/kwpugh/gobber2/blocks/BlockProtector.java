@@ -77,7 +77,8 @@ public class BlockProtector extends Block
 				for(Entity entity : entities)
 				{
 					PlayerEntity player = (PlayerEntity)entity;
-					if(entity instanceof PlayerEntity || entity instanceof VillagerEntity)
+					
+					if(entity instanceof PlayerEntity)
 					{
 						double distanceSqA = entity.getDistanceSq((double) pos.getX(), (double) pos.getY(), (double) pos.getZ());
 						double distance = Math.sqrt(distanceSqA);
@@ -104,7 +105,7 @@ public class BlockProtector extends Block
 				}
 			}
 		}
-		
+			
 		if(!world.isRemote)
 		{
 			int radius = 64;
