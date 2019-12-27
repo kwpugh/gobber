@@ -37,12 +37,12 @@ public class ItemCustomMedallionStepping extends Item
 	@Override
     public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
     {
-		if(!(player.isSneaking()))
+		if(!(player.isCrouching()))
 		{
 			player.sendMessage(new StringTextComponent("Current player step height: " + player.stepHeight));
 		}
 		
-        if(player.isSneaking())
+        if(player.isCrouching())
         {   
         	if(player.stepHeight < 1.0F)
 		    {

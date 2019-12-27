@@ -37,7 +37,7 @@ public class BlockGobberGlassEnd extends GlassBlock
 	
 	public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
 	{			
-		if((context.getEntity() instanceof PlayerEntity) && (context.getEntity().isSneaking()))
+		if((context.getEntity() instanceof PlayerEntity) && (context.getEntity().isCrouching()))
 		{
 			return GLASS_SOLID_AABB;
 		}
@@ -62,7 +62,7 @@ public class BlockGobberGlassEnd extends GlassBlock
 
 	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
 	{
-		if((context.getEntity() instanceof PlayerEntity) && (context.getEntity().isSneaking()))
+		if((context.getEntity() instanceof PlayerEntity) && (context.getEntity().isCrouching()))
 		{
 			return GLASS_SOLID_AABB;
 		}

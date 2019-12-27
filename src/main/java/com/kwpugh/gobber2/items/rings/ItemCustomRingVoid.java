@@ -35,14 +35,19 @@ public class ItemCustomRingVoid extends Item
 			if(!(currentDim == 1))
 			{
 				entity.changeDimension(DimensionType.THE_END);  //Switch to The End
-		    	return ActionResult.newResult(ActionResultType.SUCCESS, stack);
+		    	// Old 1.14.4 code
+				//return ActionResult.newResult(ActionResultType.SUCCESS, stack);
+		    	return ActionResult.func_226248_a_(stack);
 			}
-			else if(((currentDim == 1)) && (entity.isSneaking()))
+			else if(((currentDim == 1)) && (entity.isCrouching()))
 			{
 				entity.changeDimension(DimensionType.OVERWORLD);  //Switch to The End
-		    	return ActionResult.newResult(ActionResultType.SUCCESS, stack);
+		    	
+				//Old 1.14.4 code
+				//return ActionResult.newResult(ActionResultType.SUCCESS, stack);
+				return ActionResult.func_226248_a_(stack);
 			}
-			else if(((currentDim == 1)) && (!entity.isSneaking()))
+			else if(((currentDim == 1)) && (!entity.isCrouching()))
 			{
 				entity.sendMessage(new StringTextComponent("Did you forget to hold sneak before right-click?"));
 			}
@@ -52,7 +57,9 @@ public class ItemCustomRingVoid extends Item
 			}	
 		}
 	    
-	    return ActionResult.newResult(ActionResultType.FAIL, stack);		 
+		//Old 1.14.4 code
+	    //return ActionResult.newResult(ActionResultType.FAIL, stack);
+	    return ActionResult.func_226251_d_(stack);
 	}
 	
     @Override

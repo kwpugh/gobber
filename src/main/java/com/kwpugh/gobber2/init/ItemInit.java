@@ -212,7 +212,7 @@ public class ItemInit
 				ItemList.gobber2_ring_attraction = new ItemCustomRingAttraction(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_attraction")),
 				ItemList.gobber2_ring_miner = new ItemCustomRingMiner(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_miner")),
 				ItemList.gobber2_ring_lumberjack = new ItemCustomRingLumberjack(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_lumberjack")),
-				ItemList.gobber2_ring_farmer = new ItemCustomRingFarmer(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_farmer")),
+				//ItemList.gobber2_ring_farmer = new ItemCustomRingFarmer(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_farmer")),
 				ItemList.gobber2_ring_husbandry = new ItemCustomRingHusbandry(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_husbandry")),
 				ItemList.gobber2_ring_swiftness = new ItemCustomRingSwiftness(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_swiftness")),
 				ItemList.gobber2_ring_sunshine = new ItemCustomRingSunshine(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_sunshine")),
@@ -244,7 +244,7 @@ public class ItemInit
 				
 				//Staffs
 				ItemList.gobber2_staff_clearing = new ItemCustomStaffClearing(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_staff_clearing")),
-				ItemList.gobber2_staff_farmer = new ItemCustomStaffFarmer(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_staff_farmer")),
+				//ItemList.gobber2_staff_farmer = new ItemCustomStaffFarmer(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_staff_farmer")),
 				ItemList.gobber2_staff_harvest = new ItemCustomStaffHarvest(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_staff_harvest")),
 				ItemList.gobber2_staff_stars = new ItemCustomStaffStars(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_staff_stars")),
 				ItemList.gobber2_staff_sniper = new ItemCustomStaffSniper(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_staff_sniper")),

@@ -9,8 +9,8 @@ import com.kwpugh.gobber2.util.SpecialAbilities;
 import com.kwpugh.gobber2.util.SupportMods;
 import com.kwpugh.gobber2.world.OreGenerator;
 
-import top.theillusivec4.curios.api.CuriosAPI;
-import top.theillusivec4.curios.api.imc.CurioIMCMessage;
+//import top.theillusivec4.curios.api.CuriosAPI;
+//import top.theillusivec4.curios.api.imc.CurioIMCMessage;
 
 
 import net.minecraft.item.ItemGroup;
@@ -74,10 +74,10 @@ public class Gobber2
 	
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
-        if (SupportMods.CURIOS.isLoaded())
-        {
-        	InterModComms.sendTo("curios", CuriosAPI.IMC.REGISTER_TYPE, () -> new CurioIMCMessage("ring").setSize(2));
-        } 
+//        if (SupportMods.CURIOS.isLoaded())
+//        {
+//        	InterModComms.sendTo("curios", CuriosAPI.IMC.REGISTER_TYPE, () -> new CurioIMCMessage("ring").setSize(2));
+//        } 
     }
 }
 

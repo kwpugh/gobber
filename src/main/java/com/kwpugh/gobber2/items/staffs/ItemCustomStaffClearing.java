@@ -67,7 +67,7 @@ public class ItemCustomStaffClearing extends Item
 							poslist.add(player.getPosition().add(x, y, z));
 						}
 						
-						if(player.isSneaking())
+						if(player.isCrouching())
 						{
 							if (block instanceof LeavesBlock)
 							{
@@ -90,7 +90,7 @@ public class ItemCustomStaffClearing extends Item
 						world.destroyBlock(targetpos, true);
 					}
 					
-					if(player.isSneaking())
+					if(player.isCrouching())
 					{
 						if (block instanceof LeavesBlock)
 						{

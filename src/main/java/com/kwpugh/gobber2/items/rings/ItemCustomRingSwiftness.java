@@ -42,7 +42,7 @@ public class ItemCustomRingSwiftness extends Item
     {
 		ItemStack stack = player.getHeldItem(hand);
 		
-        if(!world.isRemote && player.isSneaking())
+        if(!world.isRemote && player.isCrouching())
         {
             EnableUtil.changeEnabled(player, hand);
             player.sendMessage(new StringTextComponent("Swiftness ability active: " + EnableUtil.isEnabled(stack)));

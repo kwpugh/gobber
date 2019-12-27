@@ -69,7 +69,7 @@ public class ItemCustomRingLumberjack extends Item
 					}	
 				}
 
-				if(!player.isSneaking())
+				if(!player.isCrouching())
 				{
 					if (!poslist.isEmpty())
 					{
@@ -83,7 +83,7 @@ public class ItemCustomRingLumberjack extends Item
 					}
 				}
 				
-				if(player.isSneaking())
+				if(player.isCrouching())
 				{
 					if (!poslist.isEmpty())
 					{

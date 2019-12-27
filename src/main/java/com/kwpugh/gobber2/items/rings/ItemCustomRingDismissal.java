@@ -23,7 +23,6 @@ import net.minecraft.world.World;
 
 public class ItemCustomRingDismissal extends Item
 {
-
 	public ItemCustomRingDismissal(Properties properties)
 	{
 		super(properties);
@@ -41,9 +40,10 @@ public class ItemCustomRingDismissal extends Item
 			{
 				if(stack == equipped)
 				{
-					double x = player.posX;
-					double y = player.posY;
-					double z = player.posZ;
+					double x = player.func_226277_ct_();
+					double y = player.func_226278_cu_();
+					double z = player.func_226281_cx_();
+					
 					double d0 = 9.0D;
 					double d1 = 4.0D;
 					
@@ -54,8 +54,7 @@ public class ItemCustomRingDismissal extends Item
 						hostileMob.addVelocity(10, 4, 10);	
 					}					
 				}
-			}	
-			
+			}				
 		}
 	}
 		   

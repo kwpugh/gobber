@@ -32,7 +32,7 @@ public class ItemCustomRingAttraction extends Item
 	int range;
 
 	public void inventoryTick(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected)
-	{		
+	{	
 		if(entity instanceof PlayerEntity && !world.isRemote && EnableUtil.isEnabled(stack))
 		{
 			PlayerEntity player = (PlayerEntity)entity;
@@ -47,10 +47,10 @@ public class ItemCustomRingAttraction extends Item
 			{
 				range = MagnetRange.getCurrentRange(stack);
 			}			
-			
-			double x = player.posX;
-			double y = player.posY + 1.5;
-			double z = player.posZ;
+
+			double x = player.func_226277_ct_();
+			double y = player.func_226278_cu_();
+			double z = player.func_226281_cx_();
 
 			boolean isPulling;
 			
@@ -58,12 +58,13 @@ public class ItemCustomRingAttraction extends Item
 			List<ItemEntity> items = entity.world.getEntitiesWithinAABB(ItemEntity.class, new AxisAlignedBB(x - range, y - range, z - range, x + range, y + range, z + range));
 			for(ItemEntity e: items)
 			{
-				if(!player.isSneaking() && !e.getPersistentData().getBoolean("PreventRemoteMovement"))
+				if(!player.isCrouching() && !e.getPersistentData().getBoolean("PreventRemoteMovement"))
 				//if(!player.isSneaking())
 				{
 					isPulling = true;							
 					double factor = 0.02;
-					e.addVelocity((x - e.posX) * factor, (y - e.posY) * factor, (z - e.posZ) * factor);
+					//e.addVelocity((x - e.posX) * factor, (y - e.posY) * factor, (z - e.posZ) * factor);
+					e.addVelocity((x - e.func_226277_ct_()) * factor, (y - e.func_226278_cu_()) * factor, (z - e.func_226281_cx_()) * factor);
 				}
 			}
 			
@@ -76,11 +77,11 @@ public class ItemCustomRingAttraction extends Item
 			List<ExperienceOrbEntity> xp = entity.world.getEntitiesWithinAABB(ExperienceOrbEntity.class, new AxisAlignedBB(x - range, y - range, z - range, x + range, y + range, z + range));
 			for(ExperienceOrbEntity orb: xp)
 			{
-				if(!player.isSneaking())
+				if(!player.isCrouching())
 				{
 					isPulling = true;							
 					double factor = 0.02;
-					orb.addVelocity((x - orb.posX) * factor, (y - orb.posY) * factor, (z - orb.posZ) * factor);
+					orb.addVelocity((x - orb.func_226277_ct_()) * factor, (y - orb.func_226278_cu_()) * factor, (z - orb.func_226281_cx_()) * factor);
                     player.onItemPickup(orb, 1);
                     player.giveExperiencePoints(orb.xpValue);
                     orb.remove();
@@ -99,14 +100,14 @@ public class ItemCustomRingAttraction extends Item
     {
 		ItemStack stack = player.getHeldItem(hand);	
 		
-		if(!world.isRemote && !(player.isSneaking()))
+		if(!world.isRemote && !(player.isCrouching()))
         {
             EnableUtil.changeEnabled(player, hand);
             player.sendMessage(new StringTextComponent("Attraction ability active: " + EnableUtil.isEnabled(stack)));
             return new ActionResult<ItemStack>(ActionResultType.SUCCESS, player.getHeldItem(hand));
         }		
 		
-        if(!world.isRemote && player.isSneaking())
+        if(!world.isRemote && player.isCrouching())
         {
 			if(range == 0)
 			{

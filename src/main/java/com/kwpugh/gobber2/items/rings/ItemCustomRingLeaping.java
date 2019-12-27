@@ -33,7 +33,7 @@ public class ItemCustomRingLeaping extends Item
 		double lookZ = look.z;
 		
 		//Get some vertical height to start
-		if(entity.onGround && !entity.isSneaking())	
+		if(entity.onGround && !entity.isCrouching())	
 		{
 			entity.setMotion(lookX * 0.0, lookY * 3.0, lookZ * 0.0);
 		}

@@ -38,7 +38,7 @@ public class ItemCustomSwordSniper extends SwordItem
 		
 		if(!world.isRemote)
 		{
-		    if(player.isSneaking())
+		    if(player.isCrouching())
 		    {
 		        EnableUtil.changeEnabled(player, hand);
 		        player.sendMessage(new StringTextComponent("Sniper ability active: " + EnableUtil.isEnabled(stack)));

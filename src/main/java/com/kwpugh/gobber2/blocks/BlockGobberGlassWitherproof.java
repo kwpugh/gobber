@@ -11,7 +11,7 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.boss.WitherEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockRenderLayer;
+//import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
@@ -77,12 +77,12 @@ public class BlockGobberGlassWitherproof extends Block
             super.onExplosionDestroy(worldIn, pos, explosionIn);
     }
     
-    @Override
-    @OnlyIn(Dist.CLIENT)
-    public BlockRenderLayer getRenderLayer()
-    {
-        return transparent ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.SOLID;
-    }
+//    @Override
+//    @OnlyIn(Dist.CLIENT)
+//    public BlockRenderLayer getRenderLayer()
+//    {
+//        return transparent ? BlockRenderLayer.TRANSLUCENT : BlockRenderLayer.SOLID;
+//    }
 
     @Override
     public int getOpacity(BlockState state, IBlockReader worldIn, BlockPos pos)

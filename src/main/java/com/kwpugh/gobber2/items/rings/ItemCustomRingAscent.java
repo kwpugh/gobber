@@ -42,7 +42,7 @@ public class ItemCustomRingAscent extends Item
 	
 	public void inventoryTick(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected)
 	{			
-		if(entity instanceof PlayerEntity && entity.isSneaking())
+		if(entity instanceof PlayerEntity && entity.isCrouching())
 		{
 			((LivingEntity) entity).removeActivePotionEffect(Effects.LEVITATION);	
 		}	

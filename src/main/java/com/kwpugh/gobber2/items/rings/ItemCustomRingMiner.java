@@ -11,7 +11,6 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
@@ -58,8 +57,8 @@ public class ItemCustomRingMiner extends Item
 							block = world.getBlockState(pos).getBlock();
 							
 							if (block == Blocks.STONE ||
-									Block.isRock(block) == true ||      //This is key to selecting blocks that have the Forge "stone" tag
-									block.isIn(BlockTags.DIRT_LIKE) ||
+									//Block.isRock(block) == true ||      //This is key to selecting blocks that have the Forge "stone" tag
+									//block.isIn(BlockTags.DIRT_LIKE) ||
 									block instanceof GravelBlock ||
 									block instanceof SandBlock ||
 									block == Blocks.DIRT || 
@@ -104,7 +103,7 @@ public class ItemCustomRingMiner extends Item
 					}	
 				}
 
-				if(!player.isSneaking())
+				if(!player.isCrouching())
 				{
 					if (!poslist.isEmpty())
 					{
@@ -119,7 +118,7 @@ public class ItemCustomRingMiner extends Item
 				}
 				
 				
-				if(player.isSneaking())
+				if(player.isCrouching())
 				{
 					if (!poslist.isEmpty())
 					{

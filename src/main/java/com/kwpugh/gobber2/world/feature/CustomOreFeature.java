@@ -24,7 +24,11 @@ public class CustomOreFeature extends OreFeature
    public boolean func_207803_a(IWorld worldIn, Random random, OreFeatureConfig config, double p_207803_4_, double p_207803_6_, double p_207803_8_, double p_207803_10_, double p_207803_12_, double p_207803_14_, int p_207803_16_, int p_207803_17_, int p_207803_18_, int p_207803_19_, int p_207803_20_) {
       int i = 0;
       BitSet bitset = new BitSet(p_207803_19_ * p_207803_20_ * p_207803_19_);
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
+      
+      //Old code from 1.14.4
+      //BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
+      
+      BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
       double[] adouble = new double[config.size * 4];
 
       for(int j = 0; j < config.size; ++j) {
@@ -85,11 +89,11 @@ public class CustomOreFeature extends OreFeature
                               int k2 = l1 - p_207803_16_ + (i2 - p_207803_17_) * p_207803_19_ + (j2 - p_207803_18_) * p_207803_19_ * p_207803_20_;
                               if (!bitset.get(k2)) {
                                  bitset.set(k2);
-                                 blockpos$mutableblockpos.setPos(l1, i2, j2);
+                                 blockpos$mutable.setPos(l1, i2, j2);
                                  
-                                 if (worldIn.getBlockState(blockpos$mutableblockpos).getBlock() == Blocks.END_STONE)
+                                 if (worldIn.getBlockState(blockpos$mutable).getBlock() == Blocks.END_STONE)
                                  {
-                                    worldIn.setBlockState(blockpos$mutableblockpos, config.state, 2);
+                                    worldIn.setBlockState(blockpos$mutable, config.state, 2);
                                     ++i;
                                  }
                               }

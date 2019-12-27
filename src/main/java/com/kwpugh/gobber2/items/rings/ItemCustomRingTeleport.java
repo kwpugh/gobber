@@ -37,7 +37,7 @@ public class ItemCustomRingTeleport extends Item
 		 Direction direction = context.getFace();
 		 ItemStack stackRing = context.getPlayer().getHeldItemMainhand();
 		 
-		 if(getPosition(stackRing) == null && player.isSneaking())
+		 if(getPosition(stackRing) == null && player.isCrouching())
 		 {
 			 setPosition(stackRing, world, pos.offset(direction), player);
 			 player.sendMessage(new StringTextComponent("Location set!"));
@@ -59,13 +59,13 @@ public class ItemCustomRingTeleport extends Item
 	 {
 		 ItemStack stack = player.getHeldItem(hand);
 		  
-		 if(getPosition(stack) != null && !player.isSneaking())
+		 if(getPosition(stack) != null && !player.isCrouching())
 	     {
 			 teleport(player, world, stack);
-			 world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, SoundCategory.PLAYERS, 1.0F, 1.0F);
+			 world.playSound(null, player.func_226277_ct_(), player.func_226278_cu_(), player.func_226281_cx_(), SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, SoundCategory.PLAYERS, 1.0F, 1.0F);
 	     }
 		 
-		 if(getPosition(stack) != null && player.isSneaking())
+		 if(getPosition(stack) != null && player.isCrouching())
 		 {
 			 setPosition(stack, world, null, player);
 			 player.sendMessage(new StringTextComponent("Location cleared!"));
