@@ -25,6 +25,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLDedicatedServerSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
+import top.theillusivec4.curios.api.CuriosAPI;
+import top.theillusivec4.curios.api.imc.CurioIMCMessage;
 
 
 @Mod(Gobber2.modid)
@@ -74,10 +76,10 @@ public class Gobber2
 	
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
-//        if (SupportMods.CURIOS.isLoaded())
-//        {
-//        	InterModComms.sendTo("curios", CuriosAPI.IMC.REGISTER_TYPE, () -> new CurioIMCMessage("ring").setSize(2));
-//        } 
+        if (SupportMods.CURIOS.isLoaded())
+        {
+        	InterModComms.sendTo("curios", CuriosAPI.IMC.REGISTER_TYPE, () -> new CurioIMCMessage("ring").setSize(2));
+        } 
     }
 }
 

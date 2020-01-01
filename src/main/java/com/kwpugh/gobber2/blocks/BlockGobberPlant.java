@@ -2,6 +2,7 @@ package com.kwpugh.gobber2.blocks;
 
 import com.kwpugh.gobber2.lists.ItemList;
 
+import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.CropsBlock;
@@ -14,7 +15,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BlockGobberPlant extends CropsBlock
 {
-	
 	public BlockGobberPlant(String name, Properties builder)
     {
         super(builder);
@@ -25,7 +25,13 @@ public class BlockGobberPlant extends CropsBlock
     {
         return state.getBlock() == Blocks.FARMLAND;
     }
-    
+   
+	@Override
+	public BlockRenderType getRenderType(BlockState state)
+	{
+		return BlockRenderType.MODEL;
+	}
+	  
     @OnlyIn(Dist.CLIENT)
     protected IItemProvider getSeedsItem()
     {

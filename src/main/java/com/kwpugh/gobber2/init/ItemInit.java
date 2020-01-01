@@ -18,7 +18,6 @@ import com.kwpugh.gobber2.items.rings.ItemCustomRingBlink;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingCuring;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingDismissal;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingEnderchest;
-import com.kwpugh.gobber2.items.rings.ItemCustomRingFarmer;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingHaste;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingHusbandry;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingLeaping;
@@ -34,7 +33,6 @@ import com.kwpugh.gobber2.items.rings.ItemCustomRingTraveler;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingVision;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingVoid;
 import com.kwpugh.gobber2.items.staffs.ItemCustomStaffClearing;
-import com.kwpugh.gobber2.items.staffs.ItemCustomStaffFarmer;
 import com.kwpugh.gobber2.items.staffs.ItemCustomStaffHarvest;
 import com.kwpugh.gobber2.items.staffs.ItemCustomStaffSniper;
 import com.kwpugh.gobber2.items.staffs.ItemCustomStaffStars;
@@ -119,9 +117,9 @@ public class ItemInit
 				ItemList.gobber2_block_nether = new BlockItem(BlockList.gobber2_block_nether, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.gobber2_block_nether.getRegistryName()),
 				ItemList.gobber2_block_end = new BlockItem(BlockList.gobber2_block_end, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.gobber2_block_end.getRegistryName()),
 				
-				ItemList.gobber2_glass = new BlockItem(BlockList.gobber2_glass, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.gobber2_glass.getRegistryName()),
-				ItemList.gobber2_glass_nether = new BlockItem(BlockList.gobber2_glass_nether, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.gobber2_glass_nether.getRegistryName()),
-				ItemList.gobber2_glass_end = new BlockItem(BlockList.gobber2_glass_end, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.gobber2_glass_end.getRegistryName()),
+				//ItemList.gobber2_glass = new BlockItem(BlockList.gobber2_glass, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.gobber2_glass.getRegistryName()),
+				//ItemList.gobber2_glass_nether = new BlockItem(BlockList.gobber2_glass_nether, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.gobber2_glass_nether.getRegistryName()),
+				//ItemList.gobber2_glass_end = new BlockItem(BlockList.gobber2_glass_end, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.gobber2_glass_end.getRegistryName()),
 				//ItemList.gobber2_glass_witherproof = new BlockItem(BlockList.gobber2_glass_witherproof, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.gobber2_glass_witherproof.getRegistryName()),
 				
 				ItemList.gobber2_rod = new Item(new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_rod")),		

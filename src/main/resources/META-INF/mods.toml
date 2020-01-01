@@ -1,6 +1,6 @@
 modLoader="javafml" #mandatory
 
-loaderVersion="[27,)" #mandatory (24 is current forge version)
+loaderVersion="[30,)" #mandatory (24 is current forge version)
 
 credits="Thanks to Harry Talks for his amazing tutorials and Udemy for great Java courses." #optional
 
@@ -8,7 +8,7 @@ authors="kwpugh" #optional
 
 [[mods]] #mandatory
 modId="gobber2" #mandatory
-version="2.2.1" #mandatory
+version="2.2.6" #mandatory
 displayName="Gobber 2" #mandatory
 description='''
 Gobber into 1.15, a new beginning!
@@ -18,7 +18,7 @@ Gobber into 1.15, a new beginning!
 [[dependencies.gobber2]] #optional
     modId="forge" #mandatory
     mandatory=true #mandatory
-    versionRange="[28,)" #mandatory
+    versionRange="[30,)" #mandatory
     ordering="NONE"
     side="BOTH"
 
