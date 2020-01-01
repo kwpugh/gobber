@@ -58,7 +58,7 @@ public class BlockHealer extends Block
     	player.sendMessage(new StringTextComponent("The Healer is active for players in a range of 64 blocks"));
         return ActionResultType.SUCCESS;
     }
-	   
+    
 	@Override
 	public void func_225534_a_(BlockState state,ServerWorld world, BlockPos pos,  Random random)
 	{
