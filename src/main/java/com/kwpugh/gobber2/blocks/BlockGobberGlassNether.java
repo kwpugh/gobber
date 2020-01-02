@@ -31,55 +31,55 @@ public class BlockGobberGlassNether extends GlassBlock
 		super(properties);
 	}
 
-	public static final VoxelShape GLASS_NOT_SOLID_AABB = Block.makeCuboidShape(0.0D, 0.0D, 0.00D, 0.0D, 0.0D, 0.0D);
-	public static final VoxelShape GLASS_SOLID_AABB = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);	
-	
-	public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
-	{			
-		if((context.getEntity() instanceof PlayerEntity) && (context.getEntity().isCrouching()))
-		{
-			return GLASS_SOLID_AABB;
-		}
-		
-		if(context.getEntity() instanceof SpiderEntity)
-		{
-			SpiderEntity spider = (SpiderEntity) context.getEntity();
-			
-			((SpiderEntity) spider).setBesideClimbableBlock(false);
-			return GLASS_SOLID_AABB;
-		}
-		
-		if(context.getEntity() instanceof PlayerEntity)       
-		{
-			return GLASS_NOT_SOLID_AABB;
-		}
-		else     
-		{
-			return GLASS_SOLID_AABB;
-		}  
-    }
-
-	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
-	{
-		if((context.getEntity() instanceof PlayerEntity) && (context.getEntity().isCrouching()))
-		{
-			return GLASS_SOLID_AABB;
-		}
-		
-		if(context.getEntity() instanceof PlayerEntity)
-		{
-			return GLASS_NOT_SOLID_AABB;
-		}
-		else
-		{
-			return GLASS_SOLID_AABB;
-		}
-	}
-
-	public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn)
-	{
-		//TBD
-	}
+//	public static final VoxelShape GLASS_NOT_SOLID_AABB = Block.makeCuboidShape(0.0D, 0.0D, 0.00D, 0.0D, 0.0D, 0.0D);
+//	public static final VoxelShape GLASS_SOLID_AABB = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);	
+//	
+//	public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
+//	{			
+//		if((context.getEntity() instanceof PlayerEntity) && (context.getEntity().isCrouching()))
+//		{
+//			return GLASS_SOLID_AABB;
+//		}
+//		
+//		if(context.getEntity() instanceof SpiderEntity)
+//		{
+//			SpiderEntity spider = (SpiderEntity) context.getEntity();
+//			
+//			((SpiderEntity) spider).setBesideClimbableBlock(false);
+//			return GLASS_SOLID_AABB;
+//		}
+//		
+//		if(context.getEntity() instanceof PlayerEntity)       
+//		{
+//			return GLASS_NOT_SOLID_AABB;
+//		}
+//		else     
+//		{
+//			return GLASS_SOLID_AABB;
+//		}  
+//    }
+//
+//	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
+//	{
+//		if((context.getEntity() instanceof PlayerEntity) && (context.getEntity().isCrouching()))
+//		{
+//			return GLASS_SOLID_AABB;
+//		}
+//		
+//		if(context.getEntity() instanceof PlayerEntity)
+//		{
+//			return GLASS_NOT_SOLID_AABB;
+//		}
+//		else
+//		{
+//			return GLASS_SOLID_AABB;
+//		}
+//	}
+//
+//	public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn)
+//	{
+//		//TBD
+//	}
 	
 	@OnlyIn(Dist.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable IBlockReader world, List<ITextComponent> tooltip, ITooltipFlag flag)

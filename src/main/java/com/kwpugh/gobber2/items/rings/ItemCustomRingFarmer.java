@@ -1,21 +1,13 @@
 package com.kwpugh.gobber2.items.rings;
 
 import java.util.List;
-import java.util.Random;
 
 import net.minecraft.block.BambooBlock;
+import net.minecraft.block.BambooSaplingBlock;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.CactusBlock;
-import net.minecraft.block.ChorusFlowerBlock;
-import net.minecraft.block.CocoaBlock;
-import net.minecraft.block.CoralBlock;
 import net.minecraft.block.CropsBlock;
 import net.minecraft.block.IGrowable;
-import net.minecraft.block.NetherWartBlock;
 import net.minecraft.block.SaplingBlock;
-import net.minecraft.block.SugarCaneBlock;
-import net.minecraft.block.VineBlock;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -29,6 +21,12 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
+/**
+ * 
+ * Only effective on Crops, Saplings, and Bamboo until I find an alternative to blockstate.tick() 
+ * 
+ */
+
 public class ItemCustomRingFarmer extends Item
 {
 
@@ -36,15 +34,7 @@ public class ItemCustomRingFarmer extends Item
 	{
 		super(properties);
 	}
-
-	
-	//New
-	public void func_225534_a_(BlockState p_225534_1_, ServerWorld p_225534_2_, BlockPos p_225534_3_, Random p_225534_4_)
-	{
-		this.func_225534_a_(p_225534_1_, p_225534_2_, p_225534_3_, p_225534_4_);
-	}
-	   
-	  
+ 
 	public void inventoryTick(ItemStack stack, World world, Entity entity, int par4, boolean par5)
     {      
     	if(!(entity instanceof PlayerEntity) || world.isRemote)
@@ -69,53 +59,26 @@ public class ItemCustomRingFarmer extends Item
                         int theY = MathHelper.floor(player.func_226278_cu_()+y);
                         int theZ = MathHelper.floor(player.func_226281_cx_()+z);
                         
-                        BlockPos targetPos = new BlockPos(theX, theY, theZ);
-                        
+                        BlockPos targetPos = new BlockPos(theX, theY, theZ);                       
                         BlockState blockstate = world.getBlockState(targetPos);
-                                              
-                        //For basic growing blocks that use tick()
+
                         if ((blockstate.getBlock() instanceof CropsBlock) ||
-                        		(blockstate.getBlock() instanceof SaplingBlock)) 
+                        		(blockstate.getBlock() instanceof SaplingBlock) ||
+                        		(blockstate.getBlock() instanceof BambooBlock) ||
+                        		(blockstate.getBlock() instanceof BambooSaplingBlock)) 
                         {
-                        	if (!world.isRemote)
-                    		{
-                        		if (player.ticksExisted % 12 == 0)
-                        		{
-                        			//blockstate.tick(world, targetPos, world.rand);
-                        			blockstate.getBlock().func_225533_a_(blockstate, world, targetPos, player, null, null);
-                       		 	}                                                               
-                    		}
-                        }
-                        
-                        //For slower growing blocks that use tick()
-                        if ((blockstate.getBlock() instanceof VineBlock) ||                     		               
-                        		(blockstate.getBlock() instanceof SugarCaneBlock) ||
-                        		(blockstate.getBlock() instanceof NetherWartBlock) ||
-                        		(blockstate.getBlock() instanceof CactusBlock))
-                        {
-                        	if (!world.isRemote)
-                    		{
-                        		if (player.ticksExisted % 5 == 0)
-                        		{
-                        			//blockstate.tick(world, targetPos, world.rand);
-                       		 	}                                                               
-                    		}
-                        }
-                        	
-                        //For faster growing blocks that use tick()
-                        if ((blockstate.getBlock() instanceof BambooBlock) ||                         		
-                        		(blockstate.getBlock() instanceof CoralBlock) ||		
-                        		(blockstate.getBlock() instanceof CocoaBlock) ||  
-                        		(blockstate.getBlock() instanceof ChorusFlowerBlock) )
-                        {
-                        	if (!world.isRemote)
-                    		{
-                        		if (player.ticksExisted % 60 == 0)
-                        		{
-                        			//blockstate.tick(world, targetPos, world.rand);
-                       		 	}                                                               
-                    		}
-                        }
+                            IGrowable igrowable = (IGrowable)blockstate.getBlock();
+                            if ((igrowable.canGrow(world, targetPos, blockstate, world.isRemote)) && (player.ticksExisted % 120 == 0))
+                            {
+                               if (world instanceof ServerWorld)
+                               {
+                                  if (igrowable.canUseBonemeal(world, world.rand, targetPos, blockstate))
+                                  {
+                                     igrowable.func_225535_a_((ServerWorld)world, world.rand, targetPos, blockstate);
+                                  }
+                               }
+                            }
+                         }
                     }
                 }
             }
@@ -126,7 +89,7 @@ public class ItemCustomRingFarmer extends Item
 	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
 	{
 		super.addInformation(stack, world, list, flag);				
-		list.add(new StringTextComponent(TextFormatting.BLUE + "Works on most crops, plants, and trees"));
+		list.add(new StringTextComponent(TextFormatting.BLUE + "Works on many crops, plants, and trees"));
 		list.add(new StringTextComponent(TextFormatting.GREEN + "Range: 14 blocks"));
 	}  
 }
