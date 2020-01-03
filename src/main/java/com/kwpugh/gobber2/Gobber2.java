@@ -3,15 +3,12 @@ package com.kwpugh.gobber2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.kwpugh.gobber2.lists.BlockList;
+import com.kwpugh.gobber2.util.BlockRenders;
 import com.kwpugh.gobber2.util.Gobber2_Group;
 import com.kwpugh.gobber2.util.GobberConfig;
 import com.kwpugh.gobber2.util.SpecialAbilities;
 import com.kwpugh.gobber2.util.SupportMods;
 import com.kwpugh.gobber2.world.OreGenerator;
-
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.RenderTypeLookup;
 
 //import top.theillusivec4.curios.api.CuriosAPI;
 //import top.theillusivec4.curios.api.imc.CurioIMCMessage;
@@ -70,15 +67,7 @@ public class Gobber2
 	
 	private void clientSetup(final FMLClientSetupEvent event)
 	{
-		RenderType cutoutMipped = RenderType.func_228641_d_();
-		RenderType translucent = RenderType.func_228645_f_();
-		
-		RenderTypeLookup.setRenderLayer(BlockList.gobber2_plant, cutoutMipped);
-		RenderTypeLookup.setRenderLayer(BlockList.gobber2_plant_nether, cutoutMipped);
-		RenderTypeLookup.setRenderLayer(BlockList.gobber2_plant_end, cutoutMipped);	
-		RenderTypeLookup.setRenderLayer(BlockList.gobber2_glass, translucent);	
-		RenderTypeLookup.setRenderLayer(BlockList.gobber2_glass_nether, translucent);	
-		RenderTypeLookup.setRenderLayer(BlockList.gobber2_glass_end, translucent);	
+		BlockRenders.defineRenders();
 		
 		logger.info("Mod client setup completed");
 	}

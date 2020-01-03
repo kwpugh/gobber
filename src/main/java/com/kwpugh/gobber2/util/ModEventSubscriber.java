@@ -3,9 +3,7 @@ package com.kwpugh.gobber2.util;
 import com.kwpugh.gobber2.Gobber2;
 
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
-import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -43,7 +41,7 @@ public final class ModEventSubscriber
             } 
         } 
     }
-   
+
 //    @SubscribeEvent
 //    public static void onTickPlayerEvent(TickEvent.PlayerTickEvent event)
 //    {

@@ -12,6 +12,8 @@ import net.minecraft.block.GlassBlock;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.monster.RavagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
@@ -29,12 +31,12 @@ public class BlockGobberGlass extends GlassBlock
 {
 	public BlockGobberGlass(Properties properties)
 	{
-		super(properties);
+		super(properties.func_226896_b_());
 	}
 	
 //	public static final VoxelShape GLASS_NOT_SOLID_AABB = Block.makeCuboidShape(0.0D, 0.0D, 0.00D, 0.0D, 0.0D, 0.0D);
 //	public static final VoxelShape GLASS_SOLID_AABB = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);	
-	
+//	
 //	public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
 //	{			
 //		if((context.getEntity() instanceof PlayerEntity) && (context.getEntity().isCrouching()))
@@ -52,6 +54,7 @@ public class BlockGobberGlass extends GlassBlock
 //		}  
 //    }
 
+	   
 //	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
 //	{
 //		if((context.getEntity() instanceof PlayerEntity) && (context.getEntity().isCrouching()))

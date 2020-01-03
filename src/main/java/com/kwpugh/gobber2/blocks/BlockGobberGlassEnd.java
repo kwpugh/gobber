@@ -28,7 +28,7 @@ public class BlockGobberGlassEnd extends GlassBlock
 
 	public BlockGobberGlassEnd(Properties properties)
 	{
-		super(properties);
+		super(properties.func_226896_b_());
 	}
 
 

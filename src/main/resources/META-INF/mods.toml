@@ -8,7 +8,7 @@ authors="kwpugh" #optional
 
 [[mods]] #mandatory
 modId="gobber2" #mandatory
-version="2.2.8" #mandatory
+version="2.2.9" #mandatory
 displayName="Gobber 2" #mandatory
 description='''
 Gobber into 1.15, a new beginning!

@@ -28,7 +28,7 @@ public class BlockGobberGlassNether extends GlassBlock
 
 	public BlockGobberGlassNether(Properties properties)
 	{
-		super(properties);
+		super(properties.func_226896_b_());
 	}
 
 //	public static final VoxelShape GLASS_NOT_SOLID_AABB = Block.makeCuboidShape(0.0D, 0.0D, 0.00D, 0.0D, 0.0D, 0.0D);

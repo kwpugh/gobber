@@ -33,7 +33,7 @@ public class BlockHealer extends Block
 {
 	public BlockHealer(Properties properties)
 	{
-		super(properties);
+		super(properties.func_226896_b_());
 	}
 
 	int minTickTime = 5;

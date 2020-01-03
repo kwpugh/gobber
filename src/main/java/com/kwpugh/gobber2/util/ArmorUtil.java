@@ -46,29 +46,9 @@ public final class ArmorUtil
       			chest.getItem() == ItemList.gobber2_chestplate_end  ||
       			mainHand.getItem() == ItemList.gobber2_ring_blaze)
       	{
-      		return true;  		
+    		return true;  		
       	}
       		
         return false;
     } 
-    
-//    public static boolean isPlayerGotCreativeFlight(PlayerEntity player)
-//    {
-//    	ItemStack head = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
-//		ItemStack chest = player.getItemStackFromSlot(EquipmentSlotType.CHEST);
-//		ItemStack legs = player.getItemStackFromSlot(EquipmentSlotType.LEGS);
-//	    ItemStack feet = player.getItemStackFromSlot(EquipmentSlotType.FEET);	
-//	    
-//    	
-//    	if(head.getItem() == ItemList.gobber2_helmet_end && 
-//    			chest.getItem() == ItemList.gobber2_chestplate_end &&
-//    			legs.getItem() == ItemList.gobber2_leggings_end && 
-//    			feet.getItem() == ItemList.gobber2_boots_end && 
-//    			player.dimension.getId() == 1)
-//      	{
-//      		return true;  		
-//      	}
-//      		
-//        return false;
-//    }
 } 
