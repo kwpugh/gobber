@@ -165,7 +165,7 @@ public class BlockProtector extends Block
 						{
 							((MobEntity) entity).spawnExplosionParticle();
 							((LivingEntity) entity).setHealth(0);
-							//world.addEntity(new ExperienceOrbEntity(world, pos.getX(), pos.getY(), pos.getZ(), 1));
+							//world.addEntity(new ExperienceOrbEntity(world, pos.getX(), pos.getY()+3, pos.getZ(), 1));
 						}
 					}
 			   }

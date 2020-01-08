@@ -51,7 +51,7 @@ public class ItemCustomRingDismissal extends Item
 		
 					if(hostileMob != null)
 					{				
-						hostileMob.addVelocity(10, 4, 10);	
+						hostileMob.addVelocity(3, 1, 3);	
 					}					
 				}
 			}				

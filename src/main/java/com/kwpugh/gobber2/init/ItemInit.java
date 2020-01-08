@@ -122,7 +122,6 @@ public class ItemInit
 				ItemList.gobber2_glass = new BlockItem(BlockList.gobber2_glass, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.gobber2_glass.getRegistryName()),
 				ItemList.gobber2_glass_nether = new BlockItem(BlockList.gobber2_glass_nether, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.gobber2_glass_nether.getRegistryName()),
 				ItemList.gobber2_glass_end = new BlockItem(BlockList.gobber2_glass_end, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.gobber2_glass_end.getRegistryName()),
-				//ItemList.gobber2_glass_witherproof = new BlockItem(BlockList.gobber2_glass_witherproof, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.gobber2_glass_witherproof.getRegistryName()),
 				
 				ItemList.gobber2_rod = new Item(new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_rod")),		
 				ItemList.gobber2_rod_nether = new Item(new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_rod_nether")),
@@ -250,8 +249,7 @@ public class ItemInit
 				ItemList.gobber2_staff_sniper = new ItemCustomStaffSniper(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_staff_sniper")),
 				
 				ItemList.block_healer = new BlockItem(BlockList.block_healer, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.block_healer.getRegistryName()),
-				ItemList.block_protector = new BlockItem(BlockList.block_protector, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.block_protector.getRegistryName())
-				
+				ItemList.block_protector = new BlockItem(BlockList.block_protector, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.block_protector.getRegistryName())	
 			);		
 			Gobber2.logger.info("Gobber Items registered.");
 		}
