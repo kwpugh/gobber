@@ -40,25 +40,5 @@ public final class ModEventSubscriber
                 if (event.isCancelable()) event.setCanceled(true);
             } 
         } 
-    }
-
-//    @SubscribeEvent
-//    public static void onTickPlayerEvent(TickEvent.PlayerTickEvent event)
-//    {
-//        PlayerEntity player = (PlayerEntity) event.player;
-//       
-//        if(ArmorUtil.isPlayerGotCreativeFlight(player))
-//        {
-//            event.player.abilities.allowFlying = true;
-//        }
-//        
-//        if(!ArmorUtil.isPlayerGotCreativeFlight(player))
-//        {
-//            if(event.player.abilities.isFlying)
-//            {
-//                event.player.abilities.isFlying = event.player.abilities.isCreativeMode ? true : false;
-//                event.player.abilities.allowFlying = event.player.abilities.isCreativeMode ? true : false;
-//            }
-//        }
-//    }		
+    }	
 } 

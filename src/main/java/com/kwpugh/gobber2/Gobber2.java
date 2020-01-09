@@ -10,10 +10,6 @@ import com.kwpugh.gobber2.util.SpecialAbilities;
 import com.kwpugh.gobber2.util.SupportMods;
 import com.kwpugh.gobber2.world.OreGenerator;
 
-//import top.theillusivec4.curios.api.CuriosAPI;
-//import top.theillusivec4.curios.api.imc.CurioIMCMessage;
-
-
 import net.minecraft.item.ItemGroup;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.InterModComms;

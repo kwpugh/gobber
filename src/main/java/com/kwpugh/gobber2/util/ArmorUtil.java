@@ -5,6 +5,8 @@ import javax.annotation.Nonnull;
 import com.kwpugh.gobber2.lists.ItemList;
 
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.EnderChestInventory;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 
@@ -48,6 +50,35 @@ public final class ArmorUtil
       	{
     		return true;  		
       	}
+    	
+	    PlayerInventory inv1 = player.inventory;
+	    EnderChestInventory end_inv1 = player.getInventoryEnderChest();
+	    
+		for (int slot = 0; slot < end_inv1.getSizeInventory(); slot++)
+		{
+			ItemStack stack = end_inv1.getStackInSlot(slot);
+			if (stack.getItem() == ItemList.gobber2_ring_phoenix)
+			{	
+				return true;
+			}
+		}
+	    
+		for (int slot = 0; slot < inv1.getSizeInventory(); slot++)
+		{
+			ItemStack stack = inv1.getStackInSlot(slot);
+			if (stack.getItem() == ItemList.gobber2_ring_phoenix)
+			{	
+				return true;
+			}
+		}
+		
+		if (SupportMods.CURIOS.isLoaded())
+	    {
+			if (UtilCurios.findItem(ItemList.gobber2_ring_phoenix, player) != ItemStack.EMPTY)
+			{
+				return true;
+		    }
+	    }
       		
         return false;
     } 

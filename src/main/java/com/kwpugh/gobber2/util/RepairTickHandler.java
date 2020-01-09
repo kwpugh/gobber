@@ -5,6 +5,7 @@ import com.kwpugh.gobber2.lists.ItemList;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.EnderChestInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -23,16 +24,29 @@ public class RepairTickHandler
 	public static void onPlayerTick(TickEvent.PlayerTickEvent event)
 	{
 		PlayerEntity player = event.player;
-		PlayerInventory inv2 = event.player.inventory;
+		PlayerInventory inv = event.player.inventory;
+		EnderChestInventory end_inv = player.getInventoryEnderChest();
 
-		for (int slot = 0; slot < inv2.getSizeInventory(); slot++)
+		for (int slot = 0; slot < inv.getSizeInventory(); slot++)
 		{
-			ItemStack stack = inv2.getStackInSlot(slot);
+			ItemStack stack = inv.getStackInSlot(slot);
 			if (stack.getItem() == ItemList.gobber2_ring_repair)
 			{	
 				if (player.ticksExisted % 90 == 0)
         		{
-					repair(player, inv2);
+					repair(player, inv);
+       		 	} 
+			}
+		}
+		
+		for (int slot = 0; slot < end_inv.getSizeInventory(); slot++)
+		{
+			ItemStack stack = end_inv.getStackInSlot(slot);
+			if (stack.getItem() == ItemList.gobber2_ring_repair)
+			{	
+				if (player.ticksExisted % 90 == 0)
+        		{
+					repair(player, inv);
        		 	} 
 			}
 		}
@@ -43,7 +57,7 @@ public class RepairTickHandler
 			{
 				if (player.ticksExisted % 90 == 0)
 	    		{
-					repair(player, inv2);
+					repair(player, inv);
 	   		 	}  
 		    }
 	    }  

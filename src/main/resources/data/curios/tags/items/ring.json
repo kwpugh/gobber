@@ -1,4 +1,10 @@
 {
   "replace": "false",
-  "values": ["gobber2:gobber2_ring_attraction", "gobber2:gobber2_ring_curing", "gobber2:gobber2_ring_repair", "gobber2:gobber2_ring_vision", "gobber2:gobber2_ring_haste", "gobber2:gobber2_ring_phoenix", "gobber2:gobber2_ring_swiftness"]
+  "values": ["gobber2:gobber2_ring_attraction", 
+  	"gobber2:gobber2_ring_curing",
+  	"gobber2:gobber2_ring_repair", 
+  	"gobber2:gobber2_ring_vision", 
+  	"gobber2:gobber2_ring_haste", 
+  	"gobber2:gobber2_ring_phoenix", 
+  	"gobber2:gobber2_ring_swiftness"]
 }
