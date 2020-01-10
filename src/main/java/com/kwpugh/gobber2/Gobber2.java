@@ -58,19 +58,19 @@ public class Gobber2
 		
 		MinecraftForge.EVENT_BUS.register(new SpecialAbilities());
 		
-		logger.info("Mod setup completed");
+		logger.info("Gobber setup completed");
 	}
 	
 	private void clientSetup(final FMLClientSetupEvent event)
 	{
 		BlockRenders.defineRenders();
 		
-		logger.info("Mod client setup completed");
+		logger.info("Gobber client setup completed");
 	}
 	
 	private void serverSetup(final FMLDedicatedServerSetupEvent event)
 	{
-		logger.info("Mod server setup completed");
+		logger.info("Gobber server setup completed");
 	}
 	
     private void enqueueIMC(final InterModEnqueueEvent event)

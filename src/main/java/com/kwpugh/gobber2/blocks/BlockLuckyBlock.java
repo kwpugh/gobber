@@ -8,4 +8,5 @@ public class BlockLuckyBlock extends OreBlock
 	{
 		super(properties);
 	}
+
 }

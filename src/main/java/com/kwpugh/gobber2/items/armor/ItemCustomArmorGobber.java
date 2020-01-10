@@ -57,30 +57,27 @@ public class ItemCustomArmorGobber extends ArmorItem
 		    //Chestplate
 		    if(chest.getItem() == ItemList.gobber2_chestplate)
 			{
-		 		if(player.isInWater())
-		 		{
-		 			SpecialAbilities.giveBreathing(world, player, chest);
-		 		}
+		    	//something
 			}
 		    
 		    //Leggings - No Fall Damage moved to ArmorUtil as event
 		    if(legs.getItem() == ItemList.gobber2_leggings)
 			{
-				
+		    	//something
 			}
 			else
 			{
-				
+				//something
 			}
 		    
 		    //Boots
 		    if(feet.getItem() == ItemList.gobber2_boots)
 			{
-		    	
+		    	//something
 			}
 			else
 			{
-				
+				//something
 			}		    	
 		}
 	}
@@ -102,10 +99,10 @@ public class ItemCustomArmorGobber extends ArmorItem
 	{
 		super.addInformation(stack, world, list, flag);				
 		list.add(new StringTextComponent(TextFormatting.AQUA + "Repair with Armor Plate"));
-		list.add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + "Helmet: Slow auto-feeding"));
-		list.add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + "Chestplate: Underwater breathing"));
+		list.add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + "Helmet: Slow auto-feeding and water breathing"));
+		list.add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + "Chestplate: None"));
 		list.add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + "Leggings: No fall damage"));
-		list.add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + "Boots: TBD"));
-		list.add(new StringTextComponent(TextFormatting.GOLD + "Full suit bonus: Posion protection "));
+		list.add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + "Boots: None"));
+		list.add(new StringTextComponent(TextFormatting.GOLD + "Full suit bonus: Poison protection "));
 	}
 }

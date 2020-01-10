@@ -22,26 +22,29 @@ public class ItemCustomRingStealth extends Item
 	
 	public void inventoryTick(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected)
 	{		
-		if(entity instanceof PlayerEntity && !world.isRemote)
+		
+		if(!world.isRemote)
 		{
-			PlayerEntity player = (PlayerEntity)entity;
-
-			ItemStack equipped = player.getHeldItemMainhand();
-
-			if(!world.isRemote && !player.isCreative())
+			if(entity instanceof PlayerEntity)
 			{
-				if(stack == equipped)
-		        {
-		        	player.abilities.disableDamage = true;
-		        	player.setInvisible(true);
-		        }
-		        else
-		        {
-		        	player.abilities.disableDamage = false;
-		        	player.setInvisible(false);
-		        }
+				PlayerEntity player = (PlayerEntity)entity;
+
+				ItemStack equipped = player.getHeldItemMainhand();
+
+				if(!world.isRemote && !player.isCreative())
+				{
+					if(stack == equipped)
+			        {
+			        	player.abilities.disableDamage = true;
+			        	player.setInvisible(true);
+			        }
+			        else
+			        {
+			        	player.abilities.disableDamage = false;
+			        	player.setInvisible(false);
+			        }
+				}				
 			}	
-			
 		}
 	}
 

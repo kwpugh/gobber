@@ -46,7 +46,8 @@ public class ItemCustomArmorNether extends ArmorItem
 	    //Helmet
 	    if(head.getItem() == ItemList.gobber2_helmet_nether)
 		{
-			SpecialAbilities.giveExtraHearts(world, player, stack);
+			SpecialAbilities.giveExtraHearts(world, player, stack, 180);
+			
 			int newfoodlevel = 1;
 			float newsatlevel = 0.05F;
 			SpecialAbilities.giveRegenffect(world, player, stack, newfoodlevel, newsatlevel);			
@@ -59,11 +60,6 @@ public class ItemCustomArmorNether extends ArmorItem
 	    //Chestplate
 	    if(chest.getItem() == ItemList.gobber2_chestplate_nether)
 		{
-	 		if(player.isInWater())
-	 		{
-	 			SpecialAbilities.giveBreathing(world, player, chest);
-	 		}
-
 	 		player.getAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(40.0D); 
 		 }		
 	    
@@ -105,10 +101,10 @@ public class ItemCustomArmorNether extends ArmorItem
 	{
 		super.addInformation(stack, world, list, flag);				
 		list.add(new StringTextComponent(TextFormatting.AQUA + "Repair with Armor Plate"));
-		list.add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + "Helmet: Moderate auto-feeding with saturation and aborption hearts"));
-		list.add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + "Chestplate: Water breathing, fire protection, and knockback resistance"));
+		list.add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + "Helmet: Moderate auto-feeding with saturation, water breathing, and aborption hearts"));
+		list.add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + "Chestplate: Fire protection and knockback resistance"));
 		list.add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + "Leggings: No fall damage"));
-		list.add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + "Boots: TBD"));
+		list.add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + "Boots: None"));
 		list.add(new StringTextComponent(TextFormatting.GOLD + "Full suit bonus: Poison and Wither protection "));
 	}
 }

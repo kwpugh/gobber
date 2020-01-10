@@ -22,4 +22,5 @@ public class BlockList
 	
 	public static Block block_healer;
 	public static Block block_protector;
+	public static Block block_looter;
 }

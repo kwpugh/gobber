@@ -21,6 +21,7 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.common.IPlantable;
 
 /**
  * 
@@ -69,17 +70,17 @@ public class ItemCustomRingFarmer extends Item
                         		(blockstate.getBlock() instanceof BambooSaplingBlock)) 
                         {
                             IGrowable igrowable = (IGrowable)blockstate.getBlock();
-                            if ((igrowable.canGrow(world, targetPos, blockstate, world.isRemote)) && (player.ticksExisted % 120 == 0))
+                            if ((igrowable.canGrow(world, targetPos, blockstate, world.isRemote)) && (player.ticksExisted % 180 == 0))
                             {
                                if (world instanceof ServerWorld)
                                {
-                                  if (igrowable.canUseBonemeal(world, world.rand, targetPos, blockstate))
+                                  if(igrowable.canUseBonemeal(world, world.rand, targetPos, blockstate))
                                   {
                                      igrowable.func_225535_a_((ServerWorld)world, world.rand, targetPos, blockstate);
                                   }
                                }
                             }
-                        }
+                        }              	
                     }
                 }
             }
@@ -90,7 +91,7 @@ public class ItemCustomRingFarmer extends Item
 	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
 	{
 		super.addInformation(stack, world, list, flag);				
-		list.add(new StringTextComponent(TextFormatting.BLUE + "Works on many crops, plants, and trees"));
+		list.add(new StringTextComponent(TextFormatting.BLUE + "Works on many crops, saplings, and bamboo"));
 		list.add(new StringTextComponent(TextFormatting.GREEN + "Range: 14 blocks"));
 	}  
 }

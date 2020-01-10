@@ -29,10 +29,10 @@ public class ItemCustomRingAscent extends Item
 	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
 	{
 		ActionResult<ItemStack> result = super.onItemRightClick(world, player, hand);
-
+		
 			if (!world.isRemote)
 			{
-				if(player.onGround)
+				if(player.onGround)     
 				{
 					player.addPotionEffect(new EffectInstance(Effects.LEVITATION, 3600, 0, false, false));
 				}

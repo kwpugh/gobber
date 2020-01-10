@@ -23,14 +23,33 @@ public final class ArmorUtil
         return null;
     }
 
+    //All helmet tiers get water breathing
+    public static boolean isPlayerGotWaterBreathing(PlayerEntity player)
+    { 
+    	ItemStack head = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
+		
+	    //Head piece
+    	if((head.getItem() == ItemList.gobber2_helmet ||
+      			head.getItem() == ItemList.gobber2_helmet_nether ||
+      			head.getItem() == ItemList.gobber2_helmet_end)	)
+      	{
+      		return true;  		
+      	}
+      		
+        return false;
+    } 
+    
+    //All legging tiers get no fall damage
     public static boolean isPlayerGotFallProtection(PlayerEntity player)
     {
     	ItemStack legs = player.getItemStackFromSlot(EquipmentSlotType.LEGS);
     	ItemStack mainHand = player.getHeldItemMainhand();
     	
+    	//Leggings
     	if(legs.getItem() == ItemList.gobber2_leggings ||
       			legs.getItem() == ItemList.gobber2_leggings_nether ||
       			legs.getItem() == ItemList.gobber2_leggings_end ||
+      			
       			mainHand.getItem() == ItemList.gobber2_ring_ascent)
       	{
       		return true;  		
@@ -39,13 +58,16 @@ public final class ArmorUtil
         return false;
     } 
     
+    //Nether and End chestplates get fire protection
     public static boolean isPlayerGotFireProtection(PlayerEntity player)
     {
     	ItemStack chest = player.getItemStackFromSlot(EquipmentSlotType.CHEST);
     	ItemStack mainHand = player.getHeldItemMainhand();
     	
+    	//Chestplate
     	if(chest.getItem() == ItemList.gobber2_chestplate_nether ||
       			chest.getItem() == ItemList.gobber2_chestplate_end  ||
+      			
       			mainHand.getItem() == ItemList.gobber2_ring_blaze)
       	{
     		return true;  		
@@ -54,6 +76,7 @@ public final class ArmorUtil
 	    PlayerInventory inv1 = player.inventory;
 	    EnderChestInventory end_inv1 = player.getInventoryEnderChest();
 	    
+	    //Is the ring in player inventory?
 		for (int slot = 0; slot < end_inv1.getSizeInventory(); slot++)
 		{
 			ItemStack stack = end_inv1.getStackInSlot(slot);
@@ -63,6 +86,7 @@ public final class ArmorUtil
 			}
 		}
 	    
+		//Is the ring in the player enderchest
 		for (int slot = 0; slot < inv1.getSizeInventory(); slot++)
 		{
 			ItemStack stack = inv1.getStackInSlot(slot);

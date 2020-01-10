@@ -32,10 +32,23 @@ public class SpecialAbilities
     	return;
 	}
 		
-	//Set player yellow hearts to max on tick update
-	public static void giveExtraHearts(World world, LivingEntity player, ItemStack itemstack)
+	//SLowly increases yellow hearts on tick update
+	public static void giveExtraHearts(World world, LivingEntity player, ItemStack itemstack, int count)
 	{
-		player.setAbsorptionAmount(20);
+		float current = player.getAbsorptionAmount();
+		
+		if(player.getHealth() < 20)
+		{
+			return;
+		}
+		
+		if(current < 20)
+		{
+			if (player.ticksExisted % count == 0)
+			{
+				player.setAbsorptionAmount(current + 1.0F);
+			} 	
+		}
     	return;
 	}
 
@@ -46,16 +59,28 @@ public class SpecialAbilities
     	return;
 	}
 	
-	//	//Set player oxygen to max on tick update
+	//Set player oxygen to max on tick update
 	public static void giveBreathing(World world, PlayerEntity player, ItemStack itemstack)
 	{
 		player.setAir(300);
     	return;
 	}
 	
+	//Gives player Dolphin's Grace
+	public static void giveDolphinEffect(World world, PlayerEntity player, ItemStack itemstack)
+	{
+		if (player.ticksExisted % 180 == 0 && player.isInWater())
+		{
+			player.addPotionEffect(new EffectInstance(Effects.DOLPHINS_GRACE, 260, 0, false, false));
+		} 
+	}
+	
 	//Gives player Conduit Effect
 	public static void giveConduitEffect(World world, PlayerEntity player, ItemStack itemstack)
 	{
-		player.addPotionEffect(new EffectInstance(Effects.CONDUIT_POWER, 260, 0, false, false));
+		if (player.ticksExisted % 180 == 0 && player.isInWater())
+		{
+			player.addPotionEffect(new EffectInstance(Effects.CONDUIT_POWER, 260, 2, false, false));
+		} 
 	}
 }

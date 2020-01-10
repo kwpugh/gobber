@@ -160,4 +160,5 @@ public class ItemList
 	
 	public static Item block_healer;
 	public static Item block_protector;
+	public static Item block_looter;
 }
