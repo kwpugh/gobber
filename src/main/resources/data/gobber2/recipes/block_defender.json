@@ -1,0 +1,36 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "BCB",
+        "DAD",
+        "BAB"
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_ingot_end"
+        },
+        "B":
+        {
+            "item": "minecraft:white_concrete"
+        },
+        "C":
+        {
+            "item": "gobber2:block_protector"
+        },
+        "D":
+        {
+            "item": "gobber2:gobber2_ring_end"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:block_defender",
+        "count": 1
+    }
+}

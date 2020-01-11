@@ -139,6 +139,7 @@
 	
 	"block.gobber2.block_healer": "The Healer",
 	"block.gobber2.block_protector": "The Protector",
+	"block.gobber2.block_defender": "The Defender",
 	"block.gobber2.block_looter": "The Looter",
 		
 	"itemGroup.gobber2": "Gobber 2"

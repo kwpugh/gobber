@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "ACA",
+        "ABA",
+        "ACA"
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_block_end"
+        },
+        "B":
+        {
+            "item": "minecraft:nether_star"
+        },
+        "C":
+        {
+            "item": "gobber2:gobber2_block_nether"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:block_looter",
+        "count": 1
+    }
+}

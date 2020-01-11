@@ -49,10 +49,10 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class BlockProtector extends Block
+public class BlockDefender extends Block
 {
 
-	public BlockProtector(Properties properties)
+	public BlockDefender(Properties properties)
 	{
 		super(properties.func_226896_b_());
 	}
@@ -76,7 +76,7 @@ public class BlockProtector extends Block
 	public ActionResultType func_225533_a_(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit)
 	{
 		worldIn.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), worldIn.rand.nextInt(maxTickTime - minTickTime + 1));
-		player.sendMessage(new StringTextComponent("The Protector is active for players in a range of 32 blocks"));
+		player.sendMessage(new StringTextComponent("The Defender is active for players in a range of 64 blocks"));
 		return ActionResultType.SUCCESS;
 	}
   
@@ -85,7 +85,7 @@ public class BlockProtector extends Block
 	{		
 		if(!world.isRemote)
 		{
-			int radius = 32;
+			int radius = 64;
 		
 			List<Entity> entities = world.getEntitiesWithinAABB(LivingEntity.class, new AxisAlignedBB(pos.getX() - radius, pos.getY() - radius, pos.getZ() - radius, pos.getX() + radius, pos.getY() + radius, pos.getZ() + radius), e -> (e instanceof LivingEntity));
 			for(Entity entity : entities)
@@ -101,7 +101,7 @@ public class BlockProtector extends Block
 					world.setBlockState(posUp, flaming, 11);
 				   
 					int newfoodlevel = 1;
-					float newsatlevel = 0.035F;
+					float newsatlevel = 0.045F;
 					SpecialAbilities.giveRegenffect(world, player, null, newfoodlevel, newsatlevel);   
 				}
 			   
@@ -132,7 +132,6 @@ public class BlockProtector extends Block
 				{
 					((MobEntity) entity).spawnExplosionParticle();
 					entity.remove(true);
-					//world.addEntity(new ExperienceOrbEntity(world, pos.getX(), pos.getY()+3, pos.getZ(), 1));
 				}
 			}
 		}
@@ -148,9 +147,9 @@ public class BlockProtector extends Block
 	public void addInformation(ItemStack stack, @Nullable IBlockReader world, List<ITextComponent> tooltip, ITooltipFlag flag)
 	{
 		super.addInformation(stack, world, tooltip, flag);				
-		tooltip.add(new StringTextComponent(TextFormatting.BLUE + "The Protector provides a moderate, but steady health regen"));
+		tooltip.add(new StringTextComponent(TextFormatting.BLUE + "The Defender provides a steady health regen"));
 		tooltip.add(new StringTextComponent(TextFormatting.BLUE + "and eliminates many, annoying hostile mobs"));
-		tooltip.add(new StringTextComponent(TextFormatting.GREEN + "Range: 32 blocks"));
+		tooltip.add(new StringTextComponent(TextFormatting.GREEN + "Range: 64 blocks"));
 	}
 }
 
