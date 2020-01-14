@@ -64,12 +64,6 @@ public class BlockHealer extends Block
         return ActionResultType.SUCCESS;
     }
     
-//    @OnlyIn(Dist.CLIENT)
-//    public void printActivateMessage(PlayerEntity player)
-//    {
-//    	player.sendMessage(new StringTextComponent("The Healer is active for players in a range of 16 blocks"));
-//    }
-    
 	@Override
 	public void func_225534_a_(BlockState state,ServerWorld world, BlockPos pos,  Random random)
 	{
@@ -94,7 +88,7 @@ public class BlockHealer extends Block
 					float newsatlevel = 0.025F;
 					SpecialAbilities.giveRegenffect(world, player, null, newfoodlevel, newsatlevel);
 				}
-			}	
+			}
 		}
     }
   

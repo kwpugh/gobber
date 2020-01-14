@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " B ",
+        "BAB",
+        " C "
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_ring"
+        },
+        "B":
+        {
+            "item": "minecraft:magenta_bed"
+        },
+        "C":
+        {
+            "item": "minecraft:ender_pearl"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_ring_return",
+        "count": 1
+    }
+}

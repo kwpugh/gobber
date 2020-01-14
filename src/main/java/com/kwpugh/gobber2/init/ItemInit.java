@@ -26,6 +26,7 @@ import com.kwpugh.gobber2.items.rings.ItemCustomRingLumberjack;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingMiner;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingPhoenix;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingRepair;
+import com.kwpugh.gobber2.items.rings.ItemCustomRingReturn;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingStealth;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingSunshine;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingSwiftness;
@@ -209,6 +210,7 @@ public class ItemInit
 				//Gobber Rings
 				ItemList.gobber2_ring = new ItemCustomRing(new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring")),
 				ItemList.gobber2_ring_attraction = new ItemCustomRingAttraction(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_attraction")),
+				ItemList.gobber2_ring_return = new ItemCustomRingReturn(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_return")),
 				ItemList.gobber2_ring_miner = new ItemCustomRingMiner(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_miner")),
 				ItemList.gobber2_ring_lumberjack = new ItemCustomRingLumberjack(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_lumberjack")),
 				ItemList.gobber2_ring_farmer = new ItemCustomRingFarmer(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_farmer")),

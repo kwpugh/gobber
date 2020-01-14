@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
@@ -20,6 +21,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraft.world.dimension.DimensionType;
 
 public class ItemCustomRingTeleport extends Item
 {
@@ -29,8 +31,9 @@ public class ItemCustomRingTeleport extends Item
 		super(properties);
 	}
 	
-	 public ActionResultType onItemUse(ItemUseContext context)
-	 {
+	//Set the location in the ring
+	public ActionResultType onItemUse(ItemUseContext context)
+	{
 		 World world = context.getWorld();
 		 BlockPos pos = context.getPos();
 		 PlayerEntity player = context.getPlayer();
@@ -41,122 +44,126 @@ public class ItemCustomRingTeleport extends Item
 		 {
 			 setPosition(stackRing, world, pos.offset(direction), player);
 			 player.sendMessage(new StringTextComponent("Location set!"));
-			 return ActionResultType.SUCCESS;
-		 }
-	 
-		 if(getPosition(stackRing) != null)
-		 {
-			 player.sendMessage(new StringTextComponent("Location already set."));
+				 return ActionResultType.SUCCESS;
+			 }
+		 
+			 if(getPosition(stackRing) != null)
+			 {
+				 player.sendMessage(new StringTextComponent("Location already set."));
 			 return ActionResultType.SUCCESS;
 		 }
 		 
 		 return ActionResultType.PASS;
 	}
 	
-
-	 
-	 public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
-	 {
-		 ItemStack stack = player.getHeldItem(hand);
-		  
-		 if(getPosition(stack) != null && !player.isCrouching())
-	     {
-			 teleport(player, world, stack);
-			 world.playSound(null, player.func_226277_ct_(), player.func_226278_cu_(), player.func_226281_cx_(), SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, SoundCategory.PLAYERS, 1.0F, 1.0F);
-	     }
-		 
-		 if(getPosition(stack) != null && player.isCrouching())
-		 {
-			 setPosition(stack, world, null, player);
-			 player.sendMessage(new StringTextComponent("Location cleared!"));
-		 }
-	 
-		 return new ActionResult<>(ActionResultType.PASS, player.getHeldItem(hand)); 
-	 }
+	//Use the teleport function or clear it
+	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
+	{
+		ItemStack stack = player.getHeldItem(hand);
 	  
-
-	 public void teleport(PlayerEntity player, World world, ItemStack stack)
-	 {
-		 if(world.isRemote)
-		 {
-			 return;
-		 }
-	     int currentDim = player.dimension.getId();  
-		 BlockPos pos = getPosition(stack);
-		 
-		 if(getDimension(stack) == currentDim)
-		 {
-			 player.setPositionAndUpdate(pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F);
-		 }
-		 else
-		 {
-			 player.sendMessage(new StringTextComponent("You are not currently in the stored dimension")); 
-		 } 
-	 }
-
-	 public static BlockPos getPosition(ItemStack stack)
-	 {
-		 if (!stack.hasTag())
-		 {
-			 return null;
-		 }		 
-
-		 CompoundNBT tags = stack.getTag();
-		 
-		 if (tags.contains("pos"))
-		 {
-			 return NBTUtil.readBlockPos((CompoundNBT) tags.get("pos"));
-		 }
-		 return null;
-	 }
-
-	 public static void setPosition(ItemStack stack, World world, BlockPos pos, PlayerEntity player)
-	 {
-		 if(world.isRemote)
-		 {
-			 return;
-		 }
-		 
-		 CompoundNBT tags;
-		 
-		 if (!stack.hasTag())
-		 {
-			 tags = new CompoundNBT();
-		 }
-		 else
-		 {
-			 tags = stack.getTag();
-		 }
-		 
-		 if (pos == null)
-		 {
-			 tags.remove("pos");
-			 tags.remove("dim");
-		 }
-		 else
-		 {
-			 tags.put("pos", NBTUtil.writeBlockPos(pos));
-			 tags.putInt("dim", player.dimension.getId());
-		 }
-		 stack.setTag(tags);
-	 }
+		if(getPosition(stack) != null && !player.isCrouching())
+		{
+			teleport(player, world, stack);
+			world.playSound(null, player.func_226277_ct_(), player.func_226278_cu_(), player.func_226281_cx_(), SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, SoundCategory.PLAYERS, 1.0F, 1.0F);
+		}
 	 
-	 public static int getDimension(ItemStack stack)
-	 {
-		 if (!stack.hasTag())
-		 {
-			 return Integer.MAX_VALUE;
-		 }
-		 
-		 CompoundNBT tags = stack.getTag();
-		 
-		 if (tags.contains("dim"))
-		 {
-			 return tags.getInt("dim");
-		 }	
-		 return Integer.MAX_VALUE;
-	 }
+		if(getPosition(stack) != null && player.isCrouching())
+		{
+			setPosition(stack, world, null, player);
+			player.sendMessage(new StringTextComponent("Location cleared!"));
+		}
+	 
+		return new ActionResult<>(ActionResultType.PASS, player.getHeldItem(hand)); 
+	}
 
+	//Capture player position
+	public static BlockPos getPosition(ItemStack stack)
+	{
+		if (!stack.hasTag())
+		{
+			return null;
+		}		 
+
+		CompoundNBT tags = stack.getTag();
+	 
+		if (tags.contains("pos"))
+		{
+			return NBTUtil.readBlockPos((CompoundNBT) tags.get("pos"));
+		}
+		return null;
+	}
+
+	//Capture player dimension
+	public static int getDimension(ItemStack stack)
+	{
+		if (!stack.hasTag())
+		{
+			return Integer.MAX_VALUE;
+		}
+	 
+		CompoundNBT tags = stack.getTag();
+	 
+		if (tags.contains("dim"))
+		{
+			return tags.getInt("dim");
+		}	
+		return Integer.MAX_VALUE;
+	}
+	
+	//Set position and dimension in the NBT
+	public static void setPosition(ItemStack stack, World world, BlockPos pos, PlayerEntity player)
+	{
+		if(world.isRemote)
+		{
+			return;
+		}
+	 
+		CompoundNBT tags;
+	 
+		if (!stack.hasTag())
+		{
+			tags = new CompoundNBT();
+		}
+		else
+		{
+			tags = stack.getTag();
+		}
+	 
+		if (pos == null)
+		{
+			tags.remove("pos");
+			tags.remove("dim");
+		}
+		else
+		{
+			tags.put("pos", NBTUtil.writeBlockPos(pos));
+			tags.putInt("dim", player.dimension.getId());
+		}
+		stack.setTag(tags);
+	}
+
+	//Teleport
+	public void teleport(PlayerEntity player, World world, ItemStack stack)
+	{
+		if(world.isRemote)
+		{
+			return;
+		}
+
+		
+//		int currentDim = player.dimension.getId();  
+//		BlockPos pos = getPosition(stack);
+//		
+//		if(getDimension(stack) == currentDim)
+//		{
+//			player.setPositionAndUpdate(pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F);
+//		}
+//		else
+//		{
+//			player.sendMessage(new StringTextComponent("You are not currently in the stored dimension")); 
+//		} 
+	}
+	
 	@Override
 	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
 	{
@@ -166,16 +173,12 @@ public class ItemCustomRingTeleport extends Item
 		list.add(new StringTextComponent(TextFormatting.WHITE + "Set: " + TextFormatting.AQUA + "point at a block and sneak + right-click"));
 		list.add(new StringTextComponent(TextFormatting.WHITE + "Clear: " + TextFormatting.AQUA + "point in the air and sneak + right-click"));
 		
-		 if(getPosition(stack) != null)
-		 {
-			 BlockPos pos = getPosition(stack);
-			 
-			 list.add(new StringTextComponent(TextFormatting.GOLD + "Location Stored:"));
-			 list.add(new StringTextComponent(TextFormatting.YELLOW + "Dim: " + getDimension(stack) + "  X: " + pos.getX() + "  Y: " + pos.getY() + "  Z: " + pos.getZ()));
-		 }
+		if(getPosition(stack) != null)
+		{
+			BlockPos pos = getPosition(stack);
+		 
+			list.add(new StringTextComponent(TextFormatting.GOLD + "Location Stored:"));
+			list.add(new StringTextComponent(TextFormatting.YELLOW + "Dim: " + getDimension(stack) + "  X: " + pos.getX() + "  Y: " + pos.getY() + "  Z: " + pos.getZ()));
+		}
 	}   
-	 
-	 
-	 
-	 
 }
