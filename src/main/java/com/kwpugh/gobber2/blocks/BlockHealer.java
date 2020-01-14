@@ -56,9 +56,19 @@ public class BlockHealer extends Block
     public ActionResultType func_225533_a_(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit)
     {
     	worldIn.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), worldIn.rand.nextInt(maxTickTime - minTickTime + 1));
-    	player.sendMessage(new StringTextComponent("The Healer is active for players in a range of 16 blocks"));
+    	if(worldIn.isRemote)
+    	{
+    		player.sendMessage(new StringTextComponent("The Healer is active for players in a range of 16 blocks"));
+    	}
+    	
         return ActionResultType.SUCCESS;
     }
+    
+//    @OnlyIn(Dist.CLIENT)
+//    public void printActivateMessage(PlayerEntity player)
+//    {
+//    	player.sendMessage(new StringTextComponent("The Healer is active for players in a range of 16 blocks"));
+//    }
     
 	@Override
 	public void func_225534_a_(BlockState state,ServerWorld world, BlockPos pos,  Random random)

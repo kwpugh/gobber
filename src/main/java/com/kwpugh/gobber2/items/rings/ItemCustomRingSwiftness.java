@@ -31,9 +31,12 @@ public class ItemCustomRingSwiftness extends Item
 		if(entity instanceof PlayerEntity && !world.isRemote && EnableUtil.isEnabled(stack))
 		{
 			PlayerEntity player = (PlayerEntity)entity;
-	
-			player.addPotionEffect(new EffectInstance(Effects.SPEED, 260, 2, false, false));
-			player.addPotionEffect(new EffectInstance(Effects.JUMP_BOOST, 260, 3, false, false));	
+
+			if (player.ticksExisted % 180 == 0)
+			{
+				player.addPotionEffect(new EffectInstance(Effects.SPEED, 260, 2, false, false));
+				player.addPotionEffect(new EffectInstance(Effects.JUMP_BOOST, 260, 3, false, false));
+			} 
 		}
 	}	
 

@@ -7,7 +7,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
@@ -35,16 +34,13 @@ public class ItemCustomRingVoid extends Item
 			if(!(currentDim == 1))
 			{
 				entity.changeDimension(DimensionType.THE_END);  //Switch to The End
-		    	// Old 1.14.4 code
-				//return ActionResult.newResult(ActionResultType.SUCCESS, stack);
+
 		    	return ActionResult.func_226248_a_(stack);
 			}
 			else if(((currentDim == 1)) && (entity.isCrouching()))
 			{
 				entity.changeDimension(DimensionType.OVERWORLD);  //Switch to The End
 		    	
-				//Old 1.14.4 code
-				//return ActionResult.newResult(ActionResultType.SUCCESS, stack);
 				return ActionResult.func_226248_a_(stack);
 			}
 			else if(((currentDim == 1)) && (!entity.isCrouching()))
@@ -57,8 +53,6 @@ public class ItemCustomRingVoid extends Item
 			}	
 		}
 	    
-		//Old 1.14.4 code
-	    //return ActionResult.newResult(ActionResultType.FAIL, stack);
 	    return ActionResult.func_226251_d_(stack);
 	}
 	

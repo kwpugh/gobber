@@ -76,7 +76,11 @@ public class BlockDefender extends Block
 	public ActionResultType func_225533_a_(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit)
 	{
 		worldIn.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), worldIn.rand.nextInt(maxTickTime - minTickTime + 1));
-		player.sendMessage(new StringTextComponent("The Defender is active for players in a range of 64 blocks"));
+		if(worldIn.isRemote)
+    	{
+			player.sendMessage(new StringTextComponent("The Defender is active for players in a range of 64 blocks"));
+    	}
+		
 		return ActionResultType.SUCCESS;
 	}
   

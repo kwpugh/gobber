@@ -32,8 +32,10 @@ public class ItemCustomRingHaste extends Item
 		if(entity instanceof PlayerEntity && !world.isRemote && EnableUtil.isEnabled(stack))
 		{
 			PlayerEntity player = (PlayerEntity)entity;
-	
-			player.addPotionEffect(new EffectInstance(Effects.HASTE, 260, 4, false, false));
+			if (player.ticksExisted % 180 == 0)
+			{
+				player.addPotionEffect(new EffectInstance(Effects.HASTE, 260, 4, false, false));
+			} 	
 		}
 	}	
 

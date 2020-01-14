@@ -22,20 +22,22 @@ public class ItemCustomRingCuring extends Item
 	}
 
 	public void inventoryTick(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected)
-	{		
+	{
+		PlayerEntity player = (PlayerEntity)entity;
+		
 		if(entity instanceof PlayerEntity)
-		{	
-			((PlayerEntity) entity).removeActivePotionEffect(Effects.BLINDNESS);
-			((PlayerEntity) entity).removeActivePotionEffect(Effects.SLOWNESS);
-			((PlayerEntity) entity).removeActivePotionEffect(Effects.MINING_FATIGUE);
-			((PlayerEntity) entity).removeActivePotionEffect(Effects.INSTANT_DAMAGE);
-			((PlayerEntity) entity).removeActivePotionEffect(Effects.NAUSEA);
-			((PlayerEntity) entity).removeActivePotionEffect(Effects.HUNGER);
-			((PlayerEntity) entity).removeActivePotionEffect(Effects.POISON);
-			((PlayerEntity) entity).removeActivePotionEffect(Effects.WITHER);
-			((PlayerEntity) entity).removeActivePotionEffect(Effects.LEVITATION);
-			((PlayerEntity) entity).removeActivePotionEffect(Effects.UNLUCK);
-			((PlayerEntity) entity).removeActivePotionEffect(Effects.WEAKNESS);		
+		{		
+			player.removeActivePotionEffect(Effects.BLINDNESS);
+			player.removeActivePotionEffect(Effects.SLOWNESS);
+			player.removeActivePotionEffect(Effects.MINING_FATIGUE);
+			player.removeActivePotionEffect(Effects.INSTANT_DAMAGE);
+			player.removeActivePotionEffect(Effects.NAUSEA);
+			player.removeActivePotionEffect(Effects.HUNGER);
+			player.removeActivePotionEffect(Effects.POISON);
+			player.removeActivePotionEffect(Effects.WITHER);
+			player.removeActivePotionEffect(Effects.LEVITATION);
+			player.removeActivePotionEffect(Effects.UNLUCK);
+			player.removeActivePotionEffect(Effects.WEAKNESS);		
 		}
 	}
 
