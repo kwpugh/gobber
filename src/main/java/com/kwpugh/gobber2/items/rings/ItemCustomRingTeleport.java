@@ -4,7 +4,6 @@ import java.util.List;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
@@ -21,7 +20,6 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraft.world.dimension.DimensionType;
 
 public class ItemCustomRingTeleport extends Item
 {
@@ -149,19 +147,18 @@ public class ItemCustomRingTeleport extends Item
 		{
 			return;
 		}
-
 		
-//		int currentDim = player.dimension.getId();  
-//		BlockPos pos = getPosition(stack);
-//		
-//		if(getDimension(stack) == currentDim)
-//		{
-//			player.setPositionAndUpdate(pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F);
-//		}
-//		else
-//		{
-//			player.sendMessage(new StringTextComponent("You are not currently in the stored dimension")); 
-//		} 
+		int currentDim = player.dimension.getId();  
+		BlockPos pos = getPosition(stack);
+		
+		if(getDimension(stack) == currentDim)
+		{
+			player.setPositionAndUpdate(pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F);
+		}
+		else
+		{
+			player.sendMessage(new StringTextComponent("You are not currently in the stored dimension")); 
+		} 
 	}
 	
 	@Override
