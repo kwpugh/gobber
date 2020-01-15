@@ -105,5 +105,5 @@ public final class ArmorUtil
 	    }
       		
         return false;
-    } 
+    }
 } 

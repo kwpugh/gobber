@@ -1,0 +1,36 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " B ",
+        "CAC",
+        " D "
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_ring_nether"
+        },
+        "B":
+        {
+            "item": "gobber2:gobber2_ring_ascent"
+        },
+        "C":
+        {
+            "item": "gobber2:gobber2_glob_end"
+        },
+        "D":
+        {
+            "item": "gobber2:gobber2_ring_blaze"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_ring_pyro",
+        "count": 1
+    }
+}

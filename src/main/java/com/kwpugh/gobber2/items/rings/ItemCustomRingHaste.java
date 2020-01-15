@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.kwpugh.gobber2.util.EnableUtil;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -14,6 +15,7 @@ import net.minecraft.potion.Effects;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
@@ -34,7 +36,7 @@ public class ItemCustomRingHaste extends Item
 			PlayerEntity player = (PlayerEntity)entity;
 			if (player.ticksExisted % 180 == 0)
 			{
-				player.addPotionEffect(new EffectInstance(Effects.HASTE, 260, 4, false, false));
+				//player.addPotionEffect(new EffectInstance(Effects.HASTE, 260, 4, false, false));
 			} 	
 		}
 	}	

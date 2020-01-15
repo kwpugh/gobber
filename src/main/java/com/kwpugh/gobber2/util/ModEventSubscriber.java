@@ -47,5 +47,5 @@ public final class ModEventSubscriber
             	if (event.isCancelable()) event.setCanceled(true);
             }
         } 
-    }	
+    }
 } 
