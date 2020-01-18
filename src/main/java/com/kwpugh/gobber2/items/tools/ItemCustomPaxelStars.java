@@ -1,9 +1,13 @@
 package com.kwpugh.gobber2.items.tools;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableBiMap.Builder;
 import com.kwpugh.gobber2.lists.BlockList;
 import com.kwpugh.gobber2.lists.ItemList;
 import com.kwpugh.gobber2.util.EnableUtil;
@@ -11,7 +15,9 @@ import com.kwpugh.gobber2.util.EnableUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.CampfireBlock;
 import net.minecraft.block.HorizontalBlock;
+import net.minecraft.block.RotatedPillarBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
@@ -22,6 +28,7 @@ import net.minecraft.item.ItemUseContext;
 import net.minecraft.item.ToolItem;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
@@ -30,6 +37,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.Constants.WorldEvents;
 
 public class ItemCustomPaxelStars extends ToolItem
 {
@@ -64,6 +72,22 @@ public class ItemCustomPaxelStars extends ToolItem
 			Blocks.COARSE_DIRT, Blocks.DIRT, Blocks.GRASS_BLOCK, Blocks.GRASS_PATH,
 			BlockList.gobber2_glass);
 	
+	public static final Map<Block, Block> BLOCK_STRIPPING_MAP = (new Builder<Block, Block>()).put(Blocks.OAK_WOOD, 
+			Blocks.STRIPPED_OAK_WOOD).put(Blocks.OAK_LOG, 
+			Blocks.STRIPPED_OAK_LOG).put(Blocks.DARK_OAK_WOOD, 
+			Blocks.STRIPPED_DARK_OAK_WOOD).put(Blocks.DARK_OAK_LOG, 
+			Blocks.STRIPPED_DARK_OAK_LOG).put(Blocks.ACACIA_WOOD, 
+			Blocks.STRIPPED_ACACIA_WOOD).put(Blocks.ACACIA_LOG, 
+			Blocks.STRIPPED_ACACIA_LOG).put(Blocks.BIRCH_WOOD, 
+			Blocks.STRIPPED_BIRCH_WOOD).put(Blocks.BIRCH_LOG, 
+			Blocks.STRIPPED_BIRCH_LOG).put(Blocks.JUNGLE_WOOD, 
+			Blocks.STRIPPED_JUNGLE_WOOD).put(Blocks.JUNGLE_LOG, 
+			Blocks.STRIPPED_JUNGLE_LOG).put(Blocks.SPRUCE_WOOD, 
+			Blocks.STRIPPED_SPRUCE_WOOD).put(Blocks.SPRUCE_LOG, 
+			Blocks.STRIPPED_SPRUCE_LOG).build();
+	
+	public static final Map<Block, BlockState> SHOVEL_LOOKUP = Maps.newHashMap(ImmutableMap.of(Blocks.GRASS_BLOCK, Blocks.GRASS_PATH.getDefaultState()));
+	
 	public ItemCustomPaxelStars(float attackDamageIn, float attackSpeedIn, IItemTier tier, Set<Block> effectiveBlocksIn,
 			Properties builder)
 	{
@@ -88,12 +112,58 @@ public class ItemCustomPaxelStars extends ToolItem
     	BlockPos torchPos;
     	BlockPos pos = iuc.getPos();
     	BlockState state = iuc.getWorld().getBlockState(pos);
-		
-    	ItemStack stack = iuc.getPlayer().getHeldItem(iuc.getHand());
     	
+    	World world = iuc.getWorld();
+    	BlockPos blockpos = iuc.getPos();
+    	PlayerEntity player = iuc.getPlayer();
+    	ItemStack stack = player.getHeldItemMainhand();
+    	BlockState blockstate = world.getBlockState(blockpos);
+    	BlockState resultToSet = null;
+    	Block strippedResult = BLOCK_STRIPPING_MAP.get(blockstate.getBlock());
+          
     	if(!EnableUtil.isEnabled(stack))
     	{
-    		return ActionResultType.FAIL;
+    		if (strippedResult != null)
+            {
+                world.playSound(player, blockpos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                resultToSet = strippedResult.getDefaultState().with(RotatedPillarBlock.AXIS, blockstate.get(RotatedPillarBlock.AXIS));
+            }
+            else
+            {
+                if (iuc.getFace() == Direction.DOWN)
+                {
+                    return ActionResultType.PASS;
+                }
+                
+                BlockState foundResult = SHOVEL_LOOKUP.get(blockstate.getBlock());
+                
+                if (foundResult != null && world.isAirBlock(blockpos.up()))
+                {
+                    world.playSound(player, blockpos, SoundEvents.ITEM_SHOVEL_FLATTEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                    resultToSet = foundResult;
+                }
+                else if (blockstate.getBlock() instanceof CampfireBlock && blockstate.get(CampfireBlock.LIT))
+                {
+                    world.playEvent(null, WorldEvents.FIRE_EXTINGUISH_SOUND, blockpos, 0);
+                    resultToSet = blockstate.with(CampfireBlock.LIT, false);
+                }
+            }
+            if (resultToSet == null)
+            {
+                return ActionResultType.PASS;
+            }
+            if (!world.isRemote)
+            {
+                world.setBlockState(blockpos, resultToSet, 11);
+                
+                if (player != null)
+                {
+                    iuc.getItem().damageItem(1, player, onBroken -> onBroken.sendBreakAnimation(iuc.getHand()));
+                }
+            }
+            stack.setDamage(0);  //no damage
+            
+            return ActionResultType.SUCCESS;
     	}
     	
     	if(iuc.getWorld().getBlockState(pos).getBlock() == Blocks.TORCH
@@ -194,7 +264,7 @@ public class ItemCustomPaxelStars extends ToolItem
 	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
 	{
 		super.addInformation(stack, world, list, flag);
-		list.add(new StringTextComponent(TextFormatting.BLUE + "Combines pickaxe, axe, and shovel, unbreakable"));
+		list.add(new StringTextComponent(TextFormatting.BLUE + "Combines pickaxe, axe, and shovel and is unbreakable"));
 		list.add(new StringTextComponent(TextFormatting.GREEN + "Right-click to place torches"));
 		list.add(new StringTextComponent(TextFormatting.RED + "Place torch ability active: " + EnableUtil.isEnabled(stack)));
 		list.add(new StringTextComponent(TextFormatting.GOLD + "Sneak right-click to toggle ability on/off"));

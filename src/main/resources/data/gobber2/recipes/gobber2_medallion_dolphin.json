@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " B ",
+        "BAB",
+        " B "
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_medallion_end"
+        },
+        "B":
+        {
+            "item": "minecraft:heart_of_the_sea"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_medallion_dolphin",
+        "count": 1
+    }
+}

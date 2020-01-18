@@ -7,6 +7,7 @@ import com.kwpugh.gobber2.lists.ItemList;
 import com.kwpugh.gobber2.util.EnableUtil;
 
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
@@ -28,31 +29,32 @@ public class ItemCustomPickaxeNether extends PickaxeItem
 		super(tier, attackDamageIn, attackSpeedIn, builder);
 	}
 	
+	public void inventoryTick(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected)
+	{		
+		if(entity instanceof PlayerEntity && !world.isRemote && EnableUtil.isEnabled(stack))
+		{
+			PlayerEntity player = (PlayerEntity)entity;
+
+			if (player.ticksExisted % 240 == 0)
+			{
+				player.addPotionEffect(new EffectInstance(Effects.NIGHT_VISION, 520, 0, false, false));
+			} 		
+		}
+	}	
+
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
-	{
+    public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
+    {
 		ItemStack stack = player.getHeldItem(hand);
 		
-		if(!world.isRemote)
-		{
-		    if(player.isCrouching())
-		    {
-		        EnableUtil.changeEnabled(player, hand);
-		        player.sendMessage(new StringTextComponent("Night vision ability active: " + EnableUtil.isEnabled(stack)));
-		    }
-		    
-		    if(EnableUtil.isEnabled(stack))
-			{
-			 	player.addPotionEffect(new EffectInstance(Effects.NIGHT_VISION, (int) 2400, (int) 0));		 	 	
-			}	
-		    else
-		    {
-		    	player.removeActivePotionEffect(Effects.NIGHT_VISION);
-		    }
-		    return new ActionResult<ItemStack>(ActionResultType.PASS, player.getHeldItem(hand));
-		}
-		return super.onItemRightClick(world, player, hand);
-	}
+        if(!world.isRemote && player.isCrouching())
+        {
+            EnableUtil.changeEnabled(player, hand);
+            player.sendMessage(new StringTextComponent("Night vision ability active: " + EnableUtil.isEnabled(stack)));
+            return new ActionResult<ItemStack>(ActionResultType.SUCCESS, player.getHeldItem(hand));
+        }
+        return super.onItemRightClick(world, player, hand);
+    }
 	
 	@Override
 	public boolean isBookEnchantable(ItemStack stack, ItemStack book)

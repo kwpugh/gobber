@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " B ",
+        "BAB",
+        " B "
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_medallion_end"
+        },
+        "B":
+        {
+            "item": "minecraft:conduit"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_medallion_conduit",
+        "count": 1
+    }
+}

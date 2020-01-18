@@ -144,9 +144,15 @@ public class ItemList
 	
 	//Medallion
 	public static Item gobber2_medallion;
-	public static Item gobber2_medallion_nether;
-	public static Item gobber2_medallion_end;
 	public static Item gobber2_medallion_stepping;
+	public static Item gobber2_medallion_nether;
+	public static Item gobber2_medallion_glowing;
+	public static Item gobber2_medallion_end;
+	public static Item gobber2_medallion_conduit;
+	public static Item gobber2_medallion_dolphin;
+	public static Item gobber2_medallion_breathing;
+	public static Item gobber2_medallion_hero;
+	
 	
 	
 	//Glass

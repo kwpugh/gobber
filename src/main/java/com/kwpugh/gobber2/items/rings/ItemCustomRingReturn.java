@@ -47,7 +47,7 @@ public class ItemCustomRingReturn extends Item
         if(!world.isRemote())
         {
             PlayerEntity player = (ServerPlayerEntity) entity;
-            BlockPos currentPos = player.getPosition();
+            //BlockPos currentPos = player.getPosition();
 
             if(world.getDimension().getType() != DimensionType.OVERWORLD)
             {              

@@ -7,9 +7,6 @@ import com.kwpugh.gobber2.lists.ItemList;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorldReader;
-import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -19,8 +16,8 @@ public class ModEventHandler
 	 public void harvestNetherWart(HarvestDropsEvent event)
 	 {
 		Block block = event.getState().getBlock();
-		BlockPos pos = event.getPos();
-		IWorldReader world = event.getWorld();
+		//BlockPos pos = event.getPos();
+		//IWorldReader world = event.getWorld();
 		
 				
 		 if (block == Blocks.NETHER_WART)

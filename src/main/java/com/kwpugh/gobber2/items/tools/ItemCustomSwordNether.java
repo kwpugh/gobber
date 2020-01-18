@@ -8,6 +8,7 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.monster.WitherSkeletonEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -36,18 +37,22 @@ public class ItemCustomSwordNether extends SwordItem
         }
         return new ActionResult<ItemStack>(ActionResultType.PASS, playerIn.getHeldItem(handIn));
     }
-
+	
 	@Override
-    public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker)
-    {
-        if(target instanceof WitherSkeletonEntity)
-        {
-        	target.setHealth(0);
-        	target.entityDropItem(Items.WITHER_SKELETON_SKULL, 1);
-        	//stack.setDamage(1);
-        }
-        return true;
-    }
+	public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker)
+	{
+		if(target instanceof WitherSkeletonEntity)
+	    {
+			target.remove(true);
+	       	target.entityDropItem(Items.WITHER_SKELETON_SKULL, 1);
+	    }
+	 
+		stack.damageItem(1, attacker, (p_220045_0_) -> {
+	         p_220045_0_.sendBreakAnimation(EquipmentSlotType.MAINHAND);
+	    	});
+	      
+		return true;
+}
 	
 	@Override
 	public boolean isBookEnchantable(ItemStack stack, ItemStack book)

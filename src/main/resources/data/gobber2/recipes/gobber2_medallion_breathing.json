@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " B ",
+        "BAB",
+        " B "
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_medallion"
+        },
+        "B":
+        {
+            "item": "minecraft:pufferfish"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_medallion_breathing",
+        "count": 1
+    }
+}

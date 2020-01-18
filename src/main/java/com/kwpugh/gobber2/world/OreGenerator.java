@@ -1,7 +1,6 @@
 package com.kwpugh.gobber2.world;
 
 import com.kwpugh.gobber2.lists.BlockList;
-import com.kwpugh.gobber2.world.feature.CustomOreFeature;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
@@ -16,7 +15,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class OreGenerator
 {
-	private static final CustomOreFeature END_OREGEN = new CustomOreFeature(null);
+	//private static final CustomOreFeature END_OREGEN = new CustomOreFeature(null);
     public static void setupOregen()
     {
         for(Biome biome : ForgeRegistries.BIOMES)

@@ -78,6 +78,7 @@ public class Gobber2
         if (SupportMods.CURIOS.isLoaded())
         {
         	InterModComms.sendTo("curios", CuriosAPI.IMC.REGISTER_TYPE, () -> new CurioIMCMessage("ring").setSize(2));
+        	InterModComms.sendTo("curios", CuriosAPI.IMC.REGISTER_TYPE, () -> new CurioIMCMessage("belt").setSize(1));
         } 
     }
 }

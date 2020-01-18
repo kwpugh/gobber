@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " B ",
+        "BAB",
+        " B "
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_medallion_nether"
+        },
+        "B":
+        {
+            "item": "minecraft:spider_eye"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_medallion_glowing",
+        "count": 1
+    }
+}
