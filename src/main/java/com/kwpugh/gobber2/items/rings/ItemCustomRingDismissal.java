@@ -40,9 +40,9 @@ public class ItemCustomRingDismissal extends Item
 			{
 				if(stack == equipped)
 				{
-					double x = player.func_226277_ct_();
-					double y = player.func_226278_cu_();
-					double z = player.func_226281_cx_();
+					double x = player.getPosX();
+					double y = player.getPosY();
+					double z = player.getPosZ();
 					
 					double d0 = 9.0D;
 					double d1 = 4.0D;

@@ -84,7 +84,12 @@ public class ItemCustomRingReturn extends Item
         DimensionType prevDim = player.dimension;
         DimensionType destDim = prevDim == player.dimension ? DimensionType.OVERWORLD : player.dimension;
 
+        System.out.println("preDim: " + prevDim + "  " + "destDim: " + destDim);
+        
         serverPlayer.teleport(player.getServer().getWorld(destDim), serverPlayer.serverPosX, serverPlayer.serverPosY, serverPlayer.serverPosZ, serverPlayer.rotationYaw, serverPlayer.rotationPitch);
+        
+//        serverPlayer.changeDimension(destDim);
+//        serverPlayer.teleportKeepLoaded(serverPlayer.serverPosX, serverPlayer.serverPosY, serverPlayer.serverPosZ);
     }
 
     public void setPositionAndUpdate(LivingEntity entity, World world, BlockPos bedLoc)

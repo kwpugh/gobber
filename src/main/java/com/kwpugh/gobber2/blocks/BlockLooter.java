@@ -75,7 +75,7 @@ public class BlockLooter extends Block
 
 	//Start it up if right-clicked on
 	@Override
-	public ActionResultType func_225533_a_(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit)
+	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit)
 	{
 		worldIn.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), worldIn.rand.nextInt(maxTickTime - minTickTime + 1));
 		if(worldIn.isRemote)
@@ -87,7 +87,7 @@ public class BlockLooter extends Block
 	}
        
 	@Override
-	public void func_225534_a_(BlockState state,ServerWorld world, BlockPos pos,  Random random)
+	public void tick(BlockState state,ServerWorld world, BlockPos pos,  Random random)
 	{	
 		if(!world.isRemote)
 		{			   

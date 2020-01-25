@@ -9,8 +9,8 @@ public class BlockRenders
 {
 	public static void defineRenders()
 	{
-		RenderType cutoutMipped = RenderType.func_228641_d_();
-		RenderType translucent = RenderType.func_228645_f_();
+		RenderType cutoutMipped = RenderType.cutoutMipped();
+		RenderType translucent = RenderType.translucent();
 		
 		RenderTypeLookup.setRenderLayer(BlockList.gobber2_plant, cutoutMipped);
 		RenderTypeLookup.setRenderLayer(BlockList.gobber2_plant_nether, cutoutMipped);

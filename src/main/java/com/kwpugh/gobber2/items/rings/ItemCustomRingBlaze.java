@@ -36,9 +36,9 @@ public class ItemCustomRingBlaze extends Item
 			{
 				if(stack == equipped)
 				{
-					double x = player.func_226277_ct_();
-					double y = player.func_226278_cu_();
-					double z = player.func_226281_cx_();
+					double x = player.getPosX();
+					double y = player.getPosY();
+					double z = player.getPosZ();
 
 					double d0 = 10.0D;
 					double d1 = 5.0D;

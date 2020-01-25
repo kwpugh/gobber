@@ -8,7 +8,7 @@ authors="kwpugh" #optional
 
 [[mods]] #mandatory
 modId="gobber2" #mandatory
-version="2.2.22" #mandatory
+version="2.2.30" #mandatory
 displayName="Gobber 2" #mandatory
 description='''
 Gobber into 1.15, a new beginning!
@@ -27,6 +27,6 @@ Gobber into 1.15, a new beginning!
 [[dependencies.gobber2]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.15.1]"
+    versionRange="[1.15.1, 1.15.2]"
     ordering="NONE"
     side="BOTH"

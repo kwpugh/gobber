@@ -48,9 +48,9 @@ public class ItemCustomRingAttraction extends Item
 				range = MagnetRange.getCurrentRange(stack);
 			}			
 
-			double x = player.func_226277_ct_();
-			double y = player.func_226278_cu_();
-			double z = player.func_226281_cx_();
+			double x = player.getPosX();
+			double y = player.getPosY();
+			double z = player.getPosZ();
 
 			boolean isPulling;
 			
@@ -64,7 +64,7 @@ public class ItemCustomRingAttraction extends Item
 					isPulling = true;							
 					double factor = 0.02;
 					//e.addVelocity((x - e.posX) * factor, (y - e.posY) * factor, (z - e.posZ) * factor);
-					e.addVelocity((x - e.func_226277_ct_()) * factor, (y - e.func_226278_cu_()) * factor, (z - e.func_226281_cx_()) * factor);
+					e.addVelocity((x - e.getPosX()) * factor, (y - e.getPosY()) * factor, (z - e.getPosZ()) * factor);
 				}
 			}
 			
@@ -81,7 +81,7 @@ public class ItemCustomRingAttraction extends Item
 				{
 					isPulling = true;							
 					double factor = 0.02;
-					orb.addVelocity((x - orb.func_226277_ct_()) * factor, (y - orb.func_226278_cu_()) * factor, (z - orb.func_226281_cx_()) * factor);
+					orb.addVelocity((x - orb.getPosX()) * factor, (y - orb.getPosY()) * factor, (z - orb.getPosZ()) * factor);
                     player.onItemPickup(orb, 1);
                     player.giveExperiencePoints(orb.xpValue);
                     orb.remove();

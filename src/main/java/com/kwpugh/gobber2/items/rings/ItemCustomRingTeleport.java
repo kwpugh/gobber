@@ -20,6 +20,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraft.world.dimension.DimensionType;
 
 public class ItemCustomRingTeleport extends Item
 {
@@ -62,7 +63,7 @@ public class ItemCustomRingTeleport extends Item
 		if(getPosition(stack) != null && !player.isCrouching())
 		{
 			teleport(player, world, stack);
-			world.playSound(null, player.func_226277_ct_(), player.func_226278_cu_(), player.func_226281_cx_(), SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, SoundCategory.PLAYERS, 1.0F, 1.0F);
+			world.playSound(null, player.getPosX(), player.getPosY(), player.getPosZ(), SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, SoundCategory.PLAYERS, 1.0F, 1.0F);
 		}
 	 
 		if(getPosition(stack) != null && player.isCrouching())
@@ -147,23 +148,67 @@ public class ItemCustomRingTeleport extends Item
 		{
 			return;
 		}
-		
+
 		int currentDim = player.dimension.getId();  
 		BlockPos pos = getPosition(stack);
-		
+
 		if(getDimension(stack) == currentDim)
 		{
 			player.setPositionAndUpdate(pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F);
 		}
-		else
+		
+		if(getDimension(stack) != currentDim)
 		{
-			player.sendMessage(new StringTextComponent("You are not currently in the stored dimension")); 
-		} 
+			if(getDimension(stack) == 0)
+			{
+				player.changeDimension(DimensionType.OVERWORLD);
+				player.setPositionAndUpdate(pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F);
+				
+				player.sendMessage(new StringTextComponent("Welcome to the Overworld")); 
+			}
+			else if(getDimension(stack) == 1)
+			{
+				player.changeDimension(DimensionType.THE_END);
+				player.setPositionAndUpdate(pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F);
+				
+				player.sendMessage(new StringTextComponent("Welcome to the End")); 
+			} 	
+			else if(getDimension(stack) == -1)
+			{
+				player.changeDimension(DimensionType.THE_NETHER);
+				player.setPositionAndUpdate(pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F);
+				
+				player.sendMessage(new StringTextComponent("Welcome to Hell!")); 
+			}
+			else
+			{
+				player.sendMessage(new StringTextComponent("Only Vanilla Minecraft dimensions supported.")); 
+				player.sendMessage(new StringTextComponent("Travel to the stored dimension and try again.")); 
+			}
+		}
 	}
 	
 	@Override
 	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
 	{
+		String dimName;
+		
+		switch(getDimension(stack))
+		{
+		case 1:
+			dimName = "End"
+;			break;
+		case 0:
+			dimName = "OverWorld";
+			break;
+		case -1:
+			dimName = "Nether";
+			break;
+		default:
+			dimName = "Unknown";
+			break;
+		}
+		
 		super.addInformation(stack, world, list, flag);				
 		list.add(new StringTextComponent(TextFormatting.BLUE + "Allows player to teleport to saved location on right-click"));
 		list.add(new StringTextComponent(TextFormatting.GREEN + "Does not work across dimensions"));
@@ -175,7 +220,7 @@ public class ItemCustomRingTeleport extends Item
 			BlockPos pos = getPosition(stack);
 		 
 			list.add(new StringTextComponent(TextFormatting.GOLD + "Location Stored:"));
-			list.add(new StringTextComponent(TextFormatting.YELLOW + "Dim: " + getDimension(stack) + "  X: " + pos.getX() + "  Y: " + pos.getY() + "  Z: " + pos.getZ()));
+			list.add(new StringTextComponent(TextFormatting.YELLOW + "Dim: " + dimName + "  X: " + pos.getX() + "  Y: " + pos.getY() + "  Z: " + pos.getZ()));
 		}
 	}   
 }

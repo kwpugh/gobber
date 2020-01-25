@@ -18,9 +18,9 @@ public class RayTraceUtil
     {
         float f = player.rotationPitch;
         float f1 = player.rotationYaw;
-        double d0 = player.func_226277_ct_();
-        double d1 = player.func_226278_cu_() + (double) player.getEyeHeight();
-        double d2 = player.func_226281_cx_();
+        double d0 = player.getPosX();
+        double d1 = player.getPosY() + (double) player.getEyeHeight();
+        double d2 = player.getPosZ();
         Vec3d vec3 = new Vec3d(d0, d1, d2);
         float f2 = MathHelper.cos(-f1 * 0.017453292F - (float) Math.PI);
         float f3 = MathHelper.sin(-f1 * 0.017453292F - (float) Math.PI);

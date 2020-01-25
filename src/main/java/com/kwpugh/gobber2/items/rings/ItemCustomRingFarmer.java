@@ -55,9 +55,9 @@ public class ItemCustomRingFarmer extends Item
                 {
                     for(int y = -range; y < range+1; y++)
                     {
-                        int theX = MathHelper.floor(player.func_226277_ct_()+x);
-                        int theY = MathHelper.floor(player.func_226278_cu_()+y);
-                        int theZ = MathHelper.floor(player.func_226281_cx_()+z);
+                        int theX = MathHelper.floor(player.getPosX()+x);
+                        int theY = MathHelper.floor(player.getPosY()+y);
+                        int theZ = MathHelper.floor(player.getPosZ()+z);
                         
                         BlockPos targetPos = new BlockPos(theX, theY, theZ);                       
                         BlockState blockstate = world.getBlockState(targetPos);
@@ -74,7 +74,7 @@ public class ItemCustomRingFarmer extends Item
                                {
                                   if(igrowable.canUseBonemeal(world, world.rand, targetPos, blockstate))
                                   {
-                                     igrowable.func_225535_a_((ServerWorld)world, world.rand, targetPos, blockstate);
+                                     igrowable.grow((ServerWorld)world, world.rand, targetPos, blockstate);
                                   }
                                }
                             }
