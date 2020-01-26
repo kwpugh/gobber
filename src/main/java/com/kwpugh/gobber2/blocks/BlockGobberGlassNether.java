@@ -19,7 +19,7 @@ public class BlockGobberGlassNether extends GlassBlock
 
 	public BlockGobberGlassNether(Properties properties)
 	{
-		super(properties.func_226896_b_());
+		super(properties);
 	}
 
 	@OnlyIn(Dist.CLIENT)

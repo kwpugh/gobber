@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		" IS",
+		"I S",
+		" IS"
+	],
+	
+	"key":
+	{
+		"I": { "item": "gobber2:gobber2_ingot_nether" },
+		"S": { "item": "minecraft:string" }	
+	},
+	
+	"result": { "item": "gobber2:gobber2_bow_nether" }
+}

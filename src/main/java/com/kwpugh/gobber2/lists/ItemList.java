@@ -59,6 +59,7 @@ public class ItemList
 	public static Item gobber2_shovel;
 	public static Item gobber2_axe;
 	public static Item gobber2_hoe;
+	public static Item gobber2_bow;
 	
 	public static Item gobber2_sword_nether;	
 	public static Item gobber2_pickaxe_nether;
@@ -67,6 +68,7 @@ public class ItemList
 	public static Item gobber2_shovel_nether;
 	public static Item gobber2_axe_nether;	
 	public static Item gobber2_hoe_nether;
+	public static Item gobber2_bow_nether;
 
 	public static Item gobber2_sword_end;
 	public static Item gobber2_sword_sniper;

@@ -19,7 +19,7 @@ public class BlockGobberGlassEnd extends GlassBlock
 
 	public BlockGobberGlassEnd(Properties properties)
 	{
-		super(properties.func_226896_b_());
+		super(properties);
 	}
 	
 	@OnlyIn(Dist.CLIENT)

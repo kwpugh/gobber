@@ -54,7 +54,7 @@ public class BlockDefender extends Block
 
 	public BlockDefender(Properties properties)
 	{
-		super(properties.func_226896_b_());
+		super(properties);
 	}
 
 	int minTickTime = 5;

@@ -31,7 +31,7 @@ public class BlockGobberGlass extends GlassBlock
 	   
 	public BlockGobberGlass(Properties properties)
 	{
-		super(properties.func_226896_b_());
+		super(properties);
 	}
     
 	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)

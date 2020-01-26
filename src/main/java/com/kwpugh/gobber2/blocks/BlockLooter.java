@@ -53,7 +53,7 @@ public class BlockLooter extends Block
 {
 	public BlockLooter(Properties properties)
 	{
-		super(properties.func_226896_b_());
+		super(properties);
 	}
 
 	int minTickTime = 5;
