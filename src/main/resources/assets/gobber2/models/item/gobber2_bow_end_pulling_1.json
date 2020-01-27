@@ -1,0 +1,6 @@
+{
+    "parent": "gobber2:item/gobber2_bow_end",
+    "textures": {
+        "layer0": "gobber2:item/gobber2_bow_end_pulling_1"
+    }
+}

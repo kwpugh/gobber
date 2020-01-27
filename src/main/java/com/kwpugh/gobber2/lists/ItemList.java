@@ -80,6 +80,7 @@ public class ItemList
 	public static Item gobber2_shovel_end;
 	public static Item gobber2_axe_end;	
 	public static Item gobber2_hoe_end;
+	public static Item gobber2_bow_end;
 	
 	
 	//Armor

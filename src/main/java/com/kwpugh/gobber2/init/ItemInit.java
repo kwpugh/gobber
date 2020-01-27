@@ -49,6 +49,7 @@ import com.kwpugh.gobber2.items.tools.ItemCustomAxe;
 import com.kwpugh.gobber2.items.tools.ItemCustomAxeEnd;
 import com.kwpugh.gobber2.items.tools.ItemCustomAxeNether;
 import com.kwpugh.gobber2.items.tools.ItemCustomBow;
+import com.kwpugh.gobber2.items.tools.ItemCustomBowEnd;
 import com.kwpugh.gobber2.items.tools.ItemCustomBowNether;
 import com.kwpugh.gobber2.items.tools.ItemCustomHammer;
 import com.kwpugh.gobber2.items.tools.ItemCustomHammerEnd;
@@ -213,6 +214,7 @@ public class ItemInit
 				ItemList.gobber2_sword_end = new ItemCustomSwordEnd(ToolMaterialList.gobber2_end, 14, -1.6f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_sword_end")),				
 				ItemList.gobber2_sword_sniper = new ItemCustomSwordSniper(ToolMaterialList.gobber2_end, 14, -1.6f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_sword_sniper")),
 				ItemList.gobber2_sword_traveler = new ItemCustomSwordTraveler(ToolMaterialList.gobber2_end, 14, -1.6f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_sword_traveler")),
+				ItemList.gobber2_bow_end = new ItemCustomBowEnd((new Item.Properties()).maxStackSize(1).group(Gobber2.gobber2).maxDamage(8000)).setRegistryName(location("gobber2_bow_end")),
 				ItemList.gobber2_pickaxe_end = new ItemCustomPickaxeEnd(ToolMaterialList.gobber2_end, 6, -2.2f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_pickaxe_end")),
 				ItemList.gobber2_shovel_end = new ItemCustomShovelEnd(ToolMaterialList.gobber2_end, 8.0f, -2.6f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_shovel_end")),
 				ItemList.gobber2_axe_end = new ItemCustomAxeEnd(ToolMaterialList.gobber2_end, 14.0f, -2.7f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_axe_end")),

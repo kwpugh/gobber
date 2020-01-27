@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.minecraft.block.BambooBlock;
 import net.minecraft.block.BambooSaplingBlock;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropsBlock;
 import net.minecraft.block.IGrowable;
@@ -61,11 +62,12 @@ public class ItemCustomRingFarmer extends Item
                         
                         BlockPos targetPos = new BlockPos(theX, theY, theZ);                       
                         BlockState blockstate = world.getBlockState(targetPos);
+                        Block targetBlock = blockstate.getBlock();
 
                         if ((blockstate.getBlock() instanceof CropsBlock) ||
                         		(blockstate.getBlock() instanceof SaplingBlock) ||                    
                         		(blockstate.getBlock() instanceof BambooBlock) ||
-                        		(blockstate.getBlock() instanceof BambooSaplingBlock)) 
+                        		(blockstate.getBlock() instanceof BambooSaplingBlock)  ) 
                         {
                             IGrowable igrowable = (IGrowable)blockstate.getBlock();
                             if ((igrowable.canGrow(world, targetPos, blockstate, world.isRemote)) && (player.ticksExisted % 180 == 0))
@@ -78,7 +80,7 @@ public class ItemCustomRingFarmer extends Item
                                   }
                                }
                             }
-                        }              	
+                        }                      
                     }
                 }
             }
