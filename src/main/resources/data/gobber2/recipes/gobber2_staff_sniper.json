@@ -12,7 +12,7 @@
 	{
 		"A": { "item": "gobber2:gobber2_rod_end" },
 		"B": { "item": "minecraft:blaze_rod" },
-		"C": { "item": "minecraft:crossbow" },
+		"C": { "item": "gobber2:gobber2_bow_end" },
 		"D": { "item": "minecraft:nether_star" }
 	},
 	
