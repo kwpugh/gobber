@@ -59,12 +59,10 @@ public class ItemCustomRingAttraction extends Item
 			for(ItemEntity e: items)
 			{
 				if(!player.isCrouching() && !e.getPersistentData().getBoolean("PreventRemoteMovement"))
-				//if(!player.isSneaking())
 				{
 					isPulling = true;							
-					double factor = 0.02;
-					//e.addVelocity((x - e.posX) * factor, (y - e.posY) * factor, (z - e.posZ) * factor);
-					e.addVelocity((x - e.getPosX()) * factor, (y - e.getPosY()) * factor, (z - e.getPosZ()) * factor);
+					double factor = 0.03;
+					e.addVelocity((x - e.getPosX()) * factor, (y - e.getPosY()+2) * factor, (z - e.getPosZ()) * factor);
 				}
 			}
 			
@@ -80,7 +78,7 @@ public class ItemCustomRingAttraction extends Item
 				if(!player.isCrouching())
 				{
 					isPulling = true;							
-					double factor = 0.02;
+					double factor = 0.03;
 					orb.addVelocity((x - orb.getPosX()) * factor, (y - orb.getPosY()) * factor, (z - orb.getPosZ()) * factor);
                     player.onItemPickup(orb, 1);
                     player.giveExperiencePoints(orb.xpValue);
@@ -138,6 +136,12 @@ public class ItemCustomRingAttraction extends Item
         return super.onItemRightClick(world, player, hand);
     }
     
+	@Override
+	public boolean hasEffect(ItemStack stack)
+	{
+		return EnableUtil.isEnabled(stack);
+	}
+	  
     @Override
 	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
 	{

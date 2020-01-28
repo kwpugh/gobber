@@ -10,6 +10,7 @@ import net.minecraft.block.BambooBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CactusBlock;
+import net.minecraft.block.CocoaBlock;
 import net.minecraft.block.CropsBlock;
 import net.minecraft.block.MelonBlock;
 import net.minecraft.block.NetherWartBlock;
@@ -33,8 +34,7 @@ import net.minecraft.world.World;
  * Re-planting currently only works on crops that
  * are extended from CropsBlocks
  * 
- * TO DO: figure out how to do this with melons,
- * pumpkins, cactus, bamboo, cane, etc.  Key issue
+ * TO DO: figure out how to do this with cactus, bamboo, cane, etc.  Key issue
  * is "how to determine their maxAge"
  * 
  */
@@ -72,6 +72,7 @@ public class ItemCustomStaffHarvest extends Item
 								block instanceof SugarCaneBlock ||
 								block instanceof BambooBlock ||
 								block instanceof MelonBlock ||
+								block instanceof CocoaBlock ||
 								block instanceof PumpkinBlock)
 						{
 							poslist.add(player.getPosition().add(x, y, z));
@@ -90,12 +91,13 @@ public class ItemCustomStaffHarvest extends Item
 					BlockState defaultState = block.getDefaultState();
 					
 					//These plants are simply broken with drops
-					if(block instanceof CactusBlock ||
+					if(block instanceof CocoaBlock ||
+							block instanceof MelonBlock ||
+							block instanceof PumpkinBlock ||
+							block instanceof CactusBlock ||
 							block instanceof SugarCaneBlock ||
 							block instanceof NetherWartBlock ||
-							block instanceof BambooBlock ||
-							block instanceof MelonBlock ||
-							block instanceof PumpkinBlock)
+							block instanceof BambooBlock)
 					{
 						world.destroyBlock(targetPos, true);
 					}
@@ -109,39 +111,6 @@ public class ItemCustomStaffHarvest extends Item
 						{
 							world.destroyBlock(targetPos, true);
 							world.setBlockState(targetPos, defaultState);	
-						}
-					}
-					
-					
-					//Gobber plants are checked separately because they do not have natural drops (intentionally) and Globettes need to be spawned manually
-					if(block == BlockList.gobber2_plant || 
-							block == BlockList.gobber2_plant_nether || 
-							block == BlockList.gobber2_plant_end)
-					{
-						maxAge = state.get(((CropsBlock) block).getAgeProperty()) >= ((CropsBlock) block).getMaxAge();
-						
-						if(maxAge)
-						{
-							if(block == BlockList.gobber2_plant)
-							{
-								world.destroyBlock(targetPos, true);
-								world.setBlockState(targetPos, defaultState);
-								world.addEntity(new ItemEntity(world, targetPos.getX(), targetPos.getY(), targetPos.getZ(), new ItemStack(ItemList.gobber2_globette, 1)));
-							}
-							
-							if(block == BlockList.gobber2_plant_nether)
-							{
-								world.destroyBlock(targetPos, true);
-								world.setBlockState(targetPos, defaultState);
-								world.addEntity(new ItemEntity(world, targetPos.getX(), targetPos.getY(), targetPos.getZ(), new ItemStack(ItemList.gobber2_globette_nether, 1)));
-							}
-							
-							if(block == BlockList.gobber2_plant_end)
-							{
-								world.destroyBlock(targetPos, true);
-								world.setBlockState(targetPos, defaultState);
-								world.addEntity(new ItemEntity(world, targetPos.getX(), targetPos.getY(), targetPos.getZ(), new ItemStack(ItemList.gobber2_globette_end, 1)));
-							}	
 						}
 					}
 				}
