@@ -66,64 +66,60 @@ public class ItemCustomStaffFarmer extends Item
         
         if(stack == equippedMain || stack == equippedOff)
         {
-            int range = 15;
-            for(int x = -range; x < range+1; x++)
-            {
-                for(int z = -range; z < range+1; z++)
-                {
-                    for(int y = -range; y < range+1; y++)
-                    {
-                        int theX = MathHelper.floor(player.getPosX()+x);
-                        int theY = MathHelper.floor(player.getPosY()+y);
-                        int theZ = MathHelper.floor(player.getPosZ()+z);
-                        
-                        BlockPos targetPos = new BlockPos(theX, theY, theZ);                       
-                        BlockState blockstate = world.getBlockState(targetPos);
-                        Block targetBlock = blockstate.getBlock();
-                      
-                        if ((blockstate.getBlock() instanceof CropsBlock) ||
-                        		(blockstate.getBlock() instanceof SaplingBlock) ||
-                        		(blockstate.getBlock() instanceof VineBlock) ||                     		               
-                        		(blockstate.getBlock() instanceof SugarCaneBlock) ||
-                        		(blockstate.getBlock() instanceof SweetBerryBushBlock) ||
-                        		(blockstate.getBlock() instanceof NetherWartBlock) ||
-                        		(blockstate.getBlock() instanceof CactusBlock) ||
-                        		(blockstate.getBlock() instanceof MelonBlock) ||
-                        		(blockstate.getBlock() instanceof StemBlock) ||
-                        		(blockstate.getBlock() instanceof PumpkinBlock) ) 
-                        {
-                        	if (!world.isRemote)
-                    		{
-                        		if (player.ticksExisted % 20 == 0)
-                        		{
-                        			blockstate.func_227033_a_((ServerWorld) world, targetPos, world.rand);
-                       		 	}                                                               
-                    		}
-                        }
+        	if (!world.isRemote)
+        	{
+        		  int range = 15;
+                  for(int x = -range; x < range+1; x++)
+                  {
+                      for(int z = -range; z < range+1; z++)
+                      {
+                          for(int y = -range; y < range+1; y++)
+                          {
+                              int theX = MathHelper.floor(player.getPosX()+x);
+                              int theY = MathHelper.floor(player.getPosY()+y);
+                              int theZ = MathHelper.floor(player.getPosZ()+z);
+                              
+                              BlockPos targetPos = new BlockPos(theX, theY, theZ);                       
+                              BlockState blockstate = world.getBlockState(targetPos);
+                            
+                              if ((blockstate.getBlock() instanceof CropsBlock) ||
+                              		(blockstate.getBlock() instanceof SaplingBlock) ||
+                              		(blockstate.getBlock() instanceof VineBlock) ||                     		               
+                              		(blockstate.getBlock() instanceof SugarCaneBlock) ||
+                              		(blockstate.getBlock() instanceof SweetBerryBushBlock) ||
+                              		(blockstate.getBlock() instanceof NetherWartBlock) ||
+                              		(blockstate.getBlock() instanceof CactusBlock) ||
+                              		(blockstate.getBlock() instanceof MelonBlock) ||
+                              		(blockstate.getBlock() instanceof StemBlock) ||
+                              		(blockstate.getBlock() instanceof PumpkinBlock) ) 
+                              {
+                              		if (player.ticksExisted % 20 == 0)
+                              		{
+                              			blockstate.func_227033_a_((ServerWorld) world, targetPos, world.rand);
+                             		}                                                               
+                              }
 
-                        if ((blockstate.getBlock() instanceof CoralBlock) ||		
-                        		(blockstate.getBlock() instanceof BambooSaplingBlock) || 
-                        		(blockstate.getBlock() instanceof BambooBlock)  ||
-                        		(blockstate.getBlock() instanceof CocoaBlock) || 
-                        		(blockstate.getBlock() instanceof StemGrownBlock) ||
-                        		(blockstate.getBlock() instanceof CoralPlantBlock) ||
-                        		(blockstate.getBlock() instanceof CoralBlock) ||
-                        		(blockstate.getBlock() instanceof TallSeaGrassBlock) ||
-                        		(blockstate.getBlock() instanceof SeaGrassBlock) ||
-                        		(blockstate.getBlock() instanceof SeaPickleBlock) ||
-                        		(blockstate.getBlock() instanceof ChorusFlowerBlock) )
-                        {
-                        	if (!world.isRemote)
-                    		{
-                        		if (player.ticksExisted % 40 == 0)
-                        		{
-                        			blockstate.func_227033_a_((ServerWorld) world, targetPos, world.rand);
-                        		}
-                    		}
-                        }
-                    }
-                }
-            }
+                              if ((blockstate.getBlock() instanceof CoralBlock) ||		
+                              		(blockstate.getBlock() instanceof BambooSaplingBlock) || 
+                              		(blockstate.getBlock() instanceof BambooBlock)  ||
+                              		(blockstate.getBlock() instanceof CocoaBlock) || 
+                              		(blockstate.getBlock() instanceof StemGrownBlock) ||
+                              		(blockstate.getBlock() instanceof CoralPlantBlock) ||
+                              		(blockstate.getBlock() instanceof CoralBlock) ||
+                              		(blockstate.getBlock() instanceof TallSeaGrassBlock) ||
+                              		(blockstate.getBlock() instanceof SeaGrassBlock) ||
+                              		(blockstate.getBlock() instanceof SeaPickleBlock) ||
+                              		(blockstate.getBlock() instanceof ChorusFlowerBlock) )
+                              {
+			                  		if (player.ticksExisted % 40 == 0)
+			                  		{
+			                  			blockstate.func_227033_a_((ServerWorld) world, targetPos, world.rand);
+			                  		}	
+                              }
+                          }
+                      }
+                  }
+        	} 
         }
     }
 
@@ -234,7 +230,7 @@ public class ItemCustomStaffFarmer extends Item
 	{
 		super.addInformation(stack, world, list, flag);				
 		list.add(new StringTextComponent(TextFormatting.BLUE + "Combines the Ring of the Farmer and the Staff of the Harvest"));
-		list.add(new StringTextComponent(TextFormatting.GREEN +"Area of effect: 12x2x12"));
+		list.add(new StringTextComponent(TextFormatting.GREEN +"Area of effect: 12x12"));
 		list.add(new StringTextComponent(TextFormatting.GREEN + "Right-click to use"));
 	} 
 }

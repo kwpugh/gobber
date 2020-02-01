@@ -61,7 +61,7 @@ public class ItemCustomRingAttraction extends Item
 				if(!player.isCrouching() && !e.getPersistentData().getBoolean("PreventRemoteMovement"))
 				{
 					isPulling = true;							
-					double factor = 0.03;
+					double factor = 0.04;
 					e.addVelocity((x - e.getPosX()) * factor, (y - e.getPosY()+2) * factor, (z - e.getPosZ()) * factor);
 				}
 			}
@@ -78,8 +78,8 @@ public class ItemCustomRingAttraction extends Item
 				if(!player.isCrouching())
 				{
 					isPulling = true;							
-					double factor = 0.03;
-					orb.addVelocity((x - orb.getPosX()) * factor, (y - orb.getPosY()) * factor, (z - orb.getPosZ()) * factor);
+					double factor = 0.04;
+					orb.addVelocity((x - orb.getPosX()) * factor, (y - orb.getPosY()+2) * factor, (z - orb.getPosZ()) * factor);
                     player.onItemPickup(orb, 1);
                     player.giveExperiencePoints(orb.xpValue);
                     orb.remove();
