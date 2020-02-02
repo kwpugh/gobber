@@ -143,6 +143,7 @@ public class ItemList
 	public static Item gobber2_staff_stars;
 	public static Item gobber2_staff_harvest;
 	public static Item gobber2_staff_farmer;
+	public static Item gobber2_staff_ensnarement;
 	
 	
 	//Medallion

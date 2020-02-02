@@ -40,7 +40,7 @@ public final class ModEventSubscriber
                 if (event.isCancelable()) event.setCanceled(true);
             } 
             
-          //Drowning
+            //Drowning
             if ((event.getSource() == DamageSource.DROWN) &&
                     ArmorUtil.isPlayerGotWaterBreathing(player))
             {

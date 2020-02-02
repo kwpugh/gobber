@@ -41,6 +41,7 @@ import com.kwpugh.gobber2.items.rings.ItemCustomRingTraveler;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingVision;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingVoid;
 import com.kwpugh.gobber2.items.staffs.ItemCustomStaffClearing;
+import com.kwpugh.gobber2.items.staffs.ItemCustomStaffEnsnarement;
 import com.kwpugh.gobber2.items.staffs.ItemCustomStaffFarmer;
 import com.kwpugh.gobber2.items.staffs.ItemCustomStaffHarvest;
 import com.kwpugh.gobber2.items.staffs.ItemCustomStaffSniper;
@@ -136,16 +137,6 @@ public class ItemInit
 				ItemList.gobber2_rod_nether = new Item(new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_rod_nether")),
 				ItemList.gobber2_rod_end = new Item(new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_rod_end")),
 				
-				ItemList.gobber2_medallion = new Item(new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_medallion")),
-				ItemList.gobber2_medallion_nether = new Item(new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_medallion_nether")),
-				ItemList.gobber2_medallion_end = new Item(new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_medallion_end")),
-				ItemList.gobber2_medallion_stepping = new ItemCustomMedallionStepping(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_medallion_stepping")),
-				ItemList.gobber2_medallion_breathing = new ItemCustomMedallionBreathing(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_medallion_breathing")),
-				ItemList.gobber2_medallion_hero = new ItemCustomMedallionHero(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_medallion_hero")),
-				ItemList.gobber2_medallion_glowing = new ItemCustomMedallionGlowing(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_medallion_glowing")),
-				ItemList.gobber2_medallion_conduit = new ItemCustomMedallionConduit(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_medallion_conduit")),
-				ItemList.gobber2_medallion_dolphin = new ItemCustomMedallionDolphin(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_medallion_dolphin")),
-				
 				ItemList.gobber2_foo = new ItemCustomFuel(new Item.Properties().group(Gobber2.gobber2), "gobber2_foo", 64000),
 				ItemList.gobber2_foo_nether = new ItemCustomFuelNether(new Item.Properties().group(Gobber2.gobber2), "gobber2_foo_nether", 96000),
 				ItemList.gobber2_foo_end = new ItemCustomFuelEnd(new Item.Properties().group(Gobber2.gobber2), "gobber2_foo_end", 128000),
@@ -225,7 +216,7 @@ public class ItemInit
 				
 				
 				
-				//Gobber Rings
+				//Rings
 				ItemList.gobber2_ring = new ItemCustomRing(new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring")),
 				ItemList.gobber2_ring_attraction = new ItemCustomRingAttraction(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_attraction")),
 				ItemList.gobber2_ring_return = new ItemCustomRingReturn(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_return")),
@@ -258,7 +249,16 @@ public class ItemInit
 				ItemList.gobber2_ring_teleport = new ItemCustomRingTeleport(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_teleport")),
 				ItemList.gobber2_ring_blink = new ItemCustomRingBlink(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_blink")),	
 				
-				
+				//Medallions
+				ItemList.gobber2_medallion = new Item(new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_medallion")),
+				ItemList.gobber2_medallion_nether = new Item(new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_medallion_nether")),
+				ItemList.gobber2_medallion_end = new Item(new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_medallion_end")),
+				ItemList.gobber2_medallion_stepping = new ItemCustomMedallionStepping(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_medallion_stepping")),
+				ItemList.gobber2_medallion_breathing = new ItemCustomMedallionBreathing(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_medallion_breathing")),
+				ItemList.gobber2_medallion_hero = new ItemCustomMedallionHero(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_medallion_hero")),
+				ItemList.gobber2_medallion_glowing = new ItemCustomMedallionGlowing(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_medallion_glowing")),
+				ItemList.gobber2_medallion_conduit = new ItemCustomMedallionConduit(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_medallion_conduit")),
+				ItemList.gobber2_medallion_dolphin = new ItemCustomMedallionDolphin(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_medallion_dolphin")),
 				
 				//Staffs
 				ItemList.gobber2_staff_clearing = new ItemCustomStaffClearing(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_staff_clearing")),
@@ -266,7 +266,8 @@ public class ItemInit
 				ItemList.gobber2_staff_harvest = new ItemCustomStaffHarvest(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_staff_harvest")),
 				ItemList.gobber2_staff_stars = new ItemCustomStaffStars(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_staff_stars")),
 				ItemList.gobber2_staff_sniper = new ItemCustomStaffSniper(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_staff_sniper")),
-				
+				ItemList.gobber2_staff_ensnarement = new ItemCustomStaffEnsnarement(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_staff_ensnarement")),
+						
 				ItemList.block_healer = new BlockItem(BlockList.block_healer, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.block_healer.getRegistryName()),				
 				ItemList.block_protector = new BlockItem(BlockList.block_protector, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.block_protector.getRegistryName()),
 				ItemList.block_defender = new BlockItem(BlockList.block_defender, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.block_defender.getRegistryName()),

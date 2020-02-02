@@ -25,6 +25,7 @@ public class ItemCustomMedallionStepping extends Item
 
 	float currentStepHeight;
 	
+	@Override
 	public void inventoryTick(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected)
 	{		
 		if(entity instanceof PlayerEntity)

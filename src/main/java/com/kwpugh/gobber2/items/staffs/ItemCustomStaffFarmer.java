@@ -95,7 +95,7 @@ public class ItemCustomStaffFarmer extends Item
                               {
                               		if (player.ticksExisted % 20 == 0)
                               		{
-                              			blockstate.func_227033_a_((ServerWorld) world, targetPos, world.rand);
+                              			blockstate.tick((ServerWorld) world, targetPos, world.rand);
                              		}                                                               
                               }
 
@@ -113,7 +113,7 @@ public class ItemCustomStaffFarmer extends Item
                               {
 			                  		if (player.ticksExisted % 40 == 0)
 			                  		{
-			                  			blockstate.func_227033_a_((ServerWorld) world, targetPos, world.rand);
+			                  			blockstate.tick((ServerWorld) world, targetPos, world.rand);
 			                  		}	
                               }
                           }

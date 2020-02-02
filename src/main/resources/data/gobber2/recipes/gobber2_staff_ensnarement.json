@@ -1,0 +1,34 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " CA",
+        " BC",
+        "B  "
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "minecraft:string"
+        },
+        
+        "B":
+        {
+            "item": "gobber2:gobber2_rod"
+        },
+        "C":
+        {
+            "item": "minecraft:emerald"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_staff_ensnarement",
+        "count": 1
+    }
+}
