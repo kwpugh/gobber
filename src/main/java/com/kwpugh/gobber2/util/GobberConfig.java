@@ -11,15 +11,15 @@ import net.minecraftforge.common.ForgeConfigSpec;
 
 public class GobberConfig
 {
-    private static final ForgeConfigSpec.Builder SERVER_BUILDER = new ForgeConfigSpec.Builder();
+    private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
 
-    public static final ForgeConfigSpec SERVER_CONFIG;
+    public static final ForgeConfigSpec CONFIG;
 
     static
     {
-        GeneralModConfig.init(SERVER_BUILDER);
+        GeneralModConfig.init(BUILDER);
 
-        SERVER_CONFIG = SERVER_BUILDER.build();
+        CONFIG = BUILDER.build();
     }
 
     public static void loadConfig(ForgeConfigSpec spec, Path path)

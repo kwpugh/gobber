@@ -4,6 +4,8 @@ import com.kwpugh.gobber2.Gobber2;
 import com.kwpugh.gobber2.items.armor.ItemCustomArmorEnd;
 import com.kwpugh.gobber2.items.armor.ItemCustomArmorGobber;
 import com.kwpugh.gobber2.items.armor.ItemCustomArmorNether;
+import com.kwpugh.gobber2.items.foods.GooeyBeefstew;
+import com.kwpugh.gobber2.items.foods.GooeyBeefstewNether;
 import com.kwpugh.gobber2.items.fuels.ItemCustomFuel;
 import com.kwpugh.gobber2.items.fuels.ItemCustomFuelEnd;
 import com.kwpugh.gobber2.items.fuels.ItemCustomFuelNether;
@@ -149,13 +151,13 @@ public class ItemInit
 				ItemList.gobber2_gooey_apple = new Item(new Item.Properties().food(FoodList.gooeyApple).group(Gobber2.gobber2)).setRegistryName(location("gobber2_gooey_apple")),
 				ItemList.gobber2_gooey_bread = new Item(new Item.Properties().food(FoodList.gooeyBread).group(Gobber2.gobber2)).setRegistryName(location("gobber2_gooey_bread")),
 				ItemList.gobber2_gooey_beef = new Item(new Item.Properties().food(FoodList.gooeyBeef).group(Gobber2.gobber2)).setRegistryName(location("gobber2_gooey_beef")),
-				ItemList.gobber2_gooey_beefstew = new Item(new Item.Properties().food(FoodList.gooeyBeefstew).group(Gobber2.gobber2)).setRegistryName(location("gobber2_gooey_beefstew")),
+				ItemList.gobber2_gooey_beefstew = new GooeyBeefstew(new Item.Properties().maxStackSize(1).food(FoodList.gooeyBeefstew).group(Gobber2.gobber2)).setRegistryName(location("gobber2_gooey_beefstew")),
 				
 				ItemList.gobber2_goo_nether = new Item(new Item.Properties().food(FoodList.gooFoodNether).group(Gobber2.gobber2)).setRegistryName(location("gobber2_goo_nether")),
 				ItemList.gobber2_gooey_apple_nether = new Item(new Item.Properties().food(FoodList.gooeyAppleNether).group(Gobber2.gobber2)).setRegistryName(location("gobber2_gooey_apple_nether")),
 				ItemList.gobber2_gooey_bread_nether = new Item(new Item.Properties().food(FoodList.gooeyBreadNether).group(Gobber2.gobber2)).setRegistryName(location("gobber2_gooey_bread_nether")),
 				ItemList.gobber2_gooey_beef_nether = new Item(new Item.Properties().food(FoodList.gooeyBeefNether).group(Gobber2.gobber2)).setRegistryName(location("gobber2_gooey_beef_nether")),
-				ItemList.gobber2_gooey_beefstew_nether = new Item(new Item.Properties().food(FoodList.gooeyBeefstewNether).group(Gobber2.gobber2)).setRegistryName(location("gobber2_gooey_beefstew_nether")),
+				ItemList.gobber2_gooey_beefstew_nether = new GooeyBeefstewNether(new Item.Properties().maxStackSize(1).food(FoodList.gooeyBeefstewNether).group(Gobber2.gobber2)).setRegistryName(location("gobber2_gooey_beefstew_nether")),
 					
 				
 				

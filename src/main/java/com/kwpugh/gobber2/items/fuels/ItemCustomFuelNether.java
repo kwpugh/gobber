@@ -32,6 +32,6 @@ public class ItemCustomFuelNether extends Item
 	{
 		super.addInformation(stack, world, list, flag);				
 		list.add(new StringTextComponent(TextFormatting.BLUE + "A better option than vanilla coal or charcoal"));
-		list.add(new StringTextComponent(TextFormatting.YELLOW + "Burntime: 96,000"));
+		list.add(new StringTextComponent(TextFormatting.YELLOW + "Burntime: " + this.burnTime));
 	} 
 }

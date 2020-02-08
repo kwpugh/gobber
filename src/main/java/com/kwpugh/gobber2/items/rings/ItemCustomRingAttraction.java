@@ -52,43 +52,29 @@ public class ItemCustomRingAttraction extends Item
 			double y = player.getPosY();
 			double z = player.getPosZ();
 
-			boolean isPulling;
-			
 			//Scan for and collect items
 			List<ItemEntity> items = entity.world.getEntitiesWithinAABB(ItemEntity.class, new AxisAlignedBB(x - range, y - range, z - range, x + range, y + range, z + range));
 			for(ItemEntity e: items)
 			{
 				if(!player.isCrouching() && !e.getPersistentData().getBoolean("PreventRemoteMovement"))
-				{
-					isPulling = true;							
-					double factor = 0.04;
-					e.addVelocity((x - e.getPosX()) * factor, (y - e.getPosY()+2) * factor, (z - e.getPosZ()) * factor);
+				{						
+					double factor = 0.035;
+					e.addVelocity((x - e.getPosX()) * factor, (y - e.getPosY()+1.25) * factor, (z - e.getPosZ()) * factor);
 				}
 			}
-			
-			if(items.isEmpty())
-			{
-				isPulling = false;
-			}
-			
+
 			//Scan for and collect XP Orbs
 			List<ExperienceOrbEntity> xp = entity.world.getEntitiesWithinAABB(ExperienceOrbEntity.class, new AxisAlignedBB(x - range, y - range, z - range, x + range, y + range, z + range));
 			for(ExperienceOrbEntity orb: xp)
 			{
 				if(!player.isCrouching())
-				{
-					isPulling = true;							
-					double factor = 0.04;
-					orb.addVelocity((x - orb.getPosX()) * factor, (y - orb.getPosY()+2) * factor, (z - orb.getPosZ()) * factor);
-                    player.onItemPickup(orb, 1);
-                    player.giveExperiencePoints(orb.xpValue);
-                    orb.remove();
+				{						
+					double factor = 0.035;
+					orb.addVelocity((x - orb.getPosX()) * factor, (y - orb.getPosY()+1.25) * factor, (z - orb.getPosZ()) * factor);
+                    //player.onItemPickup(orb, 1);
+                    //player.giveExperiencePoints(orb.xpValue);
+                    //orb.remove();
 				}
-			}
-			
-			if(items.isEmpty())
-			{
-				isPulling = false;
 			}
 		}
 	}
@@ -146,7 +132,7 @@ public class ItemCustomRingAttraction extends Item
 	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
 	{
 		super.addInformation(stack, world, list, flag);				
-		list.add(new StringTextComponent(TextFormatting.BLUE + "Draws dropped items toward the player"));
+		list.add(new StringTextComponent(TextFormatting.BLUE + "A magnet that draws dropped items toward the player"));
 		list.add(new StringTextComponent(TextFormatting.RED + "Attraction ability active: " + EnableUtil.isEnabled(stack)));
 		list.add(new StringTextComponent(TextFormatting.GOLD + "Works while in player inventory"));
 		list.add(new StringTextComponent(TextFormatting.GREEN + "Right-click to toggle on/off, sneak + right-click to cycle through ranges"));
