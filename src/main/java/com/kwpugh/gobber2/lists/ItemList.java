@@ -55,6 +55,7 @@ public class ItemList
 	public static Item gobber2_sword;
 	public static Item gobber2_pickaxe;
 	public static Item gobber2_hammer;
+	public static Item gobber2_excavator;
 	public static Item gobber2_paxel;
 	public static Item gobber2_shovel;
 	public static Item gobber2_axe;
@@ -64,6 +65,7 @@ public class ItemList
 	public static Item gobber2_sword_nether;	
 	public static Item gobber2_pickaxe_nether;
 	public static Item gobber2_hammer_nether;
+	public static Item gobber2_excavator_nether;
 	public static Item gobber2_paxel_nether;
 	public static Item gobber2_shovel_nether;
 	public static Item gobber2_axe_nether;	
@@ -75,6 +77,7 @@ public class ItemList
 	public static Item gobber2_sword_traveler;
 	public static Item gobber2_pickaxe_end;
 	public static Item gobber2_hammer_end;
+	public static Item gobber2_excavator_end;
 	public static Item gobber2_paxel_end;
 	public static Item gobber2_paxel_stars;
 	public static Item gobber2_shovel_end;
@@ -102,6 +105,8 @@ public class ItemList
 	public static Item gobber2_armor_repair;
 	
 	public static Item gobber2_links_end;
+	
+	public static Item gobber2_chestplate_dragon;
 	
 	
 	//Rings

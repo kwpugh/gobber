@@ -2,6 +2,8 @@ package com.kwpugh.gobber2.items.rings;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import com.kwpugh.gobber2.util.EnableUtil;
 
 import net.minecraft.client.util.ITooltipFlag;
@@ -15,9 +17,11 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ItemCustomRingSwiftness extends Item
 {
@@ -48,19 +52,18 @@ public class ItemCustomRingSwiftness extends Item
         if(!world.isRemote && player.isCrouching())
         {
             EnableUtil.changeEnabled(player, hand);
-            player.sendMessage(new StringTextComponent("Swiftness ability active: " + EnableUtil.isEnabled(stack)));
+            player.sendMessage(new TranslationTextComponent("item.gobber2.gobber2_ring_swiftness.line1", EnableUtil.isEnabled(stack)).applyTextStyle(TextFormatting.BLUE));
             return new ActionResult<ItemStack>(ActionResultType.SUCCESS, player.getHeldItem(hand));
         }
         return super.onItemRightClick(world, player, hand);
     }
 	
-   @Override
-	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
+	@OnlyIn(Dist.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
-		super.addInformation(stack, world, list, flag);				
-		list.add(new StringTextComponent(TextFormatting.BLUE + "Provides player with swiftness"));
-	list.add(new StringTextComponent(TextFormatting.RED + "Swiftness ability active: " + EnableUtil.isEnabled(stack)));
-	list.add(new StringTextComponent(TextFormatting.GREEN + "Sneak right-click to toggle on/off"));
-}   
-
+		super.addInformation(stack, worldIn, tooltip, flagIn);
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_swiftness.line2").applyTextStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_swiftness.line1", EnableUtil.isEnabled(stack)).applyTextStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_swiftness.line3").applyTextStyle(TextFormatting.YELLOW)));
+	}  
 }

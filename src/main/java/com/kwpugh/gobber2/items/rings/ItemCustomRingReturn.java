@@ -2,6 +2,8 @@ package com.kwpugh.gobber2.items.rings;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -14,11 +16,12 @@ import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionType;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 /*
  * Credit to Codenamerevy
@@ -47,26 +50,25 @@ public class ItemCustomRingReturn extends Item
         if(!world.isRemote())
         {
             PlayerEntity player = (ServerPlayerEntity) entity;
-            //BlockPos currentPos = player.getPosition();
 
             if(world.getDimension().getType() != DimensionType.OVERWORLD)
             {              
                 teleportToBed(player);
-                player.sendStatusMessage(new TranslationTextComponent("Welcome Home!"), true);
+                player.sendStatusMessage(new TranslationTextComponent("item.gobber2.gobber2_ring_return.line1"), true);
             }
 
             BlockPos bedLoc = player.getBedLocation(player.dimension);
 
             if (bedLoc == null)
             {   
-                player.sendStatusMessage(new TranslationTextComponent("Sleep in a bed first"), true);
+                player.sendStatusMessage(new TranslationTextComponent("item.gobber2.gobber2_ring_return.line2"), true);
                 return stack;
             }
             if (entity.getRidingEntity() != null) {
                 entity.stopRiding();
             }
             setPositionAndUpdate(entity, world, bedLoc);
-            player.sendStatusMessage(new TranslationTextComponent("Welcome Home!"), true);
+            player.sendStatusMessage(new TranslationTextComponent("item.gobber2.gobber2_ring_return.line1"), true);
         }
         return stack;
     }
@@ -83,13 +85,8 @@ public class ItemCustomRingReturn extends Item
 
         DimensionType prevDim = player.dimension;
         DimensionType destDim = prevDim == player.dimension ? DimensionType.OVERWORLD : player.dimension;
-
-        System.out.println("preDim: " + prevDim + "  " + "destDim: " + destDim);
         
         serverPlayer.teleport(player.getServer().getWorld(destDim), serverPlayer.serverPosX, serverPlayer.serverPosY, serverPlayer.serverPosZ, serverPlayer.rotationYaw, serverPlayer.rotationPitch);
-        
-//        serverPlayer.changeDimension(destDim);
-//        serverPlayer.teleportKeepLoaded(serverPlayer.serverPosX, serverPlayer.serverPosY, serverPlayer.serverPosZ);
     }
 
     public void setPositionAndUpdate(LivingEntity entity, World world, BlockPos bedLoc)
@@ -104,12 +101,12 @@ public class ItemCustomRingReturn extends Item
         return UseAction.BOW;
     } 
  
-    @Override
-	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
+	@OnlyIn(Dist.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
-		super.addInformation(stack, world, list, flag);				
-		list.add(new StringTextComponent(TextFormatting.BLUE + "Right-click and hold to return to bed location"));
-		list.add(new StringTextComponent(TextFormatting.GREEN + "Must sleep in a bed first to set bed spawn"));
-		list.add(new StringTextComponent(TextFormatting.GREEN + "Works across dimensions"));
-	}  
+		super.addInformation(stack, worldIn, tooltip, flagIn);
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_return.line3").applyTextStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_return.line2").applyTextStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_return.line4").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+	} 
 }

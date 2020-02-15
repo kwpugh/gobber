@@ -3,6 +3,8 @@ package com.kwpugh.gobber2.items.rings;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
@@ -21,7 +23,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ItemCustomRingLumberjack extends Item
 {
@@ -101,12 +106,12 @@ public class ItemCustomRingLumberjack extends Item
         return new ActionResult<ItemStack>(ActionResultType.SUCCESS, stack);
 	}
 	
-    @Override
-	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
+	@OnlyIn(Dist.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
-		super.addInformation(stack, world, list, flag);				
-		list.add(new StringTextComponent(TextFormatting.BLUE + "Breaks Logs and Leaves around the player"));
-		list.add(new StringTextComponent(TextFormatting.GREEN + "Area of effect: 11x32x11"));
-		list.add(new StringTextComponent(TextFormatting.GREEN + "Right-click to use"));
-	}   
+		super.addInformation(stack, worldIn, tooltip, flagIn);
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_lumberjack.line1").applyTextStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_lumberjack.line2").applyTextStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_lumberjack.line3").applyTextStyle(TextFormatting.YELLOW)));
+	} 
 }

@@ -37,7 +37,6 @@ public class Gobber2
 	{
 		instance = this;
 		
-		//ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, GobberConfig.CONFIG);
 		GobberConfig.loadConfig(GobberConfig.CONFIG, FMLPaths.CONFIGDIR.get().resolve("gobber-general.toml"));
 		
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::modSetup);

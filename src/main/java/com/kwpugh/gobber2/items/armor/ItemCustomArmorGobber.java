@@ -2,6 +2,8 @@ package com.kwpugh.gobber2.items.armor;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import com.kwpugh.gobber2.lists.ItemList;
 import com.kwpugh.gobber2.util.SpecialAbilities;
 
@@ -13,9 +15,11 @@ import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ItemCustomArmorGobber extends ArmorItem
 {
@@ -42,6 +46,8 @@ public class ItemCustomArmorGobber extends ArmorItem
 				player.removeActivePotionEffect(Effects.POISON);
 	    	}	
 		    
+	    	//Check ArmorUtil for additional perks applied to armor
+	    	
 		    //Helmet
 		    if(head.getItem() == ItemList.gobber2_helmet)
 			{
@@ -94,15 +100,15 @@ public class ItemCustomArmorGobber extends ArmorItem
 		return repair.getItem() == ItemList.gobber2_armor_repair;
 	}
 	
-    @Override
-	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
+	@OnlyIn(Dist.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
-		super.addInformation(stack, world, list, flag);				
-		list.add(new StringTextComponent(TextFormatting.AQUA + "Repair with Armor Plate"));
-		list.add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + "Helmet: Slow auto-feeding and water breathing"));
-		list.add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + "Chestplate: None"));
-		list.add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + "Leggings: No fall damage"));
-		list.add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + "Boots: None"));
-		list.add(new StringTextComponent(TextFormatting.GOLD + "Full suit bonus: Poison protection "));
+		super.addInformation(stack, worldIn, tooltip, flagIn);
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor.line1").applyTextStyle(TextFormatting.AQUA)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor.line2").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor.line3").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor.line4").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor.line5").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor.line6").applyTextStyle(TextFormatting.GOLD)));
 	}
 }

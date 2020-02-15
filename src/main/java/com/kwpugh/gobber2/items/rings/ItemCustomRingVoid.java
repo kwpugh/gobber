@@ -2,6 +2,8 @@ package com.kwpugh.gobber2.items.rings;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -9,14 +11,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionType;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ItemCustomRingVoid extends Item
 {
-
 	public ItemCustomRingVoid(Properties properties)
 	{
 		super(properties);
@@ -45,24 +48,25 @@ public class ItemCustomRingVoid extends Item
 			}
 			else if(((currentDim == 1)) && (!entity.isCrouching()))
 			{
-				entity.sendMessage(new StringTextComponent("Did you forget to hold sneak before right-click?"));
+				entity.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_void.line5").applyTextStyle(TextFormatting.GREEN)));
 			}
 			else
 			{
-				entity.sendMessage(new StringTextComponent("This device cannot help you here."));
+				entity.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_void.line6").applyTextStyle(TextFormatting.GREEN)));
 			}	
 		}
 	    
 	    return ActionResult.func_226251_d_(stack);
 	}
 	
-    @Override
-	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
+	@OnlyIn(Dist.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
-		super.addInformation(stack, world, list, flag);				
-		list.add(new StringTextComponent(TextFormatting.BLUE + "Teleports the player to the End"));
-		list.add(new StringTextComponent(TextFormatting.GREEN + "Right-click to use"));
-		list.add(new StringTextComponent(TextFormatting.GREEN + "Sneak right-click in the End to Return to Overworld"));
-		list.add(new StringTextComponent(TextFormatting.GOLD + "Sleep in a bed before using"));
+		super.addInformation(stack, worldIn, tooltip, flagIn);
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_void.line1").applyTextStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_void.line2").applyTextStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_void.line3").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_void.line4").applyTextStyle(TextFormatting.RED)));
+
 	}  
 }

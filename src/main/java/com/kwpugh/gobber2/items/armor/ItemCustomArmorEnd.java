@@ -2,6 +2,8 @@ package com.kwpugh.gobber2.items.armor;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import com.kwpugh.gobber2.lists.ItemList;
 import com.kwpugh.gobber2.util.SpecialAbilities;
 
@@ -14,9 +16,11 @@ import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ItemCustomArmorEnd extends ArmorItem
 {
@@ -24,26 +28,44 @@ public class ItemCustomArmorEnd extends ArmorItem
 	{
 		super(materialIn, slots, builder);
 	}
-	
+		  
 	@Override
 	public void onArmorTick(final ItemStack stack, final World world, final PlayerEntity player)
 	{
+		//Full Set Bonus
+		if(!player.getPersistentData().contains("wearingFullEndArmor"))player.getPersistentData().putBoolean("wearingFullEndArmor", false);
+			
 		ItemStack head = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
 		ItemStack chest = player.getItemStackFromSlot(EquipmentSlotType.CHEST);
 		ItemStack legs = player.getItemStackFromSlot(EquipmentSlotType.LEGS);
-	    ItemStack feet = player.getItemStackFromSlot(EquipmentSlotType.FEET);	
-	 
-	    setDamage(head, 0);
-	    setDamage(chest, 0);
-	    setDamage(legs, 0);
-	    setDamage(feet, 0);
-	    
-	    //Full Set
-    	if(head.getItem() == ItemList.gobber2_helmet_end && 
-    			chest.getItem() == ItemList.gobber2_chestplate_end &&
-    			legs.getItem() == ItemList.gobber2_leggings_end && 
-    			feet.getItem() == ItemList.gobber2_boots_end)
-    	{
+		ItemStack feet = player.getItemStackFromSlot(EquipmentSlotType.FEET);	
+ 
+		setDamage(head, 0);
+		setDamage(chest, 0);
+		setDamage(legs, 0);
+		setDamage(feet, 0);
+    
+		boolean isWearingFullEndArmor = head != null && head.getItem() == ItemList.gobber2_helmet_end && 
+				chest != null && chest.getItem() == ItemList.gobber2_chestplate_end &&
+				legs != null && legs.getItem() == ItemList.gobber2_leggings_end && 
+				feet != null && feet.getItem() == ItemList.gobber2_boots_end;
+    
+		boolean wasWearingArmorLastTick = player.getPersistentData().getBoolean("wearingFullEndArmor");
+        
+		if(!isWearingFullEndArmor && wasWearingArmorLastTick && !player.isCreative())
+		{
+			player.abilities.allowFlying = false;
+			player.abilities.isFlying = false;
+		}
+		else if(isWearingFullEndArmor && player.dimension.getId() == 1)
+		{
+			player.abilities.allowFlying = true;
+		}
+		player.getPersistentData().putBoolean("wearingFullEndArmor", isWearingFullEndArmor);
+    
+		if(isWearingFullEndArmor)
+		{
+			//Additional full set bonuses
 			player.removeActivePotionEffect(Effects.BLINDNESS);
 			player.removeActivePotionEffect(Effects.SLOWNESS);
 			player.removeActivePotionEffect(Effects.MINING_FATIGUE);
@@ -54,8 +76,10 @@ public class ItemCustomArmorEnd extends ArmorItem
 			player.removeActivePotionEffect(Effects.WITHER);
 			player.removeActivePotionEffect(Effects.LEVITATION);
 			player.removeActivePotionEffect(Effects.UNLUCK);
-			player.removeActivePotionEffect(Effects.WEAKNESS);	
-    	}	
+			player.removeActivePotionEffect(Effects.WEAKNESS);
+		} 
+     
+		//Check ArmorUtil for additional perks applied to armor
 
 	    //Helmet
 	    if(head.getItem() == ItemList.gobber2_helmet_end)
@@ -71,12 +95,16 @@ public class ItemCustomArmorEnd extends ArmorItem
 			SpecialAbilities.giveNoExtraHearts(world, player, stack);
 		}
 	    
+	    
+	    
 	    //Chestplate
 	    if(chest.getItem() == ItemList.gobber2_chestplate_end)
 		{				
 	 		player.getAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(40.0D); 
 		 }		
 
+	    
+	    
 	    //Leggings
 	    if(legs.getItem() == ItemList.gobber2_leggings_end)
 		{
@@ -86,6 +114,8 @@ public class ItemCustomArmorEnd extends ArmorItem
 		{
 			//something
 		}		
+	    
+	    
 	    
 	    //Boots
 	    if(feet.getItem() == ItemList.gobber2_boots_end)
@@ -109,16 +139,15 @@ public class ItemCustomArmorEnd extends ArmorItem
 	{
 		return repair.getItem() == ItemList.gobber2_armor_repair;
 	}
-    
-    @Override
-	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
+	
+	@OnlyIn(Dist.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
-		super.addInformation(stack, world, list, flag);				
-		list.add(new StringTextComponent(TextFormatting.AQUA + "Repair with Armor Plate"));
-		list.add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + "Helmet: Rapid auto-feeding with saturation, water breathing and aborption hearts"));
-		list.add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + "Chestplate: Fire protection and knockback resistance"));
-		list.add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + "Leggings: Conduit Power in water and No fall damage"));
-		list.add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + "Boots: Dolphin's Grace in water"));
-		list.add(new StringTextComponent(TextFormatting.GOLD + "Full suit bonus: Negative effect protection"));
+		super.addInformation(stack, worldIn, tooltip, flagIn);
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_end.line1").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_end.line2").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_end.line3").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_end.line4").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_end.line5").applyTextStyle(TextFormatting.GOLD)));
 	}
 }

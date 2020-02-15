@@ -67,6 +67,7 @@ public final class ArmorUtil
     	//Chestplate
     	if(chest.getItem() == ItemList.gobber2_chestplate_nether ||
       			chest.getItem() == ItemList.gobber2_chestplate_end  ||
+      			chest.getItem() == ItemList.gobber2_chestplate_dragon ||
       			
       			mainHand.getItem() == ItemList.gobber2_ring_blaze)
       	{

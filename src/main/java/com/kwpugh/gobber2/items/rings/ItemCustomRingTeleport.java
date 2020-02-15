@@ -2,6 +2,8 @@ package com.kwpugh.gobber2.items.rings;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -17,10 +19,12 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionType;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ItemCustomRingTeleport extends Item
 {
@@ -42,13 +46,13 @@ public class ItemCustomRingTeleport extends Item
 		 if(getPosition(stackRing) == null && player.isCrouching())
 		 {
 			 setPosition(stackRing, world, pos.offset(direction), player);
-			 player.sendMessage(new StringTextComponent("Location set!"));
+			 player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line1").applyTextStyle(TextFormatting.GREEN)));
 				 return ActionResultType.SUCCESS;
 			 }
 		 
 			 if(getPosition(stackRing) != null)
 			 {
-				 player.sendMessage(new StringTextComponent("Location already set."));
+				 player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line2").applyTextStyle(TextFormatting.GREEN)));
 			 return ActionResultType.SUCCESS;
 		 }
 		 
@@ -69,7 +73,7 @@ public class ItemCustomRingTeleport extends Item
 		if(getPosition(stack) != null && player.isCrouching())
 		{
 			setPosition(stack, world, null, player);
-			player.sendMessage(new StringTextComponent("Location cleared!"));
+			player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line3").applyTextStyle(TextFormatting.GREEN)));
 		}
 	 
 		return new ActionResult<>(ActionResultType.PASS, player.getHeldItem(hand)); 
@@ -163,33 +167,33 @@ public class ItemCustomRingTeleport extends Item
 			{
 				player.changeDimension(DimensionType.OVERWORLD);
 				player.setPositionAndUpdate(pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F);
-				
-				player.sendMessage(new StringTextComponent("Welcome to the Overworld")); 
+
+				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line4").applyTextStyle(TextFormatting.GREEN)));
 			}
 			else if(getDimension(stack) == 1)
 			{
 				player.changeDimension(DimensionType.THE_END);
 				player.setPositionAndUpdate(pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F);
-				
-				player.sendMessage(new StringTextComponent("Welcome to the End")); 
+
+				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line5").applyTextStyle(TextFormatting.GREEN)));
 			} 	
 			else if(getDimension(stack) == -1)
 			{
 				player.changeDimension(DimensionType.THE_NETHER);
 				player.setPositionAndUpdate(pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F);
-				
-				player.sendMessage(new StringTextComponent("Welcome to Hell!")); 
+
+				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line6").applyTextStyle(TextFormatting.GREEN)));
 			}
 			else
 			{
-				player.sendMessage(new StringTextComponent("Only Vanilla Minecraft dimensions supported.")); 
-				player.sendMessage(new StringTextComponent("Travel to the stored dimension and try again.")); 
+				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line7").applyTextStyle(TextFormatting.GREEN)));
+				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line8").applyTextStyle(TextFormatting.GREEN)));
 			}
 		}
 	}
-	
-	@Override
-	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
+
+	@OnlyIn(Dist.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		String dimName;
 		
@@ -209,18 +213,19 @@ public class ItemCustomRingTeleport extends Item
 			break;
 		}
 		
-		super.addInformation(stack, world, list, flag);				
-		list.add(new StringTextComponent(TextFormatting.BLUE + "Allows player to teleport to saved location on right-click"));
-		list.add(new StringTextComponent(TextFormatting.GREEN + "Does not work across dimensions"));
-		list.add(new StringTextComponent(TextFormatting.WHITE + "Set: " + TextFormatting.AQUA + "point at a block and sneak + right-click"));
-		list.add(new StringTextComponent(TextFormatting.WHITE + "Clear: " + TextFormatting.AQUA + "point in the air and sneak + right-click"));
+		super.addInformation(stack, worldIn, tooltip, flagIn);
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line9").applyTextStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line10").applyTextStyle(TextFormatting.GREEN)));
+		
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line11").applyTextStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line12").applyTextStyle(TextFormatting.YELLOW)));
 		
 		if(getPosition(stack) != null)
 		{
 			BlockPos pos = getPosition(stack);
 		 
-			list.add(new StringTextComponent(TextFormatting.GOLD + "Location Stored:"));
-			list.add(new StringTextComponent(TextFormatting.YELLOW + "Dim: " + dimName + "  X: " + pos.getX() + "  Y: " + pos.getY() + "  Z: " + pos.getZ()));
+			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line13").applyTextStyle(TextFormatting.RED)));
+			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line14", dimName, pos.getX(), pos.getY(), pos.getZ()).applyTextStyle(TextFormatting.LIGHT_PURPLE)));
 		}
-	}   
+	} 
 }

@@ -2,6 +2,8 @@ package com.kwpugh.gobber2.items.rings;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -10,13 +12,14 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ItemCustomRingAcceleration extends Item
 {
-
 	public ItemCustomRingAcceleration(Properties properties)
 	{
 		super(properties);
@@ -43,15 +46,14 @@ public class ItemCustomRingAcceleration extends Item
 				player.addVelocity(lookX * 0.35, lookY * 0.35, lookZ * 0.35);	
 			}
 		 }	
-		 return result;
-		 
+		 return result; 
 	}
 	
-    @Override
-	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
+	@OnlyIn(Dist.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
-		super.addInformation(stack, world, list, flag);				
-		list.add(new StringTextComponent(TextFormatting.BLUE + "Provides a boost in velocity while player is aloft"));
-		list.add(new StringTextComponent(TextFormatting.GREEN + "Right-click and hold, then jump"));
-	}   
+		super.addInformation(stack, worldIn, tooltip, flagIn);
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_acceleration.line1").applyTextStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_acceleration.line2").applyTextStyle(TextFormatting.YELLOW)));
+	}  
 }

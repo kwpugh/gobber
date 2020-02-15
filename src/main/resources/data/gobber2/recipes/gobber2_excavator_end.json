@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " AA",
+        " BA",
+        "B  "
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_block_end"
+        },      
+        "B":
+        {
+            "item": "gobber2:gobber2_rod_end"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_excavator_end",
+        "count": 1
+    }
+}

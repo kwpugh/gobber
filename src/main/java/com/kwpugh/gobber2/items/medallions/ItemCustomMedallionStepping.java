@@ -2,6 +2,8 @@ package com.kwpugh.gobber2.items.medallions;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -11,13 +13,14 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ItemCustomMedallionStepping extends Item
 {
-
 	public ItemCustomMedallionStepping(Properties properties)
 	{
 		super(properties);
@@ -40,7 +43,7 @@ public class ItemCustomMedallionStepping extends Item
     {
 		if(!(player.isCrouching()))
 		{
-			player.sendMessage(new StringTextComponent("Current player step height: " + player.stepHeight));
+			player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_medallion_stepping.line1", player.stepHeight).applyTextStyle(TextFormatting.GREEN)));
 		}
 		
         if(player.isCrouching())
@@ -48,23 +51,23 @@ public class ItemCustomMedallionStepping extends Item
         	if(player.stepHeight < 1.0F)
 		    {
 		    	player.stepHeight = 1.0F;
-		    	player.sendMessage(new StringTextComponent("Step Height set to 1 block"));
+		    	player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_medallion_stepping.line2", player.stepHeight).applyTextStyle(TextFormatting.GREEN)));
 		    }
 		    else if(player.stepHeight == 1.0F)
 			{
 		    	player.stepHeight = 2.1F;
-		    	player.sendMessage(new StringTextComponent("Step Height set to 2 blocks"));
+		    	player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_medallion_stepping.line2", player.stepHeight).applyTextStyle(TextFormatting.GREEN)));
 			}
 			else if(player.stepHeight == 2.1F)
 			{
 				player.stepHeight = 3.1F;
-				player.sendMessage(new StringTextComponent("Step Height set to 3 blocks"));
+				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_medallion_stepping.line2", player.stepHeight).applyTextStyle(TextFormatting.GREEN)));
 			}
 			else if(player.stepHeight == 3.1F)
 			{
 				player.stepHeight = 0.6F;
-				player.sendMessage(new StringTextComponent("Step Height set to vanilla default"));
-				player.sendMessage(new StringTextComponent("You will need to relog to restore full sneak ability"));
+				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_medallion_stepping.line3").applyTextStyle(TextFormatting.GREEN)));
+				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_medallion_stepping.line4").applyTextStyle(TextFormatting.GREEN)));
 			}		    
 		    
         	currentStepHeight = player.stepHeight;
@@ -74,12 +77,12 @@ public class ItemCustomMedallionStepping extends Item
         return super.onItemRightClick(world, player, hand);
 	}
 	
-   @Override
-	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
+	@OnlyIn(Dist.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
-		super.addInformation(stack, world, list, flag);				
-		list.add(new StringTextComponent(TextFormatting.BLUE + "Allows the player to toggle through default, 1, 2, and 3 step height"));
-		list.add(new StringTextComponent(TextFormatting.GREEN + "Sneak + right-click to toggle through"));
-		list.add(new StringTextComponent(TextFormatting.YELLOW + "To restore full sneak abilities, please relog"));
+		super.addInformation(stack, worldIn, tooltip, flagIn);
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_medallion_stepping.line5").applyTextStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_medallion_stepping.line6").applyTextStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_medallion_stepping.line7").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
 	} 
 }
