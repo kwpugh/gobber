@@ -31,7 +31,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ItemCustomExcavatorNether extends ShovelItem
 {
-	private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.GRASS_BLOCK, Blocks.GRASS_PATH, Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.RED_SAND, Blocks.SAND, Blocks.PODZOL, Blocks.GRAVEL);
+	private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.GRASS_BLOCK, Blocks.GRASS_PATH, Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.RED_SAND, Blocks.SAND, Blocks.PODZOL, Blocks.GRAVEL, Blocks.SOUL_SAND);
 	
 	public static final Set<Material> EFFECTIVE_MATERIALS = ImmutableSet.of(Material.EARTH);
 
