@@ -3,8 +3,7 @@ package com.kwpugh.gobber2.items.staffs;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.kwpugh.gobber2.lists.BlockList;
-import com.kwpugh.gobber2.lists.ItemList;
+import javax.annotation.Nullable;
 
 import net.minecraft.block.BambooBlock;
 import net.minecraft.block.Block;
@@ -17,7 +16,6 @@ import net.minecraft.block.NetherWartBlock;
 import net.minecraft.block.PumpkinBlock;
 import net.minecraft.block.SugarCaneBlock;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -28,16 +26,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
-/*
- * Re-planting currently only works on crops that
- * are extended from CropsBlocks
- * 
- * TO DO: figure out how to do this with cactus, bamboo, cane, etc.  Key issue
- * is "how to determine their maxAge"
- * 
- */
+
 
 public class ItemCustomStaffHarvest extends Item
 {
@@ -120,12 +114,12 @@ public class ItemCustomStaffHarvest extends Item
 		return new ActionResult<ItemStack>(ActionResultType.SUCCESS, stack);
 	}
 	
-    @Override
-	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
+	@OnlyIn(Dist.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
-		super.addInformation(stack, world, list, flag);				
-		list.add(new StringTextComponent(TextFormatting.BLUE + "Harvest mature crops around the player"));
-		list.add(new StringTextComponent(TextFormatting.GREEN +"Area of effect: 12x2x12"));
-		list.add(new StringTextComponent(TextFormatting.GREEN + "Right-click to use"));
-	} 
+		super.addInformation(stack, worldIn, tooltip, flagIn);
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_harvest.line1").applyTextStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_harvest.line2").applyTextStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_harvest.line3").applyTextStyle(TextFormatting.YELLOW)));
+	}
 }

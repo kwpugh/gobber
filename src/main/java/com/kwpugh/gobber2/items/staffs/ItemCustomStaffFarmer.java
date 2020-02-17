@@ -3,6 +3,8 @@ package com.kwpugh.gobber2.items.staffs;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import com.kwpugh.gobber2.lists.BlockList;
 import com.kwpugh.gobber2.lists.ItemList;
 
@@ -42,8 +44,11 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ItemCustomStaffFarmer extends Item
 {
@@ -224,13 +229,12 @@ public class ItemCustomStaffFarmer extends Item
 		return new ActionResult<ItemStack>(ActionResultType.SUCCESS, stack);
 	}
 
-        
-    @Override
-	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
+	@OnlyIn(Dist.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
-		super.addInformation(stack, world, list, flag);				
-		list.add(new StringTextComponent(TextFormatting.BLUE + "Combines the Ring of the Farmer and the Staff of the Harvest"));
-		list.add(new StringTextComponent(TextFormatting.GREEN +"Area of effect: 12x12"));
-		list.add(new StringTextComponent(TextFormatting.GREEN + "Right-click to use"));
-	} 
+		super.addInformation(stack, worldIn, tooltip, flagIn);
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_farmer.line1").applyTextStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_farmer.line2").applyTextStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_farmer.line3").applyTextStyle(TextFormatting.YELLOW)));
+	}
 }

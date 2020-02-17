@@ -41,7 +41,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
@@ -79,7 +78,7 @@ public class BlockDefender extends Block
 		worldIn.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), worldIn.rand.nextInt(maxTickTime - minTickTime + 1));
 		if(worldIn.isRemote)
     	{
-			player.sendMessage(new StringTextComponent("The Defender is active for players in a range of 64 blocks"));
+			player.sendMessage(new TranslationTextComponent("item.gobber2.block_defender.line1").applyTextStyle(TextFormatting.GREEN));
     	}
 		
 		return ActionResultType.SUCCESS;
@@ -147,14 +146,14 @@ public class BlockDefender extends Block
 	{
 		return BlockRenderType.MODEL;
 	}
-  
+
 	@OnlyIn(Dist.CLIENT)
-	public void addInformation(ItemStack stack, @Nullable IBlockReader world, List<ITextComponent> tooltip, ITooltipFlag flag)
+	public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
-		super.addInformation(stack, world, tooltip, flag);				
-		tooltip.add(new StringTextComponent(TextFormatting.BLUE + "The Defender provides a steady health regen"));
-		tooltip.add(new StringTextComponent(TextFormatting.BLUE + "and eliminates many, annoying hostile mobs"));
-		tooltip.add(new StringTextComponent(TextFormatting.GREEN + "Range: 64 blocks"));
+		super.addInformation(stack, worldIn, tooltip, flagIn);
+		tooltip.add((new TranslationTextComponent("item.gobber2.block_defender.line2").applyTextStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.block_defender.line3").applyTextStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.block_defender.line4").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
 	}
 }
 

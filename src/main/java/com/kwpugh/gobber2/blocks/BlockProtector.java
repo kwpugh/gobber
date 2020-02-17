@@ -41,8 +41,8 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
@@ -78,7 +78,7 @@ public class BlockProtector extends Block
 		worldIn.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), worldIn.rand.nextInt(maxTickTime - minTickTime + 1));
 		if(worldIn.isRemote)
     	{
-			player.sendMessage(new StringTextComponent("The Protector is active for players in a range of 32 blocks"));
+			player.sendMessage(new TranslationTextComponent("item.gobber2.block_protector.line1").applyTextStyle(TextFormatting.GREEN));
     	}
 		
 		return ActionResultType.SUCCESS;
@@ -136,7 +136,6 @@ public class BlockProtector extends Block
 				{
 					((MobEntity) entity).spawnExplosionParticle();
 					entity.remove(true);
-					//world.addEntity(new ExperienceOrbEntity(world, pos.getX(), pos.getY()+3, pos.getZ(), 1));
 				}
 			}
 		}
@@ -149,12 +148,12 @@ public class BlockProtector extends Block
 	}
   
 	@OnlyIn(Dist.CLIENT)
-	public void addInformation(ItemStack stack, @Nullable IBlockReader world, List<ITextComponent> tooltip, ITooltipFlag flag)
+	public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
-		super.addInformation(stack, world, tooltip, flag);				
-		tooltip.add(new StringTextComponent(TextFormatting.BLUE + "The Protector provides a moderate, but steady health regen"));
-		tooltip.add(new StringTextComponent(TextFormatting.BLUE + "and eliminates many, annoying hostile mobs"));
-		tooltip.add(new StringTextComponent(TextFormatting.GREEN + "Range: 32 blocks"));
+		super.addInformation(stack, worldIn, tooltip, flagIn);
+		tooltip.add((new TranslationTextComponent("item.gobber2.block_protector.line2").applyTextStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.block_protector.line3").applyTextStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.block_protector.line4").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
 	}
 }
 

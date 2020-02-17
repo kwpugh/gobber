@@ -38,13 +38,13 @@ public class ItemCustomRingVoid extends Item
 			{
 				entity.changeDimension(DimensionType.THE_END);  //Switch to The End
 
-		    	return ActionResult.func_226248_a_(stack);
+		    	return ActionResult.resultSuccess(stack);
 			}
 			else if(((currentDim == 1)) && (entity.isCrouching()))
 			{
 				entity.changeDimension(DimensionType.OVERWORLD);  //Switch to The End
 		    	
-				return ActionResult.func_226248_a_(stack);
+				return ActionResult.resultSuccess(stack);
 			}
 			else if(((currentDim == 1)) && (!entity.isCrouching()))
 			{
@@ -56,7 +56,7 @@ public class ItemCustomRingVoid extends Item
 			}	
 		}
 	    
-	    return ActionResult.func_226251_d_(stack);
+	    return ActionResult.resultFail(stack);
 	}
 	
 	@OnlyIn(Dist.CLIENT)

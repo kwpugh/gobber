@@ -51,7 +51,7 @@ public class ItemCustomRingBlink extends Item
 
                     world.playSound(null, player.getPosX(), player.getPosY(), player.getPosZ(), SoundEvents.ENTITY_ENDERMAN_TELEPORT, SoundCategory.PLAYERS, 1.0F, 1.0F);
 
-                    return ActionResult.func_226248_a_(stack);
+                    return ActionResult.resultSuccess(stack);
                 }
             }		 
         }
