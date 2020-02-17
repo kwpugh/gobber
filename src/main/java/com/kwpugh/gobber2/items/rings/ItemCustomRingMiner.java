@@ -13,6 +13,7 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
@@ -59,11 +60,14 @@ public class ItemCustomRingMiner extends Item
 						for (int z = -5; z <= 5; z++)
 						{
 							BlockPos pos = player.getPosition().add(x, y, z);
-							block = world.getBlockState(pos).getBlock();
-							
+							block = world.getBlockState(pos).getBlock();							
+							String blockForgeTags = block.getTags().toString();
+						    
 							if (block == Blocks.STONE ||
-									//Block.isRock(block) == true ||      //This is key to selecting blocks that have the Forge "stone" tag
-									//block.isIn(BlockTags.DIRT_LIKE) ||
+									blockForgeTags.contains("forge:stone") ||
+									blockForgeTags.contains("forge:sandstone") ||
+									blockForgeTags.contains("forge:sand") ||
+									blockForgeTags.contains("forge:dirt") ||
 									block instanceof GravelBlock ||
 									block instanceof SandBlock ||
 									block == Blocks.DIRT || 
