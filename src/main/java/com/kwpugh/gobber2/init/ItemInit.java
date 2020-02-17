@@ -273,13 +273,14 @@ public class ItemInit
 				
 				//Staffs
 				ItemList.gobber2_staff_clearing = new ItemCustomStaffClearing(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_staff_clearing")),
+				ItemList.gobber2_staff_nature = new ItemCustomStaffNature(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_staff_nature")),
 				ItemList.gobber2_staff_farmer = new ItemCustomStaffFarmer(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_staff_farmer")),
 				ItemList.gobber2_staff_harvest = new ItemCustomStaffHarvest(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_staff_harvest")),
 				ItemList.gobber2_staff_stars = new ItemCustomStaffStars(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_staff_stars")),
-				ItemList.gobber2_staff_sniper = new ItemCustomStaffSniper(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_staff_sniper")),
 				ItemList.gobber2_staff_ensnarement = new ItemCustomStaffEnsnarement(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_staff_ensnarement")),
-				ItemList.gobber2_staff_nature = new ItemCustomStaffNature(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_staff_nature")),
-						
+				ItemList.gobber2_staff_sniper = new ItemCustomStaffSniper(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_staff_sniper")),
+				
+				//Blocks		
 				ItemList.block_healer = new BlockItem(BlockList.block_healer, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.block_healer.getRegistryName()),				
 				ItemList.block_protector = new BlockItem(BlockList.block_protector, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.block_protector.getRegistryName()),
 				ItemList.block_defender = new BlockItem(BlockList.block_defender, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.block_defender.getRegistryName()),
