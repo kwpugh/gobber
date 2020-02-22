@@ -23,6 +23,26 @@ public final class ArmorUtil
         return null;
     }
 
+    //Full suit of End Armor gets perks
+    public static boolean isPlayerGotVoidProtection(PlayerEntity player)
+    { 
+    	ItemStack head = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
+    	ItemStack chest = player.getItemStackFromSlot(EquipmentSlotType.CHEST);
+    	ItemStack legs = player.getItemStackFromSlot(EquipmentSlotType.LEGS);
+    	ItemStack feet = player.getItemStackFromSlot(EquipmentSlotType.FEET);
+    	
+	    //Head piece
+    	if((head.getItem() == ItemList.gobber2_helmet_end &&
+      			chest.getItem() == ItemList.gobber2_chestplate_end &&
+      			legs.getItem() == ItemList.gobber2_leggings_end &&
+      			feet.getItem() == ItemList.gobber2_boots_end)	)
+      	{
+      		return true;  		
+      	}
+      		
+        return false;
+    } 
+    
     //All helmet tiers get water breathing
     public static boolean isPlayerGotWaterBreathing(PlayerEntity player)
     { 

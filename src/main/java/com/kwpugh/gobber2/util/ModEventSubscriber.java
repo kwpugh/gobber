@@ -24,6 +24,13 @@ public final class ModEventSubscriber
         {
             PlayerEntity player = (PlayerEntity) event.getEntityLiving();
 
+            //Void protection
+            if ((event.getSource() == DamageSource.OUT_OF_WORLD) &&
+                ArmorUtil.isPlayerGotVoidProtection(player))
+            {
+                if (event.isCancelable()) event.setCanceled(true);
+            } 
+            
             //No Fall Damage
             if ((event.getSource() == DamageSource.FALL) &&
                 ArmorUtil.isPlayerGotFallProtection(player))

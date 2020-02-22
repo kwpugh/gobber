@@ -13,13 +13,11 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
@@ -68,6 +66,7 @@ public class ItemCustomRingMiner extends Item
 									blockForgeTags.contains("forge:sandstone") ||
 									blockForgeTags.contains("forge:sand") ||
 									blockForgeTags.contains("forge:dirt") ||
+									blockForgeTags.contains("forge:gravel") ||
 									block instanceof GravelBlock ||
 									block instanceof SandBlock ||
 									block == Blocks.DIRT || 
