@@ -19,8 +19,13 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
+import net.minecraft.world.dimension.DimensionType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+
+/*
+ * Based on work by: Maciej916 in Ma-Essentials
+ */
 
 public class ItemCustomRingAbove extends Item
 {
@@ -33,9 +38,14 @@ public class ItemCustomRingAbove extends Item
 	{
 		ItemStack stack = player.getHeldItem(hand);
 	
-		if (!world.isRemote)
+		if (world.getDimension().getType() != DimensionType.OVERWORLD)
 		{
-			if(player.isCrouching())
+			player.sendStatusMessage(new TranslationTextComponent("item.gobber2.gobber2_ring_above.line5"), true);
+		}
+		
+		if (!world.isRemote && (world.getDimension().getType() == DimensionType.OVERWORLD))
+		{
+			if(player.isShiftKeyDown())
 			{
 				//Checking from bottom of world and working upward
 				double x = player.getPosX();
@@ -68,7 +78,7 @@ public class ItemCustomRingAbove extends Item
 				
 			}
 			else
-			{
+			{	
 				//Checking from top of world downward
 				double x = player.getPosX();
 				double y = world.getMaxHeight();
@@ -110,5 +120,6 @@ public class ItemCustomRingAbove extends Item
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_above.line1").applyTextStyle(TextFormatting.GREEN)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_above.line2").applyTextStyle(TextFormatting.YELLOW)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_above.line3").applyTextStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_above.line4").applyTextStyle(TextFormatting.RED)));
 	} 	
 }

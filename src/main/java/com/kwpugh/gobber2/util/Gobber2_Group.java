@@ -16,6 +16,6 @@ public class Gobber2_Group extends ItemGroup
 	@Override
 	public ItemStack createIcon() 
 	{
-		return new ItemStack(ItemList.gobber2_ingot);
+		return new ItemStack(ItemList.gobber2_sword_end);
 	}	
 }
