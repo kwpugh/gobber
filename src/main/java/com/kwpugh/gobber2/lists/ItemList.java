@@ -137,6 +137,7 @@ public class ItemList
 	public static Item gobber2_ring_blink;
 	public static Item gobber2_ring_repair;
 	public static Item gobber2_ring_ascent;
+	public static Item gobber2_ring_above;
 	public static Item gobber2_ring_husbandry;
 	public static Item gobber2_ring_blaze;
 	public static Item gobber2_ring_pyro;

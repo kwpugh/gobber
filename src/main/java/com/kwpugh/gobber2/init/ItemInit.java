@@ -17,6 +17,7 @@ import com.kwpugh.gobber2.items.medallions.ItemCustomMedallionGlowing;
 import com.kwpugh.gobber2.items.medallions.ItemCustomMedallionHero;
 import com.kwpugh.gobber2.items.medallions.ItemCustomMedallionStepping;
 import com.kwpugh.gobber2.items.rings.ItemCustomRing;
+import com.kwpugh.gobber2.items.rings.ItemCustomRingAbove;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingAcceleration;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingAirwalking;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingAscent;
@@ -237,7 +238,8 @@ public class ItemInit
 				ItemList.gobber2_ring_husbandry = new ItemCustomRingHusbandry(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_husbandry")),
 				ItemList.gobber2_ring_swiftness = new ItemCustomRingSwiftness(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_swiftness")),
 				ItemList.gobber2_ring_sunshine = new ItemCustomRingSunshine(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_sunshine")),
-				ItemList.gobber2_ring_ascent = new ItemCustomRingAscent(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_ascent")),								
+				ItemList.gobber2_ring_ascent = new ItemCustomRingAscent(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_ascent")),
+				ItemList.gobber2_ring_above = new ItemCustomRingAbove(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_above")),
 
 				ItemList.gobber2_ring_nether = new Item(new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_nether")),
 				ItemList.gobber2_ring_acceleration = new ItemCustomRingAcceleration(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_acceleration")),				

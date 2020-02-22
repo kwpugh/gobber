@@ -1,0 +1,34 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " B ",
+        "ACA",
+        " B "
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "minecraft:lapis_lazuli"
+        },
+        
+        "B":
+        {
+            "item": "minecraft:emerald"
+        },
+        
+        "C":
+        {
+            "item": "gobber2:gobber2_ring_ascent"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_ring_above",
+        "count": 1
+    }
+}
