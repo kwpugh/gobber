@@ -8,4 +8,6 @@ public class ItemCustomRing extends Item
     {
         super(properties);
     }
+    
+	
 }

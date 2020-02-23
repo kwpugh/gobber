@@ -27,6 +27,7 @@ import com.kwpugh.gobber2.items.rings.ItemCustomRingBlink;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingCuring;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingDismissal;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingEnderchest;
+import com.kwpugh.gobber2.items.rings.ItemCustomRingExplorer;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingFarmer;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingHaste;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingHusbandry;
@@ -188,8 +189,11 @@ public class ItemInit
 				ItemList.gobber2_leggings_end = new ItemCustomArmorEnd(ArmorMaterialList.gobber2_end, EquipmentSlotType.LEGS, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_leggings_end")),
 				ItemList.gobber2_boots_end = new ItemCustomArmorEnd(ArmorMaterialList.gobber2_end, EquipmentSlotType.FEET, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_boots_end")),				
 
+				ItemList.gobber2_helmet_dragon = new ItemCustomArmorDragon(ArmorMaterialList.gobber2_end, EquipmentSlotType.HEAD, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_helmet_dragon")),
 				ItemList.gobber2_chestplate_dragon = new ItemCustomArmorDragon(ArmorMaterialList.gobber2_end, EquipmentSlotType.CHEST, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_chestplate_dragon")),
-						
+				ItemList.gobber2_leggings_dragon = new ItemCustomArmorDragon(ArmorMaterialList.gobber2_end, EquipmentSlotType.LEGS, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_leggings_dragon")),
+				ItemList.gobber2_boots_dragon = new ItemCustomArmorDragon(ArmorMaterialList.gobber2_end, EquipmentSlotType.FEET, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_boots_dragon")),
+		
 				
 						
 				//Tools & Weapons
@@ -260,7 +264,9 @@ public class ItemInit
 				ItemList.gobber2_ring_airwalking = new ItemCustomRingAirwalking(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_airwalking")),
 				ItemList.gobber2_ring_stealth = new ItemCustomRingStealth(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_stealth")),
 				ItemList.gobber2_ring_teleport = new ItemCustomRingTeleport(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_teleport")),
-				ItemList.gobber2_ring_blink = new ItemCustomRingBlink(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_blink")),	
+				ItemList.gobber2_ring_blink = new ItemCustomRingBlink(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_blink")),
+				ItemList.gobber2_ring_explorer = new ItemCustomRingExplorer(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_ring_explorer")),
+						
 				
 				//Medallions
 				ItemList.gobber2_medallion = new Item(new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_medallion")),

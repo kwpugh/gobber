@@ -35,7 +35,9 @@ public final class ArmorUtil
     	if((head.getItem() == ItemList.gobber2_helmet_end &&
       			chest.getItem() == ItemList.gobber2_chestplate_end &&
       			legs.getItem() == ItemList.gobber2_leggings_end &&
-      			feet.getItem() == ItemList.gobber2_boots_end)	)
+      			feet.getItem() == ItemList.gobber2_boots_end) ||
+    			
+    			chest.getItem() == ItemList.gobber2_chestplate_dragon)
       	{
       		return true;  		
       	}
@@ -51,7 +53,8 @@ public final class ArmorUtil
 	    //Head piece
     	if((head.getItem() == ItemList.gobber2_helmet ||
       			head.getItem() == ItemList.gobber2_helmet_nether ||
-      			head.getItem() == ItemList.gobber2_helmet_end)	)
+      			head.getItem() == ItemList.gobber2_helmet_end ||
+      			head.getItem() == ItemList.gobber2_helmet_dragon)	)
       	{
       		return true;  		
       	}
@@ -69,6 +72,7 @@ public final class ArmorUtil
     	if(legs.getItem() == ItemList.gobber2_leggings ||
       			legs.getItem() == ItemList.gobber2_leggings_nether ||
       			legs.getItem() == ItemList.gobber2_leggings_end ||
+      					legs.getItem() == ItemList.gobber2_leggings_dragon ||
       			
       			mainHand.getItem() == ItemList.gobber2_ring_ascent)
       	{

@@ -32,8 +32,12 @@ public class GeneralModConfig
     public static ForgeConfigSpec.IntValue RING_MINER_COOLDOWN;
     public static ForgeConfigSpec.IntValue RING_LUMBERJACK_COOLDOWN;
     public static ForgeConfigSpec.IntValue RING_ABOVE_COOLDOWN;
+    public static ForgeConfigSpec.IntValue RING_EXPLORER_COOLDOWN;
     
     public static ForgeConfigSpec.BooleanValue REVERSE_MINER;
+    public static ForgeConfigSpec.IntValue RING_EXPLORER_MIN_RANGE;
+    public static ForgeConfigSpec.IntValue RING_EXPLORER_MAX_RANGE;
+    
     
     public static void init(ForgeConfigSpec.Builder SERVER_BUILDER)
     {
@@ -86,12 +90,20 @@ public class GeneralModConfig
         RING_LUMBERJACK_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Ring of the Lumberjack cooldown [0-240, default: 80]").defineInRange("ringLumberjackCooldown", 80, 0, 120);
         RING_MINER_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Ring of the Miner cooldown [0-240, default: 80]").defineInRange("ringMinerCooldown", 80, 0, 120);        
         RING_ABOVE_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Ring of Above cooldown [0-240, default: 80]").defineInRange("ringAboveCooldown", 80, 0, 120);
+        RING_EXPLORER_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Ring of the Explorer cooldown [0-1200, default: 480]").defineInRange("ringExplorerCooldown", 480, 0, 1200);
 
         SERVER_BUILDER.pop();
         
         SERVER_BUILDER.comment("Misc Ring Settings").push("misc_ring_settings");
         
         REVERSE_MINER = SERVER_BUILDER.comment("Reverse the Ring of the Miner's break/void modes [true / false, default: false]").define("reverse_miner", false);
+
+        SERVER_BUILDER.pop();
+        
+        SERVER_BUILDER.comment("Ring of the Explorer Settings").push("ring_explorer_settings");
+        
+        RING_EXPLORER_MIN_RANGE = SERVER_BUILDER.comment("Ring of Explorer - Min distance from world spawn ro begin searching for a spot [default: 500]").defineInRange("ringExplorerMin", 500, 0, 100000);
+        RING_EXPLORER_MAX_RANGE = SERVER_BUILDER.comment("Ring of Explorer - Max distance from world spawn ro begin searching for a spot [default: 6000]").defineInRange("ringExplorerMax", 6000, 0, 250000);
 
         SERVER_BUILDER.pop();
     }

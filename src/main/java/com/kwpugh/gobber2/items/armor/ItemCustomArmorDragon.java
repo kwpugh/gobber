@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import com.kwpugh.gobber2.lists.ItemList;
+import com.kwpugh.gobber2.util.SpecialAbilities;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -27,33 +28,43 @@ public class ItemCustomArmorDragon extends ArmorItem
 	{
 		super(materialIn, slots, builder);
 	}
-		  
+	
+	  
 	@Override
 	public void onArmorTick(final ItemStack stack, final World world, final PlayerEntity player)
 	{
-		//Chest Bonus
-		if(!player.getPersistentData().contains("wearingDragonChestplate"))player.getPersistentData().putBoolean("wearingDragonChestplate", false);
+		//Full Set Bonus
+		if(!player.getPersistentData().contains("wearingFullDragonArmor"))player.getPersistentData().putBoolean("wearingFullDragonArmor", false);
 			
+		ItemStack head = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
 		ItemStack chest = player.getItemStackFromSlot(EquipmentSlotType.CHEST);
+		ItemStack legs = player.getItemStackFromSlot(EquipmentSlotType.LEGS);
+		ItemStack feet = player.getItemStackFromSlot(EquipmentSlotType.FEET);	
 	
+		setDamage(head, 0);
 		setDamage(chest, 0);
-    
-		boolean isWearingDragonChestplate = chest != null && chest.getItem() == ItemList.gobber2_chestplate_dragon;
-    
-		boolean wasWearingChestplateLastTick = player.getPersistentData().getBoolean("wearingDragonChestplate");
-        
-		if(!isWearingDragonChestplate && wasWearingChestplateLastTick && !player.isCreative())
+		setDamage(legs, 0);
+		setDamage(feet, 0);
+	
+		boolean iswearingFullDragonArmor = head != null && head.getItem() == ItemList.gobber2_helmet_dragon && 
+				chest != null && chest.getItem() == ItemList.gobber2_chestplate_dragon &&
+				legs != null && legs.getItem() == ItemList.gobber2_leggings_dragon && 
+				feet != null && feet.getItem() == ItemList.gobber2_boots_dragon;
+	
+		boolean wasWearingDragonArmorLastTick = player.getPersistentData().getBoolean("wearingFullDragonArmor");
+	  
+		if(!iswearingFullDragonArmor && wasWearingDragonArmorLastTick && !player.isCreative())
 		{
 			player.abilities.allowFlying = false;
 			player.abilities.isFlying = false;
 		}
-		else if(isWearingDragonChestplate)
+		else if((iswearingFullDragonArmor) && (player.dimension.getId() == -1 || player.dimension.getId() == 0 || player.dimension.getId() == 1 ))
 		{
 			player.abilities.allowFlying = true;
 		}
-		player.getPersistentData().putBoolean("wearingDragonChestplate", isWearingDragonChestplate);
-    
-		if(isWearingDragonChestplate)
+		player.getPersistentData().putBoolean("wearingFullDragonArmor", iswearingFullDragonArmor);
+	
+		if(iswearingFullDragonArmor)
 		{
 			//Additional full set bonuses
 			player.removeActivePotionEffect(Effects.BLINDNESS);
@@ -67,11 +78,57 @@ public class ItemCustomArmorDragon extends ArmorItem
 			player.removeActivePotionEffect(Effects.LEVITATION);
 			player.removeActivePotionEffect(Effects.UNLUCK);
 			player.removeActivePotionEffect(Effects.WEAKNESS);
-			
-			player.getAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(40.0D); 
-		} 		
-	}
+		} 
 	
+		//Check ArmorUtil for additional perks applied to armor
+	
+	  //Helmet
+	  if(head.getItem() == ItemList.gobber2_helmet_dragon)
+		{
+			SpecialAbilities.giveExtraHearts(world, player, stack, 90);
+			
+			int newfoodlevel = 1;
+			float newsatlevel = 0.10F;
+			SpecialAbilities.giveRegenffect(world, player, stack, newfoodlevel, newsatlevel);			
+		}
+		else
+		{
+			SpecialAbilities.giveNoExtraHearts(world, player, stack);
+		}
+	  
+	  
+	  
+	  //Chestplate
+	  if(chest.getItem() == ItemList.gobber2_chestplate_dragon)
+		{				
+			player.getAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(40.0D); 
+		 }		
+	
+	  
+	  
+	  //Leggings
+	  if(legs.getItem() == ItemList.gobber2_leggings_dragon)
+		{
+	  	SpecialAbilities.giveConduitEffect(world, player, stack);
+		}
+		else
+		{
+			//something
+		}		
+	  
+	  
+	  
+	  //Boots
+	  if(feet.getItem() == ItemList.gobber2_boots_dragon)
+		{
+	  	SpecialAbilities.giveDolphinEffect(world, player, stack);
+	  }
+		else
+	  {
+			//something
+	  }		
+	}
+
 	@Override
 	public boolean isBookEnchantable(ItemStack stack, ItemStack book)
 	{
@@ -88,6 +145,6 @@ public class ItemCustomArmorDragon extends ArmorItem
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_chestplate_dragon.line1").applyTextStyle(TextFormatting.GOLD)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_dragon.line1").applyTextStyle(TextFormatting.GOLD)));
 	}
 }

@@ -106,7 +106,11 @@ public class ItemList
 	
 	public static Item gobber2_links_end;
 	
+	public static Item gobber2_helmet_dragon;
 	public static Item gobber2_chestplate_dragon;
+	public static Item gobber2_leggings_dragon;
+	public static Item gobber2_boots_dragon;
+
 	
 	
 	//Rings
@@ -141,6 +145,7 @@ public class ItemList
 	public static Item gobber2_ring_husbandry;
 	public static Item gobber2_ring_blaze;
 	public static Item gobber2_ring_pyro;
+	public static Item gobber2_ring_explorer;
 
 	
 	//Staffs

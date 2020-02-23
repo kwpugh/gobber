@@ -94,14 +94,18 @@
 	"item.gobber2.gobber2_chestplate_end": "End Chestplate",
 	"item.gobber2.gobber2_leggings_end": "End Leggings",
 	"item.gobber2.gobber2_boots_end": "End Boots",
+
+	"item.gobber2.gobber2_armor_dragon.line1": "WIP",
+	"item.gobber2.gobber2_helmet_dragon": "Dragon Helmet",
+	"item.gobber2.gobber2_chestplate_dragon": "Dragon Chestplate",
+	"item.gobber2.gobber2_leggings_dragon": "Dragon Leggings",
+	"item.gobber2.gobber2_boots_dragon": "Dragon Boots",
 	
+		
 	"item.gobber2.gobber2_armor_repair": "Armor Repair Plate",
 	
 	"item.gobber2.gobber2_links_end": "End Armor Links",
-	
-	"item.gobber2.gobber2_chestplate_dragon": "Dragon Chestplate",
-	"item.gobber2.gobber2_chestplate_dragon.line1": "WIP",
-	
+
 	"item.gobber2.gobber2_ring.cooldown": "Cooldown interval (ticks): %s",
 	"item.gobber2.gobber2_ring": "Ring",
 	"item.gobber2.gobber2_ring_nether": "Nether Ring",
@@ -223,7 +227,11 @@
 	"item.gobber2.gobber2_ring_pyro": "Ring of the Pyro",
 	"item.gobber2.gobber2_ring_pyro.line1": "Causes hostile mobs to spontaneously combust",
 	"item.gobber2.gobber2_ring_pyro.line2": "Works while in player inventory",
-
+	"item.gobber2.gobber2_ring_explorer": "Ring of the Explorer",
+	"item.gobber2.gobber2_ring_explorer.line1": "Teleports the player to a random location.",
+	"item.gobber2.gobber2_ring_explorer.line2": "Min/max search range: %s %s",
+	"item.gobber2.gobber2_ring_explorer.line3": "Right-click to use.",
+	
 
 	"item.gobber2.gobber2_staff_sniper": "Staff of the Sniper",
 	"item.gobber2.gobber2_staff_sniper.line1": "Fires very precise arrows at high velocity",
