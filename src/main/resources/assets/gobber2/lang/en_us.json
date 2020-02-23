@@ -231,6 +231,7 @@
 	"item.gobber2.gobber2_ring_explorer.line1": "Teleports the player to a random location.",
 	"item.gobber2.gobber2_ring_explorer.line2": "Min/max search range: %s %s",
 	"item.gobber2.gobber2_ring_explorer.line3": "Right-click to use.",
+	"item.gobber2.gobber2_ring_explorer.line4": "Only available in Creative Mode",
 	
 
 	"item.gobber2.gobber2_staff_sniper": "Staff of the Sniper",
