@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.kwpugh.gobber2.util.GeneralModConfig;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
@@ -34,6 +36,8 @@ public class ItemCustomRingAbove extends Item
 		super(properties);
 	}
 
+	int ringAboveCooldown = GeneralModConfig.RING_ABOVE_COOLDOWN.get();
+	
 	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
 	{
 		ItemStack stack = player.getHeldItem(hand);
@@ -42,6 +46,8 @@ public class ItemCustomRingAbove extends Item
 		{
 			player.sendStatusMessage(new TranslationTextComponent("item.gobber2.gobber2_ring_above.line5"), true);
 		}
+		
+		player.getCooldownTracker().setCooldown(this, ringAboveCooldown);
 		
 		if (!world.isRemote && (world.getDimension().getType() == DimensionType.OVERWORLD))
 		{
@@ -121,5 +127,6 @@ public class ItemCustomRingAbove extends Item
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_above.line2").applyTextStyle(TextFormatting.YELLOW)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_above.line3").applyTextStyle(TextFormatting.YELLOW)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_above.line4").applyTextStyle(TextFormatting.RED)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring.cooldown",ringAboveCooldown).applyTextStyle(TextFormatting.LIGHT_PURPLE)));
 	} 	
 }

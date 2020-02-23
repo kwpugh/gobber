@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.kwpugh.gobber2.util.EnableUtil;
 import com.kwpugh.gobber2.util.GeneralModConfig;
 
 import net.minecraft.block.Block;
@@ -39,14 +40,13 @@ public class ItemCustomRingMiner extends Item
 	   }
 	
 	int ringMinerCooldown = GeneralModConfig.RING_MINER_COOLDOWN.get();
+	boolean reverseMiner = GeneralModConfig.REVERSE_MINER.get();
 	
 	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
 	{
 		ItemStack stack = player.getHeldItem(hand);
 
         ItemStack equippedMain = player.getHeldItemMainhand();
-    	
-        //boolean forgeStoneTag;
         
         if(equippedMain == stack)   //Only works in the main hand
         {
@@ -117,38 +117,78 @@ public class ItemCustomRingMiner extends Item
 					}	
 				}
 
-				if(!player.isCrouching())
+				
+				
+				if(reverseMiner == true)
 				{
-					if (!poslist.isEmpty())
 					{
-						for (int i = 0; i <= poslist.size() - 1; i++)
+						if(player.isShiftKeyDown())
 						{
-							BlockPos targetpos = poslist.get(i);
-							block = world.getBlockState(targetpos).getBlock();
-							
-							world.destroyBlock(targetpos, true);
-						}				
-					}
+							if (!poslist.isEmpty())
+							{
+								for (int i = 0; i <= poslist.size() - 1; i++)
+								{
+									BlockPos targetpos = poslist.get(i);
+									block = world.getBlockState(targetpos).getBlock();
+									
+									world.destroyBlock(targetpos, true);
+								}				
+							}
+						}
+						else			
+						{
+							if (!poslist.isEmpty())
+							{
+								for (int i = 0; i <= poslist.size() - 1; i++)
+								{
+									BlockPos targetpos = poslist.get(i);
+									block = world.getBlockState(targetpos).getBlock();
+									
+									world.removeBlock(targetpos, true);
+								}				
+							}
+						}
+					}	
 				}
-				
-				
-				if(player.isCrouching())
+		
+				if(reverseMiner == false)
 				{
-					if (!poslist.isEmpty())
+					if(!player.isShiftKeyDown())
 					{
-						for (int i = 0; i <= poslist.size() - 1; i++)
+						if (!poslist.isEmpty())
 						{
-							BlockPos targetpos = poslist.get(i);
-							block = world.getBlockState(targetpos).getBlock();
-							
-							world.removeBlock(targetpos, true);
-						}				
+							for (int i = 0; i <= poslist.size() - 1; i++)
+							{
+								BlockPos targetpos = poslist.get(i);
+								block = world.getBlockState(targetpos).getBlock();
+								
+								world.destroyBlock(targetpos, true);
+							}				
+						}
 					}
-				}
-				
+					else			
+					{
+						if (!poslist.isEmpty())
+						{
+							for (int i = 0; i <= poslist.size() - 1; i++)
+							{
+								BlockPos targetpos = poslist.get(i);
+								block = world.getBlockState(targetpos).getBlock();
+								
+								world.removeBlock(targetpos, true);
+							}				
+						}
+					}
+				}	
 			}
         }
         return new ActionResult<ItemStack>(ActionResultType.SUCCESS, stack);
+	}
+	
+	@Override
+	public boolean hasEffect(ItemStack stack)
+	{
+		return reverseMiner;
 	}
 	
 	@OnlyIn(Dist.CLIENT)
@@ -158,6 +198,8 @@ public class ItemCustomRingMiner extends Item
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line1").applyTextStyle(TextFormatting.GREEN)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line2").applyTextStyle(TextFormatting.GREEN)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line3").applyTextStyle(TextFormatting.YELLOW)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line4").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line4").applyTextStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line5", reverseMiner).applyTextStyle(TextFormatting.RED)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring.cooldown",ringMinerCooldown).applyTextStyle(TextFormatting.LIGHT_PURPLE)));
 	} 
 }

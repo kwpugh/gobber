@@ -33,7 +33,6 @@ public class ItemCustomRingBlink extends Item
 	}
 
 	int blinkCooldown = GeneralModConfig.RING_BLINK_COOLDOWN.get();
-
 	  
 	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
 	{
@@ -72,5 +71,6 @@ public class ItemCustomRingBlink extends Item
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_blink.line1").applyTextStyle(TextFormatting.GREEN)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_blink.line2").applyTextStyle(TextFormatting.YELLOW)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_blink.line3").applyTextStyle(TextFormatting.RED)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring.cooldown",blinkCooldown).applyTextStyle(TextFormatting.LIGHT_PURPLE)));
 	}   
 }

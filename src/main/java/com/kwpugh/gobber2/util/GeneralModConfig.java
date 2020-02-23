@@ -31,7 +31,9 @@ public class GeneralModConfig
     public static ForgeConfigSpec.IntValue RING_BLINK_COOLDOWN;
     public static ForgeConfigSpec.IntValue RING_MINER_COOLDOWN;
     public static ForgeConfigSpec.IntValue RING_LUMBERJACK_COOLDOWN;
+    public static ForgeConfigSpec.IntValue RING_ABOVE_COOLDOWN;
     
+    public static ForgeConfigSpec.BooleanValue REVERSE_MINER;
     
     public static void init(ForgeConfigSpec.Builder SERVER_BUILDER)
     {
@@ -79,11 +81,17 @@ public class GeneralModConfig
         SERVER_BUILDER.pop();
         
         SERVER_BUILDER.comment("Ring Cooldown Settings").push("ring_cooldown_settings");
-
-        
+      
         RING_BLINK_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Ring of Blink cooldown [0-120, default: 60]").defineInRange("ringBlinkCooldown", 60, 0, 120);
         RING_LUMBERJACK_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Ring of the Lumberjack cooldown [0-240, default: 80]").defineInRange("ringLumberjackCooldown", 80, 0, 120);
-        RING_MINER_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Ring of the Miner cooldown [0-240, default: 80]").defineInRange("ringMinerCooldown", 80, 0, 120);
+        RING_MINER_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Ring of the Miner cooldown [0-240, default: 80]").defineInRange("ringMinerCooldown", 80, 0, 120);        
+        RING_ABOVE_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Ring of Above cooldown [0-240, default: 80]").defineInRange("ringAboveCooldown", 80, 0, 120);
+
+        SERVER_BUILDER.pop();
+        
+        SERVER_BUILDER.comment("Misc Ring Settings").push("misc_ring_settings");
+        
+        REVERSE_MINER = SERVER_BUILDER.comment("Reverse the Ring of the Miner's break/void modes [true / false, default: false]").define("reverse_miner", false);
 
         SERVER_BUILDER.pop();
     }

@@ -137,5 +137,6 @@ public class ItemCustomRingAttraction extends Item
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line2", EnableUtil.isEnabled(stack)).applyTextStyle(TextFormatting.GREEN)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line3").applyTextStyle(TextFormatting.YELLOW)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line4").applyTextStyle(TextFormatting.RED)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
 	}     
 }

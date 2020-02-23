@@ -118,5 +118,6 @@ public class ItemCustomRingLumberjack extends Item
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_lumberjack.line1").applyTextStyle(TextFormatting.GREEN)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_lumberjack.line2").applyTextStyle(TextFormatting.GREEN)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_lumberjack.line3").applyTextStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring.cooldown",ringLumberjackCooldown).applyTextStyle(TextFormatting.LIGHT_PURPLE)));
 	} 
 }

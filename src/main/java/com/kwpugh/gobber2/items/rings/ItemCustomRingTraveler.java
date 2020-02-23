@@ -43,7 +43,7 @@ public class ItemCustomRingTraveler extends Item
         
 		//Once aloft, provide some horizontal movement and/or additional vetical movement
 		if(!entity.onGround)
-		{	
+		{
 			entity.addVelocity(lookX * 0.6, lookY * 0.6, lookZ * 0.6);
 		}
 		return result;		 
