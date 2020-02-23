@@ -1,4 +1,4 @@
-package com.kwpugh.gobber2.world;
+package com.kwpugh.gobber2.util;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 
@@ -27,6 +27,11 @@ public class GeneralModConfig
     public static ForgeConfigSpec.IntValue GOBBER2_ORE_END_SIZE;
     public static ForgeConfigSpec.IntValue GOBBER2_ORE_END_MIN_HEIGHT;
     public static ForgeConfigSpec.IntValue GOBBER2_ORE_END_MAX_HEIGHT;
+    
+    public static ForgeConfigSpec.IntValue RING_BLINK_COOLDOWN;
+    public static ForgeConfigSpec.IntValue RING_MINER_COOLDOWN;
+    public static ForgeConfigSpec.IntValue RING_LUMBERJACK_COOLDOWN;
+    
     
     public static void init(ForgeConfigSpec.Builder SERVER_BUILDER)
     {
@@ -70,6 +75,15 @@ public class GeneralModConfig
         GOBBER2_ORE_END_CHANCE = SERVER_BUILDER.comment("Chances of Gobber End Ore pocket being generated [0-100, default: 10]").defineInRange("gobberOreEndChance", 80, 0, 100);
         GOBBER2_ORE_END_MIN_HEIGHT = SERVER_BUILDER.comment("Minimal height for Gobber End Ore pocket generation, [0-255, default: 5]").defineInRange("gobberOreEndMinHeight", 0, 0, 255);
         GOBBER2_ORE_END_MAX_HEIGHT = SERVER_BUILDER.comment("Maximal height for Gobber End Ore pocket generation [0-255, default: 50]").defineInRange("gobberOreEndMaxHeight", 255, 0, 255);
+
+        SERVER_BUILDER.pop();
+        
+        SERVER_BUILDER.comment("Ring Cooldown Settings").push("ring_cooldown_settings");
+
+        
+        RING_BLINK_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Ring of Blink cooldown [0-120, default: 60]").defineInRange("ringBlinkCooldown", 60, 0, 120);
+        RING_LUMBERJACK_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Ring of the Lumberjack cooldown [0-240, default: 80]").defineInRange("ringLumberjackCooldown", 80, 0, 120);
+        RING_MINER_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Ring of the Miner cooldown [0-240, default: 80]").defineInRange("ringMinerCooldown", 80, 0, 120);
 
         SERVER_BUILDER.pop();
     }

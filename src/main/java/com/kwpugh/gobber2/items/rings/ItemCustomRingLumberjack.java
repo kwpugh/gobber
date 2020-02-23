@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.kwpugh.gobber2.util.GeneralModConfig;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
@@ -21,7 +23,6 @@ import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
@@ -36,6 +37,8 @@ public class ItemCustomRingLumberjack extends Item
 		super(properties);
 	}
 
+	int ringLumberjackCooldown = GeneralModConfig.RING_LUMBERJACK_COOLDOWN.get();
+	
 	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
 	{
 		ItemStack stack = player.getHeldItem(hand);
@@ -44,6 +47,8 @@ public class ItemCustomRingLumberjack extends Item
     	
         if(equippedMain == stack)   //Only works in the main hand
         {
+        	player.getCooldownTracker().setCooldown(this, ringLumberjackCooldown);
+        	
 			if (!world.isRemote)
 			{
 				Block block;

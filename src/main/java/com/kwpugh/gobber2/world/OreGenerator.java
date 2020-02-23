@@ -1,6 +1,7 @@
 package com.kwpugh.gobber2.world;
 
 import com.kwpugh.gobber2.lists.BlockList;
+import com.kwpugh.gobber2.util.GeneralModConfig;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.kwpugh.gobber2.util.GeneralModConfig;
 import com.kwpugh.gobber2.util.RayTraceUtil;
 
 import net.minecraft.client.util.ITooltipFlag;
@@ -31,9 +32,14 @@ public class ItemCustomRingBlink extends Item
 		super(properties);
 	}
 
+	int blinkCooldown = GeneralModConfig.RING_BLINK_COOLDOWN.get();
+
+	  
 	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
 	{
 		ItemStack stack = player.getHeldItem(hand);
+		player.getCooldownTracker().setCooldown(this, blinkCooldown);
+		 
 		if (!world.isRemote)
 		{						
 			RayTraceResult pos = RayTraceUtil.getNearestPositionWithAir(world, player, 100);

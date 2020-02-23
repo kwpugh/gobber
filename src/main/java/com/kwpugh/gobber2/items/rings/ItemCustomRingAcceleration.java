@@ -27,7 +27,7 @@ public class ItemCustomRingAcceleration extends Item
 
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
-	{
+	{		
 		ActionResult<ItemStack> result = super.onItemRightClick(world, player, hand);
 		ItemStack itemstack = result.getResult();
 		

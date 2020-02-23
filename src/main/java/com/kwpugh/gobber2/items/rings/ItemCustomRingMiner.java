@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.kwpugh.gobber2.util.GeneralModConfig;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.GravelBlock;
@@ -35,7 +37,9 @@ public class ItemCustomRingMiner extends Item
 	 public static boolean isRock(Block blockIn) {
 	      return net.minecraftforge.common.Tags.Blocks.STONE.contains(blockIn);
 	   }
-	 
+	
+	int ringMinerCooldown = GeneralModConfig.RING_MINER_COOLDOWN.get();
+	
 	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
 	{
 		ItemStack stack = player.getHeldItem(hand);
@@ -46,6 +50,8 @@ public class ItemCustomRingMiner extends Item
         
         if(equippedMain == stack)   //Only works in the main hand
         {
+        	player.getCooldownTracker().setCooldown(this, ringMinerCooldown);
+        	
         	 if(!world.isRemote)
 			{
 				Block block;

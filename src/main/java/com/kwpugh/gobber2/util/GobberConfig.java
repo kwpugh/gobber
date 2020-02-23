@@ -5,7 +5,6 @@ import java.nio.file.Path;
 
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import com.electronwill.nightconfig.core.io.WritingMode;
-import com.kwpugh.gobber2.world.GeneralModConfig;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 
