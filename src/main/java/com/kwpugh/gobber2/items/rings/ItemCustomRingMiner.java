@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.kwpugh.gobber2.util.EnableUtil;
 import com.kwpugh.gobber2.util.GeneralModConfig;
 
 import net.minecraft.block.Block;
@@ -35,12 +34,7 @@ public class ItemCustomRingMiner extends Item
 		super(properties);
 	}
 	
-	 public static boolean isRock(Block blockIn) {
-	      return net.minecraftforge.common.Tags.Blocks.STONE.contains(blockIn);
-	   }
-	
 	int ringMinerCooldown = GeneralModConfig.RING_MINER_COOLDOWN.get();
-	boolean reverseMiner = GeneralModConfig.REVERSE_MINER.get();
 	
 	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
 	{
@@ -116,79 +110,27 @@ public class ItemCustomRingMiner extends Item
 						}
 					}	
 				}
-
 				
-				
-				if(reverseMiner == true)
+				if (!poslist.isEmpty())
 				{
+					for (int i = 0; i <= poslist.size() - 1; i++)
 					{
+						BlockPos targetpos = poslist.get(i);
+						block = world.getBlockState(targetpos).getBlock();
+						
 						if(player.isShiftKeyDown())
 						{
-							if (!poslist.isEmpty())
-							{
-								for (int i = 0; i <= poslist.size() - 1; i++)
-								{
-									BlockPos targetpos = poslist.get(i);
-									block = world.getBlockState(targetpos).getBlock();
-									
-									world.destroyBlock(targetpos, true);
-								}				
-							}
+							world.destroyBlock(targetpos, true);
 						}
-						else			
+						else
 						{
-							if (!poslist.isEmpty())
-							{
-								for (int i = 0; i <= poslist.size() - 1; i++)
-								{
-									BlockPos targetpos = poslist.get(i);
-									block = world.getBlockState(targetpos).getBlock();
-									
-									world.removeBlock(targetpos, true);
-								}				
-							}
+							world.destroyBlock(targetpos, false);	
 						}
-					}	
-				}
-		
-				if(reverseMiner == false)
-				{
-					if(!player.isShiftKeyDown())
-					{
-						if (!poslist.isEmpty())
-						{
-							for (int i = 0; i <= poslist.size() - 1; i++)
-							{
-								BlockPos targetpos = poslist.get(i);
-								block = world.getBlockState(targetpos).getBlock();
-								
-								world.destroyBlock(targetpos, true);
-							}				
-						}
-					}
-					else			
-					{
-						if (!poslist.isEmpty())
-						{
-							for (int i = 0; i <= poslist.size() - 1; i++)
-							{
-								BlockPos targetpos = poslist.get(i);
-								block = world.getBlockState(targetpos).getBlock();
-								
-								world.removeBlock(targetpos, true);
-							}				
-						}
-					}
+					}				
 				}	
 			}
         }
         return new ActionResult<ItemStack>(ActionResultType.SUCCESS, stack);
-	}
-	
-	@Override
-	public boolean hasEffect(ItemStack stack)
-	{
-		return reverseMiner;
 	}
 	
 	@OnlyIn(Dist.CLIENT)
@@ -199,7 +141,6 @@ public class ItemCustomRingMiner extends Item
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line2").applyTextStyle(TextFormatting.GREEN)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line3").applyTextStyle(TextFormatting.YELLOW)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line4").applyTextStyle(TextFormatting.YELLOW)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line5", reverseMiner).applyTextStyle(TextFormatting.RED)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring.cooldown",ringMinerCooldown).applyTextStyle(TextFormatting.LIGHT_PURPLE)));
 	} 
 }
