@@ -46,7 +46,7 @@ public class ItemCustomRingMiner extends Item
         {
         	player.getCooldownTracker().setCooldown(this, ringMinerCooldown);
         	
-        	 if(!world.isRemote)
+        	if(!world.isRemote)
 			{
 				Block block;
 				List<BlockPos> poslist = new ArrayList<BlockPos>();

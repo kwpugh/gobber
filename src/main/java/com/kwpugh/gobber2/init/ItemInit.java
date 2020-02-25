@@ -292,7 +292,8 @@ public class ItemInit
 				ItemList.block_healer = new BlockItem(BlockList.block_healer, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.block_healer.getRegistryName()),				
 				ItemList.block_protector = new BlockItem(BlockList.block_protector, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.block_protector.getRegistryName()),
 				ItemList.block_defender = new BlockItem(BlockList.block_defender, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.block_defender.getRegistryName()),
-				ItemList.block_looter = new BlockItem(BlockList.block_looter, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.block_looter.getRegistryName())
+				ItemList.block_looter = new BlockItem(BlockList.block_looter, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.block_looter.getRegistryName()),
+				ItemList.block_maturator = new BlockItem(BlockList.block_maturator, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.block_maturator.getRegistryName())
 			);		
 			Gobber2.logger.info("Gobber Items registered.");
 		}

@@ -12,6 +12,7 @@ import com.kwpugh.gobber2.blocks.BlockGobberPlantEnd;
 import com.kwpugh.gobber2.blocks.BlockGobberPlantNether;
 import com.kwpugh.gobber2.blocks.BlockHealer;
 import com.kwpugh.gobber2.blocks.BlockLooter;
+import com.kwpugh.gobber2.blocks.BlockMaturator;
 import com.kwpugh.gobber2.blocks.BlockNetherBlock;
 import com.kwpugh.gobber2.blocks.BlockProtector;
 import com.kwpugh.gobber2.lists.BlockList;
@@ -56,7 +57,8 @@ public class BlockInit
 				BlockList.block_healer = new BlockHealer(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).lightValue(15).sound(SoundType.METAL)).setRegistryName(location("block_healer")),
 				BlockList.block_protector = new BlockProtector(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).lightValue(15).sound(SoundType.METAL)).setRegistryName(location("block_protector")),
 				BlockList.block_defender = new BlockDefender(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).lightValue(15).sound(SoundType.METAL)).setRegistryName(location("block_defender")),
-				BlockList.block_looter = new BlockLooter(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).lightValue(0).sound(SoundType.METAL)).setRegistryName(location("block_looter"))
+				BlockList.block_looter = new BlockLooter(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).lightValue(0).sound(SoundType.METAL)).setRegistryName(location("block_looter")),
+				BlockList.block_maturator = new BlockMaturator(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).lightValue(0).sound(SoundType.METAL)).setRegistryName(location("block_maturator"))
 			);
 			Gobber2.logger.info("Gobber Blocks registered.");
 		}

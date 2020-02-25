@@ -375,6 +375,10 @@
 	"item.gobber2.block_looter.jei.line15": "The Looter will deactivate if the player leaves it's 32 block range and the flame will die out.",
 	"item.gobber2.block_looter.jei.line16": "If the flame goes out, simply right-click the Looter to re-activate.",
 	"item.gobber2.block_looter.jei.line17": "The Looter automatically activates when first placed.",
+	"block.gobber2.block_maturator": "The Maturator",
+	"item.gobber2.block_maturator": "The Maturator",
+	"item.gobber2.block_maturator.line1": "Provides various crops and other growables a little boost",
+	"item.gobber2.block_maturator.line2": "The Maturator is active in a range of 16 blocks",
 		
 	"itemGroup.gobber2": "Gobber 2"
 }
