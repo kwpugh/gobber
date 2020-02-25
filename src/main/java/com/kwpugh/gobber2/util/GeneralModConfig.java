@@ -37,6 +37,9 @@ public class GeneralModConfig
     public static ForgeConfigSpec.IntValue RING_EXPLORER_MIN_RANGE;
     public static ForgeConfigSpec.IntValue RING_EXPLORER_MAX_RANGE;
     
+    public static ForgeConfigSpec.IntValue MATURATOR_MIN_TICK;
+    public static ForgeConfigSpec.IntValue MATURATOR_MAX_TICK;
+    
     
     public static void init(ForgeConfigSpec.Builder SERVER_BUILDER)
     {
@@ -95,8 +98,15 @@ public class GeneralModConfig
         
         SERVER_BUILDER.comment("Ring of the Explorer Settings").push("ring_explorer_settings");
         
-        RING_EXPLORER_MIN_RANGE = SERVER_BUILDER.comment("Ring of Explorer - Min distance from world spawn ro begin searching for a spot [default: 500]").defineInRange("ringExplorerMin", 500, 0, 100000);
-        RING_EXPLORER_MAX_RANGE = SERVER_BUILDER.comment("Ring of Explorer - Max distance from world spawn ro begin searching for a spot [default: 6000]").defineInRange("ringExplorerMax", 6000, 0, 250000);
+        RING_EXPLORER_MIN_RANGE = SERVER_BUILDER.comment("Ring of Explorer - Min distance from world spawn to begin searching for a spot [default: 500]").defineInRange("ringExplorerMin", 500, 0, 100000);
+        RING_EXPLORER_MAX_RANGE = SERVER_BUILDER.comment("Ring of Explorer - Max distance from world spawn to begin searching for a spot [default: 6000]").defineInRange("ringExplorerMax", 6000, 0, 250000);
+
+        SERVER_BUILDER.pop();
+        
+        SERVER_BUILDER.comment("Settings for the Maturator").push("maturator_settings");
+        
+        MATURATOR_MIN_TICK = SERVER_BUILDER.comment("Min interval of world ticks for the Maturator [default: 120]").defineInRange("maturatorMinTick", 120, 0, 240);
+        MATURATOR_MAX_TICK = SERVER_BUILDER.comment("Max interval of world ticks for the Maturator [default: 240]").defineInRange("maturatorMaxTick", 240, 0, 480);
 
         SERVER_BUILDER.pop();
     }

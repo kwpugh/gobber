@@ -5,6 +5,8 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import com.kwpugh.gobber2.util.GeneralModConfig;
+
 import net.minecraft.block.BambooBlock;
 import net.minecraft.block.BambooSaplingBlock;
 import net.minecraft.block.Block;
@@ -54,8 +56,8 @@ public class BlockMaturator extends Block
 		super(properties);
 	}
 	
-	int minTickTime = 120;
-	int maxTickTime = 240;
+	int minTickTime = GeneralModConfig.MATURATOR_MIN_TICK.get();
+	int maxTickTime = GeneralModConfig.MATURATOR_MAX_TICK.get();
 	
 	@Override
 	public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean isMoving)
@@ -69,7 +71,7 @@ public class BlockMaturator extends Block
     	worldIn.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), worldIn.rand.nextInt(maxTickTime - minTickTime + 1));
     	if(worldIn.isRemote)
     	{
-    		player.sendMessage(new TranslationTextComponent("item.gobber2.block_maturator.line2").applyTextStyle(TextFormatting.GREEN));
+    		player.sendMessage(new TranslationTextComponent("item.gobber2.block_maturator.line1").applyTextStyle(TextFormatting.GREEN));
     	}
     	
         return ActionResultType.SUCCESS;
@@ -80,8 +82,9 @@ public class BlockMaturator extends Block
     {
     	if(!world.isRemote)
 		{
-			world.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), rand.nextInt(minTickTime));
-			
+			//world.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), rand.nextInt(minTickTime));
+    		world.getPendingBlockTicks().scheduleTick(pos, this, this.tickRate(world) + rand.nextInt(minTickTime));
+    		
 			BlockPos posUp = pos.up();		
 			BlockState flaming = ((FireBlock)Blocks.FIRE).getStateForPlacement(world, posUp);
 			world.setBlockState(posUp, flaming, 11);
@@ -128,6 +131,7 @@ public class BlockMaturator extends Block
 	public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.block_maturator.line1").applyTextStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.block_maturator.line2").applyTextStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.block_maturator.line3").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
 	}
 }

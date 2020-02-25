@@ -65,12 +65,6 @@ public class BlockProtector extends Block
 	{
 		world.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), world.rand.nextInt(maxTickTime - minTickTime + 1));
 	}
-  
-	public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn)
-	{
-		BlockState stateIn = worldIn.getBlockState(pos);
-		worldIn.getPendingBlockTicks().scheduleTick(pos, stateIn.getBlock(), worldIn.rand.nextInt(maxTickTime - minTickTime + 1));   
-	}
 
 	@Override
 	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit)
@@ -91,6 +85,12 @@ public class BlockProtector extends Block
 		{
 			int radius = 32;
 		
+			world.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), random.nextInt(minTickTime));
+			
+			BlockPos posUp = pos.up();		
+			BlockState flaming = ((FireBlock)Blocks.FIRE).getStateForPlacement(world, posUp);
+			world.setBlockState(posUp, flaming, 11);
+			
 			List<Entity> entities = world.getEntitiesWithinAABB(LivingEntity.class, new AxisAlignedBB(pos.getX() - radius, pos.getY() - radius, pos.getZ() - radius, pos.getX() + radius, pos.getY() + radius, pos.getZ() + radius), e -> (e instanceof LivingEntity));
 			for(Entity entity : entities)
 			{
@@ -98,11 +98,11 @@ public class BlockProtector extends Block
 				{
 					PlayerEntity player = (PlayerEntity)entity;
 				   
-					world.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), random.nextInt(minTickTime));
-							
-					BlockPos posUp = pos.up();		
-					BlockState flaming = ((FireBlock)Blocks.FIRE).getStateForPlacement(world, posUp);
-					world.setBlockState(posUp, flaming, 11);
+//					world.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), random.nextInt(minTickTime));
+//							
+//					BlockPos posUp = pos.up();		
+//					BlockState flaming = ((FireBlock)Blocks.FIRE).getStateForPlacement(world, posUp);
+//					world.setBlockState(posUp, flaming, 11);
 				   
 					int newfoodlevel = 1;
 					float newsatlevel = 0.035F;

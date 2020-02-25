@@ -45,13 +45,7 @@ public class BlockHealer extends Block
 	{
 		world.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), world.rand.nextInt(maxTickTime - minTickTime + 1));
 	}
-  
-	public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn)
-	{
-	   BlockState stateIn = worldIn.getBlockState(pos);
-	   worldIn.getPendingBlockTicks().scheduleTick(pos, stateIn.getBlock(), worldIn.rand.nextInt(maxTickTime - minTickTime + 1));   
-	}
-	
+
     @Override
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit)
     {
@@ -71,6 +65,12 @@ public class BlockHealer extends Block
 		{
 			int radius = 16;  
       
+			world.getPendingBlockTicks().scheduleTick(pos, this, this.tickRate(world) + random.nextInt(10));
+			
+			BlockPos posUp = pos.up();		
+			BlockState flaming = ((FireBlock)Blocks.FIRE).getStateForPlacement(world, posUp);
+			world.setBlockState(posUp, flaming, 11);
+			
 			List<Entity> entities = world.getEntitiesWithinAABB(PlayerEntity.class, new AxisAlignedBB(pos.getX() - radius, pos.getY() - radius, pos.getZ() - radius, pos.getX() + radius, pos.getY() + radius, pos.getZ() + radius));
 			for(Entity entity : entities)
 			{
@@ -78,11 +78,12 @@ public class BlockHealer extends Block
 				
 				if(entity instanceof PlayerEntity)
 				{
-					world.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), random.nextInt(minTickTime));
-				
-					BlockPos posUp = pos.up();		
-					BlockState flaming = ((FireBlock)Blocks.FIRE).getStateForPlacement(world, posUp);
-					world.setBlockState(posUp, flaming, 11);
+					//world.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), random.nextInt(minTickTime));
+//					world.getPendingBlockTicks().scheduleTick(pos, this, this.tickRate(world) + random.nextInt(10));
+//					
+//					BlockPos posUp = pos.up();		
+//					BlockState flaming = ((FireBlock)Blocks.FIRE).getStateForPlacement(world, posUp);
+//					world.setBlockState(posUp, flaming, 11);
 					
 					int newfoodlevel = 1;
 					float newsatlevel = 0.025F;

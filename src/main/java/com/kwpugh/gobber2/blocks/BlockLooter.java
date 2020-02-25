@@ -65,13 +65,6 @@ public class BlockLooter extends Block
 	{
 		world.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), world.rand.nextInt(maxTickTime - minTickTime + 1));
 	}
-	  
-	//Start it up if walked over
-	public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn)
-	{
-		BlockState stateIn = worldIn.getBlockState(pos);
-		worldIn.getPendingBlockTicks().scheduleTick(pos, stateIn.getBlock(), worldIn.rand.nextInt(maxTickTime - minTickTime + 1));   
-	}
 
 	//Start it up if right-clicked on
 	@Override
@@ -92,7 +85,13 @@ public class BlockLooter extends Block
 		if(!world.isRemote)
 		{			   
 			int radius = 32;
-		   
+
+			world.getPendingBlockTicks().scheduleTick(pos, this, this.tickRate(world) + random.nextInt(10));
+			
+			BlockPos posUp = pos.up();		
+			BlockState flaming = ((FireBlock)Blocks.FIRE).getStateForPlacement(world, posUp);
+			world.setBlockState(posUp, flaming, 11);
+			
 			//Scan the radius for LivingEntity and store in list
 			List<Entity> mobs = world.getEntitiesWithinAABB(LivingEntity.class, new AxisAlignedBB(pos.getX() - radius, pos.getY() - radius, pos.getZ() - radius, pos.getX() + radius, pos.getY() + radius, pos.getZ() + radius), e -> (e instanceof LivingEntity));
 			for(Entity mob : mobs)
@@ -100,11 +99,12 @@ public class BlockLooter extends Block
 				//If a player is within the list, kick start the block, does work if player had left the area (on purpose)
 				if(mob instanceof PlayerEntity)
 				{
-					world.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), random.nextInt(minTickTime));
-				
-					BlockPos posUp = pos.up();		
-					BlockState flaming = ((FireBlock)Blocks.FIRE).getStateForPlacement(world, posUp);
-					world.setBlockState(posUp, flaming, 11);
+					//world.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), random.nextInt(minTickTime));
+//					world.getPendingBlockTicks().scheduleTick(pos, this, this.tickRate(world) + random.nextInt(10));
+//					
+//					BlockPos posUp = pos.up();		
+//					BlockState flaming = ((FireBlock)Blocks.FIRE).getStateForPlacement(world, posUp);
+//					world.setBlockState(posUp, flaming, 11);
 				}
 				
 				if(mob instanceof ZombieEntity || mob instanceof ZombieVillagerEntity)

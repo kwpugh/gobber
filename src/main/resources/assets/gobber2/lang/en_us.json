@@ -377,8 +377,10 @@
 	"item.gobber2.block_looter.jei.line17": "The Looter automatically activates when first placed.",
 	"block.gobber2.block_maturator": "The Maturator",
 	"item.gobber2.block_maturator": "The Maturator",
-	"item.gobber2.block_maturator.line1": "Provides various crops and other growables a little boost",
-	"item.gobber2.block_maturator.line2": "The Maturator is active in a range of 16 blocks",
+	"item.gobber2.block_maturator.line1": "The Maturator is active in a range of 16 blocks",
+	"item.gobber2.block_maturator.line2": "Provides various crops and other growables a little boost",
+	"item.gobber2.block_maturator.line3": "Range: 16 blocks",
+	
 		
 	"itemGroup.gobber2": "Gobber 2"
 }
