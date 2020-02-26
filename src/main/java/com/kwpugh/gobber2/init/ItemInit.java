@@ -45,6 +45,9 @@ import com.kwpugh.gobber2.items.rings.ItemCustomRingTeleport;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingTraveler;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingVision;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingVoid;
+import com.kwpugh.gobber2.items.seeds.ItemCustomSeed;
+import com.kwpugh.gobber2.items.seeds.ItemCustomSeedEnd;
+import com.kwpugh.gobber2.items.seeds.ItemCustomSeedNether;
 import com.kwpugh.gobber2.items.staffs.ItemCustomStaffClearing;
 import com.kwpugh.gobber2.items.staffs.ItemCustomStaffEnsnarement;
 import com.kwpugh.gobber2.items.staffs.ItemCustomStaffFarmer;
@@ -84,9 +87,6 @@ import com.kwpugh.gobber2.lists.BlockList;
 import com.kwpugh.gobber2.lists.FoodList;
 import com.kwpugh.gobber2.lists.ItemList;
 import com.kwpugh.gobber2.lists.ToolMaterialList;
-import com.kwpugh.gobber2.seeds.ItemCustomSeed;
-import com.kwpugh.gobber2.seeds.ItemCustomSeedEnd;
-import com.kwpugh.gobber2.seeds.ItemCustomSeedNether;
 
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.BlockItem;
@@ -292,8 +292,9 @@ public class ItemInit
 				ItemList.block_healer = new BlockItem(BlockList.block_healer, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.block_healer.getRegistryName()),				
 				ItemList.block_protector = new BlockItem(BlockList.block_protector, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.block_protector.getRegistryName()),
 				ItemList.block_defender = new BlockItem(BlockList.block_defender, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.block_defender.getRegistryName()),
-				ItemList.block_looter = new BlockItem(BlockList.block_looter, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.block_looter.getRegistryName()),
-				ItemList.block_maturator = new BlockItem(BlockList.block_maturator, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.block_maturator.getRegistryName())
+				ItemList.block_maturator = new BlockItem(BlockList.block_maturator, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.block_maturator.getRegistryName()),
+				ItemList.block_looter = new BlockItem(BlockList.block_looter, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.block_looter.getRegistryName())
+				
 			);		
 			Gobber2.logger.info("Gobber Items registered.");
 		}

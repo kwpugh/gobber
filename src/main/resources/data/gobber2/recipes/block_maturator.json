@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "ABA",
+        "ACA",
+        "ABA"
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_block_nether"
+        },
+        "B":
+        {
+            "item": "minecraft:black_concrete"
+        },
+        "C":
+        {
+            "item": "gobber2:gobber2_ring_farmer"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:block_maturator",
+        "count": 1
+    }
+}

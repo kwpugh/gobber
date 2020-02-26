@@ -2,9 +2,11 @@ package com.kwpugh.gobber2.util;
 
 import com.kwpugh.gobber2.Gobber2;
 
+import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -54,5 +56,21 @@ public final class ModEventSubscriber
             	if (event.isCancelable()) event.setCanceled(true);
             }
         } 
+    }
+    
+    @SubscribeEvent
+    public static void onLivingSetAttackTarget(LivingSetAttackTargetEvent event)
+    {
+    	if (event.getTarget() instanceof PlayerEntity && event.getEntityLiving()instanceof MobEntity)
+        {	
+    		PlayerEntity player = (PlayerEntity) event.getTarget();
+    		MobEntity attacker = (MobEntity) event.getEntityLiving();
+    		
+    		//hostile mobs won't target player
+    		if (ArmorUtil.isPlayerGotStealth(player))
+    		{
+    			attacker.setAttackTarget(null);
+    		}
+        }
     }
 } 

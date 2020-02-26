@@ -76,5 +76,13 @@ public class JEIDescriptions implements IModPlugin
 				"item.gobber2.block_looter.jei.line16",
 				" ",
 				"item.gobber2.block_looter.jei.line17");
+		
+		registry.addIngredientInfo(new ItemStack(ItemList.block_maturator), VanillaTypes.ITEM, 
+				"item.gobber2.block_maturator.jei.line1",
+				" ",
+				"item.gobber2.block_maturator.jei.line2",
+				"item.gobber2.block_maturator.jei.line3",
+				" ",
+				"item.gobber2.block_maturator.jei.line4");
 	}
 }

@@ -131,4 +131,17 @@ public final class ArmorUtil
       		
         return false;
     }
+    
+    //Holding the Ring of Stealth
+    public static boolean isPlayerGotStealth(PlayerEntity player)
+    {
+    	ItemStack mainHand = player.getHeldItemMainhand();
+    	
+    	if(mainHand.getItem() == ItemList.gobber2_ring_stealth)
+      	{
+      		return true;  		
+      	}
+      		
+        return false;
+    } 
 } 

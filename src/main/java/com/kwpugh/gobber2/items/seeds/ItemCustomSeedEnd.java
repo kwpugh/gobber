@@ -1,4 +1,4 @@
-package com.kwpugh.gobber2.seeds;
+package com.kwpugh.gobber2.items.seeds;
 
 import java.util.List;
 
@@ -14,23 +14,23 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
-public class ItemCustomSeedNether extends BlockNamedItem
+public class ItemCustomSeedEnd extends BlockNamedItem
 {
-	public ItemCustomSeedNether(String name, Block crop, Properties builder)
+	public ItemCustomSeedEnd(String name, Block crop, Properties builder)
 	{
         super(crop, builder);
 
-        this.setRegistryName("gobber2:gobber2_seed_nether");       
+        this.setRegistryName("gobber2:gobber2_seed_end");       
     }
 	
     public List<ModelResourceLocation> getVariants() {
-        return Lists.newArrayList(new ModelResourceLocation("gobber2:gobber2_seed_nether", "inventory"));
+        return Lists.newArrayList(new ModelResourceLocation("gobber2:gobber2_seed_end", "inventory"));
     }
     
 	@Override
 	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
 	{
 		super.addInformation(stack, world, list, flag);				
-		list.add(new StringTextComponent(TextFormatting.BLUE + "Plant on Farmland to grow Nether Plant"));
+		list.add(new StringTextComponent(TextFormatting.BLUE + "Plant on Farmland to grow End Plant"));
 	} 
 }

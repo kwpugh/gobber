@@ -37,6 +37,8 @@ public class GeneralModConfig
     public static ForgeConfigSpec.IntValue RING_EXPLORER_MIN_RANGE;
     public static ForgeConfigSpec.IntValue RING_EXPLORER_MAX_RANGE;
     
+    public static ForgeConfigSpec.BooleanValue REVERSE_RING_MINER;
+    
     public static ForgeConfigSpec.IntValue MATURATOR_MIN_TICK;
     public static ForgeConfigSpec.IntValue MATURATOR_MAX_TICK;
     
@@ -96,11 +98,12 @@ public class GeneralModConfig
 
         SERVER_BUILDER.pop();
         
-        SERVER_BUILDER.comment("Ring of the Explorer Settings").push("ring_explorer_settings");
+        SERVER_BUILDER.comment("Misc Ring Settings").push("misc_ring_settings");
         
         RING_EXPLORER_MIN_RANGE = SERVER_BUILDER.comment("Ring of Explorer - Min distance from world spawn to begin searching for a spot [default: 500]").defineInRange("ringExplorerMin", 500, 0, 100000);
         RING_EXPLORER_MAX_RANGE = SERVER_BUILDER.comment("Ring of Explorer - Max distance from world spawn to begin searching for a spot [default: 6000]").defineInRange("ringExplorerMax", 6000, 0, 250000);
-
+        REVERSE_RING_MINER = SERVER_BUILDER.comment("Reverse the drop/no drops feature on Ring of Miner [true / false]").define("reverseRingMiner", false);
+        
         SERVER_BUILDER.pop();
         
         SERVER_BUILDER.comment("Settings for the Maturator").push("maturator_settings");

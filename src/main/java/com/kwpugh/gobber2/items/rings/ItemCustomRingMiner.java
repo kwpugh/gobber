@@ -35,6 +35,7 @@ public class ItemCustomRingMiner extends Item
 	}
 	
 	int ringMinerCooldown = GeneralModConfig.RING_MINER_COOLDOWN.get();
+	boolean reverseRingMiner = GeneralModConfig.REVERSE_RING_MINER.get();
 	
 	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
 	{
@@ -120,11 +121,11 @@ public class ItemCustomRingMiner extends Item
 						
 						if(player.isShiftKeyDown())
 						{
-							world.destroyBlock(targetpos, true);
+							world.destroyBlock(targetpos, !reverseRingMiner);
 						}
 						else
 						{
-							world.destroyBlock(targetpos, false);	
+							world.destroyBlock(targetpos, reverseRingMiner);	
 						}
 					}				
 				}	

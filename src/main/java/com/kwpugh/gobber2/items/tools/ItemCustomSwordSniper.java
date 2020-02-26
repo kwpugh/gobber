@@ -51,7 +51,8 @@ public class ItemCustomSwordSniper extends SwordItem
 	            float arrowVelocity = 60.0F;
 	            entityarrow.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, arrowVelocity, 1.0F);
 	            entityarrow.setDamage(1);
-	            world.addEntity(entityarrow);	 	
+	            world.addEntity(entityarrow);
+	            entityarrow.pickupStatus = AbstractArrowEntity.PickupStatus.DISALLOWED;
 			}	
 		    else
 		    {

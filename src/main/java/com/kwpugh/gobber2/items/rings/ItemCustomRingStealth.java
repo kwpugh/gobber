@@ -5,8 +5,6 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
@@ -22,34 +20,6 @@ public class ItemCustomRingStealth extends Item
 	public ItemCustomRingStealth(Properties properties)
 	{
 		super(properties);
-	}
-	
-	public void inventoryTick(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected)
-	{		
-		
-		if(!world.isRemote)
-		{
-			if(entity instanceof PlayerEntity)
-			{
-				PlayerEntity player = (PlayerEntity)entity;
-
-				ItemStack equipped = player.getHeldItemMainhand();
-
-				if(!world.isRemote && !player.isCreative())
-				{
-					if(stack == equipped)
-			        {
-			        	player.abilities.disableDamage = true;
-			        	player.setInvisible(true);
-			        }
-			        else
-			        {
-			        	player.abilities.disableDamage = false;
-			        	player.setInvisible(false);
-			        }
-				}				
-			}	
-		}
 	}
 
 	@OnlyIn(Dist.CLIENT)

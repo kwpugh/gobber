@@ -39,6 +39,7 @@ public class ItemCustomStaffSniper extends Item
             entityarrow.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, arrowVelocity, 1.0F);
             entityarrow.setDamage(1);
             worldIn.addEntity(entityarrow);
+            entityarrow.pickupStatus = AbstractArrowEntity.PickupStatus.DISALLOWED;
         }
         return new ActionResult<ItemStack>(ActionResultType.PASS, playerIn.getHeldItem(handIn));
     }
@@ -51,13 +52,4 @@ public class ItemCustomStaffSniper extends Item
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_sniper.line2").applyTextStyle(TextFormatting.GREEN)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_sniper.line3").applyTextStyle(TextFormatting.YELLOW)));
 	}
-	
-//    @Override
-//	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
-//	{
-//		super.addInformation(stack, world, list, flag);				
-//		list.add(new StringTextComponent(TextFormatting.BLUE + "Fires very precise arrows at high velocity"));
-//		list.add(new StringTextComponent(TextFormatting.GREEN + "Right-click in player main hand"));
-//		list.add(new StringTextComponent(TextFormatting.YELLOW + "Arrow supply: Unlimited"));
-//	} 
 }
