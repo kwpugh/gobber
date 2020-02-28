@@ -19,7 +19,7 @@ public class BlockList
 	public static Block gobber2_plant;
 	public static Block gobber2_plant_nether;
 	public static Block gobber2_plant_end;
-	
+
 	public static Block block_healer;
 	public static Block block_protector;
 	public static Block block_defender;

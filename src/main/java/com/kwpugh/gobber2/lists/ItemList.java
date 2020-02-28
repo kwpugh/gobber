@@ -176,8 +176,7 @@ public class ItemList
 	public static Item gobber2_glass_nether;
 	public static Item gobber2_glass_end;
 	
-	
-	
+
 	//Seeds
 	public static Item gobber2_seed;
 	public static Item gobber2_seed_nether;

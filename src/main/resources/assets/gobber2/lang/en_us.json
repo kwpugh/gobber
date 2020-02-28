@@ -322,7 +322,7 @@
 	"block.gobber2.gobber2_glass": "Gobber Glass",
 	"block.gobber2.gobber2_glass_nether": "Nether Glass",
 	"block.gobber2.gobber2_glass_end": "End Glass",
-	
+
 	"block.gobber2.block_healer": "The Healer",
 	"item.gobber2.block_healer": "The Healer",
 	"item.gobber2.block_healer.line1": "The Healer is active for players in a range of 16 blocks",
