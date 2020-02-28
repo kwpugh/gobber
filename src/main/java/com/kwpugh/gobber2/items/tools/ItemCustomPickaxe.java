@@ -4,7 +4,6 @@ package com.kwpugh.gobber2.items.tools;
 import java.util.List;
 
 import com.kwpugh.gobber2.lists.ItemList;
-import com.kwpugh.gobber2.util.EnableUtil;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -12,8 +11,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.PickaxeItem;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
@@ -31,15 +28,7 @@ public class ItemCustomPickaxe extends PickaxeItem
 	
 	public void inventoryTick(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected)
 	{		
-		if(entity instanceof PlayerEntity && !world.isRemote && EnableUtil.isEnabled(stack))
-		{
-			PlayerEntity player = (PlayerEntity)entity;
 
-			if (player.ticksExisted % 240 == 0)
-			{
-				player.addPotionEffect(new EffectInstance(Effects.NIGHT_VISION, 520, 0, false, false));
-			} 		
-		}
 	}	
 
 	@Override
@@ -47,10 +36,10 @@ public class ItemCustomPickaxe extends PickaxeItem
     {
 		ItemStack stack = player.getHeldItem(hand);
 		
-        if(!world.isRemote && player.isCrouching())
+        if(!world.isRemote && player.isShiftKeyDown())
         {
-            EnableUtil.changeEnabled(player, hand);
-            player.sendMessage(new StringTextComponent("Night vision ability active: " + EnableUtil.isEnabled(stack)));
+            //EnableUtil.changeEnabled(player, hand);
+            //player.sendMessage(new StringTextComponent("Night vision ability active: " + EnableUtil.isEnabled(stack)));
             return new ActionResult<ItemStack>(ActionResultType.SUCCESS, player.getHeldItem(hand));
         }
         return super.onItemRightClick(world, player, hand);
@@ -65,9 +54,7 @@ public class ItemCustomPickaxe extends PickaxeItem
 	@Override
 	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
 	{
-		super.addInformation(stack, world, list, flag);				
-		list.add(new StringTextComponent(TextFormatting.GREEN + "Right-click for Night Vision"));
-		list.add(new StringTextComponent(TextFormatting.RED + "Night vision ability active: " + EnableUtil.isEnabled(stack)));
-		list.add(new StringTextComponent(TextFormatting.GOLD + "Sneak right-click to toggle ability on/off"));
+		super.addInformation(stack, world, list, flag);	
+		list.add(new StringTextComponent(TextFormatting.BLUE + "An fine pickaxe"));
 	} 
 }

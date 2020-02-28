@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.kwpugh.gobber2.util.GeneralModConfig;
+
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -188,11 +190,11 @@ public class ItemCustomRingTeleport extends Item
 		 return ActionResultType.PASS;
 	}
 	
-	//Use the teleport function or clear it
+	//Use the teleport function or clear it	
 	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
 	{
 		ItemStack stack = player.getHeldItem(hand);
-	  
+		
 		if(getPosition(stack) != null && !player.isShiftKeyDown())
 		{
 			teleport(player, world, stack);

@@ -20,7 +20,7 @@ public class BlockEndBlock extends Block
 	{
 		super(properties);
 	}
-	
+
 	@OnlyIn(Dist.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable IBlockReader world, List<ITextComponent> tooltip, ITooltipFlag flag)
 	{

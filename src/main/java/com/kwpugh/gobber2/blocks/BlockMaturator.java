@@ -85,6 +85,8 @@ public class BlockMaturator extends Block
     @Override
     public void tick(BlockState state, ServerWorld world, BlockPos pos, Random rand)
     {
+    	boolean enableMaturatorAnimalEffect = GeneralModConfig.ENABLE_MATURATOR_ANIMAL_EFFECT.get();
+    	
     	if(!world.isRemote)
 		{
     		world.getPendingBlockTicks().scheduleTick(pos, this, this.tickRate(world) + rand.nextInt(minTickTime));
@@ -123,14 +125,18 @@ public class BlockMaturator extends Block
                 }									
 			}
     		
-    		int radius = 64;
-    		
-    		List<Entity> entities = world.getEntitiesWithinAABB(AnimalEntity.class, new AxisAlignedBB(pos.getX() - radius, pos.getY() - radius, pos.getZ() - radius, pos.getX() + radius, pos.getY() + radius, pos.getZ() + radius), e -> (e instanceof LivingEntity));
-			for(Entity entity : entities)
-			{
-				((AgeableEntity) entity).ageUp(120,true);;
-				
-			}
+    		if(enableMaturatorAnimalEffect)
+    		{
+        		int radius = 16;
+        		
+        		List<Entity> entities = world.getEntitiesWithinAABB(AnimalEntity.class, new AxisAlignedBB(pos.getX() - radius, pos.getY() - radius, pos.getZ() - radius, pos.getX() + radius, pos.getY() + radius, pos.getZ() + radius), e -> (e instanceof LivingEntity));
+    			for(Entity entity : entities)
+    			{
+    				((AgeableEntity) entity).ageUp(120,true);;
+    				
+    			}    			
+    		}
+
 		}
     }	
 	

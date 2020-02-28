@@ -43,6 +43,7 @@ public class GeneralModConfig
     
     public static ForgeConfigSpec.IntValue MATURATOR_MIN_TICK;
     public static ForgeConfigSpec.IntValue MATURATOR_MAX_TICK;
+    public static ForgeConfigSpec.BooleanValue ENABLE_MATURATOR_ANIMAL_EFFECT;
     
     
     public static void init(ForgeConfigSpec.Builder SERVER_BUILDER)
@@ -114,6 +115,7 @@ public class GeneralModConfig
         
         MATURATOR_MIN_TICK = SERVER_BUILDER.comment("Min interval of world ticks for the Maturator [default: 120]").defineInRange("maturatorMinTick", 120, 0, 240);
         MATURATOR_MAX_TICK = SERVER_BUILDER.comment("Max interval of world ticks for the Maturator [default: 240]").defineInRange("maturatorMaxTick", 240, 0, 480);
+        ENABLE_MATURATOR_ANIMAL_EFFECT = SERVER_BUILDER.comment("Enable Maturator effect on baby animals [true / false]").define("enableMaturatorAnimalEffect", false);
 
         SERVER_BUILDER.pop();
     }
