@@ -111,7 +111,7 @@ public class ItemCustomPaxelStars extends ToolItem
     {    	
     	BlockPos torchPos;
     	BlockPos pos = iuc.getPos();
-    	BlockState state = iuc.getWorld().getBlockState(pos);
+    	//BlockState state = iuc.getWorld().getBlockState(pos);
     	
     	World world = iuc.getWorld();
     	BlockPos blockpos = iuc.getPos();

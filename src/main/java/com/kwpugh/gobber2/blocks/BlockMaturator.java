@@ -33,10 +33,15 @@ import net.minecraft.block.SweetBerryBushBlock;
 import net.minecraft.block.TallSeaGrassBlock;
 import net.minecraft.block.VineBlock;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.AgeableEntity;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.text.ITextComponent;
@@ -82,7 +87,6 @@ public class BlockMaturator extends Block
     {
     	if(!world.isRemote)
 		{
-			//world.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), rand.nextInt(minTickTime));
     		world.getPendingBlockTicks().scheduleTick(pos, this, this.tickRate(world) + rand.nextInt(minTickTime));
     		
 			BlockPos posUp = pos.up();		
@@ -117,6 +121,15 @@ public class BlockMaturator extends Block
                 {  
 		        	state1.tick((ServerWorld) world, targetPos, world.rand); 	                                                             
                 }									
+			}
+    		
+    		int radius = 64;
+    		
+    		List<Entity> entities = world.getEntitiesWithinAABB(AnimalEntity.class, new AxisAlignedBB(pos.getX() - radius, pos.getY() - radius, pos.getZ() - radius, pos.getX() + radius, pos.getY() + radius, pos.getZ() + radius), e -> (e instanceof LivingEntity));
+			for(Entity entity : entities)
+			{
+				((AgeableEntity) entity).ageUp(120,true);;
+				
 			}
 		}
     }	

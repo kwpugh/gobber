@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.kwpugh.gobber2.util.GeneralModConfig;
+
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
@@ -28,9 +30,13 @@ public class ItemCustomStaffSniper extends Item
 		super(properties);
 	}
 
+	int staffSniperCooldown = GeneralModConfig.SNIPER_STAFF_COOLDOWN.get();
+	
 	@Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn)
     {
+		playerIn.getCooldownTracker().setCooldown(this, staffSniperCooldown);
+		
         if (!worldIn.isRemote)
         {
             ArrowItem itemarrow = (ArrowItem)Items.ARROW;

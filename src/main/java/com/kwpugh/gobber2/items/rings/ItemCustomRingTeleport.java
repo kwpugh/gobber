@@ -33,7 +33,136 @@ public class ItemCustomRingTeleport extends Item
 	{
 		super(properties);
 	}
+
 	
+//	//NEW CODE
+//	
+//	//Set the location in the ring
+//	public ActionResultType onItemUse(ItemUseContext context)
+//	{
+//		MinecraftServer serverWorld = context.getWorld().getServer();
+//		World world = context.getWorld();
+//		 
+//		BlockPos pos = context.getPos();
+//		PlayerEntity player = context.getPlayer();
+//		
+//		Direction direction = context.getFace();
+//		ItemStack stackRing = context.getPlayer().getHeldItemMainhand();
+//		 
+//		if(getPosition(stackRing) == null && player.isShiftKeyDown())
+//		{
+//			setPosition(stackRing, serverWorld, world, pos.offset(direction), player);
+//			player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line1").applyTextStyle(TextFormatting.GREEN)));
+//	 
+//			return ActionResultType.SUCCESS;
+//		}
+// 
+//		if(getPosition(stackRing) != null)
+//		{
+//			player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line2").applyTextStyle(TextFormatting.GREEN)));
+//		 
+//			return ActionResultType.SUCCESS;
+//		}
+// 
+//		return ActionResultType.PASS;
+//	}
+//
+//	//Set position and dimension in the NBT
+//	public static void setPosition(ItemStack stack, MinecraftServer serverWorld, World world, BlockPos pos, PlayerEntity player)
+//	{
+//		if(!world.isRemote)
+//		{
+//			return;
+//		}
+//		
+//		CompoundNBT tags;
+//		ResourceLocation currentDim = player.dimension.getRegistryName();
+//		String dim = currentDim.toString();
+//		
+//		if (!stack.hasTag())
+//		{
+//			tags = new CompoundNBT();
+//		}
+//		else
+//		{
+//			tags = stack.getTag();
+//		}
+//	 
+//		if (pos == null)
+//		{
+//			tags.remove("position");
+//			tags.remove("dimension");
+//		}
+//		else
+//		{
+//			tags.put("position", NBTUtil.writeBlockPos(pos));
+//			tags.putString("dimension", dim);
+//		}
+//		stack.setTag(tags);
+//	}
+//	
+//	//Read player position from NBT tag
+//	public static BlockPos getPosition(ItemStack stack)
+//	{
+//		if (!stack.hasTag())
+//		{
+//			return null;
+//		}		 
+//
+//		CompoundNBT tags = stack.getTag();
+//	 
+//		if (tags.contains("position"))
+//		{
+//			return NBTUtil.readBlockPos((CompoundNBT) tags.get("position"));
+//		}
+//		return null;
+//	}
+//	
+//	//Read player dimension from NBT tag
+//	public static String getDimension(ItemStack stack)
+//	{
+//		if (!stack.hasTag())
+//		{
+//			return null;
+//		}
+//	 
+//		CompoundNBT tags = stack.getTag();
+//	 
+//		if (tags.contains("dimension"))
+//		{
+//			return tags.getString("dimension");
+//		}	
+//		return null;
+//	}
+//	
+//
+//	
+//	@OnlyIn(Dist.CLIENT)
+//	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
+//	{		
+//		super.addInformation(stack, worldIn, tooltip, flagIn);
+//		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line9").applyTextStyle(TextFormatting.GREEN)));
+//		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line10").applyTextStyle(TextFormatting.GREEN)));
+//		
+//		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line11").applyTextStyle(TextFormatting.YELLOW)));
+//		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line12").applyTextStyle(TextFormatting.YELLOW)));
+//		
+//		if(getPosition(stack) != null)
+//		{
+//			BlockPos pos = getPosition(stack);
+//			
+//			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line13").applyTextStyle(TextFormatting.RED)));
+//			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line14", getDimension(stack), pos.getX(), pos.getY(), pos.getZ()).applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+//		}
+//	}
+	
+	
+	
+	
+	
+		
+		
+		
 	//Set the location in the ring
 	public ActionResultType onItemUse(ItemUseContext context)
 	{
@@ -43,7 +172,7 @@ public class ItemCustomRingTeleport extends Item
 		 Direction direction = context.getFace();
 		 ItemStack stackRing = context.getPlayer().getHeldItemMainhand();
 		 
-		 if(getPosition(stackRing) == null && player.isCrouching())
+		 if(getPosition(stackRing) == null && player.isShiftKeyDown())
 		 {
 			 setPosition(stackRing, world, pos.offset(direction), player);
 			 player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line1").applyTextStyle(TextFormatting.GREEN)));
@@ -64,13 +193,13 @@ public class ItemCustomRingTeleport extends Item
 	{
 		ItemStack stack = player.getHeldItem(hand);
 	  
-		if(getPosition(stack) != null && !player.isCrouching())
+		if(getPosition(stack) != null && !player.isShiftKeyDown())
 		{
 			teleport(player, world, stack);
 			world.playSound(null, player.getPosX(), player.getPosY(), player.getPosZ(), SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, SoundCategory.PLAYERS, 1.0F, 1.0F);
 		}
 	 
-		if(getPosition(stack) != null && player.isCrouching())
+		if(getPosition(stack) != null && player.isShiftKeyDown())
 		{
 			setPosition(stack, world, null, player);
 			player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line3").applyTextStyle(TextFormatting.GREEN)));
@@ -227,5 +356,9 @@ public class ItemCustomRingTeleport extends Item
 			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line13").applyTextStyle(TextFormatting.RED)));
 			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line14", dimName, pos.getX(), pos.getY(), pos.getZ()).applyTextStyle(TextFormatting.LIGHT_PURPLE)));
 		}
-	} 
+	}
+	
+	
+	
+	
 }

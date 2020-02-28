@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.kwpugh.gobber2.lists.ItemList;
 import com.kwpugh.gobber2.util.EnableUtil;
+import com.kwpugh.gobber2.util.GeneralModConfig;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
@@ -31,14 +32,18 @@ public class ItemCustomSwordSniper extends SwordItem
 		super(tier, attackDamageIn, attackSpeedIn, builder);
 	}
 
+	int swordSniperCooldown = GeneralModConfig.SNIPER_SWORD_COOLDOWN.get();
+	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
 	{
 		ItemStack stack = player.getHeldItem(hand);
 		
+		player.getCooldownTracker().setCooldown(this, swordSniperCooldown);
+		
 		if(!world.isRemote)
 		{
-		    if(player.isCrouching())
+		    if(player.isShiftKeyDown())
 		    {
 		        EnableUtil.changeEnabled(player, hand);
 		        player.sendMessage(new StringTextComponent("Sniper ability active: " + EnableUtil.isEnabled(stack)));

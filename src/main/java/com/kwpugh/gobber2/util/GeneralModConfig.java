@@ -33,6 +33,8 @@ public class GeneralModConfig
     public static ForgeConfigSpec.IntValue RING_LUMBERJACK_COOLDOWN;
     public static ForgeConfigSpec.IntValue RING_ABOVE_COOLDOWN;
     public static ForgeConfigSpec.IntValue RING_EXPLORER_COOLDOWN;
+    public static ForgeConfigSpec.IntValue SNIPER_SWORD_COOLDOWN;
+    public static ForgeConfigSpec.IntValue SNIPER_STAFF_COOLDOWN;
 
     public static ForgeConfigSpec.IntValue RING_EXPLORER_MIN_RANGE;
     public static ForgeConfigSpec.IntValue RING_EXPLORER_MAX_RANGE;
@@ -88,14 +90,16 @@ public class GeneralModConfig
 
         SERVER_BUILDER.pop();
         
-        SERVER_BUILDER.comment("Ring Cooldown Settings").push("ring_cooldown_settings");
+        SERVER_BUILDER.comment("Item Cooldown Settings").push("item_cooldown_settings");
       
         RING_BLINK_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Ring of Blink cooldown [0-120, default: 60]").defineInRange("ringBlinkCooldown", 60, 0, 120);
         RING_LUMBERJACK_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Ring of the Lumberjack cooldown [0-240, default: 80]").defineInRange("ringLumberjackCooldown", 80, 0, 120);
         RING_MINER_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Ring of the Miner cooldown [0-240, default: 80]").defineInRange("ringMinerCooldown", 80, 0, 120);        
         RING_ABOVE_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Ring of Above cooldown [0-240, default: 80]").defineInRange("ringAboveCooldown", 80, 0, 120);
         RING_EXPLORER_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Ring of the Explorer cooldown [0-1200, default: 480]").defineInRange("ringExplorerCooldown", 480, 0, 1200);
-
+        SNIPER_SWORD_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Sword of the Sniper cooldown [0-120, default: 60]").defineInRange("swordSniperCooldown", 60, 0, 120);
+        SNIPER_STAFF_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Staff of the Sniper cooldown [0-120, default: 60]").defineInRange("staffSniperCooldown", 60, 0, 120);
+        
         SERVER_BUILDER.pop();
         
         SERVER_BUILDER.comment("Misc Ring Settings").push("misc_ring_settings");

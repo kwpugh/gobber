@@ -98,13 +98,6 @@ public class BlockDefender extends Block
 				{
 					PlayerEntity player = (PlayerEntity)entity;
 				   
-					//world.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), random.nextInt(minTickTime));
-//					world.getPendingBlockTicks().scheduleTick(pos, this, this.tickRate(world) + random.nextInt(10));
-//					
-//					BlockPos posUp = pos.up();		
-//					BlockState flaming = ((FireBlock)Blocks.FIRE).getStateForPlacement(world, posUp);
-//					world.setBlockState(posUp, flaming, 11);
-				   
 					int newfoodlevel = 1;
 					float newsatlevel = 0.045F;
 					SpecialAbilities.giveRegenffect(world, player, null, newfoodlevel, newsatlevel);   

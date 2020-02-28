@@ -23,7 +23,6 @@ import net.minecraftforge.fml.loading.FMLPaths;
 import top.theillusivec4.curios.api.CuriosAPI;
 import top.theillusivec4.curios.api.imc.CurioIMCMessage;
 
-
 @Mod(Gobber2.modid)
 public class Gobber2 
 {
