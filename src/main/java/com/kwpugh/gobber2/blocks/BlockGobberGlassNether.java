@@ -16,8 +16,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -52,11 +52,11 @@ public class BlockGobberGlassNether extends GlassBlock
 	} 
 
 	@OnlyIn(Dist.CLIENT)
-	public void addInformation(ItemStack stack, @Nullable IBlockReader world, List<ITextComponent> tooltip, ITooltipFlag flag)
+	public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
-		super.addInformation(stack, world, tooltip, flag);				
-		tooltip.add(new StringTextComponent(TextFormatting.BLUE + "A very sturdy glass block"));
-		tooltip.add(new StringTextComponent(TextFormatting.BLUE + "Drops the block when broken"));
-		tooltip.add(new StringTextComponent(TextFormatting.BLUE + "Gives off light"));
-	}
+		super.addInformation(stack, worldIn, tooltip, flagIn);
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_glass.line1").applyTextStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_glass.line2").applyTextStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_glass.line3").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+	} 
 }

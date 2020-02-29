@@ -2,6 +2,8 @@ package com.kwpugh.gobber2.items.tools;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import com.kwpugh.gobber2.lists.ItemList;
 import com.kwpugh.gobber2.util.EnableUtil;
 import com.kwpugh.gobber2.util.GeneralModConfig;
@@ -23,7 +25,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ItemCustomSwordSniper extends SwordItem
 {
@@ -46,7 +51,8 @@ public class ItemCustomSwordSniper extends SwordItem
 		    if(player.isShiftKeyDown())
 		    {
 		        EnableUtil.changeEnabled(player, hand);
-		        player.sendMessage(new StringTextComponent("Sniper ability active: " + EnableUtil.isEnabled(stack)));
+		        player.sendMessage(new TranslationTextComponent("item.gobber2.gobber2_sword_sniper.line4", EnableUtil.isEnabled(stack)).applyTextStyle(TextFormatting.RED));
+		        
 		    }
 		    
 		    if(EnableUtil.isEnabled(stack))
@@ -97,14 +103,14 @@ public class ItemCustomSwordSniper extends SwordItem
 		return repair.getItem() == ItemList.gobber2_ingot_end;
 	}
 	
-    @Override
-	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
+	@OnlyIn(Dist.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
-		super.addInformation(stack, world, list, flag);				
-		list.add(new StringTextComponent(TextFormatting.BLUE + "An unbreakable sword with a special ability"));
-		list.add(new StringTextComponent(TextFormatting.GREEN + "Right-click to fire arrows"));
-		list.add(new StringTextComponent(TextFormatting.RED + "Sniper ability active: " + EnableUtil.isEnabled(stack)));
-		list.add(new StringTextComponent(TextFormatting.GOLD + "Sneak right-click to toggle ability on/off"));
-		list.add(new StringTextComponent(TextFormatting.YELLOW + "Arrow supply: unlimited"));
-	} 
+		super.addInformation(stack, worldIn, tooltip, flagIn);
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_sword_sniper.line1").applyTextStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_sword_sniper.line2").applyTextStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_sword_sniper.line3").applyTextStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_sword_sniper.line4", EnableUtil.isEnabled(stack)).applyTextStyle(TextFormatting.RED)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_sword_sniper.line5").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+	}  
 }

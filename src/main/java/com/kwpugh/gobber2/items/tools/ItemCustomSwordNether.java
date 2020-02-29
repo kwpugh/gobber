@@ -2,6 +2,8 @@ package com.kwpugh.gobber2.items.tools;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import com.kwpugh.gobber2.lists.ItemList;
 
 import net.minecraft.client.util.ITooltipFlag;
@@ -19,7 +21,10 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ItemCustomSwordNether extends SwordItem
 {
@@ -66,10 +71,10 @@ public class ItemCustomSwordNether extends SwordItem
 		return repair.getItem() == ItemList.gobber2_ingot_nether;
 	}
 	
-    @Override
-	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
+	@OnlyIn(Dist.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
-		super.addInformation(stack, world, list, flag);				
-		list.add(new StringTextComponent(TextFormatting.GREEN + "Better at getting Wither Skulls"));
-	} 
+		super.addInformation(stack, worldIn, tooltip, flagIn);
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_sword_nether.line1").applyTextStyle(TextFormatting.GREEN)));
+	}
 }

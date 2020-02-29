@@ -1,12 +1,9 @@
 package com.kwpugh.gobber2.items.tools;
 
 
-import java.util.List;
-
 import com.kwpugh.gobber2.lists.ItemList;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.IItemTier;
@@ -16,9 +13,6 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
 public class ItemCustomSwordEnd extends SwordItem
@@ -66,11 +60,4 @@ public class ItemCustomSwordEnd extends SwordItem
 	{
 		return repair.getItem() == ItemList.gobber2_ingot_end;
 	}
-	
-    @Override
-	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
-	{
-		super.addInformation(stack, world, list, flag);	
-		list.add(new StringTextComponent(TextFormatting.BLUE + "An unbreakable sword"));
-	} 
 }

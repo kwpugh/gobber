@@ -1,10 +1,7 @@
 package com.kwpugh.gobber2.items.tools;
 
-import java.util.List;
-
 import com.kwpugh.gobber2.lists.ItemList;
 
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
@@ -12,9 +9,6 @@ import net.minecraft.item.SwordItem;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
 public class ItemCustomSword extends SwordItem
@@ -45,11 +39,4 @@ public class ItemCustomSword extends SwordItem
 	{
 		return repair.getItem() == ItemList.gobber2_ingot;
 	}
-	
-    @Override
-	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
-	{
-		super.addInformation(stack, world, list, flag);				
-		list.add(new StringTextComponent(TextFormatting.GREEN + "A nice sword indeed"));
-	} 
 }

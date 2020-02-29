@@ -181,11 +181,4 @@ public class ItemCustomBow extends BowItem
    {
 	   return repair.getItem() == ItemList.gobber2_ingot;
    }
-   
-   @Override
-   public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
-   {
-	   super.addInformation(stack, world, list, flag);				
-	   list.add(new StringTextComponent(TextFormatting.GREEN + "A more durable bow"));
-   } 
 }

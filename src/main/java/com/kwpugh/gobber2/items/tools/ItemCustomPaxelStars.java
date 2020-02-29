@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.annotation.Nullable;
+
 import com.google.common.collect.ImmutableBiMap.Builder;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
@@ -36,7 +38,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.util.Constants.WorldEvents;
 
 public class ItemCustomPaxelStars extends ToolItem
@@ -222,10 +227,10 @@ public class ItemCustomPaxelStars extends ToolItem
     {
 		ItemStack stack = player.getHeldItem(hand);
 		
-        if(!world.isRemote && player.isCrouching())
+        if(!world.isRemote && player.isShiftKeyDown())
         {
             EnableUtil.changeEnabled(player, hand);
-            player.sendMessage(new StringTextComponent("Place torch ability active: " + EnableUtil.isEnabled(stack)));
+            player.sendMessage(new TranslationTextComponent("item.gobber2.gobber2_paxel_stars.line4", EnableUtil.isEnabled(stack)).applyTextStyle(TextFormatting.RED));
             return new ActionResult<ItemStack>(ActionResultType.SUCCESS, player.getHeldItem(hand));
         }
         return super.onItemRightClick(world, player, hand);
@@ -260,14 +265,14 @@ public class ItemCustomPaxelStars extends ToolItem
 		return repair.getItem() == ItemList.gobber2_ingot_nether;
 	}
 	
-	@Override
-	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
+	@OnlyIn(Dist.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
-		super.addInformation(stack, world, list, flag);
-		list.add(new StringTextComponent(TextFormatting.BLUE + "Combines pickaxe, axe, and shovel and is unbreakable"));
-		list.add(new StringTextComponent(TextFormatting.GREEN + "Right-click to place torches"));
-		list.add(new StringTextComponent(TextFormatting.RED + "Place torch ability active: " + EnableUtil.isEnabled(stack)));
-		list.add(new StringTextComponent(TextFormatting.GOLD + "Sneak right-click to toggle ability on/off"));
-		list.add(new StringTextComponent(TextFormatting.YELLOW + "Torch supply: unlimited"));
+		super.addInformation(stack, worldIn, tooltip, flagIn);
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_paxel_stars.line1").applyTextStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_paxel_stars.line2").applyTextStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_paxel_stars.line3").applyTextStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_paxel_stars.line4", EnableUtil.isEnabled(stack)).applyTextStyle(TextFormatting.RED)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_paxel_stars.line5").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
 	} 
 }

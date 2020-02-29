@@ -27,8 +27,7 @@ public class ItemCustomArmorDragon extends ArmorItem
 	public ItemCustomArmorDragon(IArmorMaterial materialIn, EquipmentSlotType slots, Properties builder)
 	{
 		super(materialIn, slots, builder);
-	}
-	
+	}	
 	  
 	@Override
 	public void onArmorTick(final ItemStack stack, final World world, final PlayerEntity player)
@@ -95,17 +94,13 @@ public class ItemCustomArmorDragon extends ArmorItem
 		{
 			SpecialAbilities.giveNoExtraHearts(world, player, stack);
 		}
-	  
-	  
-	  
+	  	  
 	  //Chestplate
 	  if(chest.getItem() == ItemList.gobber2_chestplate_dragon)
 		{				
 			player.getAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(40.0D); 
 		 }		
-	
-	  
-	  
+		  
 	  //Leggings
 	  if(legs.getItem() == ItemList.gobber2_leggings_dragon)
 		{
@@ -115,9 +110,7 @@ public class ItemCustomArmorDragon extends ArmorItem
 		{
 			//something
 		}		
-	  
-	  
-	  
+	  	  
 	  //Boots
 	  if(feet.getItem() == ItemList.gobber2_boots_dragon)
 		{
@@ -145,6 +138,8 @@ public class ItemCustomArmorDragon extends ArmorItem
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_dragon.line1").applyTextStyle(TextFormatting.GOLD)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_dragon.line1").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_dragon.line2").applyTextStyle(TextFormatting.GOLD)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_explorer.line4").applyTextStyle(TextFormatting.RED)));
 	}
 }
