@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.kwpugh.gobber2.util.GeneralModConfig;
-
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -37,7 +35,7 @@ public class ItemCustomRingTeleport extends Item
 	}
 
 	
-//	//NEW CODE
+//	//NEW CODE - NOT READY FOR PRIMETIME
 //	
 //	//Set the location in the ring
 //	public ActionResultType onItemUse(ItemUseContext context)

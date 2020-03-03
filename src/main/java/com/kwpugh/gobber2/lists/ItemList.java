@@ -5,6 +5,7 @@ import net.minecraft.item.Item;
 public class ItemList
 {
 	public static Item gobber2_lucky_block;
+	public static Item gobber2_rose;
 	
 	
 	//Gobber Ore

@@ -9,6 +9,7 @@ public class BlockList
 	public static Block gobber2_block_end;
 	
 	public static Block gobber2_lucky_block;
+	public static Block gobber2_rose;
 	
 	public static Block gobber2_glass;
 	public static Block gobber2_glass_nether;

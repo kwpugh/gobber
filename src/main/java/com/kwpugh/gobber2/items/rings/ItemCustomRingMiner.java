@@ -28,7 +28,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ItemCustomRingMiner extends Item
 {
-
 	public ItemCustomRingMiner(Properties properties)
 	{
 		super(properties);

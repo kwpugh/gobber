@@ -13,6 +13,7 @@ import net.minecraft.block.CocoaBlock;
 import net.minecraft.block.CoralBlock;
 import net.minecraft.block.CoralPlantBlock;
 import net.minecraft.block.CropsBlock;
+import net.minecraft.block.GrassBlock;
 import net.minecraft.block.MelonBlock;
 import net.minecraft.block.NetherWartBlock;
 import net.minecraft.block.PumpkinBlock;
@@ -117,6 +118,14 @@ public class ItemCustomRingFarmer extends Item
                         			blockstate.tick((ServerWorld) world, targetPos, world.rand);
                         		}                     		
                             }
+                            
+            		        if(blockstate.getBlock() instanceof GrassBlock && player.isShiftKeyDown())
+                    		{
+            		        	if (player.ticksExisted % 60 == 0)
+            		        	{
+            		        		((GrassBlock) blockstate.getBlock()).grow((ServerWorld) world, world.rand, targetPos, blockstate);	
+            		        	}
+                    		}
                         }
                     }
                 }
@@ -130,5 +139,6 @@ public class ItemCustomRingFarmer extends Item
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_farmer.line1").applyTextStyle(TextFormatting.GREEN)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_farmer.line2").applyTextStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_farmer.line3").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
 	}  
 }

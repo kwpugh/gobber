@@ -14,9 +14,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+/*
+ * Check ModEventSubscriber for stealth logic
+ */
+
 public class ItemCustomRingStealth extends Item
 {
-
 	public ItemCustomRingStealth(Properties properties)
 	{
 		super(properties);

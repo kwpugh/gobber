@@ -23,7 +23,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ItemCustomStaffStars extends Item
 {
-
 	public ItemCustomStaffStars(Properties properties)
 	{
 		super(properties);
@@ -93,13 +92,4 @@ public class ItemCustomStaffStars extends Item
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_stars.line2").applyTextStyle(TextFormatting.GREEN)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_stars.line3").applyTextStyle(TextFormatting.YELLOW)));
 	}
-	
-//    @Override
-//	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
-//	{
-//		super.addInformation(stack, world, list, flag);				
-//		list.add(new StringTextComponent(TextFormatting.BLUE + "Places regular torches"));
-//		list.add(new StringTextComponent(TextFormatting.GREEN +"Right-click in player main hand"));
-//		list.add(new StringTextComponent(TextFormatting.YELLOW + "Torch supply: Unlimited"));
-//	} 
 }

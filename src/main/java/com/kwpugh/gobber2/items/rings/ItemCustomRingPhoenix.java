@@ -20,7 +20,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ItemCustomRingPhoenix extends Item
 {
-
 	public ItemCustomRingPhoenix(Properties properties)
 	{
 		super(properties);

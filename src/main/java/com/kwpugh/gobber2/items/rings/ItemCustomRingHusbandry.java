@@ -20,7 +20,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ItemCustomRingHusbandry extends Item
 {
-
 	public ItemCustomRingHusbandry(Properties properties)
 	{
 		super(properties);

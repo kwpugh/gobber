@@ -6,7 +6,6 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import com.kwpugh.gobber2.lists.BlockList;
-import com.kwpugh.gobber2.lists.ItemList;
 
 import net.minecraft.block.BambooBlock;
 import net.minecraft.block.BambooSaplingBlock;
@@ -18,6 +17,7 @@ import net.minecraft.block.CocoaBlock;
 import net.minecraft.block.CoralBlock;
 import net.minecraft.block.CoralPlantBlock;
 import net.minecraft.block.CropsBlock;
+import net.minecraft.block.GrassBlock;
 import net.minecraft.block.MelonBlock;
 import net.minecraft.block.NetherWartBlock;
 import net.minecraft.block.PumpkinBlock;
@@ -32,7 +32,6 @@ import net.minecraft.block.TallSeaGrassBlock;
 import net.minecraft.block.VineBlock;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -51,7 +50,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ItemCustomStaffFarmer extends Item
 {
-
 	public ItemCustomStaffFarmer(Properties properties)
 	{
 		super(properties);
@@ -120,9 +118,18 @@ public class ItemCustomStaffFarmer extends Item
 			                  			blockstate.tick((ServerWorld) world, targetPos, world.rand);
 			                  		}	
                               }
-                          }
-                      }
-                  }
+                                                   
+                              //Grow tall grass and flowers on grass blocks nearby
+                              if(blockstate.getBlock() instanceof GrassBlock && player.isShiftKeyDown())
+                              {
+                            	  if (player.ticksExisted % 60 == 0)
+                            	  {
+                            		  ((GrassBlock) blockstate.getBlock()).grow((ServerWorld) world, world.rand, targetPos, blockstate);	
+                            	  }
+                              }
+                         }
+                     }
+                 }
         	} 
         }
     }
@@ -164,7 +171,7 @@ public class ItemCustomStaffFarmer extends Item
 				for (int i = 0; i <= poslist.size() - 1; i++)
 				{
 					BlockPos targetPos = poslist.get(i);
-					BlockState state = world.getBlockState(targetPos);
+					BlockState blockstate = world.getBlockState(targetPos);
 					block = world.getBlockState(targetPos).getBlock();	
 					BlockState defaultState = block.getDefaultState();
 					
@@ -181,7 +188,7 @@ public class ItemCustomStaffFarmer extends Item
 					//Crops are harvested, if at max age, and re-planted
 					if(block instanceof CropsBlock)
 					{
-						maxAge = state.get(((CropsBlock) block).getAgeProperty()) >= ((CropsBlock) block).getMaxAge();
+						maxAge = blockstate.get(((CropsBlock) block).getAgeProperty()) >= ((CropsBlock) block).getMaxAge();
 						
 						if(maxAge)
 						{
@@ -189,13 +196,13 @@ public class ItemCustomStaffFarmer extends Item
 							world.setBlockState(targetPos, defaultState);	
 						}
 					}
-					
+			        
 					//Gobber plants are checked separately because they do not have natural drops (intentionally) and Globettes need to be spawned manually
 					if(block == BlockList.gobber2_plant || 
 							block == BlockList.gobber2_plant_nether || 
 							block == BlockList.gobber2_plant_end)
 					{
-						maxAge = state.get(((CropsBlock) block).getAgeProperty()) >= ((CropsBlock) block).getMaxAge();
+						maxAge = blockstate.get(((CropsBlock) block).getAgeProperty()) >= ((CropsBlock) block).getMaxAge();
 						
 						if(maxAge)
 						{
@@ -203,21 +210,18 @@ public class ItemCustomStaffFarmer extends Item
 							{
 								world.destroyBlock(targetPos, true);
 								world.setBlockState(targetPos, defaultState);
-								world.addEntity(new ItemEntity(world, targetPos.getX(), targetPos.getY(), targetPos.getZ(), new ItemStack(ItemList.gobber2_globette, 1)));
 							}
 							
 							if(block == BlockList.gobber2_plant_nether)
 							{
 								world.destroyBlock(targetPos, true);
 								world.setBlockState(targetPos, defaultState);
-								world.addEntity(new ItemEntity(world, targetPos.getX(), targetPos.getY(), targetPos.getZ(), new ItemStack(ItemList.gobber2_globette_nether, 1)));
 							}
 							
 							if(block == BlockList.gobber2_plant_end)
 							{
 								world.destroyBlock(targetPos, true);
 								world.setBlockState(targetPos, defaultState);
-								world.addEntity(new ItemEntity(world, targetPos.getX(), targetPos.getY(), targetPos.getZ(), new ItemStack(ItemList.gobber2_globette_end, 1)));
 							}	
 						}
 					}
@@ -235,5 +239,6 @@ public class ItemCustomStaffFarmer extends Item
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_farmer.line1").applyTextStyle(TextFormatting.GREEN)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_farmer.line2").applyTextStyle(TextFormatting.GREEN)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_farmer.line3").applyTextStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_farmer.line4").applyTextStyle(TextFormatting.YELLOW)));
 	}
 }

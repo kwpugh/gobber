@@ -30,11 +30,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-
-
 public class ItemCustomStaffHarvest extends Item
-{
-
+{ 
 	public ItemCustomStaffHarvest(Properties properties)
 	{
 		super(properties);

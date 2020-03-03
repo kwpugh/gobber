@@ -109,7 +109,8 @@ public class ItemInit
 			event.getRegistry().registerAll
 			(
 				//Novelty Blocks
-				ItemList.gobber2_lucky_block = new BlockItem(BlockList.gobber2_lucky_block, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.gobber2_lucky_block.getRegistryName()),				
+				ItemList.gobber2_lucky_block = new BlockItem(BlockList.gobber2_lucky_block, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.gobber2_lucky_block.getRegistryName()),
+				ItemList.gobber2_rose = new BlockItem(BlockList.gobber2_rose, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.gobber2_rose.getRegistryName()),
 			
 				
 				

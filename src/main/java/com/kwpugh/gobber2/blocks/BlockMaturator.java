@@ -20,6 +20,8 @@ import net.minecraft.block.CoralBlock;
 import net.minecraft.block.CoralPlantBlock;
 import net.minecraft.block.CropsBlock;
 import net.minecraft.block.FireBlock;
+import net.minecraft.block.GrassBlock;
+import net.minecraft.block.IGrowable;
 import net.minecraft.block.MelonBlock;
 import net.minecraft.block.NetherWartBlock;
 import net.minecraft.block.PumpkinBlock;
@@ -122,7 +124,12 @@ public class BlockMaturator extends Block
                 		(state1.getBlock() instanceof ChorusFlowerBlock)  ) 
                 {  
 		        	state1.tick((ServerWorld) world, targetPos, world.rand); 	                                                             
-                }									
+                }
+		        
+		        if(state1.getBlock() instanceof GrassBlock)
+        		{
+		        	//((GrassBlock) state1.getBlock()).grow(world,  rand, pos, state1);
+        		}
 			}
     		
     		if(enableMaturatorAnimalEffect)

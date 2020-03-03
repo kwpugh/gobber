@@ -48,7 +48,7 @@ public class ItemCustomRingVision extends Item
     {
 		ItemStack stack = player.getHeldItem(hand);
 		
-        if(!world.isRemote && player.isCrouching())
+        if(!world.isRemote && player.isShiftKeyDown())
         {
             EnableUtil.changeEnabled(player, hand);
             player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_vision.line2", EnableUtil.isEnabled(stack)).applyTextStyle(TextFormatting.GREEN)));
