@@ -25,6 +25,9 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class ItemCustomRingMiner extends Item
 {
@@ -32,9 +35,14 @@ public class ItemCustomRingMiner extends Item
 	{
 		super(properties);
 	}
+
+	public static final int BREAK_DELAY = 1;
 	
 	int ringMinerCooldown = GeneralModConfig.RING_MINER_COOLDOWN.get();
 	boolean reverseRingMiner = GeneralModConfig.REVERSE_RING_MINER.get();
+	boolean delayedBreakMode = GeneralModConfig.DELAY_BREAK_MODE.get();
+	
+	boolean shiftKeyPressed = false;
 	
 	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
 	{
@@ -44,6 +52,8 @@ public class ItemCustomRingMiner extends Item
         
         if(equippedMain == stack)   //Only works in the main hand
         {
+        	shiftKeyPressed = player.isShiftKeyDown();
+        	
         	player.getCooldownTracker().setCooldown(this, ringMinerCooldown);
         	
         	if(!world.isRemote)
@@ -111,23 +121,65 @@ public class ItemCustomRingMiner extends Item
 					}	
 				}
 				
-				if (!poslist.isEmpty())
+
+				if(delayedBreakMode)
 				{
-					for (int i = 0; i <= poslist.size() - 1; i++)
+					//Test code for block break delay
+					if (!poslist.isEmpty())
 					{
-						BlockPos targetpos = poslist.get(i);
-						block = world.getBlockState(targetpos).getBlock();
-						
-						if(player.isShiftKeyDown())
+						MinecraftForge.EVENT_BUS.register(new Object()
+			            {
+			                int delay = BREAK_DELAY;
+			                int i = 0;
+
+			                @SubscribeEvent
+			                public void onTick(TickEvent.WorldTickEvent event)
+			                {
+			                    if (delay-- > 0) return;
+			                    delay = BREAK_DELAY;
+			                    if (i < poslist.size())
+			                    {
+			                        BlockPos breakPos = poslist.get(i);
+			                    	if(shiftKeyPressed)    //NOTE: shift key needs to be held down through the delayed block breaking to get drops
+									{
+										world.destroyBlock(breakPos, !reverseRingMiner);
+									}
+									else
+									{
+										world.destroyBlock(breakPos, reverseRingMiner);	
+									}
+			                    	
+			                        i++;
+			                    }
+			                    else
+			                    {
+			                        MinecraftForge.EVENT_BUS.unregister(this);
+			                    }
+			                }
+			            });			
+					}
+				}
+				else
+				{
+					//Traditional method of block break, all at once
+					if (!poslist.isEmpty())
+					{
+						for (int i = 0; i <= poslist.size() - 1; i++)
 						{
-							world.destroyBlock(targetpos, !reverseRingMiner);
-						}
-						else
-						{
-							world.destroyBlock(targetpos, reverseRingMiner);	
-						}
+							BlockPos targetpos = poslist.get(i);
+							block = world.getBlockState(targetpos).getBlock();
+							
+							if(player.isShiftKeyDown())   
+							{
+								world.destroyBlock(targetpos, !reverseRingMiner);
+							}
+							else
+							{
+								world.destroyBlock(targetpos, reverseRingMiner);	
+							}
+						}				
 					}				
-				}	
+				}
 			}
         }
         return new ActionResult<ItemStack>(ActionResultType.SUCCESS, stack);
@@ -138,9 +190,29 @@ public class ItemCustomRingMiner extends Item
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line1").applyTextStyle(TextFormatting.GREEN)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line2").applyTextStyle(TextFormatting.GREEN)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line3").applyTextStyle(TextFormatting.YELLOW)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line4").applyTextStyle(TextFormatting.YELLOW)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring.cooldown",ringMinerCooldown).applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		
+		if(reverseRingMiner)
+		{
+			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line4").applyTextStyle(TextFormatting.YELLOW)));
+			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line5").applyTextStyle(TextFormatting.YELLOW)));
+		}
+		else
+		{
+			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line2").applyTextStyle(TextFormatting.YELLOW)));
+			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line3").applyTextStyle(TextFormatting.YELLOW)));
+		}
+		
+
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line6").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring.cooldown", ringMinerCooldown).applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		
+		if(delayedBreakMode)
+		{
+			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.mode.line2").applyTextStyle(TextFormatting.LIGHT_PURPLE)));	
+		}
+		else
+		{
+			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.mode.line1").applyTextStyle(TextFormatting.LIGHT_PURPLE)));	
+		}		
 	} 
 }

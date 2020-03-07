@@ -122,7 +122,7 @@ public class ItemCustomRingAttraction extends Item
         
         return super.onItemRightClick(world, player, hand);
     }
-    
+	
 	@Override
 	public boolean hasEffect(ItemStack stack)
 	{

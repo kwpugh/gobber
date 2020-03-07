@@ -82,6 +82,7 @@ import com.kwpugh.gobber2.items.tools.ItemCustomSwordEnd;
 import com.kwpugh.gobber2.items.tools.ItemCustomSwordNether;
 import com.kwpugh.gobber2.items.tools.ItemCustomSwordSniper;
 import com.kwpugh.gobber2.items.tools.ItemCustomSwordTraveler;
+import com.kwpugh.gobber2.items.tools.ItemCustomTreeAxe;
 import com.kwpugh.gobber2.lists.ArmorMaterialList;
 import com.kwpugh.gobber2.lists.BlockList;
 import com.kwpugh.gobber2.lists.FoodList;
@@ -110,7 +111,6 @@ public class ItemInit
 			(
 				//Novelty Blocks
 				ItemList.gobber2_lucky_block = new BlockItem(BlockList.gobber2_lucky_block, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.gobber2_lucky_block.getRegistryName()),
-				ItemList.gobber2_rose = new BlockItem(BlockList.gobber2_rose, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.gobber2_rose.getRegistryName()),
 			
 				
 				
@@ -203,6 +203,7 @@ public class ItemInit
 				ItemList.gobber2_pickaxe = new ItemCustomPickaxe(ToolMaterialList.gobber2, 4, -2.4f, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_pickaxe")),				
 				ItemList.gobber2_shovel = new ItemCustomShovel(ToolMaterialList.gobber2, 5.0f, -3.0f, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_shovel")),
 				ItemList.gobber2_axe = new ItemCustomAxe(ToolMaterialList.gobber2, 8.0f, -2.9f, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_axe")),
+				ItemList.gobber2_tree_axe = new ItemCustomTreeAxe(ToolMaterialList.gobber2, 8.0f, -2.9f, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_tree_axe")),
 				ItemList.gobber2_hoe = new HoeItem(ToolMaterialList.gobber2, 2.1f, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_hoe")),
 				ItemList.gobber2_hammer = new ItemCustomHammer(ToolMaterialList.gobber2, 7, -2.9f, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_hammer")),
 				ItemList.gobber2_excavator = new ItemCustomExcavator(ToolMaterialList.gobber2, 5.0f, -3.0f, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_excavator")),
@@ -213,6 +214,7 @@ public class ItemInit
 				ItemList.gobber2_pickaxe_nether = new ItemCustomPickaxeNether(ToolMaterialList.gobber2_nether, 5, -2.3f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_pickaxe_nether")),								
 				ItemList.gobber2_shovel_nether = new ItemCustomShovelNether(ToolMaterialList.gobber2_nether, 6.0f, -2.8f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_shovel_nether")),
 				ItemList.gobber2_axe_nether = new ItemCustomAxeNether(ToolMaterialList.gobber2_nether, 10.0f, -2.8f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_axe_nether")),
+				ItemList.gobber2_tree_axe_nether = new ItemCustomTreeAxe(ToolMaterialList.gobber2_nether, 10.0f, -2.8f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_tree_axe_nether")),
 				ItemList.gobber2_hoe_nether = new HoeItem(ToolMaterialList.gobber2_nether, 2.2f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_hoe_nether")),	
 				ItemList.gobber2_hammer_nether = new ItemCustomHammerNether(ToolMaterialList.gobber2_nether, 8, -2.8f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_hammer_nether")),
 				ItemList.gobber2_excavator_nether = new ItemCustomExcavatorNether(ToolMaterialList.gobber2_nether, 6.0f, -2.8f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_excavator_nether")),
@@ -225,6 +227,7 @@ public class ItemInit
 				ItemList.gobber2_pickaxe_end = new ItemCustomPickaxeEnd(ToolMaterialList.gobber2_end, 6, -2.2f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_pickaxe_end")),
 				ItemList.gobber2_shovel_end = new ItemCustomShovelEnd(ToolMaterialList.gobber2_end, 8.0f, -2.6f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_shovel_end")),
 				ItemList.gobber2_axe_end = new ItemCustomAxeEnd(ToolMaterialList.gobber2_end, 14.0f, -2.7f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_axe_end")),
+				ItemList.gobber2_tree_axe_end = new ItemCustomTreeAxe(ToolMaterialList.gobber2_end, 14.0f, -2.7f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_tree_axe_end")),
 				ItemList.gobber2_hoe_end = new HoeItem(ToolMaterialList.gobber2_end, 2.3f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_hoe_end")),
 				ItemList.gobber2_hammer_end = new ItemCustomHammerEnd(ToolMaterialList.gobber2_end, 10, -2.7f, new Item.Properties().maxStackSize(1).maxDamage(0).group(Gobber2.gobber2)).setRegistryName(location("gobber2_hammer_end")),		
 				ItemList.gobber2_excavator_end = new ItemCustomExcavatorEnd(ToolMaterialList.gobber2_end, 8.0f, -2.6f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)).setRegistryName(location("gobber2_excavator_end")),

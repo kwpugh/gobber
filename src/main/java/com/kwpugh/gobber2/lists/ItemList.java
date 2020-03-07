@@ -5,7 +5,6 @@ import net.minecraft.item.Item;
 public class ItemList
 {
 	public static Item gobber2_lucky_block;
-	public static Item gobber2_rose;
 	
 	
 	//Gobber Ore
@@ -60,6 +59,7 @@ public class ItemList
 	public static Item gobber2_paxel;
 	public static Item gobber2_shovel;
 	public static Item gobber2_axe;
+	public static Item gobber2_tree_axe;
 	public static Item gobber2_hoe;
 	public static Item gobber2_bow;
 	
@@ -70,6 +70,7 @@ public class ItemList
 	public static Item gobber2_paxel_nether;
 	public static Item gobber2_shovel_nether;
 	public static Item gobber2_axe_nether;	
+	public static Item gobber2_tree_axe_nether;	
 	public static Item gobber2_hoe_nether;
 	public static Item gobber2_bow_nether;
 
@@ -83,6 +84,7 @@ public class ItemList
 	public static Item gobber2_paxel_stars;
 	public static Item gobber2_shovel_end;
 	public static Item gobber2_axe_end;	
+	public static Item gobber2_tree_axe_end;	
 	public static Item gobber2_hoe_end;
 	public static Item gobber2_bow_end;
 	

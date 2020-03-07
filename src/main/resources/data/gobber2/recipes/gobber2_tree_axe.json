@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"II ",
+		"IS ",
+		" S "
+	],
+	
+	"key":
+	{
+		"I": { "item": "gobber2:gobber2_block" },
+		"S": { "item": "gobber2:gobber2_rod" }	
+	},
+	
+	"result": { "item": "gobber2:gobber2_tree_axe" }
+}
