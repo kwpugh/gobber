@@ -1,5 +1,4 @@
 package com.kwpugh.gobber2.items.rings;
-
 import java.util.List;
 
 import javax.annotation.Nullable;
@@ -41,11 +40,6 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-/**
- * 
- * 	Mostly working like the 1.12.2 version, just needs some fine-tuning on tick counts 
- * 
- */
 
 public class ItemCustomRingFarmer extends Item
 {

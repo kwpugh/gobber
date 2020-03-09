@@ -36,6 +36,9 @@ public class ItemList
 	public static Item gobber2_rod_end;
 	public static Item gobber2_foo_end;
 	
+	public static Item dragon_star;
+	public static Item dragon_elytra;
+	
 	
 	//Food
 	public static Item gobber2_goo;

@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "CAC",
+        "ABA",
+        "CAC"
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "minecraft:dragon_egg"
+        },
+        "B":
+        {
+            "item": "minecraft:nether_star"
+        },
+        "C":
+        {
+            "item": "gobber2:gobber2_ingot_end"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:dragon_star",
+        "count": 1
+    }
+}

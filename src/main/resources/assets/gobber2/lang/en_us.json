@@ -34,6 +34,9 @@
 	"item.gobber2.gobber2_rod_end": "End Gobber Rod",
 	"item.gobber2.gobber2_foo_end": "End Gobber Foo",
 	
+	"item.gobber2.dragon_star": "Dragon Star",
+	"item.gobber2.dragon_elytra": "Dragon Elytra",
+	
 	"item.gobber2.gobber2_excavator.line1": "A shovel that breaks a 3x3 area",
 	"item.gobber2.gobber2_hammer.line1": "A hammer that breaks a 3x3 area",
 	"item.gobber2.gobber2_paxel.line1": "Combines pickaxe, axe, and shovel",
@@ -122,7 +125,7 @@
 	"item.gobber2.gobber2_boots_end": "End Boots",
 
 	"item.gobber2.gobber2_armor_dragon.line1": "Provides all the benefits of the End Armor",
-	"item.gobber2.gobber2_armor_dragon.line2": "Full suit bonus: Ceative flight everywhere & negative effect protection",
+	"item.gobber2.gobber2_armor_dragon.line2": "Full suit bonus: Creative flight everywhere & negative effect protection",
 	"item.gobber2.gobber2_helmet_dragon": "Dragon Helmet",
 	"item.gobber2.gobber2_chestplate_dragon": "Dragon Chestplate",
 	"item.gobber2.gobber2_leggings_dragon": "Dragon Leggings",
@@ -153,9 +156,9 @@
 	"item.gobber2.gobber2_ring_miner.mode.line2": "Block Break Mode: Delayed",
 	"item.gobber2.gobber2_ring_lumberjack": "Ring of the Lumberjack",
 	"item.gobber2.gobber2_ring_lumberjack.line1": "Breaks Logs and Leaves around the player",
-	"item.gobber2.gobber2_ring_lumberjack.line2": "Area of effect: 11x32x11",
-	"item.gobber2.gobber2_ring_lumberjack.line3": "Right-click to break blocks",
-	"item.gobber2.gobber2_ring_lumberjack.line4": "Shift + right-click to void blocks",
+	"item.gobber2.gobber2_ring_lumberjack.line2": "Area of effect: 11x40x11",
+	"item.gobber2.gobber2_ring_lumberjack.line3": "Right-click to break blocks, with drops",
+	"item.gobber2.gobber2_ring_lumberjack.line4": "Shift + right-click to break blocks, no drops",
 	"item.gobber2.gobber2_ring_farmer": "Ring of the Farmer",
 	"item.gobber2.gobber2_ring_farmer.line1": "Works on many plants, crops, saplings, cane, gourds, and bamboo",
 	"item.gobber2.gobber2_ring_farmer.line2": "Shift + right-click will grow grass and flowers",

@@ -28,16 +28,21 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class ItemCustomRingLumberjack extends Item
 {
-
 	public ItemCustomRingLumberjack(Properties properties)
 	{
 		super(properties);
 	}
 
 	int ringLumberjackCooldown = GeneralModConfig.RING_LUMBERJACK_COOLDOWN.get();
+	public static final int BREAK_DELAY = 1;
+	boolean delayedBreakMode = GeneralModConfig.DELAY_BREAK_MODE.get();
+	boolean shiftKeyPressed = false;
 	
 	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
 	{
@@ -47,16 +52,19 @@ public class ItemCustomRingLumberjack extends Item
     	
         if(equippedMain == stack)   //Only works in the main hand
         {
+        	shiftKeyPressed = player.isShiftKeyDown();
+        	
         	player.getCooldownTracker().setCooldown(this, ringLumberjackCooldown);
         	
 			if (!world.isRemote)
 			{
+				//Scan blocks in area looking for ones to break and add to list
 				Block block;
 				List<BlockPos> poslist = new ArrayList<BlockPos>();
 
 				for (int x = -5; x <= 5; x++)
 				{
-					for (int y = 0; y <= 32; y++)
+					for (int y = -2; y <= 40; y++)
 					{
 						for (int z = -5; z <= 5; z++)
 						{
@@ -79,33 +87,92 @@ public class ItemCustomRingLumberjack extends Item
 					}	
 				}
 
-				if(!player.isShiftKeyDown())
+				if(delayedBreakMode)
 				{
+					//If delayed break is true in the config, use this code branch
 					if (!poslist.isEmpty())
 					{
-						for (int i = 0; i <= poslist.size() - 1; i++)
-						{
-							BlockPos targetpos = poslist.get(i);
-							block = world.getBlockState(targetpos).getBlock();
-							
-							world.destroyBlock(targetpos, true);
-						}				
+						MinecraftForge.EVENT_BUS.register(new Object()
+			            {
+			                int delay = BREAK_DELAY;
+			                int i = 0;
+
+			                @SubscribeEvent
+			                public void onTick(TickEvent.WorldTickEvent event)
+			                {
+			                    if (delay-- > 0) return;
+			                    delay = BREAK_DELAY;
+			                    if (i < poslist.size())
+			                    {
+			                        BlockPos breakPos = poslist.get(i);
+			                    	if(shiftKeyPressed)    //NOTE: shift key needs to be held down through the delayed block breaking to get drops
+									{
+										world.destroyBlock(breakPos, false);
+									}
+									else
+									{
+										world.destroyBlock(breakPos, true);	
+									}
+			                    	
+			                        i++;
+			                    }
+			                    else
+			                    {
+			                        MinecraftForge.EVENT_BUS.unregister(this);
+			                    }
+			                }
+			            });			
 					}
 				}
-				
-				if(player.isShiftKeyDown())
+				else    // otherwise cycle through it breaking blocks either with or without drops (tradional mod all at once)
 				{
-					if (!poslist.isEmpty())
+					for (int i = 0; i <= poslist.size() - 1; i++)
 					{
-						for (int i = 0; i <= poslist.size() - 1; i++)
+						BlockPos targetpos = poslist.get(i);
+						block = world.getBlockState(targetpos).getBlock();
+						
+						if(player.isShiftKeyDown())   
 						{
-							BlockPos targetpos = poslist.get(i);
-							block = world.getBlockState(targetpos).getBlock();
-							
-							world.removeBlock(targetpos, true);
-						}				
-					}
-				}	
+							world.destroyBlock(targetpos, false);
+						}
+						else
+						{
+							world.destroyBlock(targetpos, true);	
+						}
+					}			
+				}
+				
+				
+				
+				
+				
+//				if(!player.isShiftKeyDown())
+//				{
+//					if (!poslist.isEmpty())
+//					{
+//						for (int i = 0; i <= poslist.size() - 1; i++)
+//						{
+//							BlockPos targetpos = poslist.get(i);
+//							block = world.getBlockState(targetpos).getBlock();
+//							
+//							world.destroyBlock(targetpos, true);
+//						}				
+//					}
+//				}
+//				
+//				if(player.isShiftKeyDown())
+//				{
+//					if (!poslist.isEmpty())
+//					{
+//						for (int i = 0; i <= poslist.size() - 1; i++)
+//						{
+//							BlockPos targetpos = poslist.get(i);
+//							block = world.getBlockState(targetpos).getBlock();
+//							
+//							world.removeBlock(targetpos, true);
+//						}				
+//					}
+//				}	
 			}
         }
         return new ActionResult<ItemStack>(ActionResultType.SUCCESS, stack);

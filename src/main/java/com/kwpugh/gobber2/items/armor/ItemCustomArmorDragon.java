@@ -140,6 +140,5 @@ public class ItemCustomArmorDragon extends ArmorItem
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_dragon.line1").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_dragon.line2").applyTextStyle(TextFormatting.GOLD)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_explorer.line4").applyTextStyle(TextFormatting.RED)));
 	}
 }

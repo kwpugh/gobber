@@ -134,6 +134,7 @@ public class ItemInit
 				ItemList.gobber2_ingot = new Item(new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_ingot")),
 				ItemList.gobber2_ingot_nether = new Item(new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_ingot_nether")),
 				ItemList.gobber2_ingot_end = new Item(new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_ingot_end")),
+				
 
 				ItemList.gobber2_block = new BlockItem(BlockList.gobber2_block, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.gobber2_block.getRegistryName()),
 				ItemList.gobber2_block_nether = new BlockItem(BlockList.gobber2_block_nether, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(BlockList.gobber2_block_nether.getRegistryName()),
@@ -184,6 +185,8 @@ public class ItemInit
 				ItemList.gobber2_boots_nether = new ItemCustomArmorNether(ArmorMaterialList.gobber2_nether, EquipmentSlotType.FEET, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_boots_nether")),
 				
 				ItemList.gobber2_links_end = new Item(new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_links_end")),
+				ItemList.dragon_star = new Item(new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("dragon_star")),
+				ItemList.dragon_elytra = new Item(new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("dragon_elytra")),
 						
 				ItemList.gobber2_helmet_end = new ItemCustomArmorEnd(ArmorMaterialList.gobber2_end, EquipmentSlotType.HEAD, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_helmet_end")),
 				ItemList.gobber2_chestplate_end = new ItemCustomArmorEnd(ArmorMaterialList.gobber2_end, EquipmentSlotType.CHEST, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_chestplate_end")),
