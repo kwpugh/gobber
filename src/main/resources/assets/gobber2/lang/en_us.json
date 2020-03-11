@@ -6,6 +6,8 @@
 
 	
 	"block.gobber2.gobber2_ore": "Gobber Ore",
+	"item.gobber2.gobber2_ore": "Gobber Ore",
+	"item.gobber2.gobber2_ore.line1": "Requires diamond-level pickaxe to mine",
 	"item.gobber2.gobber2_glob": "Gobber Glob",
 	"item.gobber2.gobber2_ingot": "Gobber Ingot",
 	"block.gobber2.gobber2_block": "Gobber Block",
@@ -19,6 +21,8 @@
 	"item.gobber2.gobber2_foo.line2": "Burntime: %s",
 
 	"block.gobber2.gobber2_ore_nether": "Nether Gobber Ore",
+	"item.gobber2.gobber2_ore_nether": "Nether Gobber Ore",
+	"item.gobber2.gobber2_ore_nether.line1": "Requires Gobber-level pickaxe to mine",
 	"item.gobber2.gobber2_glob_nether": "Nether Gobber Glob",
 	"item.gobber2.gobber2_globette_nether": "Nether Gobber Globette",
 	"item.gobber2.gobber2_ingot_nether": "Nether Gobber Ingot",
@@ -27,6 +31,8 @@
 	"item.gobber2.gobber2_foo_nether": "Nether Gobber Foo",
 	
 	"block.gobber2.gobber2_ore_end": "End Gobber Ore",
+	"item.gobber2.gobber2_ore_end": "End Gobber Ore",
+	"item.gobber2.gobber2_ore_end.line1": "Requires Nether Gobber-level pickaxe to mine",
 	"item.gobber2.gobber2_glob_end": "End Gobber Glob",
 	"item.gobber2.gobber2_globette_end": "End Gobber Globette",
 	"item.gobber2.gobber2_ingot_end": "End Gobber Ingot",

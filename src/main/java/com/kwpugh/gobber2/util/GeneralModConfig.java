@@ -46,6 +46,8 @@ public class GeneralModConfig
     public static ForgeConfigSpec.IntValue MATURATOR_MAX_TICK;
     public static ForgeConfigSpec.BooleanValue ENABLE_MATURATOR_ANIMAL_EFFECT;
     
+    public static ForgeConfigSpec.BooleanValue ENABLE_DRAGON_KILL_EVERY_KILL;
+    
     
     public static void init(ForgeConfigSpec.Builder SERVER_BUILDER)
     {
@@ -118,6 +120,12 @@ public class GeneralModConfig
         MATURATOR_MIN_TICK = SERVER_BUILDER.comment("Min interval of world ticks for the Maturator [default: 120]").defineInRange("maturatorMinTick", 120, 0, 240);
         MATURATOR_MAX_TICK = SERVER_BUILDER.comment("Max interval of world ticks for the Maturator [default: 240]").defineInRange("maturatorMaxTick", 240, 0, 480);
         ENABLE_MATURATOR_ANIMAL_EFFECT = SERVER_BUILDER.comment("Enable Maturator effect on baby animals [true / false]").define("enableMaturatorAnimalEffect", false);
+
+        SERVER_BUILDER.pop();
+        
+        SERVER_BUILDER.comment("Dragon Egg With Every Kill").push("dragon_egg_kill");
+        
+        ENABLE_DRAGON_KILL_EVERY_KILL = SERVER_BUILDER.comment("Enable Dragon Egg drops on every kill [true / false]").define("enableDragonEggEveryKill", false);
 
         SERVER_BUILDER.pop();
     }

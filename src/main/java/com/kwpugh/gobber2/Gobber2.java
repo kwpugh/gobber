@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.kwpugh.gobber2.util.BlockRenders;
+import com.kwpugh.gobber2.util.DragonEggsEveryKill;
 import com.kwpugh.gobber2.util.Gobber2_Group;
 import com.kwpugh.gobber2.util.GobberConfig;
 import com.kwpugh.gobber2.util.SpecialAbilities;
@@ -53,6 +54,7 @@ public class Gobber2
 		OreGenerator.setupEndOregen();
 		
 		MinecraftForge.EVENT_BUS.register(new SpecialAbilities());
+		MinecraftForge.EVENT_BUS.register(new DragonEggsEveryKill());
 		
 		logger.info("Gobber setup completed");
 	}
