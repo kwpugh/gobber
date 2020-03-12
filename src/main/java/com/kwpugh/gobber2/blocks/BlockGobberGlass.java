@@ -51,7 +51,7 @@ public class BlockGobberGlass extends GlassBlock
 	    	entityIn.attackEntityFrom(DamageSource.MAGIC, 60.0F);
 	    }	
 	}   
-	
+	 
 	@OnlyIn(Dist.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{

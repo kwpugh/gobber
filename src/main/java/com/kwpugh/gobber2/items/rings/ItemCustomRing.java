@@ -7,7 +7,5 @@ public class ItemCustomRing extends Item
     public ItemCustomRing(Properties properties)
     {
         super(properties);
-    }
-    
-	
+    }	
 }

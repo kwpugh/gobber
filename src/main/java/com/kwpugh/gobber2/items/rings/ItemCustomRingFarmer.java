@@ -5,6 +5,7 @@ import javax.annotation.Nullable;
 
 import net.minecraft.block.BambooBlock;
 import net.minecraft.block.BambooSaplingBlock;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CactusBlock;
 import net.minecraft.block.ChorusFlowerBlock;
@@ -31,7 +32,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -40,10 +40,8 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-
 public class ItemCustomRingFarmer extends Item
 {
-
 	public ItemCustomRingFarmer(Properties properties)
 	{
 		super(properties);
@@ -63,66 +61,57 @@ public class ItemCustomRingFarmer extends Item
         if(stack == equippedMain || stack == equippedOff)
         {
         	if (!world.isRemote)
-        	{
-        	    int range = 15;
-                for(int x = -range; x < range+1; x++)
-                {
-                    for(int z = -range; z < range+1; z++)
-                    {
-                        for(int y = -range; y < range+1; y++)
-                        {
-                            int theX = MathHelper.floor(player.getPosX()+x);
-                            int theY = MathHelper.floor(player.getPosY()+y);
-                            int theZ = MathHelper.floor(player.getPosZ()+z);
-                            
-                            BlockPos targetPos = new BlockPos(theX, theY, theZ);                       
-                            BlockState blockstate = world.getBlockState(targetPos);
-                          
-                            if ((blockstate.getBlock() instanceof CropsBlock) ||
-                            		(blockstate.getBlock() instanceof SaplingBlock) ||
-                            		(blockstate.getBlock() instanceof VineBlock) ||                     		               
-                            		(blockstate.getBlock() instanceof SugarCaneBlock) ||
-                            		(blockstate.getBlock() instanceof SweetBerryBushBlock) ||
-                            		(blockstate.getBlock() instanceof NetherWartBlock) ||
-                            		(blockstate.getBlock() instanceof CactusBlock) ||
-                            		(blockstate.getBlock() instanceof MelonBlock) ||
-                            		(blockstate.getBlock() instanceof StemBlock) ||
-                            		(blockstate.getBlock() instanceof PumpkinBlock) ) 
-                            {
-                        		if (player.ticksExisted % 20 == 0)
-                        		{
-                        			blockstate.tick((ServerWorld) world, targetPos, world.rand);
-                       		 	}                                                               
-                            }
+        	{   	
+        		BlockPos playerPos = new BlockPos(player.getPositionVec());
+        		
+        		for (BlockPos targetPos : BlockPos.getAllInBoxMutable(playerPos.add(-11, -2, -11), playerPos.add(11, 2, 11)))
+        		{
+        			BlockState blockstate = world.getBlockState(targetPos);
+        			Block block = blockstate.getBlock();
+		
+        			if ((blockstate.getBlock() instanceof CropsBlock) ||
+        					(block instanceof SaplingBlock) ||
+        					(block instanceof VineBlock) ||                     		               
+        					(block instanceof SugarCaneBlock) ||
+        					(block instanceof SweetBerryBushBlock) ||
+        					(block instanceof NetherWartBlock) ||
+        					(block instanceof CactusBlock) ||
+        					(block instanceof MelonBlock) ||
+        					(block instanceof StemBlock) ||
+        					(block instanceof PumpkinBlock) ) 
+        			{
+        				if (player.ticksExisted % 20 == 0)
+        				{
+        					blockstate.tick((ServerWorld) world, targetPos, world.rand);
+        				}                                                               
+        			}
 
-                            if ((blockstate.getBlock() instanceof CoralBlock) ||		
-                            		(blockstate.getBlock() instanceof BambooSaplingBlock) || 
-                            		(blockstate.getBlock() instanceof BambooBlock)  ||
-                            		(blockstate.getBlock() instanceof CocoaBlock) || 
-                            		(blockstate.getBlock() instanceof StemGrownBlock) ||
-                            		(blockstate.getBlock() instanceof CoralPlantBlock) ||
-                            		(blockstate.getBlock() instanceof CoralBlock) ||
-                            		(blockstate.getBlock() instanceof TallSeaGrassBlock) ||
-                            		(blockstate.getBlock() instanceof SeaGrassBlock) ||
-                            		(blockstate.getBlock() instanceof SeaPickleBlock) ||
-                            		(blockstate.getBlock() instanceof ChorusFlowerBlock) )
-                            {
-                        		if (player.ticksExisted % 40 == 0)
-                        		{
-                        			blockstate.tick((ServerWorld) world, targetPos, world.rand);
-                        		}                     		
-                            }
-                            
-            		        if(blockstate.getBlock() instanceof GrassBlock && player.isShiftKeyDown())
-                    		{
-            		        	if (player.ticksExisted % 60 == 0)
-            		        	{
-            		        		((GrassBlock) blockstate.getBlock()).grow((ServerWorld) world, world.rand, targetPos, blockstate);	
-            		        	}
-                    		}
-                        }
-                    }
-                }
+        			if ((block instanceof CoralBlock) ||		
+							(block instanceof BambooSaplingBlock) || 
+							(block instanceof BambooBlock)  ||
+							(block instanceof CocoaBlock) || 
+							(block instanceof StemGrownBlock) ||
+							(block instanceof CoralPlantBlock) ||
+							(block instanceof CoralBlock) ||
+							(block instanceof TallSeaGrassBlock) ||
+							(block instanceof SeaGrassBlock) ||
+							(block instanceof SeaPickleBlock) ||
+							(block instanceof ChorusFlowerBlock) )
+        			{        				
+						if (player.ticksExisted % 40 == 0)
+						{
+							blockstate.tick((ServerWorld) world, targetPos, world.rand);
+						}                     		
+        			}
+
+        			if(block instanceof GrassBlock && player.isShiftKeyDown())
+        			{
+        				if (player.ticksExisted % 120 == 0)
+        				{
+        					((GrassBlock) block).grow((ServerWorld) world, world.rand, targetPos, blockstate);	
+        				}
+        			}
+        		}
         	}
         }
     }

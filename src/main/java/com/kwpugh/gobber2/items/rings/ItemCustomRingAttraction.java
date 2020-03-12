@@ -27,7 +27,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ItemCustomRingAttraction extends Item
 {
-
 	public ItemCustomRingAttraction(Properties properties)
 	{
 		super(properties);
@@ -45,7 +44,7 @@ public class ItemCustomRingAttraction extends Item
 			
 			if(!init)
 			{
-				range = 0;
+				range = 8;
 			}
 			else
 			{
@@ -94,7 +93,25 @@ public class ItemCustomRingAttraction extends Item
 		
         if(!world.isRemote && player.isShiftKeyDown())
         {
-			if(range == 0)
+			if(range == 8)
+			{
+				range = 10;
+				MagnetRange.setCurrentRange(stack, range);
+				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRange.getCurrentRange(stack)).applyTextStyle(TextFormatting.GREEN)));
+			}
+			else if(range == 10)
+			{
+				range = 12;
+				MagnetRange.setCurrentRange(stack, range);
+				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRange.getCurrentRange(stack)).applyTextStyle(TextFormatting.GREEN)));
+			}
+			else if(range == 12)
+			{
+				range = 14;
+				MagnetRange.setCurrentRange(stack, range);
+				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRange.getCurrentRange(stack)).applyTextStyle(TextFormatting.GREEN)));
+			}
+			else if(range == 14)
 			{
 				range = 4;
 				MagnetRange.setCurrentRange(stack, range);
@@ -103,18 +120,6 @@ public class ItemCustomRingAttraction extends Item
 			else if(range == 4)
 			{
 				range = 8;
-				MagnetRange.setCurrentRange(stack, range);
-				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRange.getCurrentRange(stack)).applyTextStyle(TextFormatting.GREEN)));
-			}
-			else if(range == 8)
-			{
-				range = 12;
-				MagnetRange.setCurrentRange(stack, range);
-				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRange.getCurrentRange(stack)).applyTextStyle(TextFormatting.GREEN)));
-			}
-			else if(range == 12)
-			{
-				range = 0;
 				MagnetRange.setCurrentRange(stack, range);
 				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRange.getCurrentRange(stack)).applyTextStyle(TextFormatting.GREEN)));
 			}
@@ -137,6 +142,5 @@ public class ItemCustomRingAttraction extends Item
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line2", EnableUtil.isEnabled(stack)).applyTextStyle(TextFormatting.GREEN)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line3").applyTextStyle(TextFormatting.YELLOW)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line4").applyTextStyle(TextFormatting.RED)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
 	}     
 }

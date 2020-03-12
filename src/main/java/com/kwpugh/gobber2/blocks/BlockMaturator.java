@@ -20,8 +20,6 @@ import net.minecraft.block.CoralBlock;
 import net.minecraft.block.CoralPlantBlock;
 import net.minecraft.block.CropsBlock;
 import net.minecraft.block.FireBlock;
-import net.minecraft.block.GrassBlock;
-import net.minecraft.block.IGrowable;
 import net.minecraft.block.MelonBlock;
 import net.minecraft.block.NetherWartBlock;
 import net.minecraft.block.PumpkinBlock;
@@ -57,7 +55,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BlockMaturator extends Block
 {
-
 	public BlockMaturator(Properties properties)
 	{
 		super(properties);
@@ -125,11 +122,6 @@ public class BlockMaturator extends Block
                 {  
 		        	state1.tick((ServerWorld) world, targetPos, world.rand); 	                                                             
                 }
-		        
-		        if(state1.getBlock() instanceof GrassBlock)
-        		{
-		        	//((GrassBlock) state1.getBlock()).grow(world,  rand, pos, state1);
-        		}
 			}
     		
     		if(enableMaturatorAnimalEffect)
@@ -143,7 +135,6 @@ public class BlockMaturator extends Block
     				
     			}    			
     		}
-
 		}
     }	
 	
