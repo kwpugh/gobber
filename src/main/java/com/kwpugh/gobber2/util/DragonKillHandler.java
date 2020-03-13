@@ -20,9 +20,9 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
  * 
  */
 
-public class DragonEggsEveryKill
+public class DragonKillHandler
 {
-    public DragonEggsEveryKill()
+    public DragonKillHandler()
     {
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);

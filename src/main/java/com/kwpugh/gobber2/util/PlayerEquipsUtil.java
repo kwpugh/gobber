@@ -15,7 +15,7 @@ import net.minecraft.item.ItemStack;
  * 
  */
 
-public final class ArmorUtil
+public final class PlayerEquipsUtil
 {
     @Nonnull
     @SuppressWarnings("ConstantConditions")
@@ -82,6 +82,7 @@ public final class ArmorUtil
         return false;
     } 
     
+		
     //Nether and End chestplates get fire protection
     public static boolean isPlayerGotFireProtection(PlayerEntity player)
     {
@@ -101,7 +102,7 @@ public final class ArmorUtil
 	    PlayerInventory inv1 = player.inventory;
 	    EnderChestInventory end_inv1 = player.getInventoryEnderChest();
 	    
-	    //Is the ring in player inventory?
+	    //Is the ring in player enderchest?
 		for (int slot = 0; slot < end_inv1.getSizeInventory(); slot++)
 		{
 			ItemStack stack = end_inv1.getStackInSlot(slot);
@@ -111,7 +112,7 @@ public final class ArmorUtil
 			}
 		}
 	    
-		//Is the ring in the player enderchest
+		//Is the ring in the player inventory?
 		for (int slot = 0; slot < inv1.getSizeInventory(); slot++)
 		{
 			ItemStack stack = inv1.getStackInSlot(slot);
@@ -121,9 +122,10 @@ public final class ArmorUtil
 			}
 		}
 		
+		//Is the ring in a Curios slot?
 		if (SupportMods.CURIOS.isLoaded())
 	    {
-			if (UtilCurios.findItem(ItemList.gobber2_ring_phoenix, player) != ItemStack.EMPTY)
+			if (CuriosUtil.findItem(ItemList.gobber2_ring_phoenix, player) != ItemStack.EMPTY)
 			{
 				return true;
 		    }

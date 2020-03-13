@@ -2,7 +2,7 @@
 	"block.gobber2.gobber2_lucky_block": "Gobber Lucky Block",
 	
 	"key.categories.gobber2": "Gobber2",
-	"gobber2.key.toggleRingAttraction": "Toggle Ring of Attraction on/off",
+	"gobber2.key.toggleRingEnderchest": "Open Ring of Enderchest in Curios Slot",
 
 	
 	"block.gobber2.gobber2_ore": "Gobber Ore",
@@ -184,6 +184,7 @@
 	"item.gobber2.gobber2_ring_enderchest": "Ring of the Enderchest",
 	"item.gobber2.gobber2_ring_enderchest.line1": "Provides player access to their Enderchest",
 	"item.gobber2.gobber2_ring_enderchest.line2": "Right-click to use",
+	"item.gobber2.gobber2_ring_enderchest.title": "Enderchest on the Go",
 	"item.gobber2.gobber2_ring_curing": "Ring of Curing",
 	"item.gobber2.gobber2_ring_curing.line1": "Provides curing of most negative potion effects",
 	"item.gobber2.gobber2_ring_curing.line2": "Works while in player inventory",

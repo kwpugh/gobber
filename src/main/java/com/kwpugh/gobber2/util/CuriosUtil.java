@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 import org.apache.commons.lang3.tuple.ImmutableTriple;
 import top.theillusivec4.curios.api.CuriosAPI;
 
-public class UtilCurios
+public class CuriosUtil
 {
     //Thanks williewillus and Kamefrede
     public static ItemStack findItem(Item item, LivingEntity living)

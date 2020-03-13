@@ -53,7 +53,7 @@ public class RepairTickHandler
 		
 		if (SupportMods.CURIOS.isLoaded())
 	    {
-			if (UtilCurios.findItem(ItemList.gobber2_ring_repair, player) != ItemStack.EMPTY)
+			if (CuriosUtil.findItem(ItemList.gobber2_ring_repair, player) != ItemStack.EMPTY)
 			{
 				if (player.ticksExisted % 90 == 0)
 	    		{
