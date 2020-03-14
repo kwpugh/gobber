@@ -9,7 +9,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.GlassBlock;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
@@ -42,14 +42,14 @@ public class BlockGobberGlassNether extends GlassBlock
 	{
 		return shape1;
 	}
-   
+	
 	public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn)
 	{
-	    if(!(entityIn instanceof PlayerEntity))
+	    if(entityIn instanceof MonsterEntity)
 	    {
-	    	entityIn.attackEntityFrom(DamageSource.MAGIC, 60.0F);
+	    	entityIn.attackEntityFrom(DamageSource.MAGIC, 5.0F);
 	    }	
-	} 
+	}  
 
 	@OnlyIn(Dist.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)

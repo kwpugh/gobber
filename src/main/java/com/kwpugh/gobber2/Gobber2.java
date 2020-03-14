@@ -43,7 +43,7 @@ public class Gobber2
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::serverSetup);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
-		 
+		
 		MinecraftForge.EVENT_BUS.register(this);
 	}
     

@@ -4,14 +4,13 @@
 	"pattern":
 	[
 		" CD",
-		" BC",
+		" AC",
 		"A  "
 	],
 	
 	"key":
 	{
 		"A": { "item": "gobber2:gobber2_rod_nether" },
-		"B": { "item": "minecraft:blaze_rod" },
 		"C": { "item": "minecraft:redstone" },		
 		"D": { "item": "minecraft:glowstone_dust" }
 	},

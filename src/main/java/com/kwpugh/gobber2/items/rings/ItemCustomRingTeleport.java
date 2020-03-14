@@ -171,17 +171,23 @@ public class ItemCustomRingTeleport extends Item
 		 PlayerEntity player = context.getPlayer();
 		 Direction direction = context.getFace();
 		 ItemStack stackRing = context.getPlayer().getHeldItemMainhand();
-		 
+
 		 if(getPosition(stackRing) == null && player.isShiftKeyDown())
 		 {
 			 setPosition(stackRing, world, pos.offset(direction), player);
-			 player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line1").applyTextStyle(TextFormatting.GREEN)));
-				 return ActionResultType.SUCCESS;
-			 }
-		 
-			 if(getPosition(stackRing) != null)
+			 if(!world.isRemote)
 			 {
-				 player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line2").applyTextStyle(TextFormatting.GREEN)));
+				 player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line1").applyTextStyle(TextFormatting.GREEN)));		 
+			 }
+			 return ActionResultType.SUCCESS;
+		 }
+		 
+		 if(getPosition(stackRing) != null)
+		 {
+			 if(!world.isRemote)
+			 {
+				 player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line2").applyTextStyle(TextFormatting.GREEN)));	 
+			 }			
 			 return ActionResultType.SUCCESS;
 		 }
 		 
@@ -202,7 +208,10 @@ public class ItemCustomRingTeleport extends Item
 		if(getPosition(stack) != null && player.isShiftKeyDown())
 		{
 			setPosition(stack, world, null, player);
-			player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line3").applyTextStyle(TextFormatting.GREEN)));
+			if(!world.isRemote)
+			{
+				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line3").applyTextStyle(TextFormatting.GREEN)));	
+			}
 		}
 	 
 		return new ActionResult<>(ActionResultType.PASS, player.getHeldItem(hand)); 
@@ -297,26 +306,38 @@ public class ItemCustomRingTeleport extends Item
 				player.changeDimension(DimensionType.OVERWORLD);
 				player.setPositionAndUpdate(pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F);
 
-				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line4").applyTextStyle(TextFormatting.GREEN)));
+				if(!world.isRemote)
+				{
+					player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line4").applyTextStyle(TextFormatting.GREEN)));	
+				}
 			}
 			else if(getDimension(stack) == 1)
 			{
 				player.changeDimension(DimensionType.THE_END);
 				player.setPositionAndUpdate(pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F);
 
-				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line5").applyTextStyle(TextFormatting.GREEN)));
+				if(!world.isRemote)
+				{
+					player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line5").applyTextStyle(TextFormatting.GREEN)));	
+				}
 			} 	
 			else if(getDimension(stack) == -1)
 			{
 				player.changeDimension(DimensionType.THE_NETHER);
 				player.setPositionAndUpdate(pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F);
 
-				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line6").applyTextStyle(TextFormatting.GREEN)));
+				if(!world.isRemote)
+				{
+					player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line6").applyTextStyle(TextFormatting.GREEN)));	
+				}
 			}
 			else
 			{
-				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line7").applyTextStyle(TextFormatting.GREEN)));
-				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line8").applyTextStyle(TextFormatting.GREEN)));
+				if(!world.isRemote)
+				{
+					player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line7").applyTextStyle(TextFormatting.GREEN)));
+					player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line8").applyTextStyle(TextFormatting.GREEN)));	
+				}
 			}
 		}
 	}

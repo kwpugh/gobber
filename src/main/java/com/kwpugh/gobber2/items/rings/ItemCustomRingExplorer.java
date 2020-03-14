@@ -79,7 +79,10 @@ public class ItemCustomRingExplorer extends Item
 		        while (y > 0) {
 		            y--;
 		            BlockPos groundPos = new BlockPos(x, y-2, z);
-		            if (!chunk.getBlockState(groundPos).getMaterial().equals(Material.AIR) && (!chunk.getBlockState(groundPos).getBlock().equals(Blocks.BEDROCK) && y-2 != 1))
+		            if (!chunk.getBlockState(groundPos).getMaterial().equals(Material.AIR) && 
+		            		(!chunk.getBlockState(groundPos).getBlock().equals(Blocks.BEDROCK) &&
+		            		(!chunk.getBlockState(groundPos).getBlock().equals(Blocks.WATER) &&
+		            				y-2 != 1))    )
 		            {
 		                BlockPos legPos = new BlockPos(x, y-1, z);
 		                if (chunk.getBlockState(legPos).getMaterial().equals(Material.AIR))
@@ -110,7 +113,6 @@ public class ItemCustomRingExplorer extends Item
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_explorer.line1").applyTextStyle(TextFormatting.GREEN)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_explorer.line2",min, max).applyTextStyle(TextFormatting.GREEN)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_explorer.line3").applyTextStyle(TextFormatting.YELLOW)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_explorer.line4").applyTextStyle(TextFormatting.RED)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring.cooldown",ringExplorerCooldown).applyTextStyle(TextFormatting.LIGHT_PURPLE)));
 	}  
 }

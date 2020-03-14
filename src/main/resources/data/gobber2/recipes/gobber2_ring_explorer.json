@@ -1,0 +1,36 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " B ",
+        "DAD",
+        " C "
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_ring_end"
+        },
+        "B":
+        {
+            "item": "gobber2:gobber2_ring_traveler"
+        },
+        "C":
+        {
+            "item": "gobber2:gobber2_ring_blink"
+        },
+        "D":
+        {
+            "item": "gobber2:gobber2_ring_teleport"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_ring_explorer",
+        "count": 1
+    }
+}
