@@ -368,7 +368,7 @@ public class ItemCustomRingTeleport extends Item
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line10").applyTextStyle(TextFormatting.GREEN)));
 		
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line11").applyTextStyle(TextFormatting.YELLOW)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line12").applyTextStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_teleport.line12").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
 		
 		if(getPosition(stack) != null)
 		{
