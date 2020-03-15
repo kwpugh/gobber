@@ -47,8 +47,6 @@ public class ItemCustomRingAcceleration extends Item
 				double lookY = look.y;
 				double lookZ = look.z;
 				
-				System.out.println("velocity: " + velocityAcceleration);
-				
 				if(velocityAcceleration < .30)
 				{
 					player.addVelocity(lookX * velocityAcceleration, lookY * velocityAcceleration, lookZ * velocityAcceleration);
