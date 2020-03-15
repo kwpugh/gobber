@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.kwpugh.gobber2.util.GeneralModConfig;
+
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -25,6 +27,8 @@ public class ItemCustomRingAcceleration extends Item
 		super(properties);
 	}
 
+	public static double velocityAcceleration = GeneralModConfig.RING_ACCELERATION_VELOCITY.get();
+	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
 	{		
@@ -43,7 +47,16 @@ public class ItemCustomRingAcceleration extends Item
 				double lookY = look.y;
 				double lookZ = look.z;
 				
-				player.addVelocity(lookX * 0.35, lookY * 0.35, lookZ * 0.35);	
+				System.out.println("velocity: " + velocityAcceleration);
+				
+				if(velocityAcceleration < .30)
+				{
+					player.addVelocity(lookX * velocityAcceleration, lookY * velocityAcceleration, lookZ * velocityAcceleration);
+				}
+				else
+				{
+					player.sendStatusMessage(new TranslationTextComponent("item.gobber2.gobber2_ring_acceleration.line3"), true);
+				}				
 			}
 		 }	
 		 return result; 

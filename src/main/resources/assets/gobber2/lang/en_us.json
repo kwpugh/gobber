@@ -172,6 +172,7 @@
 	"item.gobber2.gobber2_ring_acceleration": "Ring of Acceleration",
 	"item.gobber2.gobber2_ring_acceleration.line1": "Provides a boost in velocity while player is aloft",
 	"item.gobber2.gobber2_ring_acceleration.line2": "Right-click and hold, then jump",
+	"item.gobber2.gobber2_ring_acceleration.line3": "Velocity value in config is set too high",
 	"item.gobber2.gobber2_ring_dismissal": "Ring of Dismissal",
 	"item.gobber2.gobber2_ring_dismissal.line1": "Tosses mobs out of your way",
 	"item.gobber2.gobber2_ring_dismissal.line2": "Works while in player main hand",

@@ -24,27 +24,27 @@ public class ItemCustomRingTraveler extends Item
 	{
 		super(properties);
 	}
-
+	
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity entity, Hand hand)
+	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
 	{
-		ActionResult<ItemStack> result = super.onItemRightClick(world, entity, hand);
+		ActionResult<ItemStack> result = super.onItemRightClick(world, player, hand);
  
-    	Vec3d look = entity.getLookVec().normalize();
+    	Vec3d look = player.getLookVec().normalize();
 		double lookX = look.x;
 		double lookY = look.y;
 		double lookZ = look.z;
 		
 		//Get some vertical height to start
-		if(entity.onGround && !entity.isShiftKeyDown())	
+		if(player.onGround && !player.isShiftKeyDown())	
 		{
-			entity.setMotion(lookX * 0.0, lookY * 4.5, lookZ * 0.0);
+			player.setMotion(lookX * 0.0, lookY * 4.5, lookZ * 0.0);
 		}
         
 		//Once aloft, provide some horizontal movement and/or additional vetical movement
-		if(!entity.onGround)
+		if(!player.onGround)
 		{
-			entity.addVelocity(lookX * 0.6, lookY * 0.6, lookZ * 0.6);
+			player.addVelocity(lookX * 0.6, lookY * 0.0, lookZ * 0.6);
 		}
 		return result;		 
 	}

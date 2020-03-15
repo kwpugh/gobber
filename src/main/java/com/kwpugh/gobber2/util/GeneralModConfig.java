@@ -41,6 +41,7 @@ public class GeneralModConfig
     
     public static ForgeConfigSpec.BooleanValue REVERSE_RING_MINER;
     public static ForgeConfigSpec.BooleanValue DELAY_BREAK_MODE;
+    public static ForgeConfigSpec.DoubleValue RING_ACCELERATION_VELOCITY;
     
     public static ForgeConfigSpec.IntValue MATURATOR_MIN_TICK;
     public static ForgeConfigSpec.IntValue MATURATOR_MAX_TICK;
@@ -112,6 +113,7 @@ public class GeneralModConfig
         RING_EXPLORER_MAX_RANGE = SERVER_BUILDER.comment("Ring of Explorer - Max distance from world spawn to begin searching for a spot [default: 6000]").defineInRange("ringExplorerMax", 6000, 0, 250000);
         REVERSE_RING_MINER = SERVER_BUILDER.comment("Reverse the drop/no drops feature on Ring of Miner [true / false]").define("reverseRingMiner", false);
         DELAY_BREAK_MODE = SERVER_BUILDER.comment("Uses a delayed break mode to reduce stutter and potential lag on Ring of Miner and Ring of Lumberjack [true / false]").define("delayedBreakMode", true);
+        RING_ACCELERATION_VELOCITY = SERVER_BUILDER.comment("Ring of Acceleration - amount of velocity applied [default: .18]").defineInRange("ringAccelerationVelocity", .18, 0.0, .30);
         
         SERVER_BUILDER.pop();
         
