@@ -6,19 +6,15 @@ import com.kwpugh.gobber2.lists.ItemList;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.EnderChestInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.event.TickEvent;
 
 @EventBusSubscriber(modid = Gobber2.modid, bus = EventBusSubscriber.Bus.FORGE )
 public class RepairTickHandler
 {
-	public RepairTickHandler(Item item)
-	{
-
-	}
+	public static int repairTickRate = GeneralModConfig.RING_REPAIR_DELAY.get();
 	
 	@SubscribeEvent
 	public static void onPlayerTick(TickEvent.PlayerTickEvent event)
@@ -32,7 +28,7 @@ public class RepairTickHandler
 			ItemStack stack = inv.getStackInSlot(slot);
 			if (stack.getItem() == ItemList.gobber2_ring_repair)
 			{	
-				if (player.ticksExisted % 90 == 0)
+				if (player.ticksExisted % repairTickRate == 0)
         		{
 					repair(player, inv);
        		 	} 
@@ -44,7 +40,7 @@ public class RepairTickHandler
 			ItemStack stack = end_inv.getStackInSlot(slot);
 			if (stack.getItem() == ItemList.gobber2_ring_repair)
 			{	
-				if (player.ticksExisted % 90 == 0)
+				if (player.ticksExisted % repairTickRate == 0)
         		{
 					repair(player, inv);
        		 	} 
@@ -55,7 +51,7 @@ public class RepairTickHandler
 	    {
 			if (CuriosUtil.findItem(ItemList.gobber2_ring_repair, player) != ItemStack.EMPTY)
 			{
-				if (player.ticksExisted % 90 == 0)
+				if (player.ticksExisted % repairTickRate == 0)
 	    		{
 					repair(player, inv);
 	   		 	}  
