@@ -5,7 +5,7 @@
     [
         " CA",
         " BC",
-        "D  "
+        "B  "
     ],
     
     "key":
@@ -22,12 +22,7 @@
         "C":
         {
             "item": "minecraft:emerald"
-        },
-        "D":
-        {
-            "item": "minecraft:stick"
         }
-        
     },
     
     "result":

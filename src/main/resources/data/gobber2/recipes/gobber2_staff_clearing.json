@@ -5,7 +5,7 @@
     [
         " CA",
         " BC",
-        "D  "
+        "B  "
     ],
     
     "key":
@@ -22,11 +22,7 @@
         "C":
         {
             "item": "minecraft:green_dye"
-        },
-        "D":
-        {
-            "item": "minecraft:stick"
-        } 
+        }
     },
     
     "result":

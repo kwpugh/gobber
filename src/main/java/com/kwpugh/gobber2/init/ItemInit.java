@@ -193,10 +193,10 @@ public class ItemInit
 				ItemList.gobber2_leggings_end = new ItemCustomArmorEnd(ArmorMaterialList.gobber2_end, EquipmentSlotType.LEGS, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_leggings_end")),
 				ItemList.gobber2_boots_end = new ItemCustomArmorEnd(ArmorMaterialList.gobber2_end, EquipmentSlotType.FEET, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_boots_end")),				
 
-				ItemList.gobber2_helmet_dragon = new ItemCustomArmorDragon(ArmorMaterialList.gobber2_end, EquipmentSlotType.HEAD, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_helmet_dragon")),
-				ItemList.gobber2_chestplate_dragon = new ItemCustomArmorDragon(ArmorMaterialList.gobber2_end, EquipmentSlotType.CHEST, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_chestplate_dragon")),
-				ItemList.gobber2_leggings_dragon = new ItemCustomArmorDragon(ArmorMaterialList.gobber2_end, EquipmentSlotType.LEGS, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_leggings_dragon")),
-				ItemList.gobber2_boots_dragon = new ItemCustomArmorDragon(ArmorMaterialList.gobber2_end, EquipmentSlotType.FEET, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_boots_dragon")),
+				ItemList.gobber2_helmet_dragon = new ItemCustomArmorDragon(ArmorMaterialList.gobber2_dragon, EquipmentSlotType.HEAD, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_helmet_dragon")),
+				ItemList.gobber2_chestplate_dragon = new ItemCustomArmorDragon(ArmorMaterialList.gobber2_dragon, EquipmentSlotType.CHEST, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_chestplate_dragon")),
+				ItemList.gobber2_leggings_dragon = new ItemCustomArmorDragon(ArmorMaterialList.gobber2_dragon, EquipmentSlotType.LEGS, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_leggings_dragon")),
+				ItemList.gobber2_boots_dragon = new ItemCustomArmorDragon(ArmorMaterialList.gobber2_dragon, EquipmentSlotType.FEET, new Item.Properties().group(Gobber2.gobber2)).setRegistryName(location("gobber2_boots_dragon")),
 		
 				
 						
