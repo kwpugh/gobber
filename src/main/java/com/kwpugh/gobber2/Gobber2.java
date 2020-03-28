@@ -56,19 +56,19 @@ public class Gobber2
 		MinecraftForge.EVENT_BUS.register(new SpecialAbilities());
 		MinecraftForge.EVENT_BUS.register(new DragonKillHandler());
 		
-		logger.info("Gobber setup completed");
+		logger.info("Gobber common setup");
 	}
 	
 	private void clientSetup(final FMLClientSetupEvent event)
 	{
 		BlockRenders.defineRenders();
 		
-		logger.info("Gobber client setup completed");
+		logger.info("Gobber client setup");
 	}
 	
 	private void serverSetup(final FMLDedicatedServerSetupEvent event)
 	{
-		logger.info("Gobber server setup completed");
+		logger.info("Gobber server setup");
 	}
 	
     private void enqueueIMC(final InterModEnqueueEvent event)
@@ -77,7 +77,9 @@ public class Gobber2
         {
         	InterModComms.sendTo("curios", CuriosAPI.IMC.REGISTER_TYPE, () -> new CurioIMCMessage("ring").setSize(3));
         	InterModComms.sendTo("curios", CuriosAPI.IMC.REGISTER_TYPE, () -> new CurioIMCMessage("belt").setSize(1));
-        } 
+        }
+        
+        logger.info("Gobber IMC setup");
     }
 }
 

@@ -23,10 +23,6 @@ import net.minecraft.world.dimension.DimensionType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-/*
- * Credit to Codenamerevy
- */
-
 public class ItemCustomRingReturn extends Item
 {
 	private static int duration = 25;
@@ -50,26 +46,28 @@ public class ItemCustomRingReturn extends Item
         if(!world.isRemote())
         {
             PlayerEntity player = (ServerPlayerEntity) entity;
-
-            if(world.getDimension().getType() != DimensionType.OVERWORLD)
-            {              
-                teleportToBed(player);
-                player.sendStatusMessage(new TranslationTextComponent("item.gobber2.gobber2_ring_return.line1"), true);
-            }
-
             BlockPos bedLoc = player.getBedLocation(player.dimension);
-
-            if (bedLoc == null)
-            {   
-                player.sendStatusMessage(new TranslationTextComponent("item.gobber2.gobber2_ring_return.line2"), true);
-                return stack;
+ 
+            if((world.getDimension().getType() == DimensionType.OVERWORLD))
+     		{
+                if (bedLoc == null)
+                {   
+                    player.sendStatusMessage(new TranslationTextComponent("item.gobber2.gobber2_ring_return.line2"), true);
+                    return stack;
+                }
+                
+                if (entity.getRidingEntity() != null) {
+                     entity.stopRiding();
+                }
+                setPositionAndUpdate(entity, world, bedLoc);
+                player.sendStatusMessage(new TranslationTextComponent("item.gobber2.gobber2_ring_return.line1"), true);    	
+     		}
+            else
+            {
+				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_return.line4").applyTextStyle(TextFormatting.GREEN)));
             }
-            if (entity.getRidingEntity() != null) {
-                entity.stopRiding();
-            }
-            setPositionAndUpdate(entity, world, bedLoc);
-            player.sendStatusMessage(new TranslationTextComponent("item.gobber2.gobber2_ring_return.line1"), true);
         }
+        
         return stack;
     }
     
@@ -77,16 +75,6 @@ public class ItemCustomRingReturn extends Item
     public int getUseDuration(ItemStack stack)
     {
         return duration;
-    }
-    
-    public void teleportToBed(PlayerEntity player)
-    {
-        ServerPlayerEntity serverPlayer = (ServerPlayerEntity) player;
-
-        DimensionType prevDim = player.dimension;
-        DimensionType destDim = prevDim == player.dimension ? DimensionType.OVERWORLD : player.dimension;
-        
-        serverPlayer.teleport(player.getServer().getWorld(destDim), serverPlayer.serverPosX, serverPlayer.serverPosY, serverPlayer.serverPosZ, serverPlayer.rotationYaw, serverPlayer.rotationPitch);
     }
 
     public void setPositionAndUpdate(LivingEntity entity, World world, BlockPos bedLoc)
