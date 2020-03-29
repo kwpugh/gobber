@@ -146,4 +146,30 @@ public final class PlayerEquipsUtil
       		
         return false;
     } 
+    
+    public static boolean isPlayerGotHasteRing(PlayerEntity player)
+    { 	    
+		PlayerInventory inv2 = player.inventory;
+		
+		//Is the ring in the player inventory?
+		for (int slot = 0; slot < inv2.getSizeInventory(); slot++)
+		{
+			ItemStack stack = inv2.getStackInSlot(slot);
+			if (stack.getItem() == ItemList.gobber2_ring_haste)
+			{	
+				return true;
+			}
+		}
+		
+		//Checks Curios slots
+		if (SupportMods.CURIOS.isLoaded())
+	    {
+			if (CuriosUtil.findItem(ItemList.gobber2_ring_haste, player) != ItemStack.EMPTY)
+			{
+				return true;
+		    }
+	    } 
+		
+        return false;
+    } 
 } 

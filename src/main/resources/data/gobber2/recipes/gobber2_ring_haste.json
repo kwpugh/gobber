@@ -5,7 +5,7 @@
     [
         " B ",
         " A ",
-        "   "
+        " C "
     ],
     
     "key":
@@ -17,6 +17,10 @@
         "B":
         {
             "item": "minecraft:emerald"
+        },
+        "C":
+        {
+            "item": "gobber2:gobber2_pickaxe_nether"
         }
     },
     
