@@ -126,11 +126,11 @@ public class GeneralModConfig
         
         SERVER_BUILDER.comment("Settings for area effect blocks").push("area_block_effect_settings");
         
-        HEALER_RADIUS = SERVER_BUILDER.comment("Max radius for Healer block effects [default: 16]").defineInRange("healerRadius", 16, 0, 16);
-        PROTECTOR_RADIUS = SERVER_BUILDER.comment("Max radius for Protector block effects [default: 32]").defineInRange("protectorRadius", 32, 0, 32);
-        DEFENDER_RADIUS = SERVER_BUILDER.comment("Max radius for Defender block effects [default: 64]").defineInRange("defenderRadius", 64, 0, 64);
-        LOOTER_RADIUS = SERVER_BUILDER.comment("Max radius for Looter block effects [default: 32]").defineInRange("looterRadius", 32, 0, 32);
-        MATURATOR_RADIUS = SERVER_BUILDER.comment("Max radius for Maturator block effects [default: 16]").defineInRange("maturatorRadius", 16, 0, 16);
+        HEALER_RADIUS = SERVER_BUILDER.comment("Block range for Healer block effects [default: 12]").defineInRange("healerRange", 12, 0, 16);
+        PROTECTOR_RADIUS = SERVER_BUILDER.comment("Block range for Protector block effects [default: 24]").defineInRange("protectorRange", 24, 0, 32);
+        DEFENDER_RADIUS = SERVER_BUILDER.comment("Block range for Defender block effects [default: 32]").defineInRange("defenderRange", 32, 0, 64);
+        LOOTER_RADIUS = SERVER_BUILDER.comment("Block rangefor Looter block effects [default: 24]").defineInRange("looterRange", 24, 0, 32);
+        MATURATOR_RADIUS = SERVER_BUILDER.comment("Block range for Maturator block effects [default: 16]").defineInRange("maturatorRange", 16, 0, 16);
         MATURATOR_MIN_TICK = SERVER_BUILDER.comment("Min interval of world ticks for the Maturator [default: 120]").defineInRange("maturatorMinTick", 120, 0, 240);
         MATURATOR_MAX_TICK = SERVER_BUILDER.comment("Max interval of world ticks for the Maturator [default: 240]").defineInRange("maturatorMaxTick", 240, 0, 480);
         ENABLE_MATURATOR_ANIMAL_EFFECT = SERVER_BUILDER.comment("Enable Maturator effect on baby animals [true / false]").define("enableMaturatorAnimalEffect", false);
