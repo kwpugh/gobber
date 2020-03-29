@@ -5,6 +5,7 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import com.kwpugh.gobber2.util.GeneralModConfig;
 import com.kwpugh.gobber2.util.SpecialAbilities;
 
 import net.minecraft.block.Block;
@@ -51,6 +52,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BlockProtector extends Block
 {
+	int radius = GeneralModConfig.PROTECTOR_RADIUS.get();
+	
 
 	public BlockProtector(Properties properties)
 	{
@@ -72,7 +75,7 @@ public class BlockProtector extends Block
 		worldIn.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), worldIn.rand.nextInt(maxTickTime - minTickTime + 1));
 		if(worldIn.isRemote)
     	{
-			player.sendMessage(new TranslationTextComponent("item.gobber2.block_protector.line1").applyTextStyle(TextFormatting.GREEN));
+			player.sendMessage(new TranslationTextComponent("item.gobber2.block_protector.line1", radius).applyTextStyle(TextFormatting.GREEN));
     	}
 		
 		return ActionResultType.SUCCESS;
@@ -83,8 +86,6 @@ public class BlockProtector extends Block
 	{		
 		if(!world.isRemote)
 		{
-			int radius = 32;
-		
 			world.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), random.nextInt(minTickTime));
 			
 			BlockPos posUp = pos.up();		
@@ -97,13 +98,7 @@ public class BlockProtector extends Block
 				if(entity instanceof PlayerEntity)
 				{
 					PlayerEntity player = (PlayerEntity)entity;
-				   
-//					world.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), random.nextInt(minTickTime));
-//							
-//					BlockPos posUp = pos.up();		
-//					BlockState flaming = ((FireBlock)Blocks.FIRE).getStateForPlacement(world, posUp);
-//					world.setBlockState(posUp, flaming, 11);
-				   
+
 					int newfoodlevel = 1;
 					float newsatlevel = 0.035F;
 					SpecialAbilities.giveRegenffect(world, player, null, newfoodlevel, newsatlevel);   
@@ -153,7 +148,7 @@ public class BlockProtector extends Block
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 		tooltip.add((new TranslationTextComponent("item.gobber2.block_protector.line2").applyTextStyle(TextFormatting.GREEN)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.block_protector.line3").applyTextStyle(TextFormatting.GREEN)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.block_protector.line4").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.block_protector.line4", radius).applyTextStyle(TextFormatting.LIGHT_PURPLE)));
 	}
 }
 

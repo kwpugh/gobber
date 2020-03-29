@@ -5,6 +5,7 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import com.kwpugh.gobber2.util.GeneralModConfig;
 import com.kwpugh.gobber2.util.SpecialAbilities;
 
 import net.minecraft.block.Block;
@@ -51,7 +52,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BlockDefender extends Block
 {
-
+	int radius = GeneralModConfig.DEFENDER_RADIUS.get();
+	
 	public BlockDefender(Properties properties)
 	{
 		super(properties);
@@ -72,7 +74,7 @@ public class BlockDefender extends Block
 		worldIn.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), worldIn.rand.nextInt(maxTickTime - minTickTime + 1));
 		if(worldIn.isRemote)
     	{
-			player.sendMessage(new TranslationTextComponent("item.gobber2.block_defender.line1").applyTextStyle(TextFormatting.GREEN));
+			player.sendMessage(new TranslationTextComponent("item.gobber2.block_defender.line1", radius).applyTextStyle(TextFormatting.GREEN));
     	}
 		
 		return ActionResultType.SUCCESS;
@@ -83,8 +85,6 @@ public class BlockDefender extends Block
 	{		
 		if(!world.isRemote)
 		{
-			int radius = 64;
-		
 			world.getPendingBlockTicks().scheduleTick(pos, this, this.tickRate(world) + random.nextInt(10));
 			
 			BlockPos posUp = pos.up();		
@@ -147,7 +147,7 @@ public class BlockDefender extends Block
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 		tooltip.add((new TranslationTextComponent("item.gobber2.block_defender.line2").applyTextStyle(TextFormatting.GREEN)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.block_defender.line3").applyTextStyle(TextFormatting.GREEN)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.block_defender.line4").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.block_defender.line4", radius).applyTextStyle(TextFormatting.LIGHT_PURPLE)));
 	}
 }
 

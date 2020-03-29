@@ -44,6 +44,11 @@ public class GeneralModConfig
     public static ForgeConfigSpec.DoubleValue RING_ACCELERATION_VELOCITY;
     public static ForgeConfigSpec.IntValue RING_REPAIR_DELAY;
     
+    public static ForgeConfigSpec.IntValue HEALER_RADIUS;
+    public static ForgeConfigSpec.IntValue PROTECTOR_RADIUS;
+    public static ForgeConfigSpec.IntValue DEFENDER_RADIUS;
+    public static ForgeConfigSpec.IntValue LOOTER_RADIUS;
+    public static ForgeConfigSpec.IntValue MATURATOR_RADIUS;
     public static ForgeConfigSpec.IntValue MATURATOR_MIN_TICK;
     public static ForgeConfigSpec.IntValue MATURATOR_MAX_TICK;
     public static ForgeConfigSpec.BooleanValue ENABLE_MATURATOR_ANIMAL_EFFECT;
@@ -58,7 +63,7 @@ public class GeneralModConfig
         GOBBER2_ORE_GENERATION = SERVER_BUILDER.comment("Generate Gobber Ore in the world [true / false]").define("gobberOreGeneration", true);
         GOBBER2_ORE_SIZE = SERVER_BUILDER.comment("Size of Gobber Ore pockets [0-100, default: 3]").defineInRange("gobberOreSize", 3, 0, 100);
         GOBBER2_ORE_CHANCE = SERVER_BUILDER.comment("Chances of Gobber Ore pocket being generated [0-100, default: 10]").defineInRange("gobberOreChance", 10, 0, 100);
-        GOBBER2_ORE_MIN_HEIGHT = SERVER_BUILDER.comment("Minimal height for Gobber Ore pocket generation, [0-255, default: 20]").defineInRange("gobberOReMinHeight", 20, 0, 255);
+        GOBBER2_ORE_MIN_HEIGHT = SERVER_BUILDER.comment("Minimal height for Gobber Ore pocket generation, [0-255, default: 20]").defineInRange("gobberOreMinHeight", 20, 0, 255);
         GOBBER2_ORE_MAX_HEIGHT = SERVER_BUILDER.comment("Maximal height for Gobber Ore pocket generation [0-255, default: 30]").defineInRange("gobberOreMaxHeight", 30, 0, 255);
 
         SERVER_BUILDER.pop();
@@ -119,12 +124,18 @@ public class GeneralModConfig
         
         SERVER_BUILDER.pop();
         
-        SERVER_BUILDER.comment("Settings for the Maturator").push("maturator_settings");
+        SERVER_BUILDER.comment("Settings for area effect blocks").push("area_block_effect_settings");
         
+        HEALER_RADIUS = SERVER_BUILDER.comment("Max radius for Healer block effects [default: 16]").defineInRange("healerRadius", 16, 0, 16);
+        PROTECTOR_RADIUS = SERVER_BUILDER.comment("Max radius for Protector block effects [default: 32]").defineInRange("protectorRadius", 32, 0, 32);
+        DEFENDER_RADIUS = SERVER_BUILDER.comment("Max radius for Defender block effects [default: 64]").defineInRange("defenderRadius", 64, 0, 64);
+        LOOTER_RADIUS = SERVER_BUILDER.comment("Max radius for Looter block effects [default: 32]").defineInRange("looterRadius", 32, 0, 32);
+        MATURATOR_RADIUS = SERVER_BUILDER.comment("Max radius for Maturator block effects [default: 16]").defineInRange("maturatorRadius", 16, 0, 16);
         MATURATOR_MIN_TICK = SERVER_BUILDER.comment("Min interval of world ticks for the Maturator [default: 120]").defineInRange("maturatorMinTick", 120, 0, 240);
         MATURATOR_MAX_TICK = SERVER_BUILDER.comment("Max interval of world ticks for the Maturator [default: 240]").defineInRange("maturatorMaxTick", 240, 0, 480);
         ENABLE_MATURATOR_ANIMAL_EFFECT = SERVER_BUILDER.comment("Enable Maturator effect on baby animals [true / false]").define("enableMaturatorAnimalEffect", false);
-
+        
+        
         SERVER_BUILDER.pop();
         
         SERVER_BUILDER.comment("Dragon Egg With Every Kill").push("dragon_egg_kill");

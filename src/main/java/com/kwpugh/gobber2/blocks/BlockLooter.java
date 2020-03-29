@@ -5,6 +5,8 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import com.kwpugh.gobber2.util.GeneralModConfig;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
@@ -51,6 +53,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BlockLooter extends Block
 {
+	int radius = GeneralModConfig.LOOTER_RADIUS.get();
+	
 	public BlockLooter(Properties properties)
 	{
 		super(properties);
@@ -73,7 +77,7 @@ public class BlockLooter extends Block
 		worldIn.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), worldIn.rand.nextInt(maxTickTime - minTickTime + 1));
 		if(worldIn.isRemote)
     	{
-			player.sendMessage(new TranslationTextComponent("item.gobber2.block_looter.line1").applyTextStyle(TextFormatting.GREEN));
+			player.sendMessage(new TranslationTextComponent("item.gobber2.block_looter.line1", radius).applyTextStyle(TextFormatting.GREEN));
     	}
 		
 		return ActionResultType.SUCCESS;
@@ -84,8 +88,6 @@ public class BlockLooter extends Block
 	{	
 		if(!world.isRemote)
 		{			   
-			int radius = 32;
-
 			world.getPendingBlockTicks().scheduleTick(pos, this, this.tickRate(world) + random.nextInt(10));
 			
 			BlockPos posUp = pos.up();		
@@ -96,17 +98,6 @@ public class BlockLooter extends Block
 			List<Entity> mobs = world.getEntitiesWithinAABB(LivingEntity.class, new AxisAlignedBB(pos.getX() - radius, pos.getY() - radius, pos.getZ() - radius, pos.getX() + radius, pos.getY() + radius, pos.getZ() + radius), e -> (e instanceof LivingEntity));
 			for(Entity mob : mobs)
 			{				
-				//If a player is within the list, kick start the block, does work if player had left the area (on purpose)
-				if(mob instanceof PlayerEntity)
-				{
-					//world.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), random.nextInt(minTickTime));
-//					world.getPendingBlockTicks().scheduleTick(pos, this, this.tickRate(world) + random.nextInt(10));
-//					
-//					BlockPos posUp = pos.up();		
-//					BlockState flaming = ((FireBlock)Blocks.FIRE).getStateForPlacement(world, posUp);
-//					world.setBlockState(posUp, flaming, 11);
-				}
-				
 				if(mob instanceof ZombieEntity || mob instanceof ZombieVillagerEntity)
 				{
 					((MobEntity) mob).spawnExplosionParticle();
@@ -229,7 +220,7 @@ public class BlockLooter extends Block
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 		tooltip.add((new TranslationTextComponent("item.gobber2.block_looter.line2").applyTextStyle(TextFormatting.GREEN)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.block_looter.line3").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.block_looter.line3", radius).applyTextStyle(TextFormatting.LIGHT_PURPLE)));
 	}
 }
 

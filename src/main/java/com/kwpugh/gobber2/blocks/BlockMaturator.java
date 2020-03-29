@@ -55,13 +55,14 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BlockMaturator extends Block
 {
+	int radius = GeneralModConfig.MATURATOR_RADIUS.get();
+	int minTickTime = GeneralModConfig.MATURATOR_MIN_TICK.get();
+	int maxTickTime = GeneralModConfig.MATURATOR_MAX_TICK.get();
+	
 	public BlockMaturator(Properties properties)
 	{
 		super(properties);
 	}
-	
-	int minTickTime = GeneralModConfig.MATURATOR_MIN_TICK.get();
-	int maxTickTime = GeneralModConfig.MATURATOR_MAX_TICK.get();
 	
 	@Override
 	public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean isMoving)
@@ -75,7 +76,7 @@ public class BlockMaturator extends Block
     	worldIn.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), worldIn.rand.nextInt(maxTickTime - minTickTime + 1));
     	if(worldIn.isRemote)
     	{
-    		player.sendMessage(new TranslationTextComponent("item.gobber2.block_maturator.line1").applyTextStyle(TextFormatting.GREEN));
+    		player.sendMessage(new TranslationTextComponent("item.gobber2.block_maturator.line1", radius).applyTextStyle(TextFormatting.GREEN));
     	}
     	
         return ActionResultType.SUCCESS;
@@ -126,8 +127,6 @@ public class BlockMaturator extends Block
     		
     		if(enableMaturatorAnimalEffect)
     		{
-        		int radius = 16;
-        		
         		List<Entity> entities = world.getEntitiesWithinAABB(AnimalEntity.class, new AxisAlignedBB(pos.getX() - radius, pos.getY() - radius, pos.getZ() - radius, pos.getX() + radius, pos.getY() + radius, pos.getZ() + radius), e -> (e instanceof LivingEntity));
     			for(Entity entity : entities)
     			{
@@ -149,6 +148,6 @@ public class BlockMaturator extends Block
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 		tooltip.add((new TranslationTextComponent("item.gobber2.block_maturator.line2").applyTextStyle(TextFormatting.GREEN)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.block_maturator.line3").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.block_maturator.line3", radius).applyTextStyle(TextFormatting.LIGHT_PURPLE)));
 	}
 }

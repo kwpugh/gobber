@@ -28,31 +28,21 @@ public class JEIDescriptions implements IModPlugin
 		registry.addIngredientInfo(new ItemStack(ItemList.block_healer), VanillaTypes.ITEM, 
 				"item.gobber2.block_healer.jei.line1",
 				" ",
-				"item.gobber2.block_healer.jei.line2",
-				" ",
-				"item.gobber2.block_healer.jei.line3");
+				"item.gobber2.block_healer.jei.line2");
 		
 		registry.addIngredientInfo(new ItemStack(ItemList.block_protector), VanillaTypes.ITEM, 
 				"item.gobber2.block_protector.jei.line1",
 				" ",
 				"item.gobber2.block_protector.jei.line2",
 				" ",
-				"item.gobber2.block_protector.jei.line3",
-				" ",
-				"item.gobber2.block_protector.jei.line4",
-				" ",
-				"item.gobber2.block_protector.jei.line5");
+				"item.gobber2.block_protector.jei.line3");
 		
 		registry.addIngredientInfo(new ItemStack(ItemList.block_defender), VanillaTypes.ITEM, 
 				"item.gobber2.block_defender.jei.line1",
 				" ",
 				"item.gobber2.block_defender.jei.line2",
 				" ",
-				"item.gobber2.block_defender.jei.line3",
-				" ",
-				"item.gobber2.block_defender.jei.line4",
-				" ",
-				"item.gobber2.block_defender.jei.line5");
+				"item.gobber2.block_defender.jei.line3");
 		
 		registry.addIngredientInfo(new ItemStack(ItemList.block_looter), VanillaTypes.ITEM, 
 				"item.gobber2.block_looter.jei.line1",
@@ -71,11 +61,7 @@ public class JEIDescriptions implements IModPlugin
 				"item.gobber2.block_looter.jei.line13",
 				"item.gobber2.block_looter.jei.line14",
 				" ",
-				"item.gobber2.block_looter.jei.line15",
-				" ",
-				"item.gobber2.block_looter.jei.line16",
-				" ",
-				"item.gobber2.block_looter.jei.line17");
+				"item.gobber2.block_looter.jei.line15");
 		
 		registry.addIngredientInfo(new ItemStack(ItemList.block_maturator), VanillaTypes.ITEM, 
 				"item.gobber2.block_maturator.jei.line1",
