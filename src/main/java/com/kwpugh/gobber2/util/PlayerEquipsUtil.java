@@ -32,12 +32,10 @@ public final class PlayerEquipsUtil
     	ItemStack feet = player.getItemStackFromSlot(EquipmentSlotType.FEET);
     	
 	    //Head piece
-    	if((head.getItem() == ItemList.gobber2_helmet_end &&
-      			chest.getItem() == ItemList.gobber2_chestplate_end &&
-      			legs.getItem() == ItemList.gobber2_leggings_end &&
-      			feet.getItem() == ItemList.gobber2_boots_end) ||
-    			
-    			chest.getItem() == ItemList.gobber2_chestplate_dragon)
+    	if(head.getItem() == ItemList.gobber2_helmet_dragon &&
+      			chest.getItem() == ItemList.gobber2_chestplate_dragon &&
+      			legs.getItem() == ItemList.gobber2_leggings_dragon &&
+      			feet.getItem() == ItemList.gobber2_boots_dragon)
       	{
       		return true;  		
       	}
@@ -100,17 +98,6 @@ public final class PlayerEquipsUtil
       	}
     	
 	    PlayerInventory inv1 = player.inventory;
-	    EnderChestInventory end_inv1 = player.getInventoryEnderChest();
-	    
-	    //Is the ring in player enderchest?
-		for (int slot = 0; slot < end_inv1.getSizeInventory(); slot++)
-		{
-			ItemStack stack = end_inv1.getStackInSlot(slot);
-			if (stack.getItem() == ItemList.gobber2_ring_phoenix)
-			{	
-				return true;
-			}
-		}
 	    
 		//Is the ring in the player inventory?
 		for (int slot = 0; slot < inv1.getSizeInventory(); slot++)

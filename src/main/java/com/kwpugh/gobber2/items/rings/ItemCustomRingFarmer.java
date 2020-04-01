@@ -64,7 +64,7 @@ public class ItemCustomRingFarmer extends Item
         	{   	
         		BlockPos playerPos = new BlockPos(player.getPositionVec());
         		
-        		for (BlockPos targetPos : BlockPos.getAllInBoxMutable(playerPos.add(-11, -2, -11), playerPos.add(11, 2, 11)))
+        		for (BlockPos targetPos : BlockPos.getAllInBoxMutable(playerPos.add(-11, -2, -11), playerPos.add(11, 3, 11)))
         		{
         			BlockState blockstate = world.getBlockState(targetPos);
         			Block block = blockstate.getBlock();

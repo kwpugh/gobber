@@ -33,7 +33,6 @@ public class ItemCustomArmorEnd extends ArmorItem
 	public void onArmorTick(final ItemStack stack, final World world, final PlayerEntity player)
 	{
 		//Full Set Bonus
-		if(!player.getPersistentData().contains("wearingFullEndArmor"))player.getPersistentData().putBoolean("wearingFullEndArmor", false);
 			
 		ItemStack head = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
 		ItemStack chest = player.getItemStackFromSlot(EquipmentSlotType.CHEST);
@@ -49,20 +48,7 @@ public class ItemCustomArmorEnd extends ArmorItem
 				chest != null && chest.getItem() == ItemList.gobber2_chestplate_end &&
 				legs != null && legs.getItem() == ItemList.gobber2_leggings_end && 
 				feet != null && feet.getItem() == ItemList.gobber2_boots_end;
-    
-		boolean wasWearingArmorLastTick = player.getPersistentData().getBoolean("wearingFullEndArmor");
-        
-		if(!isWearingFullEndArmor && wasWearingArmorLastTick && !player.isCreative())
-		{
-			player.abilities.allowFlying = false;
-			player.abilities.isFlying = false;
-		}
-		else if(isWearingFullEndArmor && player.dimension.getId() == 1)
-		{
-			player.abilities.allowFlying = true;
-		}
-		player.getPersistentData().putBoolean("wearingFullEndArmor", isWearingFullEndArmor);
-    
+		
 		if(isWearingFullEndArmor)
 		{
 			//Additional full set bonuses
@@ -74,7 +60,6 @@ public class ItemCustomArmorEnd extends ArmorItem
 			player.removeActivePotionEffect(Effects.HUNGER);
 			player.removeActivePotionEffect(Effects.POISON);
 			player.removeActivePotionEffect(Effects.WITHER);
-			player.removeActivePotionEffect(Effects.LEVITATION);
 			player.removeActivePotionEffect(Effects.UNLUCK);
 			player.removeActivePotionEffect(Effects.WEAKNESS);
 		} 
