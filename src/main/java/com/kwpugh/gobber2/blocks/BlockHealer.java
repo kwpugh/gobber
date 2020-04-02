@@ -5,7 +5,7 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
-import com.kwpugh.gobber2.util.GeneralModConfig;
+import com.kwpugh.gobber2.util.GobberConfigBuilder;
 import com.kwpugh.gobber2.util.SpecialAbilities;
 
 import net.minecraft.block.Block;
@@ -33,7 +33,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BlockHealer extends Block
 {	
-	int radius = GeneralModConfig.HEALER_RADIUS.get();
+	int radius = GobberConfigBuilder.HEALER_RADIUS.get();
 	
 	public BlockHealer(Properties properties)
 	{

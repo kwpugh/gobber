@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.kwpugh.gobber2.util.GeneralModConfig;
+import com.kwpugh.gobber2.util.GobberConfigBuilder;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
@@ -27,7 +27,7 @@ public class ItemCustomRingAcceleration extends Item
 		super(properties);
 	}
 
-	public static double velocityAcceleration = GeneralModConfig.RING_ACCELERATION_VELOCITY.get();
+	public static double velocityAcceleration = GobberConfigBuilder.RING_ACCELERATION_VELOCITY.get();
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)

@@ -92,11 +92,11 @@ public final class ModEventSubscriber
         		{
         			if(block == Blocks.OBSIDIAN)
         			{
-        				event.setNewSpeed(GeneralModConfig.HASTE_RING_BREAK_SPEED.get() * 8);
+        				event.setNewSpeed(GobberConfigBuilder.HASTE_RING_BREAK_SPEED.get() * 8);
         			}
         			else
         			{
-        				event.setNewSpeed(GeneralModConfig.HASTE_RING_BREAK_SPEED.get());
+        				event.setNewSpeed(GobberConfigBuilder.HASTE_RING_BREAK_SPEED.get());
         			}
 						
         		}

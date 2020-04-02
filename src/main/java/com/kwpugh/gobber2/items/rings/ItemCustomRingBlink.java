@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.kwpugh.gobber2.util.GeneralModConfig;
+import com.kwpugh.gobber2.util.GobberConfigBuilder;
 import com.kwpugh.gobber2.util.RayTraceUtil;
 
 import net.minecraft.client.util.ITooltipFlag;
@@ -32,7 +32,7 @@ public class ItemCustomRingBlink extends Item
 		super(properties);
 	}
 
-	int blinkCooldown = GeneralModConfig.RING_BLINK_COOLDOWN.get();
+	int blinkCooldown = GobberConfigBuilder.RING_BLINK_COOLDOWN.get();
 	  
 	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
 	{

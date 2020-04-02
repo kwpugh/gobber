@@ -5,7 +5,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import com.kwpugh.gobber2.util.EnableUtil;
-import com.kwpugh.gobber2.util.MagnetRange;
+import com.kwpugh.gobber2.util.MagnetRangeUtil;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -40,7 +40,7 @@ public class ItemCustomRingAttraction extends Item
 		{
 			PlayerEntity player = (PlayerEntity)entity;
 			
-			boolean init = MagnetRange.getCurrentlySet(stack);
+			boolean init = MagnetRangeUtil.getCurrentlySet(stack);
 			
 			if(!init)
 			{
@@ -48,7 +48,7 @@ public class ItemCustomRingAttraction extends Item
 			}
 			else
 			{
-				range = MagnetRange.getCurrentRange(stack);
+				range = MagnetRangeUtil.getCurrentRange(stack);
 			}			
 
 			double x = player.getPosX();
@@ -96,32 +96,32 @@ public class ItemCustomRingAttraction extends Item
 			if(range == 8)
 			{
 				range = 10;
-				MagnetRange.setCurrentRange(stack, range);
-				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRange.getCurrentRange(stack)).applyTextStyle(TextFormatting.GREEN)));
+				MagnetRangeUtil.setCurrentRange(stack, range);
+				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRangeUtil.getCurrentRange(stack)).applyTextStyle(TextFormatting.GREEN)));
 			}
 			else if(range == 10)
 			{
 				range = 12;
-				MagnetRange.setCurrentRange(stack, range);
-				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRange.getCurrentRange(stack)).applyTextStyle(TextFormatting.GREEN)));
+				MagnetRangeUtil.setCurrentRange(stack, range);
+				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRangeUtil.getCurrentRange(stack)).applyTextStyle(TextFormatting.GREEN)));
 			}
 			else if(range == 12)
 			{
 				range = 14;
-				MagnetRange.setCurrentRange(stack, range);
-				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRange.getCurrentRange(stack)).applyTextStyle(TextFormatting.GREEN)));
+				MagnetRangeUtil.setCurrentRange(stack, range);
+				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRangeUtil.getCurrentRange(stack)).applyTextStyle(TextFormatting.GREEN)));
 			}
 			else if(range == 14)
 			{
 				range = 4;
-				MagnetRange.setCurrentRange(stack, range);
-				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRange.getCurrentRange(stack)).applyTextStyle(TextFormatting.GREEN)));
+				MagnetRangeUtil.setCurrentRange(stack, range);
+				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRangeUtil.getCurrentRange(stack)).applyTextStyle(TextFormatting.GREEN)));
 			}
 			else if(range == 4)
 			{
 				range = 8;
-				MagnetRange.setCurrentRange(stack, range);
-				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRange.getCurrentRange(stack)).applyTextStyle(TextFormatting.GREEN)));
+				MagnetRangeUtil.setCurrentRange(stack, range);
+				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRangeUtil.getCurrentRange(stack)).applyTextStyle(TextFormatting.GREEN)));
 			}
         }
         
@@ -142,5 +142,6 @@ public class ItemCustomRingAttraction extends Item
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line2", EnableUtil.isEnabled(stack)).applyTextStyle(TextFormatting.GREEN)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line3").applyTextStyle(TextFormatting.YELLOW)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line4").applyTextStyle(TextFormatting.RED)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5",range).applyTextStyle(TextFormatting.LIGHT_PURPLE)));
 	}     
 }

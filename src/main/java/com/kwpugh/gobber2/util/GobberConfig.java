@@ -16,7 +16,7 @@ public class GobberConfig
 
     static
     {
-        GeneralModConfig.init(BUILDER);
+        GobberConfigBuilder.init(BUILDER);
 
         CONFIG = BUILDER.build();
     }

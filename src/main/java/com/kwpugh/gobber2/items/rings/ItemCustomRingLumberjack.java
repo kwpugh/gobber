@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.kwpugh.gobber2.util.GeneralModConfig;
+import com.kwpugh.gobber2.util.GobberConfigBuilder;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -39,9 +39,9 @@ public class ItemCustomRingLumberjack extends Item
 		super(properties);
 	}
 
-	int ringLumberjackCooldown = GeneralModConfig.RING_LUMBERJACK_COOLDOWN.get();
+	int ringLumberjackCooldown = GobberConfigBuilder.RING_LUMBERJACK_COOLDOWN.get();
 	public static final int BREAK_DELAY = 1;
-	boolean delayedBreakMode = GeneralModConfig.DELAY_BREAK_MODE.get();
+	boolean delayedBreakMode = GobberConfigBuilder.DELAY_BREAK_MODE.get();
 	boolean shiftKeyPressed = false;
 	
 	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)

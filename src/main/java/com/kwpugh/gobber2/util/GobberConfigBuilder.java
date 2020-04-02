@@ -2,7 +2,7 @@ package com.kwpugh.gobber2.util;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 
-public class GeneralModConfig
+public class GobberConfigBuilder
 {
     public static ForgeConfigSpec.BooleanValue GOBBER2_ORE_GENERATION;
     public static ForgeConfigSpec.IntValue GOBBER2_ORE_CHANCE;
@@ -45,11 +45,17 @@ public class GeneralModConfig
     public static ForgeConfigSpec.IntValue RING_REPAIR_DELAY;
     public static ForgeConfigSpec.IntValue HASTE_RING_BREAK_SPEED;
     
+    public static ForgeConfigSpec.IntValue RING_FARMER_TICK_DELAY;
+    public static ForgeConfigSpec.IntValue RING_FARMER_RADIUS;
+    public static ForgeConfigSpec.IntValue STAFF_FARMER_TICK_DELAY;
+    public static ForgeConfigSpec.IntValue STAFF_FARMER_RADIUS;
+    
     public static ForgeConfigSpec.IntValue HEALER_RADIUS;
     public static ForgeConfigSpec.IntValue PROTECTOR_RADIUS;
     public static ForgeConfigSpec.IntValue DEFENDER_RADIUS;
     public static ForgeConfigSpec.IntValue LOOTER_RADIUS;
     public static ForgeConfigSpec.IntValue MATURATOR_RADIUS;
+    public static ForgeConfigSpec.IntValue MATURATOR_VERTICAL_RANGE;
     public static ForgeConfigSpec.IntValue MATURATOR_MIN_TICK;
     public static ForgeConfigSpec.IntValue MATURATOR_MAX_TICK;
     public static ForgeConfigSpec.BooleanValue ENABLE_MATURATOR_ANIMAL_EFFECT;
@@ -102,6 +108,7 @@ public class GeneralModConfig
 
         SERVER_BUILDER.pop();
         
+        
         SERVER_BUILDER.comment("Item Cooldown Settings").push("item_cooldown_settings");
       
         RING_BLINK_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Ring of Blink cooldown [0-120, default: 60]").defineInRange("ringBlinkCooldown", 60, 0, 120);
@@ -114,7 +121,8 @@ public class GeneralModConfig
         
         SERVER_BUILDER.pop();
         
-        SERVER_BUILDER.comment("Misc Ring Settings").push("misc_ring_settings");
+        
+        SERVER_BUILDER.comment("Misc Ring/staff Settings").push("misc_ring_staff_settings");
         
         RING_EXPLORER_MIN_RANGE = SERVER_BUILDER.comment("Ring of Explorer - Min distance from world spawn to begin searching for a spot [default: 500]").defineInRange("ringExplorerMin", 500, 0, 100000);
         RING_EXPLORER_MAX_RANGE = SERVER_BUILDER.comment("Ring of Explorer - Max distance from world spawn to begin searching for a spot [default: 6000]").defineInRange("ringExplorerMax", 6000, 0, 250000);
@@ -123,8 +131,13 @@ public class GeneralModConfig
         RING_ACCELERATION_VELOCITY = SERVER_BUILDER.comment("Ring of Acceleration - amount of velocity applied [default: .18]").defineInRange("ringAccelerationVelocity", .18, 0.0, .30);
         RING_REPAIR_DELAY = SERVER_BUILDER.comment("Ring of Repair - Delay time between repair ticks [default: 120]").defineInRange("ringRepairDelay", 120, 20, 600);
         HASTE_RING_BREAK_SPEED = SERVER_BUILDER.comment("Ring of Haste - Block break speed [default: 30]").defineInRange("ringHasteBreakSpeed", 30, 10, 100);
+        RING_FARMER_TICK_DELAY = SERVER_BUILDER.comment("Ring of the Farmer base tick delay [default: 20]").defineInRange("ringFarmerTickDelay", 20, 10, 120);
+        RING_FARMER_RADIUS = SERVER_BUILDER.comment("Ring of the Farmer radius from player [default: 10]").defineInRange("ringFarmerRadius", 10, 2, 20);
+        STAFF_FARMER_TICK_DELAY = SERVER_BUILDER.comment("Staff of the Farmer base tick delay [default: 20]").defineInRange("staffFarmerTickDelay", 20, 10, 120);
+        STAFF_FARMER_RADIUS = SERVER_BUILDER.comment("Staff of the Farmer radius from player [default: 10]").defineInRange("staffFarmerRadius", 10, 2, 20);
         
         SERVER_BUILDER.pop();
+        
         
         SERVER_BUILDER.comment("Settings for area effect blocks").push("area_block_effect_settings");
         
@@ -132,13 +145,14 @@ public class GeneralModConfig
         PROTECTOR_RADIUS = SERVER_BUILDER.comment("Block range for Protector block effects [default: 24]").defineInRange("protectorRange", 24, 0, 32);
         DEFENDER_RADIUS = SERVER_BUILDER.comment("Block range for Defender block effects [default: 32]").defineInRange("defenderRange", 32, 0, 64);
         LOOTER_RADIUS = SERVER_BUILDER.comment("Block rangefor Looter block effects [default: 24]").defineInRange("looterRange", 24, 0, 32);
-        MATURATOR_RADIUS = SERVER_BUILDER.comment("Block range for Maturator block effects [default: 16]").defineInRange("maturatorRange", 16, 0, 16);
+        MATURATOR_RADIUS = SERVER_BUILDER.comment("Block range for Maturator block effects [default: 16]").defineInRange("maturatorRange", 10, 0, 20);
+        MATURATOR_VERTICAL_RANGE = SERVER_BUILDER.comment("Vertical block range for Maturator block effects [default: 10]").defineInRange("maturatorVerticalRange", 5, 0, 10);
         MATURATOR_MIN_TICK = SERVER_BUILDER.comment("Min interval of world ticks for the Maturator [default: 120]").defineInRange("maturatorMinTick", 120, 0, 240);
         MATURATOR_MAX_TICK = SERVER_BUILDER.comment("Max interval of world ticks for the Maturator [default: 240]").defineInRange("maturatorMaxTick", 240, 0, 480);
         ENABLE_MATURATOR_ANIMAL_EFFECT = SERVER_BUILDER.comment("Enable Maturator effect on baby animals [true / false]").define("enableMaturatorAnimalEffect", false);
-        
-        
+               
         SERVER_BUILDER.pop();
+        
         
         SERVER_BUILDER.comment("Dragon Egg With Every Kill").push("dragon_egg_kill");
         

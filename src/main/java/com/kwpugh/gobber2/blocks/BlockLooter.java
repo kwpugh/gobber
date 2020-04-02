@@ -5,7 +5,7 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
-import com.kwpugh.gobber2.util.GeneralModConfig;
+import com.kwpugh.gobber2.util.GobberConfigBuilder;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
@@ -53,7 +53,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BlockLooter extends Block
 {
-	int radius = GeneralModConfig.LOOTER_RADIUS.get();
+	int radius = GobberConfigBuilder.LOOTER_RADIUS.get();
 	
 	public BlockLooter(Properties properties)
 	{

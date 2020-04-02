@@ -33,7 +33,7 @@ public class DragonKillHandler
     {
         if(event.getEntity().getEntityWorld().getDimension() instanceof EndDimension)
         {
-        	if(GeneralModConfig.ENABLE_DRAGON_KILL_EVERY_KILL.get())
+        	if(GobberConfigBuilder.ENABLE_DRAGON_KILL_EVERY_KILL.get())
         	{
                 if (event.getEntity() instanceof EnderDragonEntity)
                 {

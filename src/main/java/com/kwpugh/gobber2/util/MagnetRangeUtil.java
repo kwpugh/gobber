@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.Hand;
 
-public class MagnetRange
+public class MagnetRangeUtil
 {	
     public static int getCurrentRange(ItemStack stack)
     {

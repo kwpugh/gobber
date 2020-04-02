@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 
 import com.kwpugh.gobber2.lists.ItemList;
 import com.kwpugh.gobber2.util.EnableUtil;
-import com.kwpugh.gobber2.util.GeneralModConfig;
+import com.kwpugh.gobber2.util.GobberConfigBuilder;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
@@ -37,7 +37,7 @@ public class ItemCustomSwordSniper extends SwordItem
 		super(tier, attackDamageIn, attackSpeedIn, builder);
 	}
 
-	int swordSniperCooldown = GeneralModConfig.SNIPER_SWORD_COOLDOWN.get();
+	int swordSniperCooldown = GobberConfigBuilder.SNIPER_SWORD_COOLDOWN.get();
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)

@@ -5,7 +5,7 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
-import com.kwpugh.gobber2.util.GeneralModConfig;
+import com.kwpugh.gobber2.util.GobberConfigBuilder;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
@@ -41,10 +41,10 @@ public class ItemCustomRingExplorer extends Item
 		super(properties);
 	}
 	
-	int ringExplorerCooldown = GeneralModConfig.RING_EXPLORER_COOLDOWN.get();
+	int ringExplorerCooldown = GobberConfigBuilder.RING_EXPLORER_COOLDOWN.get();
 	
-    int min = GeneralModConfig.RING_EXPLORER_MIN_RANGE.get();
-    int max = GeneralModConfig.RING_EXPLORER_MAX_RANGE.get();
+    int min = GobberConfigBuilder.RING_EXPLORER_MIN_RANGE.get();
+    int max = GobberConfigBuilder.RING_EXPLORER_MAX_RANGE.get();
     
 	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
 	{

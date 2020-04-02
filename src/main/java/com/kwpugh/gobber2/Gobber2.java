@@ -65,12 +65,7 @@ public class Gobber2
 		
 		logger.info("Gobber client setup");
 	}
-	
-	private void serverSetup(final FMLDedicatedServerSetupEvent event)
-	{
-		logger.info("Gobber server setup");
-	}
-	
+
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
         if (SupportMods.CURIOS.isLoaded())
@@ -81,6 +76,11 @@ public class Gobber2
         
         logger.info("Gobber IMC setup");
     }
+    
+	private void serverSetup(final FMLDedicatedServerSetupEvent event)
+	{
+		logger.info("Gobber server setup");
+	}
 }
 
 

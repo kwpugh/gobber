@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 @EventBusSubscriber(modid = Gobber2.modid, bus = EventBusSubscriber.Bus.FORGE )
 public class RepairTickHandler
 {
-	public static int repairTickRate = GeneralModConfig.RING_REPAIR_DELAY.get();
+	public static int repairTickRate = GobberConfigBuilder.RING_REPAIR_DELAY.get();
 	
 	@SubscribeEvent
 	public static void onPlayerTick(TickEvent.PlayerTickEvent event)

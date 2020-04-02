@@ -5,7 +5,7 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
-import com.kwpugh.gobber2.util.GeneralModConfig;
+import com.kwpugh.gobber2.util.GobberConfigBuilder;
 
 import net.minecraft.block.BambooBlock;
 import net.minecraft.block.BambooSaplingBlock;
@@ -55,9 +55,11 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BlockMaturator extends Block
 {
-	int radius = GeneralModConfig.MATURATOR_RADIUS.get();
-	int minTickTime = GeneralModConfig.MATURATOR_MIN_TICK.get();
-	int maxTickTime = GeneralModConfig.MATURATOR_MAX_TICK.get();
+	int radius = GobberConfigBuilder.MATURATOR_RADIUS.get();
+	int rediusVertical = GobberConfigBuilder.MATURATOR_VERTICAL_RANGE.get();
+	
+	int minTickTime = GobberConfigBuilder.MATURATOR_MIN_TICK.get();
+	int maxTickTime = GobberConfigBuilder.MATURATOR_MAX_TICK.get();
 	
 	public BlockMaturator(Properties properties)
 	{
@@ -85,7 +87,7 @@ public class BlockMaturator extends Block
     @Override
     public void tick(BlockState state, ServerWorld world, BlockPos pos, Random rand)
     {
-    	boolean enableMaturatorAnimalEffect = GeneralModConfig.ENABLE_MATURATOR_ANIMAL_EFFECT.get();
+    	boolean enableMaturatorAnimalEffect = GobberConfigBuilder.ENABLE_MATURATOR_ANIMAL_EFFECT.get();
     	
     	if(!world.isRemote)
 		{
@@ -95,7 +97,7 @@ public class BlockMaturator extends Block
 			BlockState flaming = ((FireBlock)Blocks.FIRE).getStateForPlacement(world, posUp);
 			world.setBlockState(posUp, flaming, 11);
 			
-    		for (BlockPos targetPos : BlockPos.getAllInBoxMutable(pos.add(-16, -2, -16), pos.add(16, 8, 16)))
+    		for (BlockPos targetPos : BlockPos.getAllInBoxMutable(pos.add(-radius, -2, -radius), pos.add(radius, rediusVertical, radius)))
 			{
 				BlockState state1 = world.getBlockState(targetPos);
 				

@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.kwpugh.gobber2.util.GeneralModConfig;
+import com.kwpugh.gobber2.util.GobberConfigBuilder;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.client.util.ITooltipFlag;
@@ -36,7 +36,7 @@ public class ItemCustomRingAbove extends Item
 		super(properties);
 	}
 
-	int ringAboveCooldown = GeneralModConfig.RING_ABOVE_COOLDOWN.get();
+	int ringAboveCooldown = GobberConfigBuilder.RING_ABOVE_COOLDOWN.get();
 	
 	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
 	{

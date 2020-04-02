@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.kwpugh.gobber2.util.GeneralModConfig;
+import com.kwpugh.gobber2.util.GobberConfigBuilder;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
@@ -30,7 +30,7 @@ public class ItemCustomStaffSniper extends Item
 		super(properties);
 	}
 
-	int staffSniperCooldown = GeneralModConfig.SNIPER_STAFF_COOLDOWN.get();
+	int staffSniperCooldown = GobberConfigBuilder.SNIPER_STAFF_COOLDOWN.get();
 	
 	@Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn)

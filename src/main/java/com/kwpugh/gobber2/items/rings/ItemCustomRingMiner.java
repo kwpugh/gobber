@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.kwpugh.gobber2.util.GeneralModConfig;
+import com.kwpugh.gobber2.util.GobberConfigBuilder;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -40,9 +40,9 @@ public class ItemCustomRingMiner extends Item
 
 	public static final int BREAK_DELAY = 1;
 	
-	int ringMinerCooldown = GeneralModConfig.RING_MINER_COOLDOWN.get();
-	boolean reverseRingMiner = GeneralModConfig.REVERSE_RING_MINER.get();
-	boolean delayedBreakMode = GeneralModConfig.DELAY_BREAK_MODE.get();
+	int ringMinerCooldown = GobberConfigBuilder.RING_MINER_COOLDOWN.get();
+	boolean reverseRingMiner = GobberConfigBuilder.REVERSE_RING_MINER.get();
+	boolean delayedBreakMode = GobberConfigBuilder.DELAY_BREAK_MODE.get();
 	
 	boolean shiftKeyPressed = false;
 	
