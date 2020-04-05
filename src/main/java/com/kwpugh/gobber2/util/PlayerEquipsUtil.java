@@ -125,8 +125,9 @@ public final class PlayerEquipsUtil
     public static boolean isPlayerGotStealth(PlayerEntity player)
     {
     	ItemStack mainHand = player.getHeldItemMainhand();
+    	ItemStack offHand = player.getHeldItemOffhand();
     	
-    	if(mainHand.getItem() == ItemList.gobber2_ring_stealth)
+    	if(mainHand.getItem() == ItemList.gobber2_ring_stealth && offHand.isEmpty())
       	{
       		return true;  		
       	}
