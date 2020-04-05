@@ -1,11 +1,8 @@
 package com.kwpugh.gobber2.items.tools;
 
-import java.util.List;
-
 import com.kwpugh.gobber2.lists.ItemList;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -17,9 +14,6 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
 public class ItemCustomPickaxeEnd extends PickaxeItem
@@ -37,7 +31,7 @@ public class ItemCustomPickaxeEnd extends PickaxeItem
 	@Override
     public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
     {
-		ItemStack stack = player.getHeldItem(hand);
+		//ItemStack stack = player.getHeldItem(hand);
 		
         if(!world.isRemote && player.isShiftKeyDown())
         {

@@ -1,11 +1,9 @@
 package com.kwpugh.gobber2.items.tools;
 
-import java.util.List;
 import java.util.function.Predicate;
 
 import com.kwpugh.gobber2.lists.ItemList;
 
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;
@@ -23,9 +21,6 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
 public class ItemCustomBow extends BowItem
