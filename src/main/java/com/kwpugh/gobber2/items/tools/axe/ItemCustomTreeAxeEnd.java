@@ -1,4 +1,4 @@
-package com.kwpugh.gobber2.items.toolclasses;
+package com.kwpugh.gobber2.items.tools.axe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +54,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
  * 
  */
 
-public class TreeAxeBase extends AxeItem
+public class ItemCustomTreeAxeEnd extends AxeItem
 {   
     public static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.OAK_PLANKS, Blocks.SPRUCE_PLANKS, Blocks.BIRCH_PLANKS, Blocks.JUNGLE_PLANKS, Blocks.ACACIA_PLANKS, Blocks.DARK_OAK_PLANKS, Blocks.BOOKSHELF, Blocks.OAK_WOOD, Blocks.SPRUCE_WOOD, Blocks.BIRCH_WOOD, Blocks.JUNGLE_WOOD, Blocks.ACACIA_WOOD, Blocks.DARK_OAK_WOOD, Blocks.OAK_LOG, Blocks.SPRUCE_LOG, Blocks.BIRCH_LOG, Blocks.JUNGLE_LOG, Blocks.ACACIA_LOG, Blocks.DARK_OAK_LOG, Blocks.CHEST, Blocks.PUMPKIN, Blocks.CARVED_PUMPKIN, Blocks.JACK_O_LANTERN, Blocks.MELON, Blocks.LADDER, Blocks.SCAFFOLDING, Blocks.OAK_BUTTON, Blocks.SPRUCE_BUTTON, Blocks.BIRCH_BUTTON, Blocks.JUNGLE_BUTTON, Blocks.DARK_OAK_BUTTON, Blocks.ACACIA_BUTTON, Blocks.OAK_PRESSURE_PLATE, Blocks.SPRUCE_PRESSURE_PLATE, Blocks.BIRCH_PRESSURE_PLATE, Blocks.JUNGLE_PRESSURE_PLATE, Blocks.DARK_OAK_PRESSURE_PLATE, Blocks.ACACIA_PRESSURE_PLATE);
 
@@ -62,7 +62,7 @@ public class TreeAxeBase extends AxeItem
 
     public static final int LOG_BREAK_DELAY = 1;
 
-    public TreeAxeBase(IItemTier tier, float attackDamageIn, float attackSpeedIn, Properties builder)
+    public ItemCustomTreeAxeEnd(IItemTier tier, float attackDamageIn, float attackSpeedIn, Properties builder)
     {
         super(tier, attackDamageIn, attackSpeedIn, builder);
     }
@@ -84,6 +84,7 @@ public class TreeAxeBase extends AxeItem
     	            }
     	        }        
     	}
+    	stack.attemptDamageItem(0, random, null);
     	
     	return super.onBlockDestroyed(stack, world, state, pos, entityLiving);
     }
