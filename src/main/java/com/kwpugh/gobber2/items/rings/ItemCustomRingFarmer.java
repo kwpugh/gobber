@@ -40,13 +40,10 @@ public class ItemCustomRingFarmer extends Item
         
         if(stack == equippedMain)
         {
-        	if (!world.isRemote)
-        	{ 
-            	if (!world.isRemote)
-            	{  
-            		GrowingUtil.growCrops(world, player, baseTickDelay, radius);
-            	}
-        	}
+			if (!world.isRemote)
+			{  
+				GrowingUtil.growCrops(world, player, baseTickDelay, radius);
+			}
         }
     }
        

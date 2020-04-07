@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.annotation.Nullable;
 
 import com.kwpugh.gobber2.init.ItemInit;
+import com.kwpugh.gobber2.items.toolclasses.PaxelBase;
 import com.kwpugh.gobber2.util.EnableUtil;
 
 import net.minecraft.block.Block;
@@ -35,7 +36,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.util.Constants.WorldEvents;
 
-public class ItemCustomPaxelStars extends ItemCustomPaxelBase
+public class ItemCustomPaxelStars extends PaxelBase
 {
 	public ItemCustomPaxelStars(float attackDamageIn, float attackSpeedIn, IItemTier tier, Set<Block> effectiveBlocksIn,
 			Properties builder)

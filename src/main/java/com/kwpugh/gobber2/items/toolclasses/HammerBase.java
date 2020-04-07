@@ -1,30 +1,38 @@
-package com.kwpugh.gobber2.items.tools;
+package com.kwpugh.gobber2.items.toolclasses;
 
+/*
+ * Neurodr0me's - Hammer code borrowed from Practical Tools: https://www.curseforge.com/minecraft/mc-mods/practical-tools
+ * 
+ */
+
+import java.util.List;
 import java.util.Set;
+
+import javax.annotation.Nullable;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
-import com.kwpugh.gobber2.init.ItemInit;
 import com.kwpugh.gobber2.util.HammerUtil;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.PickaxeItem;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
-
-public class ItemCustomHammerEnd extends PickaxeItem
+public class HammerBase extends PickaxeItem
 {
 	private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.ACTIVATOR_RAIL, Blocks.COAL_ORE, Blocks.COBBLESTONE, Blocks.DETECTOR_RAIL, Blocks.DIAMOND_BLOCK, Blocks.DIAMOND_ORE, 
 			Blocks.POWERED_RAIL, Blocks.GOLD_BLOCK, Blocks.GOLD_ORE, Blocks.ICE, Blocks.IRON_BLOCK, Blocks.IRON_ORE, Blocks.LAPIS_BLOCK, 
@@ -102,50 +110,20 @@ public class ItemCustomHammerEnd extends PickaxeItem
 	
 	public static final Set<Material> EFFECTIVE_MATERIALS = ImmutableSet.of(Material.ROCK, Material.IRON, Material.GLASS, Material.ICE, Material.PACKED_ICE, Material.ANVIL);
 
-	public ItemCustomHammerEnd(IItemTier tier, int attackDamageIn, float attackSpeedIn, Properties builder)
+	public HammerBase(IItemTier tier, int attackDamageIn, float attackSpeedIn, Properties builder)
 	{
 		super(tier, attackDamageIn, attackSpeedIn, builder);
 	}
-	
-    @Override
-    public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker)
-    {
-		stack.setDamage(0);  //no damage
-        
-        return true;
-    }
-	
-    @Override
+ 
     public boolean onBlockDestroyed(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity entity)
     {
-    	//stack.attemptDamageItem(0, random, null);
+    	stack.attemptDamageItem(1, random, null);
 
-        if (!world.isRemote && state.getBlockHardness(world, pos) != 0.0F)
-        {
-           stack.damageItem(0, entity, (p_220038_0_) -> {
-              p_220038_0_.sendBreakAnimation(EquipmentSlotType.MAINHAND);
-           });
-        }
-        
         if (entity instanceof PlayerEntity)
         {
         	HammerUtil.attemptBreakNeighbors(world, pos, (PlayerEntity) entity, EFFECTIVE_ON, EFFECTIVE_MATERIALS);
         }
         return super.onBlockDestroyed(stack, world, state, pos, entity);
-    }
-    
-	@Override
-    public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
-    {
-		//ItemStack stack = player.getHeldItem(hand);
-		
-        if(!world.isRemote && player.isShiftKeyDown())
-        {
-            //EnableUtil.changeEnabled(player, hand);
-            //player.sendMessage(new StringTextComponent("Night vision ability active: " + EnableUtil.isEnabled(stack)));
-            return new ActionResult<ItemStack>(ActionResultType.SUCCESS, player.getHeldItem(hand));
-        }
-        return super.onItemRightClick(world, player, hand);
     }
     
 	@Override
@@ -159,10 +137,11 @@ public class ItemCustomHammerEnd extends PickaxeItem
 	{
 		return true;
 	}
-    
-	@Override
-	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
+	
+	@OnlyIn(Dist.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
-		return repair.getItem() == ItemInit.GOBBER2_INGOT_END.get();
+		super.addInformation(stack, worldIn, tooltip, flagIn);
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_hammer.line1").applyTextStyle(TextFormatting.GREEN)));
 	}
 }

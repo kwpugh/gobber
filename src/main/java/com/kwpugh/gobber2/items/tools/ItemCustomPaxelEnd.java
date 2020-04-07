@@ -3,12 +3,13 @@ package com.kwpugh.gobber2.items.tools;
 import java.util.Set;
 
 import com.kwpugh.gobber2.init.ItemInit;
+import com.kwpugh.gobber2.items.toolclasses.PaxelBase;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
 
-public class ItemCustomPaxelEnd extends ItemCustomPaxelBase
+public class ItemCustomPaxelEnd extends PaxelBase
 {
 	public ItemCustomPaxelEnd(float attackDamageIn, float attackSpeedIn, IItemTier tier, Set<Block> effectiveBlocksIn,
 			Properties builder)
