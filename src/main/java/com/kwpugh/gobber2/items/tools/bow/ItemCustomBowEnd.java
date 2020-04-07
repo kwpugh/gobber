@@ -1,9 +1,13 @@
 package com.kwpugh.gobber2.items.tools.bow;
 
+import java.util.List;
 import java.util.function.Predicate;
+
+import javax.annotation.Nullable;
 
 import com.kwpugh.gobber2.init.ItemInit;
 
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;
@@ -21,7 +25,12 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ItemCustomBowEnd extends BowItem
 {
@@ -176,4 +185,11 @@ public class ItemCustomBowEnd extends BowItem
    {
 	   return repair.getItem() == ItemInit.GOBBER2_INGOT_END.get();
    } 
+   
+	@OnlyIn(Dist.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
+	{
+		super.addInformation(stack, worldIn, tooltip, flagIn);
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_end.unbreakable").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+	}
 }

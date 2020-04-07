@@ -47,6 +47,7 @@
 	"item.gobber2.gobber2_hammer.line1": "A hammer that breaks a 3x3 area",
 	"item.gobber2.gobber2_paxel.line1": "Combines pickaxe, axe, and shovel",
 	"item.gobber2.gobber2_tree_axe.line1": "Will attempt to bring down the whole tree",
+	"item.gobber2.gobber2_end.unbreakable": "Unbreakable tool",
 	
     "item.gobber2.gobber2_sword": "Gobber Sword",
 	"item.gobber2.gobber2_pickaxe": "Gobber Pickaxe",

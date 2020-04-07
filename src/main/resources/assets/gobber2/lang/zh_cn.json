@@ -40,6 +40,7 @@
  	"item.gobber2.gobber2_hammer.line1": "这锤子可以破坏3x3的区域",
  	"item.gobber2.gobber2_paxel.line1": "结合了镐，斧头和铲子",
      "item.gobber2.gobber2_tree_axe.line1": "会砍伐整棵树",
+     "item.gobber2.gobber2_end.unbreakable": "Unbreakable tool",
      "item.gobber2.gobber2_sword": "戈伯剑",
  	"item.gobber2.gobber2_pickaxe": "戈伯镐",
  	"item.gobber2.gobber2_hammer": "戈伯锤",

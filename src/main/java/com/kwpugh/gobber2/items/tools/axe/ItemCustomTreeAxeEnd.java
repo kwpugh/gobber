@@ -82,11 +82,11 @@ public class ItemCustomTreeAxeEnd extends AxeItem
     	            {
     	                attemptBreakNeighbors(world, pos, player, EFFECTIVE_ON, EFFECTIVE_MATERIALS, false);
     	            }
-    	        }        
+    	        }
+    	        stack.attemptDamageItem(0, random, null);
     	}
-    	stack.attemptDamageItem(0, random, null);
     	
-    	return super.onBlockDestroyed(stack, world, state, pos, entityLiving);
+    	return true;
     }
 
     private boolean attemptFellTree(World world, BlockPos pos, PlayerEntity player)
@@ -239,6 +239,7 @@ public class ItemCustomTreeAxeEnd extends AxeItem
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_tree_axe.line1").applyTextStyle(TextFormatting.GREEN)));			
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_tree_axe.line1").applyTextStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_end.unbreakable").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
 	}
 } 
