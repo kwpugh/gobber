@@ -63,6 +63,7 @@ import com.kwpugh.gobber2.items.tools.ItemCustomExcavatorNether;
 import com.kwpugh.gobber2.items.tools.ItemCustomHammer;
 import com.kwpugh.gobber2.items.tools.ItemCustomHammerEnd;
 import com.kwpugh.gobber2.items.tools.ItemCustomHammerNether;
+import com.kwpugh.gobber2.items.tools.ItemCustomHoe;
 import com.kwpugh.gobber2.items.tools.ItemCustomPaxel;
 import com.kwpugh.gobber2.items.tools.ItemCustomPaxelEnd;
 import com.kwpugh.gobber2.items.tools.ItemCustomPaxelNether;
@@ -174,11 +175,11 @@ public class ItemInit
 	public static final RegistryObject<Item> GOBBER2_SHOVEL_END = ITEMS.register("gobber2_shovel_end", () -> new ItemCustomShovelEnd(ToolMaterialList.GOBBER2_END, 8.0f, -2.6f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));	
 	public static final RegistryObject<Item> GOBBER2_AXE_END = ITEMS.register("gobber2_axe_end", () -> new ItemCustomAxeEnd(ToolMaterialList.GOBBER2_END, 14.0f, -2.7f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_TREE_AXE_END = ITEMS.register("gobber2_tree_axe_end", () -> new TreeAxeBase(ToolMaterialList.GOBBER2_END, 14.0f, -2.7f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));	
-	public static final RegistryObject<Item> GOBBER2_HOE_END = ITEMS.register("gobber2_hoe_end", () -> new HoeItem(ToolMaterialList.GOBBER2_END, 2.3f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
+	public static final RegistryObject<Item> GOBBER2_HOE_END = ITEMS.register("gobber2_hoe_end", () -> new ItemCustomHoe(ToolMaterialList.GOBBER2_END, 2.3f, new Item.Properties().maxStackSize(1).maxDamage(0).group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_HAMMER_END = ITEMS.register("gobber2_hammer_end", () -> new ItemCustomHammerEnd(ToolMaterialList.GOBBER2_END, 10, -2.7f, new Item.Properties().maxStackSize(1).maxDamage(0).group(Gobber2.gobber2)));		
-	public static final RegistryObject<Item> GOBBER2_EXCAVATOR_END = ITEMS.register("gobber2_excavator_end", () -> new ItemCustomExcavatorEnd(ToolMaterialList.GOBBER2_END, 8.0f, -2.6f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
-	public static final RegistryObject<Item> GOBBER2_PAXEL_END = ITEMS.register("gobber2_paxel_end", () -> new ItemCustomPaxelEnd(13, -2.7f, ToolMaterialList.GOBBER2_END, null, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
-	public static final RegistryObject<Item> GOBBER2_PAXEL_STARS = ITEMS.register("gobber2_paxel_stars", () -> new ItemCustomPaxelStars(13, -2.7f, ToolMaterialList.GOBBER2_END, null, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));						
+	public static final RegistryObject<Item> GOBBER2_EXCAVATOR_END = ITEMS.register("gobber2_excavator_end", () -> new ItemCustomExcavatorEnd(ToolMaterialList.GOBBER2_END, 8.0f, -2.6f, new Item.Properties().maxStackSize(1).maxDamage(0).group(Gobber2.gobber2)));
+	public static final RegistryObject<Item> GOBBER2_PAXEL_END = ITEMS.register("gobber2_paxel_end", () -> new ItemCustomPaxelEnd(13, -2.7f, ToolMaterialList.GOBBER2_END, null, new Item.Properties().maxStackSize(1).maxDamage(0).group(Gobber2.gobber2)));
+	public static final RegistryObject<Item> GOBBER2_PAXEL_STARS = ITEMS.register("gobber2_paxel_stars", () -> new ItemCustomPaxelStars(13, -2.7f, ToolMaterialList.GOBBER2_END, null, new Item.Properties().maxStackSize(1).maxDamage(0).group(Gobber2.gobber2)));						
 
 	public static final RegistryObject<Item> GOBBER2_LINKS_END = ITEMS.register("gobber2_links_end", () -> new Item(new Item.Properties().group(Gobber2.gobber2)));
 	

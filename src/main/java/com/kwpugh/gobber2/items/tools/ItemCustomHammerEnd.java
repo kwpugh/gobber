@@ -5,12 +5,13 @@ import java.util.Set;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 import com.kwpugh.gobber2.init.ItemInit;
-import com.kwpugh.gobber2.util.HammerUtil;
+import com.kwpugh.gobber2.items.toolclasses.HammerUtil;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
@@ -106,47 +107,50 @@ public class ItemCustomHammerEnd extends PickaxeItem
 	{
 		super(tier, attackDamageIn, attackSpeedIn, builder);
 	}
-	
-    @Override
-    public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker)
-    {
-		stack.setDamage(0);  //no damage
-        
-        return true;
-    }
-	
-    @Override
-    public boolean onBlockDestroyed(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity entity)
-    {
-    	//stack.attemptDamageItem(0, random, null);
+	/**
+	 * Called when a Block is destroyed using this Item. Return true to trigger the "Use Item" statistic.
+	 */
+	public boolean onBlockDestroyed(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity entityLiving)
+	{
+		if (!world.isRemote && state.getBlockHardness(world, pos) != 0.0F)
+		{
+			HammerUtil.attemptBreakNeighbors(world, pos, (PlayerEntity) entityLiving, EFFECTIVE_ON, EFFECTIVE_MATERIALS);
+    	  
+			stack.damageItem(0, entityLiving, (p_220038_0_) -> {
+            p_220038_0_.sendBreakAnimation(EquipmentSlotType.MAINHAND);
+         });
+		}
 
-        if (!world.isRemote && state.getBlockHardness(world, pos) != 0.0F)
-        {
-           stack.damageItem(0, entity, (p_220038_0_) -> {
-              p_220038_0_.sendBreakAnimation(EquipmentSlotType.MAINHAND);
-           });
-        }
-        
-        if (entity instanceof PlayerEntity)
-        {
-        	HammerUtil.attemptBreakNeighbors(world, pos, (PlayerEntity) entity, EFFECTIVE_ON, EFFECTIVE_MATERIALS);
-        }
-        return super.onBlockDestroyed(stack, world, state, pos, entity);
-    }
-    
+		return true;
+	}
+
 	@Override
-    public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
-    {
-		//ItemStack stack = player.getHeldItem(hand);
-		
-        if(!world.isRemote && player.isShiftKeyDown())
-        {
-            //EnableUtil.changeEnabled(player, hand);
-            //player.sendMessage(new StringTextComponent("Night vision ability active: " + EnableUtil.isEnabled(stack)));
-            return new ActionResult<ItemStack>(ActionResultType.SUCCESS, player.getHeldItem(hand));
-        }
-        return super.onItemRightClick(world, player, hand);
-    }
+	public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker)
+	{
+		stack.setDamage(0);  //no damage
+     
+		return true;
+	}
+ 
+	public void inventoryTick(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected)
+	{		
+		//Nothing right now
+	}
+	
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
+	{
+	   //ItemStack stack = player.getHeldItem(hand);
+
+		if(!world.isRemote && player.isShiftKeyDown())
+		{
+			//EnableUtil.changeEnabled(player, hand);
+			//player.sendMessage(new StringTextComponent("Nothing right now: " + EnableUtil.isEnabled(stack)));
+		   return new ActionResult<ItemStack>(ActionResultType.SUCCESS, player.getHeldItem(hand));
+		}
+	
+		return super.onItemRightClick(world, player, hand);
+	}
     
 	@Override
 	public int getBurnTime(ItemStack itemStack)

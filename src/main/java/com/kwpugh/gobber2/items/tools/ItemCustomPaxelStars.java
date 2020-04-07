@@ -96,7 +96,7 @@ public class ItemCustomPaxelStars extends PaxelBase
                 
                 if (player != null)
                 {
-                    iuc.getItem().damageItem(1, player, onBroken -> onBroken.sendBreakAnimation(iuc.getHand()));
+                    iuc.getItem().damageItem(0, player, onBroken -> onBroken.sendBreakAnimation(iuc.getHand()));
                 }
             }
             stack.setDamage(0);  //no damage

@@ -12,7 +12,6 @@ import javax.annotation.Nullable;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
-import com.kwpugh.gobber2.util.HammerUtil;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

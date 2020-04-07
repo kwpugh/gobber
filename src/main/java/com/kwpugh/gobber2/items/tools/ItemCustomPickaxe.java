@@ -22,7 +22,7 @@ public class ItemCustomPickaxe extends PickaxeItem
 	
 	public void inventoryTick(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected)
 	{		
-
+		//Nothing yet
 	}	
 
 	@Override

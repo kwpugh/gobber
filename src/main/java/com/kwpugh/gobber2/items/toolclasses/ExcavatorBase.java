@@ -1,4 +1,4 @@
-package com.kwpugh.gobber2.items.tools;
+package com.kwpugh.gobber2.items.toolclasses;
 
 import java.util.List;
 import java.util.Set;
@@ -7,7 +7,6 @@ import javax.annotation.Nullable;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
-import com.kwpugh.gobber2.items.toolclasses.ExcavatorUtil;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -16,7 +15,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShovelItem;
@@ -28,7 +26,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class ItemCustomExcavatorEnd extends ShovelItem
+/*
+ * This is the base class for all types of Excavators
+ * 
+ */
+
+public class ExcavatorBase extends ShovelItem
 {
 	private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.GRASS_BLOCK, 
 			Blocks.GRASS_PATH, 
@@ -43,34 +46,22 @@ public class ItemCustomExcavatorEnd extends ShovelItem
 	
 	public static final Set<Material> EFFECTIVE_MATERIALS = ImmutableSet.of(Material.EARTH);
 
-	public ItemCustomExcavatorEnd(IItemTier tier, float attackDamageIn, float attackSpeedIn, Properties builder)
+	public ExcavatorBase(IItemTier tier, float attackDamageIn, float attackSpeedIn, Properties builder)
 	{
 		super(tier, attackDamageIn, attackSpeedIn, builder);
 	}
 
-	@Override   //Used to override taking damage
-	public boolean onBlockDestroyed(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity entityLiving)
-	{
-		if (!world.isRemote && state.getBlockHardness(world, pos) != 0.0F)
-		{
-			ExcavatorUtil.attemptBreakNeighbors(world, pos, (PlayerEntity) entityLiving, EFFECTIVE_ON, EFFECTIVE_MATERIALS);
-    	  
-			stack.damageItem(0, entityLiving, (p_220038_0_) -> {
-            p_220038_0_.sendBreakAnimation(EquipmentSlotType.MAINHAND);
-         });
-		}
+    public boolean onBlockDestroyed(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity entity)
+    {
+        stack.attemptDamageItem(1, random, null);
 
-		return true;
-	}
+        if (entity instanceof PlayerEntity)
+        {
+        	ExcavatorUtil.attemptBreakNeighbors(world, pos, (PlayerEntity) entity, EFFECTIVE_ON, EFFECTIVE_MATERIALS);
+        }
+        return super.onBlockDestroyed(stack, world, state, pos, entity);
+    }
  
-	@Override
-	public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker)
-	{
-		stack.setDamage(0);  //no damage
-     
-		return true;
-	}
-	
 	@Override
 	public int getBurnTime(ItemStack itemStack)
 	{
