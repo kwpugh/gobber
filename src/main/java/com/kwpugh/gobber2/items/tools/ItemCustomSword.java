@@ -1,6 +1,6 @@
 package com.kwpugh.gobber2.items.tools;
 
-import com.kwpugh.gobber2.lists.ItemList;
+import com.kwpugh.gobber2.init.ItemInit;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.IItemTier;
@@ -37,6 +37,6 @@ public class ItemCustomSword extends SwordItem
 	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
 	{
-		return repair.getItem() == ItemList.gobber2_ingot;
+		return repair.getItem() == ItemInit.GOBBER2_INGOT.get();
 	}
 }

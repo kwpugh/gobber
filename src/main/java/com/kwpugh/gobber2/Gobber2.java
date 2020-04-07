@@ -3,6 +3,8 @@ package com.kwpugh.gobber2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.kwpugh.gobber2.init.BlockInit;
+import com.kwpugh.gobber2.init.ItemInit;
 import com.kwpugh.gobber2.util.BlockRenders;
 import com.kwpugh.gobber2.util.DragonKillHandler;
 import com.kwpugh.gobber2.util.Gobber2_Group;
@@ -39,6 +41,9 @@ public class Gobber2
 		
 		GobberConfig.loadConfig(GobberConfig.CONFIG, FMLPaths.CONFIGDIR.get().resolve("gobber-general.toml"));
 		
+		BlockInit.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
+    	ItemInit.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+    	
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::modSetup);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::serverSetup);

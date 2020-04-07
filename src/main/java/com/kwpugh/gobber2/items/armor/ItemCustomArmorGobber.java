@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.kwpugh.gobber2.lists.ItemList;
+import com.kwpugh.gobber2.init.ItemInit;
 import com.kwpugh.gobber2.util.SpecialAbilities;
 
 import net.minecraft.client.util.ITooltipFlag;
@@ -38,10 +38,10 @@ public class ItemCustomArmorGobber extends ArmorItem
 		    ItemStack feet = player.getItemStackFromSlot(EquipmentSlotType.FEET);
 		    
 		    //Full Set
-	    	if(head.getItem() == ItemList.gobber2_helmet && 
-	    			chest.getItem() == ItemList.gobber2_chestplate && 
-	    			legs.getItem() == ItemList.gobber2_leggings && 
-	    			feet.getItem() == ItemList.gobber2_boots)
+	    	if(head.getItem() == ItemInit.GOBBER2_HELMET.get() && 
+	    			chest.getItem() == ItemInit.GOBBER2_CHESTPLATE.get() && 
+	    			legs.getItem() == ItemInit.GOBBER2_LEGGINGS.get() && 
+	    			feet.getItem() == ItemInit.GOBBER2_BOOTS.get())
 	    	{
 				player.removeActivePotionEffect(Effects.POISON);
 	    	}	
@@ -49,7 +49,7 @@ public class ItemCustomArmorGobber extends ArmorItem
 	    	//Check ArmorUtil for additional perks applied to armor
 	    	
 		    //Helmet
-		    if(head.getItem() == ItemList.gobber2_helmet)
+		    if(head.getItem() == ItemInit.GOBBER2_HELMET.get())
 			{
 				int newfoodlevel = 1;
 				float newsatlevel = 0.0F;
@@ -61,13 +61,13 @@ public class ItemCustomArmorGobber extends ArmorItem
 			}
 		    
 		    //Chestplate
-		    if(chest.getItem() == ItemList.gobber2_chestplate)
+		    if(chest.getItem() == ItemInit.GOBBER2_CHESTPLATE.get())
 			{
 		    	//something
 			}
 		    
 		    //Leggings - No Fall Damage moved to ArmorUtil as event
-		    if(legs.getItem() == ItemList.gobber2_leggings)
+		    if(legs.getItem() == ItemInit.GOBBER2_LEGGINGS.get())
 			{
 		    	//something
 			}
@@ -77,7 +77,7 @@ public class ItemCustomArmorGobber extends ArmorItem
 			}
 		    
 		    //Boots
-		    if(feet.getItem() == ItemList.gobber2_boots)
+		    if(feet.getItem() == ItemInit.GOBBER2_BOOTS.get())
 			{
 		    	//something
 			}
@@ -97,7 +97,7 @@ public class ItemCustomArmorGobber extends ArmorItem
 	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
 	{
-		return repair.getItem() == ItemList.gobber2_armor_repair;
+		return repair.getItem() == ItemInit.GOBBER2_ARMOR_REPAIR.get();
 	}
 	
 	@OnlyIn(Dist.CLIENT)

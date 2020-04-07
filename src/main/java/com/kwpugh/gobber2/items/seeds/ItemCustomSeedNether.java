@@ -4,10 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.google.common.collect.Lists;
-
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.BlockNamedItem;
 import net.minecraft.item.ItemStack;
@@ -20,15 +17,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ItemCustomSeedNether extends BlockNamedItem
 {
-	public ItemCustomSeedNether(String name, Block crop, Properties builder)
+	public ItemCustomSeedNether(Block crop, Properties builder)
 	{
-        super(crop, builder);
-
-        this.setRegistryName("gobber2:gobber2_seed_nether");       
-    }
-	
-    public List<ModelResourceLocation> getVariants() {
-        return Lists.newArrayList(new ModelResourceLocation("gobber2:gobber2_seed_nether", "inventory"));
+        super(crop, builder);      
     }
     
 	@OnlyIn(Dist.CLIENT)

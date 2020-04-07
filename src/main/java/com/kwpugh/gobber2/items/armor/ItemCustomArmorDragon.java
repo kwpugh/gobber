@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.kwpugh.gobber2.lists.ItemList;
+import com.kwpugh.gobber2.init.ItemInit;
 import com.kwpugh.gobber2.util.SpecialAbilities;
 
 import net.minecraft.client.util.ITooltipFlag;
@@ -45,10 +45,10 @@ public class ItemCustomArmorDragon extends ArmorItem
 		setDamage(legs, 0);
 		setDamage(feet, 0);
 	
-		boolean iswearingFullDragonArmor = head != null && head.getItem() == ItemList.gobber2_helmet_dragon && 
-				chest != null && chest.getItem() == ItemList.gobber2_chestplate_dragon &&
-				legs != null && legs.getItem() == ItemList.gobber2_leggings_dragon && 
-				feet != null && feet.getItem() == ItemList.gobber2_boots_dragon;
+		boolean iswearingFullDragonArmor = head != null && head.getItem() == ItemInit.GOBBER2_HELMET_DRAGON.get() && 
+				chest != null && chest.getItem() == ItemInit.GOBBER2_CHESTPLATE_DRAGON.get() &&
+				legs != null && legs.getItem() == ItemInit.GOBBER2_LEGGINGS_DRAGON.get() && 
+				feet != null && feet.getItem() == ItemInit.GOBBER2_BOOTS_DRAGON.get();
 	
 		boolean wasWearingDragonArmorLastTick = player.getPersistentData().getBoolean("wearingFullDragonArmor");
 	  
@@ -82,7 +82,7 @@ public class ItemCustomArmorDragon extends ArmorItem
 		//Check ArmorUtil for additional perks applied to armor
 	
 	  //Helmet
-	  if(head.getItem() == ItemList.gobber2_helmet_dragon)
+	  if(head.getItem() == ItemInit.GOBBER2_HELMET_DRAGON.get())
 		{
 			SpecialAbilities.giveExtraHearts(world, player, stack, 90);
 			
@@ -96,13 +96,13 @@ public class ItemCustomArmorDragon extends ArmorItem
 		}
 	  	  
 	  //Chestplate
-	  if(chest.getItem() == ItemList.gobber2_chestplate_dragon)
+	  if(chest.getItem() == ItemInit.GOBBER2_CHESTPLATE_DRAGON.get())
 		{				
 			player.getAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(40.0D); 
 		 }		
 		  
 	  //Leggings
-	  if(legs.getItem() == ItemList.gobber2_leggings_dragon)
+	  if(legs.getItem() == ItemInit.GOBBER2_LEGGINGS_DRAGON.get())
 		{
 	  	SpecialAbilities.giveConduitEffect(world, player, stack);
 		}
@@ -112,7 +112,7 @@ public class ItemCustomArmorDragon extends ArmorItem
 		}		
 	  	  
 	  //Boots
-	  if(feet.getItem() == ItemList.gobber2_boots_dragon)
+	  if(feet.getItem() == ItemInit.GOBBER2_BOOTS_DRAGON.get())
 		{
 	  	SpecialAbilities.giveDolphinEffect(world, player, stack);
 	  }
@@ -131,7 +131,7 @@ public class ItemCustomArmorDragon extends ArmorItem
 	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
 	{
-		return repair.getItem() == ItemList.gobber2_armor_repair;
+		return repair.getItem() == ItemInit.GOBBER2_ARMOR_REPAIR.get();
 	}
 	
 	@OnlyIn(Dist.CLIENT)

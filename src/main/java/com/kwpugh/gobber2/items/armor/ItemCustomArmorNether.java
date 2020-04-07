@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.kwpugh.gobber2.lists.ItemList;
+import com.kwpugh.gobber2.init.ItemInit;
 import com.kwpugh.gobber2.util.SpecialAbilities;
 
 import net.minecraft.client.util.ITooltipFlag;
@@ -38,10 +38,10 @@ public class ItemCustomArmorNether extends ArmorItem
 	    ItemStack feet = player.getItemStackFromSlot(EquipmentSlotType.FEET);	
 	 
 	    //Full Set
-    	if(head.getItem() == ItemList.gobber2_helmet_nether && 
-    			chest.getItem() == ItemList.gobber2_chestplate_nether && 
-    			legs.getItem() == ItemList.gobber2_leggings_nether && 
-    			feet.getItem() == ItemList.gobber2_boots_nether)
+    	if(head.getItem() == ItemInit.GOBBER2_HELMET_NETHER.get() && 
+    			chest.getItem() == ItemInit.GOBBER2_CHESTPLATE_NETHER.get() && 
+    			legs.getItem() == ItemInit.GOBBER2_LEGGINGS_NETHER.get() && 
+    			feet.getItem() == ItemInit.GOBBER2_BOOTS_NETHER.get())
     	{
 			player.removeActivePotionEffect(Effects.POISON);
 			player.removeActivePotionEffect(Effects.WITHER);	
@@ -50,7 +50,7 @@ public class ItemCustomArmorNether extends ArmorItem
     	//Check ArmorUtil for additional perks applied to armor
     	
 	    //Helmet
-	    if(head.getItem() == ItemList.gobber2_helmet_nether)
+	    if(head.getItem() == ItemInit.GOBBER2_HELMET_NETHER.get())
 		{
 			SpecialAbilities.giveExtraHearts(world, player, stack, 180);
 			
@@ -64,13 +64,13 @@ public class ItemCustomArmorNether extends ArmorItem
 		}
 	    
 	    //Chestplate
-	    if(chest.getItem() == ItemList.gobber2_chestplate_nether)
+	    if(chest.getItem() == ItemInit.GOBBER2_CHESTPLATE_NETHER.get())
 		{
 	 		player.getAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(40.0D); 
 		 }		
 	    
 	    //Leggings
-	    if(legs.getItem() == ItemList.gobber2_leggings_nether)
+	    if(legs.getItem() == ItemInit.GOBBER2_LEGGINGS_NETHER.get())
 		{
 			
 		}
@@ -80,7 +80,7 @@ public class ItemCustomArmorNether extends ArmorItem
 		}		
 	    
 	    //Boots
-	    if(feet.getItem() == ItemList.gobber2_boots_nether)
+	    if(feet.getItem() == ItemInit.GOBBER2_BOOTS_NETHER.get())
 		{
 			
 	    }
@@ -99,7 +99,7 @@ public class ItemCustomArmorNether extends ArmorItem
 	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
 	{
-		return repair.getItem() == ItemList.gobber2_armor_repair;
+		return repair.getItem() == ItemInit.GOBBER2_ARMOR_REPAIR.get();
 	}
 	
 	@OnlyIn(Dist.CLIENT)

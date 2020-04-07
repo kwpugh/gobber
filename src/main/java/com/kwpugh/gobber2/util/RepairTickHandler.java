@@ -1,7 +1,7 @@
 package com.kwpugh.gobber2.util;
 
 import com.kwpugh.gobber2.Gobber2;
-import com.kwpugh.gobber2.lists.ItemList;
+import com.kwpugh.gobber2.init.ItemInit;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -26,7 +26,7 @@ public class RepairTickHandler
 		for (int slot = 0; slot < inv.getSizeInventory(); slot++)
 		{
 			ItemStack stack = inv.getStackInSlot(slot);
-			if (stack.getItem() == ItemList.gobber2_ring_repair)
+			if (stack.getItem() == ItemInit.GOBBER2_RING_REPAIR.get())
 			{	
 				if (player.ticksExisted % repairTickRate == 0)
         		{
@@ -38,7 +38,7 @@ public class RepairTickHandler
 		for (int slot = 0; slot < end_inv.getSizeInventory(); slot++)
 		{
 			ItemStack stack = end_inv.getStackInSlot(slot);
-			if (stack.getItem() == ItemList.gobber2_ring_repair)
+			if (stack.getItem() == ItemInit.GOBBER2_RING_REPAIR.get())
 			{	
 				if (player.ticksExisted % repairTickRate == 0)
         		{
@@ -49,7 +49,7 @@ public class RepairTickHandler
 		
 		if (SupportMods.CURIOS.isLoaded())
 	    {
-			if (CuriosUtil.findItem(ItemList.gobber2_ring_repair, player) != ItemStack.EMPTY)
+			if (CuriosUtil.findItem(ItemInit.GOBBER2_RING_REPAIR.get(), player) != ItemStack.EMPTY)
 			{
 				if (player.ticksExisted % repairTickRate == 0)
 	    		{

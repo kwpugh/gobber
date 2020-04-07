@@ -18,10 +18,9 @@ public class ItemCustomFuel extends Item
 {	
 	private int burnTime;
 	
-	public ItemCustomFuel(Properties p_i48487_1_, String name, int burnTime)
+	public ItemCustomFuel(Properties p_i48487_1_, int burnTime)
 	{
 	    super(p_i48487_1_);
-	    this.setRegistryName(name);
 	    this.burnTime = burnTime;
 	}
 	

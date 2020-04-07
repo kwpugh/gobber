@@ -2,7 +2,7 @@ package com.kwpugh.gobber2.items.tools;
 
 import java.util.Set;
 
-import com.kwpugh.gobber2.lists.ItemList;
+import com.kwpugh.gobber2.init.ItemInit;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.IItemTier;
@@ -19,6 +19,6 @@ public class ItemCustomPaxelNether extends ItemCustomPaxelBase
 	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
 	{
-		return repair.getItem() == ItemList.gobber2_ingot_nether;
+		return repair.getItem() == ItemInit.GOBBER2_INGOT_NETHER.get();
 	}
 }

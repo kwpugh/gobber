@@ -1,7 +1,7 @@
 package com.kwpugh.gobber2.util;
 
 
-import com.kwpugh.gobber2.lists.ItemList;
+import com.kwpugh.gobber2.init.ItemInit;
 
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -16,6 +16,6 @@ public class Gobber2_Group extends ItemGroup
 	@Override
 	public ItemStack createIcon() 
 	{
-		return new ItemStack(ItemList.gobber2_sword_end);
+		return new ItemStack(ItemInit.GOBBER2_SWORD_END.get());
 	}	
 }

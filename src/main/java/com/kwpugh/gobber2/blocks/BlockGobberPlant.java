@@ -1,6 +1,6 @@
 package com.kwpugh.gobber2.blocks;
 
-import com.kwpugh.gobber2.lists.ItemList;
+import com.kwpugh.gobber2.init.ItemInit;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
@@ -40,7 +40,7 @@ public class BlockGobberPlant extends CropsBlock
     @OnlyIn(Dist.CLIENT)
     protected IItemProvider getSeedsItem()
     {
-        return ItemList.gobber2_seed;
+        return ItemInit.GOBBER2_SEED.get();
     }
 
     public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state)

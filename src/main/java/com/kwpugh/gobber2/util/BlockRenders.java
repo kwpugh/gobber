@@ -1,6 +1,6 @@
 package com.kwpugh.gobber2.util;
 
-import com.kwpugh.gobber2.lists.BlockList;
+import com.kwpugh.gobber2.init.BlockInit;
 
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
@@ -12,11 +12,11 @@ public class BlockRenders
 		RenderType cutoutMipped = RenderType.getCutoutMipped();
 		RenderType translucent = RenderType.getTranslucent();
 		
-		RenderTypeLookup.setRenderLayer(BlockList.gobber2_plant, cutoutMipped);
-		RenderTypeLookup.setRenderLayer(BlockList.gobber2_plant_nether, cutoutMipped);
-		RenderTypeLookup.setRenderLayer(BlockList.gobber2_plant_end, cutoutMipped);	
-		RenderTypeLookup.setRenderLayer(BlockList.gobber2_glass, translucent);	
-		RenderTypeLookup.setRenderLayer(BlockList.gobber2_glass_nether, translucent);	
-		RenderTypeLookup.setRenderLayer(BlockList.gobber2_glass_end, translucent);
+		RenderTypeLookup.setRenderLayer(BlockInit.GOBBER2_PLANT.get(), cutoutMipped);
+		RenderTypeLookup.setRenderLayer(BlockInit.GOBBER2_PLANT_NETHER.get(), cutoutMipped);
+		RenderTypeLookup.setRenderLayer(BlockInit.GOBBER2_PLANT_END.get(), cutoutMipped);	
+		RenderTypeLookup.setRenderLayer(BlockInit.GOBBER2_GLASS.get(), translucent);	
+		RenderTypeLookup.setRenderLayer(BlockInit.GOBBER2_GLASS_NETHER.get(), translucent);	
+		RenderTypeLookup.setRenderLayer(BlockInit.GOBBER2_GLASS_END.get(), translucent);
 	}	
 }

@@ -2,7 +2,7 @@ package com.kwpugh.gobber2.util;
 
 
 import com.kwpugh.gobber2.Gobber2;
-import com.kwpugh.gobber2.lists.ItemList;
+import com.kwpugh.gobber2.init.ItemInit;
 
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -25,26 +25,26 @@ public class JEIDescriptions implements IModPlugin
 	@Override
 	public void registerRecipes(IRecipeRegistration registry)
 	{
-		registry.addIngredientInfo(new ItemStack(ItemList.block_healer), VanillaTypes.ITEM, 
+		registry.addIngredientInfo(new ItemStack(ItemInit.BLOCK_HEALER.get()), VanillaTypes.ITEM, 
 				"item.gobber2.block_healer.jei.line1",
 				" ",
 				"item.gobber2.block_healer.jei.line2");
 		
-		registry.addIngredientInfo(new ItemStack(ItemList.block_protector), VanillaTypes.ITEM, 
+		registry.addIngredientInfo(new ItemStack(ItemInit.BLOCK_PROTECTOR.get()), VanillaTypes.ITEM, 
 				"item.gobber2.block_protector.jei.line1",
 				" ",
 				"item.gobber2.block_protector.jei.line2",
 				" ",
 				"item.gobber2.block_protector.jei.line3");
 		
-		registry.addIngredientInfo(new ItemStack(ItemList.block_defender), VanillaTypes.ITEM, 
+		registry.addIngredientInfo(new ItemStack(ItemInit.BLOCK_DEFENDER.get()), VanillaTypes.ITEM, 
 				"item.gobber2.block_defender.jei.line1",
 				" ",
 				"item.gobber2.block_defender.jei.line2",
 				" ",
 				"item.gobber2.block_defender.jei.line3");
 		
-		registry.addIngredientInfo(new ItemStack(ItemList.block_looter), VanillaTypes.ITEM, 
+		registry.addIngredientInfo(new ItemStack(ItemInit.BLOCK_LOOTER.get()), VanillaTypes.ITEM, 
 				"item.gobber2.block_looter.jei.line1",
 				" ",
 				"item.gobber2.block_looter.jei.line2",				
@@ -63,7 +63,7 @@ public class JEIDescriptions implements IModPlugin
 				" ",
 				"item.gobber2.block_looter.jei.line15");
 		
-		registry.addIngredientInfo(new ItemStack(ItemList.block_maturator), VanillaTypes.ITEM, 
+		registry.addIngredientInfo(new ItemStack(ItemInit.BLOCK_MATURATOR.get()), VanillaTypes.ITEM, 
 				"item.gobber2.block_maturator.jei.line1",
 				" ",
 				"item.gobber2.block_maturator.jei.line2",

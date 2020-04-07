@@ -2,11 +2,10 @@ package com.kwpugh.gobber2.util;
 
 import javax.annotation.Nonnull;
 
-import com.kwpugh.gobber2.lists.ItemList;
+import com.kwpugh.gobber2.init.ItemInit;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.EnderChestInventory;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 
@@ -32,10 +31,10 @@ public final class PlayerEquipsUtil
     	ItemStack feet = player.getItemStackFromSlot(EquipmentSlotType.FEET);
     	
 	    //Head piece
-    	if(head.getItem() == ItemList.gobber2_helmet_dragon &&
-      			chest.getItem() == ItemList.gobber2_chestplate_dragon &&
-      			legs.getItem() == ItemList.gobber2_leggings_dragon &&
-      			feet.getItem() == ItemList.gobber2_boots_dragon)
+    	if(head.getItem() == ItemInit.GOBBER2_HELMET_DRAGON.get() &&
+      			chest.getItem() == ItemInit.GOBBER2_CHESTPLATE_DRAGON.get() &&
+      			legs.getItem() == ItemInit.GOBBER2_LEGGINGS_DRAGON.get() &&
+      			feet.getItem() == ItemInit.GOBBER2_BOOTS_DRAGON.get())
       	{
       		return true;  		
       	}
@@ -49,10 +48,10 @@ public final class PlayerEquipsUtil
     	ItemStack head = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
 		
 	    //Head piece
-    	if((head.getItem() == ItemList.gobber2_helmet ||
-      			head.getItem() == ItemList.gobber2_helmet_nether ||
-      			head.getItem() == ItemList.gobber2_helmet_end ||
-      			head.getItem() == ItemList.gobber2_helmet_dragon)	)
+    	if((head.getItem() == ItemInit.GOBBER2_HELMET.get() ||
+      			head.getItem() == ItemInit.GOBBER2_HELMET_NETHER.get() ||
+      			head.getItem() == ItemInit.GOBBER2_HELMET_END.get() ||
+      			head.getItem() == ItemInit.GOBBER2_HELMET_DRAGON.get())	)
       	{
       		return true;  		
       	}
@@ -67,12 +66,12 @@ public final class PlayerEquipsUtil
     	ItemStack mainHand = player.getHeldItemMainhand();
     	
     	//Leggings
-    	if(legs.getItem() == ItemList.gobber2_leggings ||
-      			legs.getItem() == ItemList.gobber2_leggings_nether ||
-      			legs.getItem() == ItemList.gobber2_leggings_end ||
-      					legs.getItem() == ItemList.gobber2_leggings_dragon ||
+    	if(legs.getItem() == ItemInit.GOBBER2_LEGGINGS.get() ||
+      			legs.getItem() == ItemInit.GOBBER2_LEGGINGS_NETHER.get() ||
+      			legs.getItem() == ItemInit.GOBBER2_LEGGINGS_END.get() ||
+      					legs.getItem() == ItemInit.GOBBER2_LEGGINGS_DRAGON.get() ||
       			
-      			mainHand.getItem() == ItemList.gobber2_ring_ascent)
+      			mainHand.getItem() == ItemInit.GOBBER2_RING_ASCENT.get())
       	{
       		return true;  		
       	}
@@ -88,11 +87,11 @@ public final class PlayerEquipsUtil
     	ItemStack mainHand = player.getHeldItemMainhand();
     	
     	//Chestplate
-    	if(chest.getItem() == ItemList.gobber2_chestplate_nether ||
-      			chest.getItem() == ItemList.gobber2_chestplate_end  ||
-      			chest.getItem() == ItemList.gobber2_chestplate_dragon ||
+    	if(chest.getItem() == ItemInit.GOBBER2_CHESTPLATE_NETHER.get() ||
+      			chest.getItem() == ItemInit.GOBBER2_CHESTPLATE_END.get()  ||
+      			chest.getItem() == ItemInit.GOBBER2_CHESTPLATE_DRAGON.get() ||
       			
-      			mainHand.getItem() == ItemList.gobber2_ring_blaze)
+      			mainHand.getItem() == ItemInit.GOBBER2_RING_BLAZE.get())
       	{
     		return true;  		
       	}
@@ -103,7 +102,7 @@ public final class PlayerEquipsUtil
 		for (int slot = 0; slot < inv1.getSizeInventory(); slot++)
 		{
 			ItemStack stack = inv1.getStackInSlot(slot);
-			if (stack.getItem() == ItemList.gobber2_ring_phoenix)
+			if (stack.getItem() == ItemInit.GOBBER2_RING_PHOENIX.get())
 			{	
 				return true;
 			}
@@ -112,7 +111,7 @@ public final class PlayerEquipsUtil
 		//Is the ring in a Curios slot?
 		if (SupportMods.CURIOS.isLoaded())
 	    {
-			if (CuriosUtil.findItem(ItemList.gobber2_ring_phoenix, player) != ItemStack.EMPTY)
+			if (CuriosUtil.findItem(ItemInit.GOBBER2_RING_PHOENIX.get(), player) != ItemStack.EMPTY)
 			{
 				return true;
 		    }
@@ -127,7 +126,7 @@ public final class PlayerEquipsUtil
     	ItemStack mainHand = player.getHeldItemMainhand();
     	ItemStack offHand = player.getHeldItemOffhand();
     	
-    	if(mainHand.getItem() == ItemList.gobber2_ring_stealth && offHand.isEmpty())
+    	if(mainHand.getItem() == ItemInit.GOBBER2_RING_STEALTH.get() && offHand.isEmpty())
       	{
       		return true;  		
       	}
@@ -143,7 +142,7 @@ public final class PlayerEquipsUtil
 		for (int slot = 0; slot < inv2.getSizeInventory(); slot++)
 		{
 			ItemStack stack = inv2.getStackInSlot(slot);
-			if (stack.getItem() == ItemList.gobber2_ring_haste)
+			if (stack.getItem() == ItemInit.GOBBER2_RING_HASTE.get())
 			{	
 				return true;
 			}
@@ -152,7 +151,7 @@ public final class PlayerEquipsUtil
 		//Checks Curios slots
 		if (SupportMods.CURIOS.isLoaded())
 	    {
-			if (CuriosUtil.findItem(ItemList.gobber2_ring_haste, player) != ItemStack.EMPTY)
+			if (CuriosUtil.findItem(ItemInit.GOBBER2_RING_HASTE.get(), player) != ItemStack.EMPTY)
 			{
 				return true;
 		    }

@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
-import com.kwpugh.gobber2.lists.ItemList;
+import com.kwpugh.gobber2.init.ItemInit;
 import com.kwpugh.gobber2.util.HammerUtil;
 
 import net.minecraft.block.Block;
@@ -166,7 +166,7 @@ public class ItemCustomHammer extends PickaxeItem
 	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
 	{
-		return repair.getItem() == ItemList.gobber2_ingot;
+		return repair.getItem() == ItemInit.GOBBER2_INGOT.get();
 	}
 	
 	@OnlyIn(Dist.CLIENT)

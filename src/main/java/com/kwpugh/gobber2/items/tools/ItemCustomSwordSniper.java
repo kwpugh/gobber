@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.kwpugh.gobber2.lists.ItemList;
+import com.kwpugh.gobber2.init.ItemInit;
 import com.kwpugh.gobber2.util.EnableUtil;
 import com.kwpugh.gobber2.util.GobberConfigBuilder;
 
@@ -99,7 +99,7 @@ public class ItemCustomSwordSniper extends SwordItem
 	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
 	{
-		return repair.getItem() == ItemList.gobber2_ingot_end;
+		return repair.getItem() == ItemInit.GOBBER2_INGOT_END.get();
 	}
 	
 	@OnlyIn(Dist.CLIENT)

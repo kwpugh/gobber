@@ -1,6 +1,7 @@
 package com.kwpugh.gobber2.lists;
 
 import com.kwpugh.gobber2.Gobber2;
+import com.kwpugh.gobber2.init.ItemInit;
 
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IArmorMaterial;
@@ -12,10 +13,10 @@ import net.minecraft.util.SoundEvent;
 public enum ArmorMaterialList implements IArmorMaterial
 {
 	//Armor order: helmet, leggings, chestplate, boots
-	gobber2("gobber2", 71, new int[] {6, 9, 11, 6}, 25, ItemList.gobber2_ingot, "entity.elder_guardian.curse", 2.5f),
-	gobber2_nether("gobber2_nether", 83, new int[] {7, 10, 12, 7}, 30, ItemList.gobber2_ingot_nether, "entity.blaze.shoot", 2.75f),
-	gobber2_end("gobber2_end", 100, new int[] {8, 11, 13, 8}, 30, ItemList.gobber2_ingot_end, "entity.ender_dragon.growl", 3.0f),
-	gobber2_dragon("gobber2_dragon", 100, new int[] {8, 11, 13, 8}, 30, ItemList.gobber2_ingot_end, "entity.ender_dragon.growl", 3.0f);
+	GOBBER2("gobber2", 71, new int[] {6, 9, 11, 6}, 25, ItemInit.GOBBER2_INGOT.get(), "entity.elder_guardian.curse", 2.5f),
+	GOBBER2_NETHER("gobber2_nether", 83, new int[] {7, 10, 12, 7}, 30, ItemInit.GOBBER2_INGOT_NETHER.get(), "entity.blaze.shoot", 2.75f),
+	GOBBER2_END("gobber2_end", 100, new int[] {8, 11, 13, 8}, 30, ItemInit.GOBBER2_INGOT_END.get(), "entity.ender_dragon.growl", 3.0f),
+	GOBBER2_DRAGON("gobber2_dragon", 100, new int[] {8, 11, 13, 8}, 30, ItemInit.GOBBER2_INGOT_END.get(), "entity.ender_dragon.growl", 3.0f);
 	
 	private static final int[] max_damage_array = new int[]{13, 15, 16, 11};
 	private String name, equipSound;

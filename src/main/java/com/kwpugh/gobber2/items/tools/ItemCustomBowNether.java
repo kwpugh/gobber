@@ -2,7 +2,7 @@ package com.kwpugh.gobber2.items.tools;
 
 import java.util.function.Predicate;
 
-import com.kwpugh.gobber2.lists.ItemList;
+import com.kwpugh.gobber2.init.ItemInit;
 
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
@@ -174,6 +174,6 @@ public class ItemCustomBowNether extends BowItem
    @Override
    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
    {
-	   return repair.getItem() == ItemList.gobber2_ingot_nether;
+	   return repair.getItem() == ItemInit.GOBBER2_INGOT_NETHER.get();
    }
 }

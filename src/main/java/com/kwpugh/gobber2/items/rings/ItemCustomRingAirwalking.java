@@ -5,7 +5,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import com.kwpugh.gobber2.lists.BlockList;
+import com.kwpugh.gobber2.init.BlockInit;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -62,7 +62,7 @@ public class ItemCustomRingAirwalking extends Item
 			double z = player.getPositionVec().z  + 3 * player.getLookVec().z;
 
 			BlockPos pos = new BlockPos(x,y,z);
-			Block glassBlock = BlockList.gobber2_glass_end;
+			Block glassBlock = BlockInit.GOBBER2_GLASS_END.get();
 			BlockState glassDefaultState = glassBlock.getDefaultState();	      
       
 			if (world.isAirBlock(pos) || !world.getFluidState(pos).isEmpty())
