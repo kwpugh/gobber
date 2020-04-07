@@ -50,7 +50,7 @@ import com.kwpugh.gobber2.items.staffs.ItemCustomStaffHarvest;
 import com.kwpugh.gobber2.items.staffs.ItemCustomStaffNature;
 import com.kwpugh.gobber2.items.staffs.ItemCustomStaffSniper;
 import com.kwpugh.gobber2.items.staffs.ItemCustomStaffStars;
-import com.kwpugh.gobber2.items.toolclasses.TreeAxeBase;
+import com.kwpugh.gobber2.items.toolbaseclasses.TreeAxeBase;
 import com.kwpugh.gobber2.items.tools.axe.ItemCustomAxe;
 import com.kwpugh.gobber2.items.tools.axe.ItemCustomAxeEnd;
 import com.kwpugh.gobber2.items.tools.axe.ItemCustomAxeNether;

@@ -1,7 +1,7 @@
 package com.kwpugh.gobber2.items.tools.excavator;
 
 import com.kwpugh.gobber2.init.ItemInit;
-import com.kwpugh.gobber2.items.toolclasses.ExcavatorBase;
+import com.kwpugh.gobber2.items.toolbaseclasses.ExcavatorBase;
 
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.Item;

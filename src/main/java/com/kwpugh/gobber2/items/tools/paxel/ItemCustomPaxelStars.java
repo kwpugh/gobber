@@ -6,7 +6,7 @@ import java.util.Set;
 import javax.annotation.Nullable;
 
 import com.kwpugh.gobber2.init.ItemInit;
-import com.kwpugh.gobber2.items.toolclasses.PaxelBase;
+import com.kwpugh.gobber2.items.toolbaseclasses.PaxelBase;
 import com.kwpugh.gobber2.util.EnableUtil;
 
 import net.minecraft.block.Block;

@@ -5,7 +5,7 @@ import java.util.Set;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 import com.kwpugh.gobber2.init.ItemInit;
-import com.kwpugh.gobber2.items.toolclasses.HammerUtil;
+import com.kwpugh.gobber2.items.toolbaseclasses.HammerUtil;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

@@ -3,7 +3,7 @@ package com.kwpugh.gobber2.items.tools.paxel;
 import java.util.Set;
 
 import com.kwpugh.gobber2.init.ItemInit;
-import com.kwpugh.gobber2.items.toolclasses.PaxelBase;
+import com.kwpugh.gobber2.items.toolbaseclasses.PaxelBase;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

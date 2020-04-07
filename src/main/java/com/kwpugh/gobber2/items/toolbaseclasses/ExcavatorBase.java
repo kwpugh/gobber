@@ -1,4 +1,4 @@
-package com.kwpugh.gobber2.items.toolclasses;
+package com.kwpugh.gobber2.items.toolbaseclasses;
 
 import java.util.List;
 import java.util.Set;

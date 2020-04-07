@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
-import com.kwpugh.gobber2.items.toolclasses.ExcavatorUtil;
+import com.kwpugh.gobber2.items.toolbaseclasses.ExcavatorUtil;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

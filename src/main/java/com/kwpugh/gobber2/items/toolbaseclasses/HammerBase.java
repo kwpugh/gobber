@@ -1,4 +1,4 @@
-package com.kwpugh.gobber2.items.toolclasses;
+package com.kwpugh.gobber2.items.toolbaseclasses;
 
 /*
  * Neurodr0me's - Hammer code borrowed from Practical Tools: https://www.curseforge.com/minecraft/mc-mods/practical-tools

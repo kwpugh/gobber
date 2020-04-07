@@ -1,7 +1,7 @@
 package com.kwpugh.gobber2.items.tools.hammer;
 
 import com.kwpugh.gobber2.init.ItemInit;
-import com.kwpugh.gobber2.items.toolclasses.HammerBase;
+import com.kwpugh.gobber2.items.toolbaseclasses.HammerBase;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.IItemTier;
