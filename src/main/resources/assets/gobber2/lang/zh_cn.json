@@ -298,6 +298,8 @@
  	"item.gobber2.gobber2_medallion_glowing.line1": "发光能力激活: %s",
  	"item.gobber2.gobber2_medallion_glowing.line2": "使玩家拥有发光效果",
  	"item.gobber2.gobber2_medallion_glowing.line3": "潜行+右键以切换 开/关",
+ 	"item.gobber2.gobber2_medallion_exp": "Medallion of Experience",
+	"item.gobber2.gobber2_medallion_exp.line1": "More XP drops and loot when killing hostile mobs",
  	"item.gobber2.gobber2_medallion_conduit": "潮涌能量勋章",
  	"item.gobber2.gobber2_medallion_conduit.line1": "潮涌能量激活: %s",
  	"item.gobber2.gobber2_medallion_conduit.line2": "使玩家拥有潮涌能量效果",

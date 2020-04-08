@@ -10,8 +10,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.util.FakePlayer;
+import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
 import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
+import net.minecraftforge.event.entity.living.LootingLevelEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -19,7 +22,11 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
 @EventBusSubscriber(modid = Gobber2.modid, bus = EventBusSubscriber.Bus.FORGE )
 public final class ModEventSubscriber
-{	
+{
+	//Config values
+	static int extraXPOrbs = GobberConfigBuilder.MEDALLION_EXP_ORBS.get();
+	static int extraLoot = GobberConfigBuilder.MEDALLION_EXP_LOOT.get();
+	
     @SubscribeEvent(receiveCanceled = true, priority= EventPriority.HIGHEST)
     public static void onLivingHurtEvent(LivingAttackEvent event)
     {
@@ -75,7 +82,39 @@ public final class ModEventSubscriber
         }
     }
     
-
+    @SubscribeEvent
+    public static void onLootingEvent(LootingLevelEvent event)
+    {
+    	if (event.getEntity() instanceof MobEntity)
+    	{   		
+    		if(event.getDamageSource().getTrueSource() instanceof PlayerEntity)
+    		{
+    			PlayerEntity player = (PlayerEntity) event.getDamageSource().getTrueSource();
+    			
+    			if (PlayerEquipsUtil.isPlayerGotExpToken(player))
+    			{
+    				event.setLootingLevel(extraLoot);
+    			}
+    		}
+    	}
+    }
+    
+    @SubscribeEvent
+    public static void onExpDropEvent(LivingExperienceDropEvent event)
+    {
+    	if (event.getAttackingPlayer() instanceof PlayerEntity && event.getEntityLiving()instanceof MobEntity)
+    	{
+    		PlayerEntity player = (PlayerEntity) event.getAttackingPlayer();
+    		
+     		if (PlayerEquipsUtil.isPlayerGotExpToken(player))
+    		{
+    			int orgExp = event.getOriginalExperience();
+    			int newExp = orgExp * extraXPOrbs;
+    			event.setDroppedExperience(newExp);
+    		} 
+    	}
+    }
+    
     @SubscribeEvent
     public static void breakingBlockSpeed(PlayerEvent.BreakSpeed event)
     {

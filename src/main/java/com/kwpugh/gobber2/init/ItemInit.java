@@ -9,6 +9,7 @@ import com.kwpugh.gobber2.items.fuels.ItemCustomFuel;
 import com.kwpugh.gobber2.items.medallions.ItemCustomMedallionBreathing;
 import com.kwpugh.gobber2.items.medallions.ItemCustomMedallionConduit;
 import com.kwpugh.gobber2.items.medallions.ItemCustomMedallionDolphin;
+import com.kwpugh.gobber2.items.medallions.ItemCustomMedallionExp;
 import com.kwpugh.gobber2.items.medallions.ItemCustomMedallionGlowing;
 import com.kwpugh.gobber2.items.medallions.ItemCustomMedallionHero;
 import com.kwpugh.gobber2.items.medallions.ItemCustomMedallionStepping;
@@ -237,6 +238,7 @@ public class ItemInit
 	public static final RegistryObject<Item> GOBBER2_MEDALLION_HERO = ITEMS.register("gobber2_medallion_hero", () -> new ItemCustomMedallionHero(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_MEDALLION_NETHER = ITEMS.register("gobber2_medallion_nether", () -> new Item(new Item.Properties().group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_MEDALLION_GLOWING = ITEMS.register("gobber2_medallion_glowing", () -> new ItemCustomMedallionGlowing(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
+	public static final RegistryObject<Item> GOBBER2_MEDALLION_EXP = ITEMS.register("gobber2_medallion_exp", () -> new ItemCustomMedallionExp(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_MEDALLION_END = ITEMS.register("gobber2_medallion_end", () -> new Item(new Item.Properties().group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_MEDALLION_CONDUIT = ITEMS.register("gobber2_medallion_conduit", () -> new ItemCustomMedallionConduit(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_MEDALLION_DOLPHIN = ITEMS.register("gobber2_medallion_dolphin", () -> new ItemCustomMedallionDolphin(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));

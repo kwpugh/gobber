@@ -322,6 +322,8 @@
 	"item.gobber2.gobber2_medallion_glowing.line1": "Glowing ability active: %s",
 	"item.gobber2.gobber2_medallion_glowing.line2": "Provides player with Glowing effect",
 	"item.gobber2.gobber2_medallion_glowing.line3": "Sneak right-click to toggle on/off",
+	"item.gobber2.gobber2_medallion_exp": "Medallion of Experience",
+	"item.gobber2.gobber2_medallion_exp.line1": "More XP drops and loot when killing hostile mobs",
 	"item.gobber2.gobber2_medallion_conduit": "Medallion of Conduit Power",
 	"item.gobber2.gobber2_medallion_conduit.line1": "Conduit Power ability active: %s",
 	"item.gobber2.gobber2_medallion_conduit.line2": "Provides player with Conduit Power effect",

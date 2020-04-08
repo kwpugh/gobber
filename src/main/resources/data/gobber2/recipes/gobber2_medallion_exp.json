@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "CBC",
+        "BAB",
+        "CBC"
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "gobber2:gobber2_medallion_nether"
+        },
+        "B":
+        {
+            "item": "minecraft:emerald"
+        },
+        "C":
+        {
+            "item": "minecraft:experience_bottle"
+        }
+    },
+    
+    "result":
+    {
+        "item": "gobber2:gobber2_medallion_exp",
+        "count": 1
+    }
+}

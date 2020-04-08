@@ -50,6 +50,9 @@ public class GobberConfigBuilder
     public static ForgeConfigSpec.IntValue STAFF_FARMER_TICK_DELAY;
     public static ForgeConfigSpec.IntValue STAFF_FARMER_RADIUS;
     
+    public static ForgeConfigSpec.IntValue MEDALLION_EXP_ORBS;
+    public static ForgeConfigSpec.IntValue MEDALLION_EXP_LOOT;
+    
     public static ForgeConfigSpec.IntValue HEALER_RADIUS;
     public static ForgeConfigSpec.IntValue PROTECTOR_RADIUS;
     public static ForgeConfigSpec.IntValue DEFENDER_RADIUS;
@@ -122,19 +125,39 @@ public class GobberConfigBuilder
         SERVER_BUILDER.pop();
         
         
-        SERVER_BUILDER.comment("Misc Ring/staff Settings").push("misc_ring_staff_settings");
+        SERVER_BUILDER.comment("Ring of the Exploer Settings").push("ring_explorer_settings");
         
         RING_EXPLORER_MIN_RANGE = SERVER_BUILDER.comment("Ring of Explorer - Min distance from world spawn to begin searching for a spot [default: 500]").defineInRange("ringExplorerMin", 500, 0, 100000);
         RING_EXPLORER_MAX_RANGE = SERVER_BUILDER.comment("Ring of Explorer - Max distance from world spawn to begin searching for a spot [default: 6000]").defineInRange("ringExplorerMax", 6000, 0, 250000);
+        
+        SERVER_BUILDER.pop();
+        
+        
+        SERVER_BUILDER.comment("Misc Ring/staff Settings").push("misc_ring_staff_settings");
+        
         REVERSE_RING_MINER = SERVER_BUILDER.comment("Reverse the drop/no drops feature on Ring of Miner [true / false]").define("reverseRingMiner", false);
         DELAY_BREAK_MODE = SERVER_BUILDER.comment("Uses a delayed break mode to reduce stutter and potential lag on Ring of Miner and Ring of Lumberjack [true / false]").define("delayedBreakMode", true);
         RING_ACCELERATION_VELOCITY = SERVER_BUILDER.comment("Ring of Acceleration - amount of velocity applied [default: .18]").defineInRange("ringAccelerationVelocity", .18, 0.0, .30);
         RING_REPAIR_DELAY = SERVER_BUILDER.comment("Ring of Repair - Delay time between repair ticks [default: 120]").defineInRange("ringRepairDelay", 120, 20, 600);
         HASTE_RING_BREAK_SPEED = SERVER_BUILDER.comment("Ring of Haste - Block break speed [default: 30]").defineInRange("ringHasteBreakSpeed", 30, 10, 100);
+        
+        SERVER_BUILDER.pop();
+        
+        
+        SERVER_BUILDER.comment("Ring/Staff of Farmer Settings").push("farmer_settings");
+        
         RING_FARMER_TICK_DELAY = SERVER_BUILDER.comment("Ring of the Farmer base tick delay [default: 20]").defineInRange("ringFarmerTickDelay", 20, 10, 120);
         RING_FARMER_RADIUS = SERVER_BUILDER.comment("Ring of the Farmer radius from player [default: 10]").defineInRange("ringFarmerRadius", 10, 2, 20);
         STAFF_FARMER_TICK_DELAY = SERVER_BUILDER.comment("Staff of the Farmer base tick delay [default: 20]").defineInRange("staffFarmerTickDelay", 20, 10, 120);
         STAFF_FARMER_RADIUS = SERVER_BUILDER.comment("Staff of the Farmer radius from player [default: 10]").defineInRange("staffFarmerRadius", 10, 2, 20);
+        
+        SERVER_BUILDER.pop();
+        
+        
+        SERVER_BUILDER.comment("Medallion of Experience Settings").push("medallion_exp_settings");
+        
+        MEDALLION_EXP_ORBS = SERVER_BUILDER.comment("Medallion of Experience multiplier for extra XP orbs [default: 100]").defineInRange("medallionExpOrbs", 100, 10, 500);
+        MEDALLION_EXP_LOOT = SERVER_BUILDER.comment("Medallion of Experience multiplier for extra mob loot [default: 10]").defineInRange("medallionExpLoot", 20, 5, 100);
         
         SERVER_BUILDER.pop();
         
@@ -145,6 +168,12 @@ public class GobberConfigBuilder
         PROTECTOR_RADIUS = SERVER_BUILDER.comment("Block range for Protector block effects [default: 24]").defineInRange("protectorRange", 24, 0, 32);
         DEFENDER_RADIUS = SERVER_BUILDER.comment("Block range for Defender block effects [default: 32]").defineInRange("defenderRange", 32, 0, 64);
         LOOTER_RADIUS = SERVER_BUILDER.comment("Block rangefor Looter block effects [default: 24]").defineInRange("looterRange", 24, 0, 32);
+               
+        SERVER_BUILDER.pop();
+        
+        
+        SERVER_BUILDER.comment("Settings for Maturator").push("maturator_settings");
+        
         MATURATOR_RADIUS = SERVER_BUILDER.comment("Block range for Maturator block effects [default: 16]").defineInRange("maturatorRange", 10, 0, 20);
         MATURATOR_VERTICAL_RANGE = SERVER_BUILDER.comment("Vertical block range for Maturator block effects [default: 10]").defineInRange("maturatorVerticalRange", 5, 0, 10);
         MATURATOR_MIN_TICK = SERVER_BUILDER.comment("Min interval of world ticks for the Maturator [default: 120]").defineInRange("maturatorMinTick", 120, 0, 240);

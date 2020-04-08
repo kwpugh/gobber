@@ -32,23 +32,63 @@ public class SpecialAbilities
     	return;
 	}
 		
-	//SLowly increases yellow hearts on tick update
-	public static void giveExtraHearts(World world, LivingEntity player, ItemStack itemstack, int count)
+	//Slower increase of yellow hearts on tick update
+	public static void giveExtraHearts(World world, LivingEntity player, ItemStack itemstack)
 	{
 		float current = player.getAbsorptionAmount();
 		
-		if(player.getHealth() < 20)
+		if(player.getHealth() < 20 || current >= 10)
 		{
 			return;
 		}
 		
-		if(current < 20)
+		if(current >= 9)
 		{
-			if (player.ticksExisted % count == 0)
+			if (player.ticksExisted % 180 == 0)
+			{
+				player.setAbsorptionAmount(10);
+			} 
+			return;
+		}
+		if(current < 9)
+		{
+			if (player.ticksExisted % 180 == 0)
+			{
+				player.setAbsorptionAmount(current + 0.33F);
+			} 
+			return;
+		}
+		
+    	return;
+	}
+
+	//Faster increase of yellow hearts on tick update
+	public static void giveGreaterExtraHearts(World world, LivingEntity player, ItemStack itemstack)
+	{
+		float current = player.getAbsorptionAmount();
+		
+		if(player.getHealth() < 20 || current >= 20)
+		{
+			return;
+		}
+		
+		if(current >= 19)
+		{
+			if (player.ticksExisted % 180 == 0)
+			{
+				player.setAbsorptionAmount(20);
+			} 
+			return;
+		}
+		if(current < 19)
+		{
+			if (player.ticksExisted % 180 == 0)
 			{
 				player.setAbsorptionAmount(current + 1.0F);
-			} 	
+			} 
+			return;
 		}
+		
     	return;
 	}
 

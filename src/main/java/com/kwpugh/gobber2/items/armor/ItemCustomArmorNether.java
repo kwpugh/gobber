@@ -52,7 +52,7 @@ public class ItemCustomArmorNether extends ArmorItem
 	    //Helmet
 	    if(head.getItem() == ItemInit.GOBBER2_HELMET_NETHER.get())
 		{
-			SpecialAbilities.giveExtraHearts(world, player, stack, 180);
+			SpecialAbilities.giveExtraHearts(world, player, stack);
 			
 			int newfoodlevel = 1;
 			float newsatlevel = 0.05F;

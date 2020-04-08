@@ -69,7 +69,7 @@ public class ItemCustomArmorEnd extends ArmorItem
 	    //Helmet
 	    if(head.getItem() == ItemInit.GOBBER2_HELMET_END.get())
 		{
-			SpecialAbilities.giveExtraHearts(world, player, stack, 90);
+			SpecialAbilities.giveGreaterExtraHearts(world, player, stack);
 			
 			int newfoodlevel = 1;
 			float newsatlevel = 0.10F;
