@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.kwpugh.gobber2.util.SpecialAbilities;
+import com.kwpugh.gobber2.util.PlayerSpecialAbilities;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -33,7 +33,7 @@ public class ItemCustomRingPhoenix extends Item
 
 			if(player.isBurning() || player.isInLava())
 			{
-				SpecialAbilities.giveHealthEffect(world, player, stack);
+				PlayerSpecialAbilities.giveHealthEffect(world, player, stack);
 				player.extinguish();			
 			}
 		}

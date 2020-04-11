@@ -5,7 +5,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import com.kwpugh.gobber2.init.ItemInit;
-import com.kwpugh.gobber2.util.SpecialAbilities;
+import com.kwpugh.gobber2.util.PlayerSpecialAbilities;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -69,15 +69,13 @@ public class ItemCustomArmorEnd extends ArmorItem
 	    //Helmet
 	    if(head.getItem() == ItemInit.GOBBER2_HELMET_END.get())
 		{
-			SpecialAbilities.giveGreaterExtraHearts(world, player, stack);
+			PlayerSpecialAbilities.giveYellowHearts(world, player, stack, 10, 0.33F);
 			
-			int newfoodlevel = 1;
-			float newsatlevel = 0.10F;
-			SpecialAbilities.giveRegenffect(world, player, stack, newfoodlevel, newsatlevel);			
+			PlayerSpecialAbilities.giveRegenffect(world, player, stack, 1, 0.10F);			
 		}
 		else
 		{
-			SpecialAbilities.giveNoExtraHearts(world, player, stack);
+			PlayerSpecialAbilities.giveNoExtraHearts(world, player, stack);
 		}
 	    
 	    
@@ -93,7 +91,7 @@ public class ItemCustomArmorEnd extends ArmorItem
 	    //Leggings
 	    if(legs.getItem() == ItemInit.GOBBER2_LEGGINGS_END.get())
 		{
-	    	SpecialAbilities.giveConduitEffect(world, player, stack);
+	    	PlayerSpecialAbilities.giveConduitEffect(world, player, stack);
 		}
 		else
 		{
@@ -105,7 +103,7 @@ public class ItemCustomArmorEnd extends ArmorItem
 	    //Boots
 	    if(feet.getItem() == ItemInit.GOBBER2_BOOTS_END.get())
 		{
-	    	SpecialAbilities.giveDolphinEffect(world, player, stack);
+	    	PlayerSpecialAbilities.giveDolphinEffect(world, player, stack);
 	    }
 		else
 	    {

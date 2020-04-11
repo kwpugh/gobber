@@ -5,7 +5,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import com.kwpugh.gobber2.init.ItemInit;
-import com.kwpugh.gobber2.util.SpecialAbilities;
+import com.kwpugh.gobber2.util.PlayerSpecialAbilities;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -52,16 +52,14 @@ public class ItemCustomArmorNether extends ArmorItem
 	    //Helmet
 	    if(head.getItem() == ItemInit.GOBBER2_HELMET_NETHER.get())
 		{
-			SpecialAbilities.giveExtraHearts(world, player, stack);
-			
-			int newfoodlevel = 1;
-			float newsatlevel = 0.05F;
-			SpecialAbilities.giveRegenffect(world, player, stack, newfoodlevel, newsatlevel);			
+			PlayerSpecialAbilities.giveYellowHearts(world, player, stack, 4, 0.33F);
+
+			PlayerSpecialAbilities.giveRegenffect(world, player, stack, 1, 0.05F);			
 		}
-		else
-		{
-			SpecialAbilities.giveNoExtraHearts(world, player, stack);
-		}
+//		else
+//		{
+//			PlayerSpecialAbilities.giveNoExtraHearts(world, player, stack);
+//		}
 	    
 	    //Chestplate
 	    if(chest.getItem() == ItemInit.GOBBER2_CHESTPLATE_NETHER.get())

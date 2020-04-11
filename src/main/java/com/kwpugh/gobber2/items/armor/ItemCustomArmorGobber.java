@@ -5,7 +5,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import com.kwpugh.gobber2.init.ItemInit;
-import com.kwpugh.gobber2.util.SpecialAbilities;
+import com.kwpugh.gobber2.util.PlayerSpecialAbilities;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
@@ -51,9 +51,7 @@ public class ItemCustomArmorGobber extends ArmorItem
 		    //Helmet
 		    if(head.getItem() == ItemInit.GOBBER2_HELMET.get())
 			{
-				int newfoodlevel = 1;
-				float newsatlevel = 0.0F;
-				SpecialAbilities.giveRegenffect(world, player, stack, newfoodlevel, newsatlevel);			
+				PlayerSpecialAbilities.giveRegenffect(world, player, stack, 1, 0.0F);			
 			}
 			else
 			{

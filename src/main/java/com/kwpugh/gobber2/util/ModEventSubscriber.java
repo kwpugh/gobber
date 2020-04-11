@@ -4,18 +4,20 @@ import com.kwpugh.gobber2.Gobber2;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.OreBlock;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.util.FakePlayer;
-import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
 import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
 import net.minecraftforge.event.entity.living.LootingLevelEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.world.BlockEvent.BreakEvent;
+import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -27,6 +29,7 @@ public final class ModEventSubscriber
 	static int extraXPOrbs = GobberConfigBuilder.MEDALLION_EXP_ORBS.get();
 	static int extraLoot = GobberConfigBuilder.MEDALLION_EXP_LOOT.get();
 	
+	//Cancels various damages to the player
     @SubscribeEvent(receiveCanceled = true, priority= EventPriority.HIGHEST)
     public static void onLivingHurtEvent(LivingAttackEvent event)
     {
@@ -66,6 +69,7 @@ public final class ModEventSubscriber
         } 
     }
     
+    //Allows player to not be seen by hostile mobs
     @SubscribeEvent
     public static void onLivingSetAttackTarget(LivingSetAttackTargetEvent event)
     {
@@ -80,10 +84,11 @@ public final class ModEventSubscriber
     			attacker.setAttackTarget(null);
     		}
         }
-    }
-    
+    }    
+       
+    //Gives extra loot drops when killing a mob
     @SubscribeEvent
-    public static void onLootingEvent(LootingLevelEvent event)
+    public static void onKillingLootEvent(LootingLevelEvent event)
     {
     	if (event.getEntity() instanceof MobEntity)
     	{   		
@@ -91,6 +96,7 @@ public final class ModEventSubscriber
     		{
     			PlayerEntity player = (PlayerEntity) event.getDamageSource().getTrueSource();
     			
+    			//Give extra XP when killing a mob
     			if (PlayerEquipsUtil.isPlayerGotExpToken(player))
     			{
     				event.setLootingLevel(extraLoot);
@@ -99,8 +105,27 @@ public final class ModEventSubscriber
     	}
     }
     
+    //Ensures the Fortune drop chance will be 100%
     @SubscribeEvent
-    public static void onExpDropEvent(LivingExperienceDropEvent event)
+    public static void onMiningFortuneEvent(HarvestDropsEvent event)
+    {
+    	if (event.getState().getBlock() instanceof OreBlock)
+    	{   		
+    		if(event.getHarvester() instanceof PlayerEntity)
+    		{
+    			PlayerEntity player = (PlayerEntity) event.getHarvester();
+    			
+    			if (PlayerEquipsUtil.isPlayerGotExpToken(player))
+    			{   				
+    				event.setDropChance(1.0F);
+    			}
+    		}
+    	}
+    }
+    
+    //Gives greater XP when killing mobs that normally drop XP on death
+    @SubscribeEvent
+    public static void onKillingExpDropEvent(LivingExperienceDropEvent event)
     {
     	if (event.getAttackingPlayer() instanceof PlayerEntity && event.getEntityLiving()instanceof MobEntity)
     	{
@@ -115,6 +140,26 @@ public final class ModEventSubscriber
     	}
     }
     
+    //Gives greater XP when mining ores that normally drop XP
+    @SubscribeEvent
+    public static void onMiningExpDropEvent(BreakEvent event)
+    {
+    	if(event.getState().getBlock() instanceof OreBlock)
+    	{
+       		if(event.getPlayer() instanceof PlayerEntity)
+    		{
+    			PlayerEntity player = (PlayerEntity) event.getPlayer();
+
+    			if (PlayerEquipsUtil.isPlayerGotExpToken(player))
+    			{   				
+    				event.setExpToDrop(extraXPOrbs);
+    			}
+    		}
+    	}
+    	
+    }
+    
+    //Gives a much faster breaking speed when using proper tool
     @SubscribeEvent
     public static void breakingBlockSpeed(PlayerEvent.BreakSpeed event)
     {

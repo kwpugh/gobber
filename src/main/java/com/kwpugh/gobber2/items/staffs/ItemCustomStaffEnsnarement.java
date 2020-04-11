@@ -133,6 +133,7 @@ public class ItemCustomStaffEnsnarement extends Item
 				tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_ensnarement.line4", stack.getTag().getString("name")).applyTextStyle(TextFormatting.GREEN)));
 			}
 		}
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_nature.line3").applyTextStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_ensnarement.line5").applyTextStyle(TextFormatting.AQUA)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_ensnarement.line6").applyTextStyle(TextFormatting.YELLOW)));
 	}
 }

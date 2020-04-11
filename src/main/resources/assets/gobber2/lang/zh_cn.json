@@ -279,6 +279,8 @@
  	"item.gobber2.gobber2_staff_ensnarement.line2": "不适用于玩家或boss怪物",
  	"item.gobber2.gobber2_staff_ensnarement.line3": "包含的：空",
  	"item.gobber2.gobber2_staff_ensnarement.line4": "包含的: %s",
+ 	"item.gobber2.gobber2_staff_ensnarement.line5": "Left-click to capture",
+	"item.gobber2.gobber2_staff_ensnarement.line6": "Right-click to release",
  	"item.gobber2.gobber2_staff_nature": "自然法杖",
  	"item.gobber2.gobber2_staff_nature.line1": "转换树苗的类型",
  	"item.gobber2.gobber2_staff_nature.line2": "在甘蔗和竹子之间转换",

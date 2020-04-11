@@ -1,10 +1,10 @@
 {
 	"block.gobber2.gobber2_lucky_block": "Gobber Lucky Block",
-	
+
 	"key.categories.gobber2": "Gobber2",
 	"gobber2.key.toggleRingEnderchest": "Open Ring of Enderchest in Curios Slot",
 
-	
+
 	"block.gobber2.gobber2_ore": "Gobber Ore",
 	"item.gobber2.gobber2_ore": "Gobber Ore",
 	"item.gobber2.gobber2_ore.line1": "Requires diamond-level pickaxe to mine",
@@ -29,7 +29,7 @@
 	"block.gobber2.gobber2_block_nether": "Nether Gobber Block",
 	"item.gobber2.gobber2_rod_nether": "Nether Gobber Rod",
 	"item.gobber2.gobber2_foo_nether": "Nether Gobber Foo",
-	
+
 	"block.gobber2.gobber2_ore_end": "End Gobber Ore",
 	"item.gobber2.gobber2_ore_end": "End Gobber Ore",
 	"item.gobber2.gobber2_ore_end.line1": "Requires Nether Gobber-level pickaxe to mine",
@@ -39,16 +39,16 @@
 	"block.gobber2.gobber2_block_end": "End Gobber Block",
 	"item.gobber2.gobber2_rod_end": "End Gobber Rod",
 	"item.gobber2.gobber2_foo_end": "End Gobber Foo",
-	
+
 	"item.gobber2.dragon_star": "Dragon Star",
 	"item.gobber2.dragon_elytra": "Dragon Elytra",
-	
+
 	"item.gobber2.gobber2_excavator.line1": "A shovel that breaks a 3x3 area",
 	"item.gobber2.gobber2_hammer.line1": "A hammer that breaks a 3x3 area",
 	"item.gobber2.gobber2_paxel.line1": "Combines pickaxe, axe, and shovel",
 	"item.gobber2.gobber2_tree_axe.line1": "Will attempt to bring down the whole tree",
 	"item.gobber2.gobber2_end.unbreakable": "Unbreakable tool",
-	
+
     "item.gobber2.gobber2_sword": "Gobber Sword",
 	"item.gobber2.gobber2_pickaxe": "Gobber Pickaxe",
 	"item.gobber2.gobber2_hammer": "Gobber Hammer",
@@ -59,7 +59,7 @@
 	"item.gobber2.gobber2_hoe": "Gobber Hoe",
 	"item.gobber2.gobber2_shovel": "Gobber Shovel",
 	"item.gobber2.gobber2_bow": "Gobber Bow",
-	
+
 	"item.gobber2.gobber2_sword_nether": "Nether Sword",
 	"item.gobber2.gobber2_sword_nether.line1": "Great at getting Wither Skeleton skulls",
 	"item.gobber2.gobber2_pickaxe_nether": "Nether Pickaxe",
@@ -71,7 +71,7 @@
 	"item.gobber2.gobber2_hoe_nether": "Nether Hoe",
 	"item.gobber2.gobber2_shovel_nether": "Nether Shovel",
 	"item.gobber2.gobber2_bow_nether": "Nether Bow",
-	
+
 	"item.gobber2.gobber2_sword_end": "End Sword",
 	"item.gobber2.gobber2_sword_sniper": "Sniper Sword",
 	"item.gobber2.gobber2_sword_sniper.line1": "An unbreakable sword with a special ability",
@@ -96,7 +96,7 @@
 	"item.gobber2.gobber2_hoe_end": "End Hoe",
 	"item.gobber2.gobber2_shovel_end": "End Shovel",
 	"item.gobber2.gobber2_bow_end": "End Bow",
-	
+
 	"item.gobber2.gobber2_armor.line1": "Repair with Armor Plate",
 	"item.gobber2.gobber2_armor.line2": "Helmet: Slow auto-feeding and water breathing",
 	"item.gobber2.gobber2_armor.line3": "Chestplate: None",
@@ -113,12 +113,12 @@
 	"item.gobber2.gobber2_armor_nether.line3": "Chestplate: Fire protection and knockback resistance",
 	"item.gobber2.gobber2_armor_nether.line4": "Leggings: No fall damage",
 	"item.gobber2.gobber2_armor_nether.line5": "Boots: None",
-	"item.gobber2.gobber2_armor_nether.line6": "Full suit bonus: Poison and Wither protection",	
+	"item.gobber2.gobber2_armor_nether.line6": "Full suit bonus: Poison and Wither protection",
 	"item.gobber2.gobber2_helmet_nether": "Nether Helmet",
 	"item.gobber2.gobber2_chestplate_nether": "Nether Chestplate",
 	"item.gobber2.gobber2_leggings_nether": "Nether Leggings",
 	"item.gobber2.gobber2_boots_nether": "Nether Boots",
-	
+
 
 	"item.gobber2.gobber2_armor_end.line1": "Helmet: Rapid auto-feeding with saturation, water breathing and aborption hearts",
 	"item.gobber2.gobber2_armor_end.line2": "Chestplate: Fire protection and knockback resistance",
@@ -136,10 +136,10 @@
 	"item.gobber2.gobber2_chestplate_dragon": "Dragon Chestplate",
 	"item.gobber2.gobber2_leggings_dragon": "Dragon Leggings",
 	"item.gobber2.gobber2_boots_dragon": "Dragon Boots",
-	
-		
+
+
 	"item.gobber2.gobber2_armor_repair": "Armor Repair Plate",
-	
+
 	"item.gobber2.gobber2_links_end": "End Armor Links",
 
 	"item.gobber2.gobber2_ring.cooldown": "Cooldown interval (ticks): %s",
@@ -240,7 +240,7 @@
 	"item.gobber2.gobber2_ring_void.line3": "Sneak right-click in the End to return to Overworld",
 	"item.gobber2.gobber2_ring_void.line4": "Sleep in a bed before using",
 	"item.gobber2.gobber2_ring_void.line5": "Did you forget to hold sneak before right-click?",
-	"item.gobber2.gobber2_ring_void.line6": "This device cannot help you here",	
+	"item.gobber2.gobber2_ring_void.line6": "This device cannot help you here",
 	"item.gobber2.gobber2_ring_blink": "Ring of Blink",
 	"item.gobber2.gobber2_ring_blink.line1": "Teleports player to the location they are looking at",
 	"item.gobber2.gobber2_ring_blink.line2": "Right-click to use",
@@ -274,7 +274,7 @@
 	"item.gobber2.gobber2_ring_explorer.line2": "Min/max search range: %s %s",
 	"item.gobber2.gobber2_ring_explorer.line3": "Right-click to use.",
 
-	
+
 
 	"item.gobber2.gobber2_staff_sniper": "Staff of the Sniper",
 	"item.gobber2.gobber2_staff_sniper.line1": "Fires very precise arrows at high velocity",
@@ -301,12 +301,14 @@
 	"item.gobber2.gobber2_staff_ensnarement.line2": "Does not work on Players or Boss mobs",
 	"item.gobber2.gobber2_staff_ensnarement.line3": "Contains: empty",
 	"item.gobber2.gobber2_staff_ensnarement.line4": "Contains: %s",
+	"item.gobber2.gobber2_staff_ensnarement.line5": "Left-click to capture",
+	"item.gobber2.gobber2_staff_ensnarement.line6": "Right-click to release",
 	"item.gobber2.gobber2_staff_nature": "Staff of Nature",
 	"item.gobber2.gobber2_staff_nature.line1": "Converts saplings between types",
 	"item.gobber2.gobber2_staff_nature.line2": "Converts between cane and bamboo",
 	"item.gobber2.gobber2_staff_nature.line3": "Right-click to use",
-	
-	
+
+
 	"item.gobber2.gobber2_medallion": "Gobber Medallion",
 	"item.gobber2.gobber2_medallion_nether": "Nether Medallion",
 	"item.gobber2.gobber2_medallion_end": "End Medallion",
@@ -335,38 +337,38 @@
 	"item.gobber2.gobber2_medallion_breathing": "Medallion of Water Breathing",
 	"item.gobber2.gobber2_medallion_breathing.line1": "Provides player with Water Breathing effect",
 	"item.gobber2.gobber2_medallion_breathing.line2": "Water Breathing ability active: %s",
-	"item.gobber2.gobber2_medallion_breathing.line3": "Sneak right-click to toggle on/off",	
+	"item.gobber2.gobber2_medallion_breathing.line3": "Sneak right-click to toggle on/off",
 	"item.gobber2.gobber2_medallion_hero": "Medallion of Village Hero",
 	"item.gobber2.gobber2_medallion_hero.line1": "Hero of the Village ability active: %s",
 	"item.gobber2.gobber2_medallion_hero.line2": "Provides player with Hero of the Village effect",
 	"item.gobber2.gobber2_medallion_hero.line3": "Sneak right-click to toggle on/off",
-	
+
 	"item.gobber2.gobber2_goo": "Goo",
 	"item.gobber2.gobber2_gooey_apple": "Gooey Apple",
 	"item.gobber2.gobber2_gooey_bread": "Gooey Bread",
 	"item.gobber2.gobber2_gooey_beef": "Gooey Beef",
 	"item.gobber2.gobber2_gooey_beefstew": "Gooey Beefstew",
-	
+
 	"item.gobber2.gobber2_goo_nether": "Nether Goo",
 	"item.gobber2.gobber2_gooey_apple_nether": "Nether Gooey Apple",
 	"item.gobber2.gobber2_gooey_bread_nether": "Nether Gooey Bread",
 	"item.gobber2.gobber2_gooey_beef_nether": "Nether Gooey Beef",
 	"item.gobber2.gobber2_gooey_beefstew_nether": "Nether Gooey Beefstew",
-	
+
 	"item.gobber2.gobber2_seed": "Gobber Seed",
 	"item.gobber2.gobber2_seed.line1": "Plant on farmland. Used to grow Gobber Plants, which drop Globettes",
 	"item.gobber2.gobber2_seed_nether": "Nether Gobber Seed",
 	"item.gobber2.gobber2_seed_nether.line1": "Plant on farmland. Used to grow Nether Gobber Plants, which drop Nether Globettes",
 	"item.gobber2.gobber2_seed_end": "End Gobber Seed",
 	"item.gobber2.gobber2_seed_end.line1": "Plant on farmland. Used to grow End Gobber Plants, which drop End Globettes",
-	
+
 	"block.gobber2.gobber2_plant": "Gobber Plant",
 	"block.gobber2.gobber2_plant_nether": "Nether Gobber Plant",
 	"block.gobber2.gobber2_plant_end": "End Gobber Plant",
 	"item.gobber2.gobber2_plant": "Gobber Plant",
 	"item.gobber2.gobber2_plant_nether": "Nether Gobber Plant",
 	"item.gobber2.gobber2_plant_end": "End Gobber Plant",
-	
+
 	"item.gobber2.gobber2_glass.line1": "A very sturdy glass block",
 	"item.gobber2.gobber2_glass.line2": "Drops the block when broken",
 	"item.gobber2.gobber2_glass.line3": "Gives off light",
@@ -391,13 +393,13 @@
 	"item.gobber2.block_protector.jei.line3": "The Protector automatically activates when first placed. Block radius can be adjusted in config file",
 	"block.gobber2.block_defender": "The Defender",
 	"item.gobber2.block_defender": "The Defender",
-	"item.gobber2.block_defender.line1": "Active block range for Defender: %s",	
-	"item.gobber2.block_defender.line2": "The Defender provides a steady health regen",	
-	"item.gobber2.block_defender.line3": "and eliminates many, annoying hostile mobs",	
+	"item.gobber2.block_defender.line1": "Active block range for Defender: %s",
+	"item.gobber2.block_defender.line2": "The Defender provides a steady health regen",
+	"item.gobber2.block_defender.line3": "and eliminates many, annoying hostile mobs",
 	"item.gobber2.block_defender.line4": "Block range: %s",
-	"item.gobber2.block_defender.jei.line1": "The Defender block is an improved version of the Protector and provides players in a defined block range with an improved health regeneration.",	
-	"item.gobber2.block_defender.jei.line2": "Additionally, The Defender will eliminate many types of hostile mobs such as zombies, skeletons, spiders, and others. No drops or xp are spawned.",	
-	"item.gobber2.block_defender.jei.line3": "The Protector automatically activates when first placed. Block radius can be adjusted in config file",	
+	"item.gobber2.block_defender.jei.line1": "The Defender block is an improved version of the Protector and provides players in a defined block range with an improved health regeneration.",
+	"item.gobber2.block_defender.jei.line2": "Additionally, The Defender will eliminate many types of hostile mobs such as zombies, skeletons, spiders, and others. No drops or xp are spawned.",
+	"item.gobber2.block_defender.jei.line3": "The Protector automatically activates when first placed. Block radius can be adjusted in config file",
 	"block.gobber2.block_looter": "The Looter",
 	"item.gobber2.block_looter": "The Looter",
 	"item.gobber2.block_looter.line1": "Active block range for Looter: %s",
@@ -420,14 +422,14 @@
 	"item.gobber2.block_looter.jei.line15": "The Looter automatically activates when first placed. Block radius can be adjusted in config file",
 	"block.gobber2.block_maturator": "The Maturator",
 	"item.gobber2.block_maturator": "The Maturator",
-	"item.gobber2.block_maturator.line1": "Active block range for Looter: %s",
+	"item.gobber2.block_maturator.line1": "Active block range for Maturator: %s",
 	"item.gobber2.block_maturator.line2": "Provides various crops and other growables a little boost",
 	"item.gobber2.block_maturator.line3": "Block range: %s",
 	"item.gobber2.block_maturator.jei.line1": "The Maturator provides growth boost to many plants and crops in a defined area, centered around the block. Block radius can be adjusted in config file",
 	"item.gobber2.block_maturator.jei.line2": "Works on:",
 	"item.gobber2.block_maturator.jei.line3": "Sapling, Vine, Sugarcane, Sweet Berry, Cactus, Melon, Pumpkin, Bamboo, Cococa, Chorus flower, Netherwart and many other modded crops based off of these.",
 	"item.gobber2.block_maturator.jei.line4": "Min and Mix tick updates can be adjusted in the config",
-	
-		
+
+
 	"itemGroup.gobber2": "Gobber 2"
 }

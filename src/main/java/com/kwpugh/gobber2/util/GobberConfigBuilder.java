@@ -156,7 +156,7 @@ public class GobberConfigBuilder
         
         SERVER_BUILDER.comment("Medallion of Experience Settings").push("medallion_exp_settings");
         
-        MEDALLION_EXP_ORBS = SERVER_BUILDER.comment("Medallion of Experience multiplier for extra XP orbs [default: 100]").defineInRange("medallionExpOrbs", 100, 10, 500);
+        MEDALLION_EXP_ORBS = SERVER_BUILDER.comment("Medallion of Experience multiplier for extra XP orbs [default: 100]").defineInRange("medallionExpOrbs", 5, 0, 20);
         MEDALLION_EXP_LOOT = SERVER_BUILDER.comment("Medallion of Experience multiplier for extra mob loot [default: 10]").defineInRange("medallionExpLoot", 20, 5, 100);
         
         SERVER_BUILDER.pop();

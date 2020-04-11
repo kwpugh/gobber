@@ -9,7 +9,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
 @EventBusSubscriber
-public class SpecialAbilities
+public class PlayerSpecialAbilities
 {	
 	//Set player health to max on tick update
 	public static void giveHealthEffect(World world, PlayerEntity player, ItemStack itemstack)
@@ -21,7 +21,11 @@ public class SpecialAbilities
 	//Increases the player's food level to max on tick update, based on inputs
 	public static void giveRegenffect(World world, PlayerEntity player, ItemStack itemstack, int newfoodlevel, float newsatlevel)
 	{
-		player.getFoodStats().addStats(newfoodlevel, newsatlevel);
+		if (player.ticksExisted % 180 == 0)
+		{
+			player.getFoodStats().addStats(newfoodlevel, newsatlevel);
+		}
+		
     	return;
 	}
 		
@@ -31,66 +35,36 @@ public class SpecialAbilities
 		player.getFoodStats().setFoodSaturationLevel(7.0F);
     	return;
 	}
-		
-	//Slower increase of yellow hearts on tick update
-	public static void giveExtraHearts(World world, LivingEntity player, ItemStack itemstack)
+	
+	//gives extra yellow hears and a variable rate
+	public static void giveYellowHearts(World world, LivingEntity player, ItemStack itemstack, int extraHearts, float absorptionRate)
 	{
 		float current = player.getAbsorptionAmount();
 		
-		if(player.getHealth() < 20 || current >= 10)
+		if(player.getHealth() < 20 || current >= extraHearts)
 		{
 			return;
 		}
 		
-		if(current >= 9)
+		if(current >= (extraHearts - 1))
 		{
 			if (player.ticksExisted % 180 == 0)
 			{
-				player.setAbsorptionAmount(10);
+				player.setAbsorptionAmount(extraHearts);
 			} 
 			return;
 		}
-		if(current < 9)
+		if(current < (extraHearts - 1))
 		{
 			if (player.ticksExisted % 180 == 0)
 			{
-				player.setAbsorptionAmount(current + 0.33F);
+				player.setAbsorptionAmount(current + absorptionRate);
 			} 
 			return;
 		}
 		
     	return;
-	}
-
-	//Faster increase of yellow hearts on tick update
-	public static void giveGreaterExtraHearts(World world, LivingEntity player, ItemStack itemstack)
-	{
-		float current = player.getAbsorptionAmount();
-		
-		if(player.getHealth() < 20 || current >= 20)
-		{
-			return;
-		}
-		
-		if(current >= 19)
-		{
-			if (player.ticksExisted % 180 == 0)
-			{
-				player.setAbsorptionAmount(20);
-			} 
-			return;
-		}
-		if(current < 19)
-		{
-			if (player.ticksExisted % 180 == 0)
-			{
-				player.setAbsorptionAmount(current + 1.0F);
-			} 
-			return;
-		}
-		
-    	return;
-	}
+	}	
 
 	//Set player yellow hearts to none on tick update
 	public static void giveNoExtraHearts(World world, PlayerEntity player, ItemStack itemstack)

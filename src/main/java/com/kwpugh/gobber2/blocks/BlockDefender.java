@@ -6,7 +6,7 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import com.kwpugh.gobber2.util.GobberConfigBuilder;
-import com.kwpugh.gobber2.util.SpecialAbilities;
+import com.kwpugh.gobber2.util.PlayerSpecialAbilities;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
@@ -100,7 +100,7 @@ public class BlockDefender extends Block
 				   
 					int newfoodlevel = 1;
 					float newsatlevel = 0.045F;
-					SpecialAbilities.giveRegenffect(world, player, null, newfoodlevel, newsatlevel);   
+					PlayerSpecialAbilities.giveRegenffect(world, player, null, newfoodlevel, newsatlevel);   
 				}
 			   
 				// These types of mobs are excluded 
