@@ -23,7 +23,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
 @EventBusSubscriber(modid = Gobber2.modid, bus = EventBusSubscriber.Bus.FORGE )
-public final class ModEventSubscriber
+public final class PerksEventSubscriber
 {
 	//Config values
 	static int extraXPOrbs = GobberConfigBuilder.MEDALLION_EXP_ORBS.get();
