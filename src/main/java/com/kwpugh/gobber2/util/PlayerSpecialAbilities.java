@@ -1,6 +1,8 @@
 package com.kwpugh.gobber2.util;
 
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
@@ -12,14 +14,24 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 public class PlayerSpecialAbilities
 {	
 	//Set player health to max on tick update
-	public static void giveHealthEffect(World world, PlayerEntity player, ItemStack itemstack)
+	public static void giveFullHealth(World world, PlayerEntity player, ItemStack itemstack)
 	{
     	player.setHealth(20);
 		return;
 	}
+
+	//Set player health beyond normal max health
+	public static void giveNewMaxHealth(World world, PlayerEntity player, ItemStack itemstack, double newMax)
+	{		
+		player.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(newMax);
+		float healthAsFloat = (float) newMax;
+		player.setHealth(healthAsFloat);
+		
+		return;
+	}
 	
 	//Increases the player's food level to max on tick update, based on inputs
-	public static void giveRegenffect(World world, PlayerEntity player, ItemStack itemstack, int newfoodlevel, float newsatlevel)
+	public static void giveRegenEffect(World world, PlayerEntity player, ItemStack itemstack, int newfoodlevel, float newsatlevel)
 	{
 		if (player.ticksExisted % 180 == 0)
 		{
@@ -29,10 +41,11 @@ public class PlayerSpecialAbilities
     	return;
 	}
 		
-	//Set player saturation level to max on tick update
+	//Set player saturation level to max 
 	public static void giveSaturationEffect(World world, PlayerEntity player, ItemStack itemstack)
 	{
 		player.getFoodStats().setFoodSaturationLevel(7.0F);
+		
     	return;
 	}
 	

@@ -33,7 +33,7 @@ public class ItemCustomRingPhoenix extends Item
 
 			if(player.isBurning() || player.isInLava())
 			{
-				PlayerSpecialAbilities.giveHealthEffect(world, player, stack);
+				PlayerSpecialAbilities.giveFullHealth(world, player, stack);
 				player.extinguish();			
 			}
 		}

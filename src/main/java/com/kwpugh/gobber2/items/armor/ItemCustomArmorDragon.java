@@ -86,7 +86,7 @@ public class ItemCustomArmorDragon extends ArmorItem
 		{
 			PlayerSpecialAbilities.giveYellowHearts(world, player, stack, 20, 0.66F);
 			
-			PlayerSpecialAbilities.giveRegenffect(world, player, stack, 1, 0.15F);			
+			PlayerSpecialAbilities.giveRegenEffect(world, player, stack, 1, 0.15F);			
 		}
 		else
 		{

@@ -81,7 +81,7 @@ public class BlockHealer extends Block
 				{					
 					int newfoodlevel = 1;
 					float newsatlevel = 0.025F;
-					PlayerSpecialAbilities.giveRegenffect(world, player, null, newfoodlevel, newsatlevel);
+					PlayerSpecialAbilities.giveRegenEffect(world, player, null, newfoodlevel, newsatlevel);
 				}
 			}
 		}

@@ -101,7 +101,7 @@ public class BlockProtector extends Block
 
 					int newfoodlevel = 1;
 					float newsatlevel = 0.035F;
-					PlayerSpecialAbilities.giveRegenffect(world, player, null, newfoodlevel, newsatlevel);   
+					PlayerSpecialAbilities.giveRegenEffect(world, player, null, newfoodlevel, newsatlevel);   
 				}
 			   
 				// These types of mobs are excluded 

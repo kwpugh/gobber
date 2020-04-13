@@ -71,7 +71,7 @@ public class ItemCustomArmorEnd extends ArmorItem
 		{
 			PlayerSpecialAbilities.giveYellowHearts(world, player, stack, 10, 0.33F);
 			
-			PlayerSpecialAbilities.giveRegenffect(world, player, stack, 1, 0.10F);			
+			PlayerSpecialAbilities.giveRegenEffect(world, player, stack, 1, 0.10F);			
 		}
 		else
 		{

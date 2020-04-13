@@ -54,7 +54,7 @@ public class ItemCustomArmorNether extends ArmorItem
 		{
 			PlayerSpecialAbilities.giveYellowHearts(world, player, stack, 4, 0.33F);
 
-			PlayerSpecialAbilities.giveRegenffect(world, player, stack, 1, 0.05F);			
+			PlayerSpecialAbilities.giveRegenEffect(world, player, stack, 1, 0.05F);			
 		}
 //		else
 //		{
