@@ -23,10 +23,7 @@ public class GobberConfigBuilder
     public static ForgeConfigSpec.IntValue GOBBER2_ORE_NETHER_MAX_HEIGHT;
 
     public static ForgeConfigSpec.BooleanValue GOBBER2_ORE_END_GENERATION;
-    public static ForgeConfigSpec.IntValue GOBBER2_ORE_END_CHANCE;
-    public static ForgeConfigSpec.IntValue GOBBER2_ORE_END_SIZE;
-    public static ForgeConfigSpec.IntValue GOBBER2_ORE_END_MIN_HEIGHT;
-    public static ForgeConfigSpec.IntValue GOBBER2_ORE_END_MAX_HEIGHT;
+    public static ForgeConfigSpec.IntValue GOBBER2_ORE_END_COUNT;
 
     public static ForgeConfigSpec.IntValue RING_BLINK_COOLDOWN;
     public static ForgeConfigSpec.IntValue RING_MINER_COOLDOWN;
@@ -104,10 +101,7 @@ public class GobberConfigBuilder
         SERVER_BUILDER.comment("Gobber End Ore Generation").push("gobber2_ore_end");
 
         GOBBER2_ORE_END_GENERATION = SERVER_BUILDER.comment("Generate Gobber End Ore in the world [true / false]").define("gobberOreEndGeneration", true);
-        GOBBER2_ORE_END_SIZE = SERVER_BUILDER.comment("Size of Gobber End Ore pockets [0-100, default: 5]").defineInRange("gobberOreEndSize", 5, 0, 100);
-        GOBBER2_ORE_END_CHANCE = SERVER_BUILDER.comment("Chances of Gobber End Ore pocket being generated [0-100, default: 10]").defineInRange("gobberOreEndChance", 80, 0, 100);
-        GOBBER2_ORE_END_MIN_HEIGHT = SERVER_BUILDER.comment("Minimal height for Gobber End Ore pocket generation, [0-255, default: 5]").defineInRange("gobberOreEndMinHeight", 0, 0, 255);
-        GOBBER2_ORE_END_MAX_HEIGHT = SERVER_BUILDER.comment("Maximal height for Gobber End Ore pocket generation [0-255, default: 50]").defineInRange("gobberOreEndMaxHeight", 255, 0, 255);
+        GOBBER2_ORE_END_COUNT = SERVER_BUILDER.comment("Count of Gobber End Ore possibly being generated [0-800, default: 90]").defineInRange("gobberOreEndCount", 90, 0, 800);
 
         SERVER_BUILDER.pop();
 

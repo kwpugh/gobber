@@ -2,9 +2,9 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"0": "gobber2:block/base",
-		"1": "gobber2:block/helix_1",
-		"2": "gobber2:block/cone_layer2",
-		"3": "gobber2:block/cone_layer1",
+		"1": "gobber2:block/base",
+		"2": "gobber2:block/gobber2_block_nether",
+		"3": "gobber2:block/gobber2_block_nether",
 		"particle": "gobber2:block/base"
 	},
 	"elements": [

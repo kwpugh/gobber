@@ -29,7 +29,7 @@ public class HammerUtil
 {
     public static final Random random = new Random();
 
-    public static void attemptBreakNeighbors(World world, BlockPos pos, PlayerEntity player, Set<Block> effectiveOn, Set<Material> effectiveMaterials)
+    public static void attemptBreakNeighbors(World world, BlockPos pos, PlayerEntity player, Set<Material> effectiveMaterials)
     {    	
     	RayTraceResult trace = calcRayTrace(world, player, RayTraceContext.FluidMode.ANY);
 
@@ -50,18 +50,18 @@ public class HammerUtil
                     if (face == Direction.NORTH || face == Direction.SOUTH) target = pos.add(a, b, 0);
                     if (face == Direction.EAST  || face == Direction.WEST)  target = pos.add(0, a, b);
 
-                    attemptBreak(world, target, player, effectiveOn, effectiveMaterials);
+                    attemptBreak(world, target, player, effectiveMaterials);
                 }
             }
         }
     }
 
-    public static void attemptBreak(World world, BlockPos pos, PlayerEntity player, Set<Block> effectiveOn, Set<Material> effectiveMaterials)
+    public static void attemptBreak(World world, BlockPos pos, PlayerEntity player, Set<Material> effectiveMaterials)
     {
 
         BlockState state = world.getBlockState(pos);
         boolean isWithinHarvestLevel = player.getHeldItemMainhand().canHarvestBlock(state);  //added to ensure each block in the breaking is harvestable with this tool material
-        boolean isEffective = (effectiveOn.contains(state.getBlock()) || effectiveMaterials.contains(state.getMaterial()));
+        boolean isEffective = effectiveMaterials.contains(state.getMaterial());
         
         boolean witherImmune = BlockTags.WITHER_IMMUNE.contains(state.getBlock());
         

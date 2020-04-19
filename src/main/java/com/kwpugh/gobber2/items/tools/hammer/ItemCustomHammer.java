@@ -22,12 +22,8 @@ public class ItemCustomHammer extends HammerBase
 	@Override
     public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
     {
-		//ItemStack stack = player.getHeldItem(hand);
-		
         if(!world.isRemote && player.isShiftKeyDown())
         {
-            //EnableUtil.changeEnabled(player, hand);
-            //player.sendMessage(new StringTextComponent("Night vision ability active: " + EnableUtil.isEnabled(stack)));
             return new ActionResult<ItemStack>(ActionResultType.SUCCESS, player.getHeldItem(hand));
         }
         return super.onItemRightClick(world, player, hand);

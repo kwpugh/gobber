@@ -2,9 +2,9 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"0": "gobber2:block/base",
-		"1": "gobber2:block/cover",
-		"2": "gobber2:block/shield",
-		"3": "gobber2:block/globot_block",
+		"1": "gobber2:block/gobber2_block",
+		"2": "gobber2:block/gobber2_block",
+		"3": "gobber2:block/gobber2_block",
 		"particle": "gobber2:block/base"
 	},
 	"elements": [

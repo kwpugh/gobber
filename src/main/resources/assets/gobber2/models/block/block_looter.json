@@ -1,10 +1,10 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "gobber2:block/end_glob_color",
-		"1": "gobber2:block/cone_layer1",
-		"2": "gobber2:block/helix_base",
-		"particle": "gobber2:block/end_glob_color"
+		"0": "gobber2:block/gobber2_block_end",
+		"1": "gobber2:block/gobber2_block_nether",
+		"2": "gobber2:block/base",
+		"particle": "gobber2:block/gobber2_block_end"
 	},
 	"elements": [
 		{

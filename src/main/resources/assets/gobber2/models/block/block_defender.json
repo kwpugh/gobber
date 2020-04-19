@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"0": "gobber2:block/base",
-		"1": "gobber2:block/end_glob_color",
-		"2": "gobber2:block/shield",
+		"1": "gobber2:block/gobber2_block_end",
+		"2": "gobber2:block/base",
 		"3": "gobber2:block/gobber2_block_end",
 		"particle": "gobber2:block/base"
 	},
