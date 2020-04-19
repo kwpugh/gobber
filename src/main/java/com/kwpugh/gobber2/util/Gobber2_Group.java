@@ -16,6 +16,6 @@ public class Gobber2_Group extends ItemGroup
 	@Override
 	public ItemStack createIcon() 
 	{
-		return new ItemStack(ItemInit.GOBBER2_SWORD_END.get());
+		return new ItemStack(ItemInit.GOBBER2_SWORD_NETHER.get());
 	}	
 }
