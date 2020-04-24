@@ -1,5 +1,6 @@
 package com.kwpugh.gobber2.util;
 
+import net.minecraft.item.Food;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 public class GobberConfigBuilder
@@ -50,6 +51,28 @@ public class GobberConfigBuilder
     public static ForgeConfigSpec.IntValue MEDALLION_EXP_ORBS;
     public static ForgeConfigSpec.IntValue MEDALLION_EXP_LOOT;
 
+    public static ForgeConfigSpec.IntValue GOO_HUNGER;
+    public static ForgeConfigSpec.DoubleValue GOO_SATURATION;
+    public static ForgeConfigSpec.IntValue GOOEY_APPLE_HUNGER;
+    public static ForgeConfigSpec.DoubleValue GOOEY_APPLE_SATURATION;
+    public static ForgeConfigSpec.IntValue GOOEY_BREAD_HUNGER;
+    public static ForgeConfigSpec.DoubleValue GOOEY_BREAD_SATURATION;
+    public static ForgeConfigSpec.IntValue GOOEY_BEEF_HUNGER;
+    public static ForgeConfigSpec.DoubleValue GOOEY_BEEF_SATURATION;
+    public static ForgeConfigSpec.IntValue GOOEY_BEEFSTEW_HUNGER;
+    public static ForgeConfigSpec.DoubleValue GOOEY_BEEFSTEW_SATURATION;
+    
+    public static ForgeConfigSpec.IntValue NETHER_GOO_HUNGER;
+    public static ForgeConfigSpec.DoubleValue NETHER_GOO_SATURATION;
+    public static ForgeConfigSpec.IntValue NETHER_GOOEY_APPLE_HUNGER;
+    public static ForgeConfigSpec.DoubleValue NETHER_GOOEY_APPLE_SATURATION;
+    public static ForgeConfigSpec.IntValue NETHER_GOOEY_BREAD_HUNGER;
+    public static ForgeConfigSpec.DoubleValue NETHER_GOOEY_BREAD_SATURATION;
+    public static ForgeConfigSpec.IntValue NETHER_GOOEY_BEEF_HUNGER;
+    public static ForgeConfigSpec.DoubleValue NETHER_GOOEY_BEEF_SATURATION;
+    public static ForgeConfigSpec.IntValue NETHER_GOOEY_BEEFSTEW_HUNGER;
+    public static ForgeConfigSpec.DoubleValue NETHER_GOOEY_BEEFSTEW_SATURATION;
+    
     public static ForgeConfigSpec.IntValue HEALER_RADIUS;
     public static ForgeConfigSpec.IntValue PROTECTOR_RADIUS;
     public static ForgeConfigSpec.IntValue DEFENDER_RADIUS;
@@ -65,7 +88,39 @@ public class GobberConfigBuilder
 
     public static void init(ForgeConfigSpec.Builder SERVER_BUILDER)
     {
-        SERVER_BUILDER.comment("Gobber Ore Generation").push("gobber2_ore");
+        SERVER_BUILDER.comment("Gobber Food Values").push("gobber_foods");
+
+        GOO_HUNGER = SERVER_BUILDER.comment("Goo hunger value [0-25, default: 7]").defineInRange("gooHunger", 7, 0, 25);
+        GOO_SATURATION = SERVER_BUILDER.comment("Goo saturation value [0-5, default: 0.7]").defineInRange("gooSaturation", 0.7, 0, 5.0);
+        GOOEY_APPLE_HUNGER = SERVER_BUILDER.comment("Gooey apple hunger value [0-25, default: 8]").defineInRange("gooeyAppleHunger", 8, 0, 25);
+        GOOEY_APPLE_SATURATION = SERVER_BUILDER.comment("Gooey apple saturation value [0-5, default: 0.8]").defineInRange("gooeyAppleSaturation", 0.8, 0, 5.0);
+        GOOEY_BREAD_HUNGER = SERVER_BUILDER.comment("Gooey bread hunger value [0-25, default: 8]").defineInRange("gooeyBreadHunger", 8, 0, 25);
+        GOOEY_BREAD_SATURATION = SERVER_BUILDER.comment("Gooey bread saturation value [0-5, default: 0.8]").defineInRange("gooeyBreadSaturation", 0.8, 0, 5.0);
+        GOOEY_BEEF_HUNGER = SERVER_BUILDER.comment("Gooey beef hunger value [0-25, default: 9]").defineInRange("gooeyBeefHunger", 9, 0, 25);
+        GOOEY_BEEF_SATURATION = SERVER_BUILDER.comment("Gooey beef saturation value [0-5, default: 0.9]").defineInRange("gooeyBeefSaturation", 0.9, 0, 5.0);
+        GOOEY_BEEFSTEW_HUNGER = SERVER_BUILDER.comment("Gooey beefstew hunger value [0-25, default: 10]").defineInRange("gooeyBeefstewHunger", 10, 0, 25);
+        GOOEY_BEEFSTEW_SATURATION = SERVER_BUILDER.comment("Gooey beefstew saturation value [0-5, default: 1.0]").defineInRange("gooeyBeefstewSaturation", 1.0, 0, 5.0);
+        
+        SERVER_BUILDER.pop();
+
+        
+        SERVER_BUILDER.comment("Nether Gobber Food Values").push("nether_gobber_foods");
+
+        NETHER_GOO_HUNGER = SERVER_BUILDER.comment("Nether Goo hunger value [0-25, default: 7]").defineInRange("netherGooHunger", 9, 0, 25);
+        NETHER_GOO_SATURATION = SERVER_BUILDER.comment("Nether Goo saturation value [0-5, default: 0.7]").defineInRange("netherGooSaturation", 0.9, 0, 5.0);
+        NETHER_GOOEY_APPLE_HUNGER = SERVER_BUILDER.comment("Nether Gooey apple hunger value [0-25, default: 8]").defineInRange("netherGooeyAppleHunger", 10, 0, 25);
+        NETHER_GOOEY_APPLE_SATURATION = SERVER_BUILDER.comment("Nether Gooey apple saturation value [0-5, default: 0.8]").defineInRange("netherGooeyAppleSaturation", 1.0, 0, 5.0);
+        NETHER_GOOEY_BREAD_HUNGER = SERVER_BUILDER.comment("Nether Gooey bread hunger value [0-25, default: 8]").defineInRange("netherGooeyBreadHunger", 10, 0, 25);
+        NETHER_GOOEY_BREAD_SATURATION = SERVER_BUILDER.comment("Nether Gooey bread saturation value [0-5, default: 0.8]").defineInRange("netherGooeyBreadSaturation", 1.0, 0, 5.0);
+        NETHER_GOOEY_BEEF_HUNGER = SERVER_BUILDER.comment("Nether Gooey beef hunger value [0-25, default: 9]").defineInRange("netherGooeyBeefHunger", 12, 0, 25);
+        NETHER_GOOEY_BEEF_SATURATION = SERVER_BUILDER.comment("Nether Gooey beef saturation value [0-5, default: 0.9]").defineInRange("netherGooeyBeefSaturation", 1.2, 0, 5.0);
+        NETHER_GOOEY_BEEFSTEW_HUNGER = SERVER_BUILDER.comment("Nether Gooey beefstew hunger value [0-25, default: 10]").defineInRange("netherGooeyBeefstewHunger", 14, 0, 25);
+        NETHER_GOOEY_BEEFSTEW_SATURATION = SERVER_BUILDER.comment("Nether Gooey beefstew saturation value [0-5, default: 1.0]").defineInRange("netherGooeyBeefstewSaturation", 1.5, 0, 5.0);
+        
+        SERVER_BUILDER.pop();
+        
+        
+    	SERVER_BUILDER.comment("Gobber Ore Generation").push("gobber2_ore");
 
         GOBBER2_ORE_GENERATION = SERVER_BUILDER.comment("Generate Gobber Ore in the world [true / false]").define("gobberOreGeneration", true);
         GOBBER2_ORE_SIZE = SERVER_BUILDER.comment("Size of Gobber Ore pockets [0-100, default: 3]").defineInRange("gobberOreSize", 3, 0, 100);
