@@ -29,6 +29,7 @@ import top.theillusivec4.curios.api.imc.CurioIMCMessage;
 @Mod(Gobber2.modid)
 public class Gobber2 
 {
+	
 	public static Gobber2 instance;
 		
 	public static final String modid = "gobber2";
