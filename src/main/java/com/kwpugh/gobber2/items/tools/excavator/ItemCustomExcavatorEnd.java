@@ -62,14 +62,7 @@ public class ItemCustomExcavatorEnd extends ShovelItem
 
 		return true;
 	}
- 
-	@Override
-	public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker)
-	{
-		stack.setDamage(0);  //no damage
-     
-		return true;
-	}
+
 	
 	@Override
 	public int getBurnTime(ItemStack itemStack)

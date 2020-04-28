@@ -4,15 +4,10 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.kwpugh.gobber2.init.ItemInit;
-
-import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -26,23 +21,6 @@ public class ItemCustomAxeEnd extends AxeItem
 	{
 		super(tier, attackDamage, attackSpeedIn, builder);
 	}
-	
-	@Override
-    public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker)
-    {
-		stack.setDamage(0);  //no damage
-        
-        return true;
-    }
-
-    public boolean onBlockDestroyed(ItemStack stack, World worldIn, BlockState state, BlockPos pos, LivingEntity entityLiving)
-    {
-        if (!worldIn.isRemote && (double)state.getBlockHardness(worldIn, pos) != 0.0D)
-        {
-            stack.setDamage(0);
-        }
-        return true;
-    }
     
 	@Override
 	public int getBurnTime(ItemStack itemStack)
@@ -55,13 +33,7 @@ public class ItemCustomAxeEnd extends AxeItem
 	{
 		return true;
 	}
-    
-	@Override
-	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
-	{
-		return repair.getItem() == ItemInit.GOBBER2_INGOT_END.get();
-	}
-	
+
 	@OnlyIn(Dist.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{

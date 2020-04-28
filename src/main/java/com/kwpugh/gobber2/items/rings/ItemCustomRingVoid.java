@@ -40,13 +40,13 @@ public class ItemCustomRingVoid extends Item
 
 		    	return ActionResult.resultSuccess(stack);
 			}
-			else if(((currentDim == 1)) && (entity.isShiftKeyDown()))
+			else if(((currentDim == 1)) && (entity.isSneaking()))
 			{
 				entity.changeDimension(DimensionType.OVERWORLD);  //Switch to The End
 		    	
 				return ActionResult.resultSuccess(stack);
 			}
-			else if(((currentDim == 1)) && (!entity.isShiftKeyDown()))
+			else if(((currentDim == 1)) && (!entity.isSneaking()))
 			{
 				entity.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_void.line5").applyTextStyle(TextFormatting.GREEN)));
 			}

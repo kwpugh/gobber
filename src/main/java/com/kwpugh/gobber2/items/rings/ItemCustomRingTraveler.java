@@ -36,7 +36,7 @@ public class ItemCustomRingTraveler extends Item
 		double lookZ = look.z;
 		
 		//Get some vertical height to start
-		if(player.onGround && !player.isShiftKeyDown())	
+		if(player.onGround && !player.isSneaking())	
 		{
 			player.setMotion(lookX * 0.0, lookY * 4.5, lookZ * 0.0);
 		}

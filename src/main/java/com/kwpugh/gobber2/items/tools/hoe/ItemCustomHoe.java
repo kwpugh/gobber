@@ -7,9 +7,7 @@ import javax.annotation.Nullable;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.HoeItem;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
@@ -72,26 +70,6 @@ public class ItemCustomHoe extends HoeItem
 
 		return ActionResultType.PASS;
 	}
-	
-	@Override
-    public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker)
-    {
-		stack.setDamage(0);  //no damage
-        
-        return true;
-    }
-
-    @Override
-    public boolean onBlockDestroyed(ItemStack stack, World worldIn, BlockState state, BlockPos pos, LivingEntity entityLiving)
-    {
-       if (!worldIn.isRemote && state.getBlockHardness(worldIn, pos) != 0.0F)
-       {
-          stack.damageItem(0, entityLiving, (p_220038_0_) -> {
-             p_220038_0_.sendBreakAnimation(EquipmentSlotType.MAINHAND);
-          });
-       }
-       return true;
-    }
     
 	@OnlyIn(Dist.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)

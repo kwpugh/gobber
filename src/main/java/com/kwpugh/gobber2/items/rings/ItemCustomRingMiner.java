@@ -52,7 +52,7 @@ public class ItemCustomRingMiner extends Item
         
         if(equippedMain == stack)   //Only works in the main hand
         {
-        	shiftKeyPressed = player.isShiftKeyDown();
+        	shiftKeyPressed = player.isSneaking();
         	
         	player.getCooldownTracker().setCooldown(this, ringMinerCooldown);
         	
@@ -169,7 +169,7 @@ public class ItemCustomRingMiner extends Item
 							BlockPos targetpos = poslist.get(i);
 							block = world.getBlockState(targetpos).getBlock();
 							
-							if(player.isShiftKeyDown())   
+							if(player.isSneaking())   
 							{
 								world.destroyBlock(targetpos, !reverseRingMiner);
 							}

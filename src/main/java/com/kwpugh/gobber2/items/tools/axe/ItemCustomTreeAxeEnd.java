@@ -67,6 +67,12 @@ public class ItemCustomTreeAxeEnd extends AxeItem
         super(tier, attackDamageIn, attackSpeedIn, builder);
     }
 
+	@Override
+	public void onCreated(ItemStack stack, World worldIn, PlayerEntity playerIn)
+	{
+		stack.getOrCreateTag().putBoolean("Unbreakable", true);
+	}
+	
     @Override
     public boolean onBlockDestroyed(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity entityLiving)
     {

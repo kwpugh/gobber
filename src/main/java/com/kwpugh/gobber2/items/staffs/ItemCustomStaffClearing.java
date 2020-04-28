@@ -54,7 +54,7 @@ public class ItemCustomStaffClearing extends Item
 					world.destroyBlock(targetPos, true);
 				}
 				
-				if (block instanceof LeavesBlock && player.isShiftKeyDown())
+				if (block instanceof LeavesBlock && player.isSneaking())
 				{
 					world.destroyBlock(targetPos, true);
 				}

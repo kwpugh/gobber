@@ -59,7 +59,7 @@ public class ItemCustomRingAttraction extends Item
 			List<ItemEntity> items = entity.world.getEntitiesWithinAABB(ItemEntity.class, new AxisAlignedBB(x - range, y - range, z - range, x + range, y + range, z + range));
 			for(ItemEntity e: items)
 			{
-				if(!player.isShiftKeyDown() && !e.getPersistentData().getBoolean("PreventRemoteMovement"))
+				if(!player.isSneaking() && !e.getPersistentData().getBoolean("PreventRemoteMovement"))
 				{						
 					double factor = 0.035;
 					e.addVelocity((x - e.getPosX()) * factor, (y - e.getPosY()+1.25) * factor, (z - e.getPosZ()) * factor);
@@ -70,7 +70,7 @@ public class ItemCustomRingAttraction extends Item
 			List<ExperienceOrbEntity> xp = entity.world.getEntitiesWithinAABB(ExperienceOrbEntity.class, new AxisAlignedBB(x - range, y - range, z - range, x + range, y + range, z + range));
 			for(ExperienceOrbEntity orb: xp)
 			{
-				if(!player.isShiftKeyDown())
+				if(!player.isSneaking())
 				{						
 					double factor = 0.035;
 					orb.addVelocity((x - orb.getPosX()) * factor, (y - orb.getPosY()+1.25) * factor, (z - orb.getPosZ()) * factor);
@@ -84,14 +84,14 @@ public class ItemCustomRingAttraction extends Item
     {
 		ItemStack stack = player.getHeldItem(hand);	
 		
-		if(!world.isRemote && !(player.isShiftKeyDown()))
+		if(!world.isRemote && !(player.isSneaking()))
         {
             EnableUtil.changeEnabled(player, hand);
             player.sendMessage(new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line2", EnableUtil.isEnabled(stack)).applyTextStyle(TextFormatting.GREEN));
             return new ActionResult<ItemStack>(ActionResultType.SUCCESS, player.getHeldItem(hand));
         }		
 		
-        if(!world.isRemote && player.isShiftKeyDown())
+        if(!world.isRemote && player.isSneaking())
         {
 			if(range == 8)
 			{

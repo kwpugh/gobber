@@ -5,7 +5,6 @@ import java.util.Set;
 
 import javax.annotation.Nullable;
 
-import com.kwpugh.gobber2.init.ItemInit;
 import com.kwpugh.gobber2.items.toolbaseclasses.PaxelBase;
 import com.kwpugh.gobber2.util.EnableUtil;
 
@@ -16,7 +15,6 @@ import net.minecraft.block.CampfireBlock;
 import net.minecraft.block.HorizontalBlock;
 import net.minecraft.block.RotatedPillarBlock;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
@@ -160,7 +158,7 @@ public class ItemCustomPaxelStars extends PaxelBase
     {
 		ItemStack stack = player.getHeldItem(hand);
 		
-        if(!world.isRemote && player.isShiftKeyDown())
+        if(!world.isRemote && player.isSneaking())
         {
             EnableUtil.changeEnabled(player, hand);
             player.sendMessage(new TranslationTextComponent("item.gobber2.gobber2_paxel_stars.line4", EnableUtil.isEnabled(stack)).applyTextStyle(TextFormatting.RED));
@@ -169,29 +167,6 @@ public class ItemCustomPaxelStars extends PaxelBase
         return super.onItemRightClick(world, player, hand);
     }
 
-	@Override
-    public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker)
-    {
-		stack.setDamage(0);  //no damage
-        
-        return true;
-    }
-
-    public boolean onBlockDestroyed(ItemStack stack, World worldIn, BlockState state, BlockPos pos, LivingEntity entityLiving)
-    {
-        if (!worldIn.isRemote && (double)state.getBlockHardness(worldIn, pos) != 0.0D)
-        {
-            stack.setDamage(0);
-        }
-        return true;
-    }
-
-	@Override
-	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
-	{
-		return repair.getItem() == ItemInit.GOBBER2_INGOT_END.get();
-	}
-	
 	@Override
 	@OnlyIn(Dist.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)

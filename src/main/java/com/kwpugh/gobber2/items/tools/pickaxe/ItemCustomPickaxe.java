@@ -30,7 +30,7 @@ public class ItemCustomPickaxe extends PickaxeItem
     {
 		//ItemStack stack = player.getHeldItem(hand);
 		
-        if(!world.isRemote && player.isShiftKeyDown())
+        if(!world.isRemote && player.isSneaking())
         {
             //EnableUtil.changeEnabled(player, hand);
             //player.sendMessage(new StringTextComponent("Night vision ability active: " + EnableUtil.isEnabled(stack)));

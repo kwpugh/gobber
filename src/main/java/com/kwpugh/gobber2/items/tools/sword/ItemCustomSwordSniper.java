@@ -4,13 +4,10 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.kwpugh.gobber2.init.ItemInit;
 import com.kwpugh.gobber2.util.EnableUtil;
 import com.kwpugh.gobber2.util.GobberConfigBuilder;
 
-import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.item.ArrowItem;
@@ -21,7 +18,6 @@ import net.minecraft.item.SwordItem;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -47,7 +43,7 @@ public class ItemCustomSwordSniper extends SwordItem
 		
 		if(!world.isRemote)
 		{
-		    if(player.isShiftKeyDown())
+		    if(player.isSneaking())
 		    {
 		        EnableUtil.changeEnabled(player, hand);
 		        player.sendMessage(new TranslationTextComponent("item.gobber2.gobber2_sword_sniper.line4", EnableUtil.isEnabled(stack)).applyTextStyle(TextFormatting.RED));
@@ -72,34 +68,11 @@ public class ItemCustomSwordSniper extends SwordItem
 		}
 		return super.onItemRightClick(world, player, hand);
 	}
-	
-	@Override
-    public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker)
-    {
-		stack.setDamage(0);  //no damage to sword
-        
-        return true;
-    }
 
-    public boolean onBlockDestroyed(ItemStack stack, World worldIn, BlockState state, BlockPos pos, LivingEntity entityLiving)
-    {
-        if (!worldIn.isRemote && (double)state.getBlockHardness(worldIn, pos) != 0.0D)
-        {
-            stack.setDamage(0);
-        }
-        return true;
-    }
-    
 	@Override
 	public boolean isBookEnchantable(ItemStack stack, ItemStack book)
 	{
 		return true;
-	}
-
-	@Override
-	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
-	{
-		return repair.getItem() == ItemInit.GOBBER2_INGOT_END.get();
 	}
 	
 	@OnlyIn(Dist.CLIENT)

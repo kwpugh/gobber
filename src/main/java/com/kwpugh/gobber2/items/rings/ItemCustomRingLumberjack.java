@@ -52,7 +52,7 @@ public class ItemCustomRingLumberjack extends Item
     	
         if(equippedMain == stack)   //Only works in the main hand
         {
-        	shiftKeyPressed = player.isShiftKeyDown();
+        	shiftKeyPressed = player.isSneaking();
         	
         	player.getCooldownTracker().setCooldown(this, ringLumberjackCooldown);
         	
@@ -131,7 +131,7 @@ public class ItemCustomRingLumberjack extends Item
 						BlockPos targetpos = poslist.get(i);
 						block = world.getBlockState(targetpos).getBlock();
 						
-						if(player.isShiftKeyDown())   
+						if(player.isSneaking())   
 						{
 							world.destroyBlock(targetpos, false);
 						}

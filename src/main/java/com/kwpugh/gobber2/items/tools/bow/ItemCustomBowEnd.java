@@ -52,6 +52,12 @@ public class ItemCustomBowEnd extends BowItem
       });
    }
 
+	@Override
+	public void onCreated(ItemStack stack, World worldIn, PlayerEntity playerIn)
+	{
+		stack.getOrCreateTag().putBoolean("Unbreakable", true);
+	}
+	
    public void onPlayerStoppedUsing(ItemStack stack, World worldIn, LivingEntity entityLiving, int timeLeft)
    {
       if (entityLiving instanceof PlayerEntity)

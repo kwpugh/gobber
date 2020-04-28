@@ -42,7 +42,7 @@ public class ItemCustomRingTeleport extends Item
 		 Direction direction = context.getFace();
 		 ItemStack stackRing = context.getPlayer().getHeldItemMainhand();
 
-		 if(getPosition(stackRing) == null && player.isShiftKeyDown())
+		 if(getPosition(stackRing) == null && player.isSneaking())
 		 {
 			 setPosition(stackRing, world, pos.offset(direction), player);
 			 if(!world.isRemote)
@@ -69,13 +69,13 @@ public class ItemCustomRingTeleport extends Item
 	{
 		ItemStack stack = player.getHeldItem(hand);
 		
-		if(getPosition(stack) != null && !player.isShiftKeyDown())
+		if(getPosition(stack) != null && !player.isSneaking())
 		{
 			teleport(player, world, stack);
 			world.playSound(null, player.getPosX(), player.getPosY(), player.getPosZ(), SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, SoundCategory.PLAYERS, 1.0F, 1.0F);
 		}
 	 
-		if(getPosition(stack) != null && player.isShiftKeyDown())
+		if(getPosition(stack) != null && player.isSneaking())
 		{
 			setPosition(stack, world, null, player);
 			if(!world.isRemote)

@@ -21,7 +21,7 @@ public class ItemCustomHammerNether extends HammerBase
 	@Override
     public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
     {
-        if(!world.isRemote && player.isShiftKeyDown())
+        if(!world.isRemote && player.isSneaking())
         {
             return new ActionResult<ItemStack>(ActionResultType.SUCCESS, player.getHeldItem(hand));
         }

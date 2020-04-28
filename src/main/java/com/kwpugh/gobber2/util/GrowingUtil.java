@@ -74,7 +74,7 @@ public class GrowingUtil
 				}                     		
 			}
 
-			if(block instanceof GrassBlock && player.isShiftKeyDown())
+			if(block instanceof GrassBlock && player.isSneaking())
 			{
 				if (player.ticksExisted % (baseTickDelay * 6 ) == 0)
 				{

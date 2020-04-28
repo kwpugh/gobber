@@ -6,7 +6,6 @@ import java.util.Set;
 import javax.annotation.Nullable;
 
 import com.google.common.collect.ImmutableSet;
-import com.kwpugh.gobber2.init.ItemInit;
 import com.kwpugh.gobber2.items.toolbaseclasses.HammerUtil;
 
 import net.minecraft.block.BlockState;
@@ -39,6 +38,7 @@ public class ItemCustomHammerEnd extends PickaxeItem
 	{
 		super(tier, attackDamageIn, attackSpeedIn, builder);
 	}
+	
 	/**
 	 * Called when a Block is destroyed using this Item. Return true to trigger the "Use Item" statistic.
 	 */
@@ -56,14 +56,6 @@ public class ItemCustomHammerEnd extends PickaxeItem
 		return true;
 	}
 
-	@Override
-	public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker)
-	{
-		stack.setDamage(0);  //no damage
-     
-		return true;
-	}
- 
 	public void inventoryTick(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected)
 	{		
 		//Nothing right now
@@ -72,7 +64,7 @@ public class ItemCustomHammerEnd extends PickaxeItem
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
 	{
-		if(!world.isRemote && player.isShiftKeyDown())
+		if(!world.isRemote && player.isSneaking())
 		{
 		   return new ActionResult<ItemStack>(ActionResultType.SUCCESS, player.getHeldItem(hand));
 		}
@@ -91,13 +83,7 @@ public class ItemCustomHammerEnd extends PickaxeItem
 	{
 		return true;
 	}
-    
-	@Override
-	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
-	{
-		return repair.getItem() == ItemInit.GOBBER2_INGOT_END.get();
-	}
-	
+
 	@OnlyIn(Dist.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{

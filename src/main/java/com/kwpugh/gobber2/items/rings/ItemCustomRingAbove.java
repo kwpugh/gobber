@@ -51,7 +51,7 @@ public class ItemCustomRingAbove extends Item
 		
 		if (!world.isRemote && (world.getDimension().getType() == DimensionType.OVERWORLD))
 		{
-			if(player.isShiftKeyDown())
+			if(player.isSneaking())
 			{
 				//Checking from bottom of world and working upward
 				double x = player.getPosX();
