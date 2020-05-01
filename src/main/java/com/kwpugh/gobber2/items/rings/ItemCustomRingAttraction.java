@@ -7,6 +7,9 @@ import javax.annotation.Nullable;
 import com.kwpugh.gobber2.util.EnableUtil;
 import com.kwpugh.gobber2.util.MagnetRangeUtil;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.ExperienceOrbEntity;
@@ -18,6 +21,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -55,6 +59,19 @@ public class ItemCustomRingAttraction extends Item
 			double y = player.getPosY();
 			double z = player.getPosZ();
 
+			// Check for a particular block that stops the attraction
+			BlockPos playerPos = new BlockPos(player.getPositionVec());
+			for (BlockPos targetPos : BlockPos.getAllInBoxMutable(playerPos.add(-range, -2, -range), playerPos.add(range, 3, range)))
+			{
+				BlockState blockstate = world.getBlockState(targetPos);
+				Block block = blockstate.getBlock();
+				
+				if ((blockstate.getBlock() == Blocks.COAL_BLOCK))
+				{
+					return;
+				}				
+			}
+			
 			//Scan for and collect items
 			List<ItemEntity> items = entity.world.getEntitiesWithinAABB(ItemEntity.class, new AxisAlignedBB(x - range, y - range, z - range, x + range, y + range, z + range));
 			for(ItemEntity e: items)

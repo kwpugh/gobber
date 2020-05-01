@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smoking",
-  "ingredient": {
-    "item": "gobber2:gobber2_ore_nether"
-  },
-  "result": "gobber2:gobber2_glob_nether",
-  "experience": 1.5,
-  "cookingtime": 200
-}

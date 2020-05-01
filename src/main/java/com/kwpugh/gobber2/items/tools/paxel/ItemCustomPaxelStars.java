@@ -168,6 +168,18 @@ public class ItemCustomPaxelStars extends PaxelBase
     }
 
 	@Override
+	public void onCreated(ItemStack stack, World worldIn, PlayerEntity playerIn)
+	{
+		stack.getOrCreateTag().putBoolean("Unbreakable", true);
+	}
+	
+	@Override
+	public boolean isBookEnchantable(ItemStack stack, ItemStack book)
+	{
+		return true;
+	}
+	
+	@Override
 	@OnlyIn(Dist.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{

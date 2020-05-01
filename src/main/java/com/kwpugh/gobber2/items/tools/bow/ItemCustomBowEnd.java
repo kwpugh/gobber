@@ -51,12 +51,6 @@ public class ItemCustomBowEnd extends BowItem
          return p_210309_2_ != null && p_210309_2_.isHandActive() && p_210309_2_.getActiveItemStack() == p_210309_0_ ? 1.0F : 0.0F;
       });
    }
-
-	@Override
-	public void onCreated(ItemStack stack, World worldIn, PlayerEntity playerIn)
-	{
-		stack.getOrCreateTag().putBoolean("Unbreakable", true);
-	}
 	
    public void onPlayerStoppedUsing(ItemStack stack, World worldIn, LivingEntity entityLiving, int timeLeft)
    {
@@ -186,6 +180,18 @@ public class ItemCustomBowEnd extends BowItem
       return arrow;
    }
    
+	@Override
+	public void onCreated(ItemStack stack, World worldIn, PlayerEntity playerIn)
+	{
+		stack.getOrCreateTag().putBoolean("Unbreakable", true);
+	}
+	
+	@Override
+	public boolean isBookEnchantable(ItemStack stack, ItemStack book)
+	{
+		return true;
+	}
+	
    @Override
    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
    {
