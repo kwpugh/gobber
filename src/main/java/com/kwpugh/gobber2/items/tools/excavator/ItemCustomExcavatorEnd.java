@@ -70,12 +70,6 @@ public class ItemCustomExcavatorEnd extends ShovelItem
         
         return true;
     }
-
-	@Override
-	public int getBurnTime(ItemStack itemStack)
-	{
-		return 400;
-	}
 	
 	@Override
 	public void onCreated(ItemStack stack, World worldIn, PlayerEntity playerIn)

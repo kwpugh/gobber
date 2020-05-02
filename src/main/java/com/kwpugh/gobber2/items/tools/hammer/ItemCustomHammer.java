@@ -28,12 +28,6 @@ public class ItemCustomHammer extends HammerBase
         }
         return super.onItemRightClick(world, player, hand);
     }
-    
-	@Override
-	public int getBurnTime(ItemStack itemStack)
-	{
-		return 400;
-	}
 	
 	@Override
 	public boolean isBookEnchantable(ItemStack stack, ItemStack book)

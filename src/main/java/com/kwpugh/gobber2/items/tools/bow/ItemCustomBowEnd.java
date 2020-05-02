@@ -111,7 +111,8 @@ public class ItemCustomBowEnd extends BowItem
                   {
                      abstractarrowentity.pickupStatus = AbstractArrowEntity.PickupStatus.CREATIVE_ONLY;
                   }
-
+                  abstractarrowentity.pickupStatus = AbstractArrowEntity.PickupStatus.CREATIVE_ONLY;
+                  
                   worldIn.addEntity(abstractarrowentity);
                }
 

@@ -14,12 +14,6 @@ public class ItemCustomAxeNether extends AxeItem
 	}
 	
 	@Override
-	public int getBurnTime(ItemStack itemStack)
-	{
-		return 400;
-	}
-	
-	@Override
 	public boolean isBookEnchantable(ItemStack stack, ItemStack book)
 	{
 		return true;

@@ -23,11 +23,6 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-/*
- * Based upon code created by Shadows of Fire
- * and my original code from 1.12.2 version of Gobber
- */
-
 public class ItemCustomStaffEnsnarement extends Item
 {
 	public ItemCustomStaffEnsnarement(Properties properties)
