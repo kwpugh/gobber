@@ -7,6 +7,14 @@ import javax.annotation.Nullable;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.merchant.villager.VillagerEntity;
+import net.minecraft.entity.monster.MonsterEntity;
+import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.entity.passive.GolemEntity;
+import net.minecraft.entity.passive.horse.DonkeyEntity;
+import net.minecraft.entity.passive.horse.HorseEntity;
+import net.minecraft.entity.passive.horse.LlamaEntity;
+import net.minecraft.entity.passive.horse.MuleEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
@@ -38,7 +46,16 @@ public class ItemCustomStaffEnsnarement extends Item
         		!entity.isAlive())
         	return false;
         	      
-        if (stack.getOrCreateChildTag("mob_data").isEmpty())
+        if (  (stack.getOrCreateChildTag("mob_data").isEmpty()) && 
+        		(entity instanceof AnimalEntity ||
+        				entity instanceof HorseEntity ||
+        				entity instanceof DonkeyEntity ||
+        				entity instanceof LlamaEntity ||
+        				entity instanceof MuleEntity ||
+        				entity instanceof GolemEntity ||
+        				entity instanceof MonsterEntity ||
+        				entity instanceof VillagerEntity
+        				))
 		{
 			CompoundNBT tag = entity.serializeNBT();
 			if (!player.world.isRemote)
