@@ -110,6 +110,5 @@ public class ItemCustomSwordSniper extends SwordItem
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_sword_sniper.line3").applyTextStyle(TextFormatting.YELLOW)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_sword_sniper.line4", EnableUtil.isEnabled(stack)).applyTextStyle(TextFormatting.RED)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_sword_sniper.line5").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_end.unbreakable").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
 	}  
 }

@@ -47,8 +47,6 @@ public class ItemCustomPaxelStars extends PaxelBase
     {    	
     	BlockPos torchPos;
     	BlockPos pos = iuc.getPos();
-    	//BlockState state = iuc.getWorld().getBlockState(pos);
-    	
     	World world = iuc.getWorld();
     	BlockPos blockpos = iuc.getPos();
     	PlayerEntity player = iuc.getPlayer();
@@ -188,6 +186,5 @@ public class ItemCustomPaxelStars extends PaxelBase
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_paxel_stars.line3").applyTextStyle(TextFormatting.YELLOW)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_paxel_stars.line4", EnableUtil.isEnabled(stack)).applyTextStyle(TextFormatting.RED)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_paxel_stars.line5").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_end.unbreakable").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
 	} 
 }

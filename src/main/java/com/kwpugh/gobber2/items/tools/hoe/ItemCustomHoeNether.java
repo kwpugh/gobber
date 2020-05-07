@@ -11,9 +11,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class ItemCustomHoe extends HoeItem
+public class ItemCustomHoeNether extends HoeItem
 {
-	public ItemCustomHoe(IItemTier tier, float attackSpeedIn, Properties builder)
+	public ItemCustomHoeNether(IItemTier tier, float attackSpeedIn, Properties builder)
 	{
 		super(tier, attackSpeedIn, builder);
 	}
@@ -49,6 +49,6 @@ public class ItemCustomHoe extends HoeItem
 	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
 	{
-		return repair.getItem() == ItemInit.GOBBER2_INGOT.get();
+		return repair.getItem() == ItemInit.GOBBER2_INGOT_NETHER.get();
 	}
 }
