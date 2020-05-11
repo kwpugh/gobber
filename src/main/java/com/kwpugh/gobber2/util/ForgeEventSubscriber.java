@@ -1,6 +1,7 @@
 package com.kwpugh.gobber2.util;
 
 import com.kwpugh.gobber2.Gobber2;
+import com.kwpugh.gobber2.config.GobberConfigBuilder;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -28,6 +29,7 @@ public final class ForgeEventSubscriber
 	//Config values
 	static int extraXPOrbs = GobberConfigBuilder.MEDALLION_EXP_ORBS.get();
 	static int extraLoot = GobberConfigBuilder.MEDALLION_EXP_LOOT.get();
+	static boolean enableVoidProtection = GobberConfigBuilder.ENABLE_DRAGON_ARMOR_VOID_PROTECTION.get();
 	
 	//Cancels various damages to the player
     @SubscribeEvent(receiveCanceled = true, priority= EventPriority.HIGHEST)
@@ -36,13 +38,16 @@ public final class ForgeEventSubscriber
         if (event.getEntityLiving() instanceof PlayerEntity)
         {
             PlayerEntity player = (PlayerEntity) event.getEntityLiving();
-
+            
             //Void protection
-            if ((event.getSource() == DamageSource.OUT_OF_WORLD) &&
-                PlayerEquipsUtil.isPlayerGotVoidProtection(player))
+            if(enableVoidProtection)
             {
-                if (event.isCancelable()) event.setCanceled(true);
-            } 
+            	if ((event.getSource() == DamageSource.OUT_OF_WORLD) &&
+            			PlayerEquipsUtil.isPlayerGotVoidProtection(player))
+            	{
+            		if (event.isCancelable()) event.setCanceled(true);
+            	} 
+            }
             
             //No Fall Damage
             if ((event.getSource() == DamageSource.FALL) &&

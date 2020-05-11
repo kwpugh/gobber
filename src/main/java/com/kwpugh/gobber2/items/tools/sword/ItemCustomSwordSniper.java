@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.kwpugh.gobber2.config.GobberConfigBuilder;
 import com.kwpugh.gobber2.util.EnableUtil;
-import com.kwpugh.gobber2.util.GobberConfigBuilder;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;

@@ -1,6 +1,6 @@
 package com.kwpugh.gobber2.lists;
 
-import com.kwpugh.gobber2.util.GobberConfigBuilder;
+import com.kwpugh.gobber2.config.GobberConfigBuilder;
 
 import net.minecraft.item.Food;
 

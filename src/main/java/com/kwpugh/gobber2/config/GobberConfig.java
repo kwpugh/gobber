@@ -1,4 +1,4 @@
-package com.kwpugh.gobber2.util;
+package com.kwpugh.gobber2.config;
 
 
 import java.nio.file.Path;

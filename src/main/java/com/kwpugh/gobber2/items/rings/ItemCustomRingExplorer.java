@@ -5,7 +5,7 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
-import com.kwpugh.gobber2.util.GobberConfigBuilder;
+import com.kwpugh.gobber2.config.GobberConfigBuilder;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;

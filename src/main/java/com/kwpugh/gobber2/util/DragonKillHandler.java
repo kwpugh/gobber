@@ -1,5 +1,7 @@
 package com.kwpugh.gobber2.util;
 
+import com.kwpugh.gobber2.config.GobberConfigBuilder;
+
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.world.dimension.EndDimension;

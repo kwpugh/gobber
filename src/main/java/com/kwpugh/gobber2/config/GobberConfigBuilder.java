@@ -1,4 +1,4 @@
-package com.kwpugh.gobber2.util;
+package com.kwpugh.gobber2.config;
 
 import net.minecraft.item.Food;
 import net.minecraftforge.common.ForgeConfigSpec;
@@ -83,6 +83,7 @@ public class GobberConfigBuilder
     public static ForgeConfigSpec.IntValue MATURATOR_MAX_TICK;
     public static ForgeConfigSpec.BooleanValue ENABLE_MATURATOR_ANIMAL_EFFECT;
 
+    public static ForgeConfigSpec.BooleanValue ENABLE_DRAGON_ARMOR_VOID_PROTECTION;
     public static ForgeConfigSpec.BooleanValue ENABLE_DRAGON_KILL_EVERY_KILL;
 
 
@@ -232,6 +233,13 @@ public class GobberConfigBuilder
         SERVER_BUILDER.pop();
 
 
+        SERVER_BUILDER.comment("Enable Dragon Armor Void Protect - immune to /kill command").push("dragon_armor_void");
+
+        ENABLE_DRAGON_ARMOR_VOID_PROTECTION = SERVER_BUILDER.comment("Enable Dragon Armor Void Protection [true / false]").define("enableDragonArmorVoidProtection", false);
+
+        SERVER_BUILDER.pop();
+        
+        
         SERVER_BUILDER.comment("Dragon Egg With Every Kill").push("dragon_egg_kill");
 
         ENABLE_DRAGON_KILL_EVERY_KILL = SERVER_BUILDER.comment("Enable Dragon Egg drops on every kill [true / false]").define("enableDragonEggEveryKill", false);

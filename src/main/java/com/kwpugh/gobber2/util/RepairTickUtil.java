@@ -1,6 +1,7 @@
 package com.kwpugh.gobber2.util;
 
 import com.kwpugh.gobber2.Gobber2;
+import com.kwpugh.gobber2.config.GobberConfigBuilder;
 import com.kwpugh.gobber2.init.ItemInit;
 
 import net.minecraft.entity.player.PlayerEntity;

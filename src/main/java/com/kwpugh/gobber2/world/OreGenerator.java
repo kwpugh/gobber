@@ -1,7 +1,7 @@
 package com.kwpugh.gobber2.world;
 
+import com.kwpugh.gobber2.config.GobberConfigBuilder;
 import com.kwpugh.gobber2.init.BlockInit;
-import com.kwpugh.gobber2.util.GobberConfigBuilder;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;

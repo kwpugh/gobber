@@ -3,7 +3,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.kwpugh.gobber2.util.GobberConfigBuilder;
+import com.kwpugh.gobber2.config.GobberConfigBuilder;
 import com.kwpugh.gobber2.util.GrowingUtil;
 
 import net.minecraft.client.util.ITooltipFlag;
