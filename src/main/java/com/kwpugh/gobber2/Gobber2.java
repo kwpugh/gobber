@@ -8,10 +8,10 @@ import com.kwpugh.gobber2.config.GobberConfig;
 import com.kwpugh.gobber2.init.BlockInit;
 import com.kwpugh.gobber2.init.ItemInit;
 import com.kwpugh.gobber2.util.BlockRenders;
-import com.kwpugh.gobber2.util.DragonKillHandler;
 import com.kwpugh.gobber2.util.Gobber2_Group;
 import com.kwpugh.gobber2.util.PlayerSpecialAbilities;
 import com.kwpugh.gobber2.util.SupportMods;
+import com.kwpugh.gobber2.util.handlers.DragonKillHandler;
 import com.kwpugh.gobber2.world.OreGenerator;
 
 import net.minecraft.item.ItemGroup;

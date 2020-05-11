@@ -1,7 +1,8 @@
-package com.kwpugh.gobber2.util;
+package com.kwpugh.gobber2.util.handlers;
 
 import com.kwpugh.gobber2.Gobber2;
 import com.kwpugh.gobber2.config.GobberConfigBuilder;
+import com.kwpugh.gobber2.util.PlayerEquipsUtil;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;

@@ -1,4 +1,4 @@
-package com.kwpugh.gobber2.util;
+package com.kwpugh.gobber2.util.handlers;
 //
 //import static net.minecraftforge.api.distmarker.Dist.CLIENT;
 //import static org.lwjgl.glfw.GLFW.GLFW_KEY_APOSTROPHE;
