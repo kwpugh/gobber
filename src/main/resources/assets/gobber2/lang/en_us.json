@@ -42,6 +42,7 @@
 
 	"item.gobber2.dragon_star": "Dragon Star",
 	"item.gobber2.dragon_elytra": "Dragon Elytra",
+	"item.gobber2.dragon_elytra.tip": "NOTE: Not an Elytra, only used for crafting",
 
 	"item.gobber2.gobber2_excavator.line1": "A shovel that breaks a 3x3 area",
 	"item.gobber2.gobber2_hammer.line1": "A hammer that breaks a 3x3 area",

@@ -37,25 +37,25 @@ public class ItemCustomRingMiner extends Item
 	}
 
 	public static final int BREAK_DELAY = 1;
-	
+
 	int ringMinerCooldown = GobberConfigBuilder.RING_MINER_COOLDOWN.get();
 	boolean reverseRingMiner = GobberConfigBuilder.REVERSE_RING_MINER.get();
 	boolean delayedBreakMode = GobberConfigBuilder.DELAY_BREAK_MODE.get();
-	
+
 	boolean shiftKeyPressed = false;
-	
+
 	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
 	{
 		ItemStack stack = player.getHeldItem(hand);
 
         ItemStack equippedMain = player.getHeldItemMainhand();
-        
+
         if(equippedMain == stack)   //Only works in the main hand
         {
         	shiftKeyPressed = player.isSneaking();
-        	
+
         	player.getCooldownTracker().setCooldown(this, ringMinerCooldown);
-        	
+
         	if(!world.isRemote)
 			{
 				Block block;
@@ -68,9 +68,9 @@ public class ItemCustomRingMiner extends Item
 						for (int z = -5; z <= 5; z++)
 						{
 							BlockPos pos = player.getPosition().add(x, y, z);
-							block = world.getBlockState(pos).getBlock();							
+							block = world.getBlockState(pos).getBlock();
 							String blockForgeTags = block.getTags().toString();
-						    
+
 							if (block == Blocks.STONE ||
 									blockForgeTags.contains("forge:stone") ||
 									blockForgeTags.contains("forge:sandstone") ||
@@ -79,48 +79,45 @@ public class ItemCustomRingMiner extends Item
 									blockForgeTags.contains("forge:gravel") ||
 									block instanceof GravelBlock ||
 									block instanceof SandBlock ||
-									block == Blocks.DIRT || 
-									block == Blocks.GRASS_PATH || 
-									block == Blocks.SAND  || 
-									block == Blocks.RED_SAND  || 
-									block == Blocks.SANDSTONE || 
-									block == Blocks.RED_SANDSTONE || 
-									block == Blocks.GRAVEL || 
+									block == Blocks.DIRT ||
+									block == Blocks.GRASS_PATH ||
+									block == Blocks.SAND  ||
+									block == Blocks.RED_SAND  ||
+									block == Blocks.SANDSTONE ||
+									block == Blocks.RED_SANDSTONE ||
+									block == Blocks.GRAVEL ||
 									block == Blocks.GRASS_BLOCK ||
 									block == Blocks.COARSE_DIRT ||
 									block == Blocks.PODZOL ||
 									block == Blocks.MYCELIUM ||
-									block == Blocks.GRANITE || 
-									block == Blocks.ANDESITE || 
-									block == Blocks.DIORITE  || 
-									block == Blocks.DIORITE || 
-									block == Blocks.SOUL_SAND || 
-									block == Blocks.MOSSY_COBBLESTONE || 
-									block == Blocks.MOSSY_COBBLESTONE_SLAB || 
+									block == Blocks.GRANITE ||
+									block == Blocks.ANDESITE ||
+									block == Blocks.DIORITE  ||
+									block == Blocks.DIORITE ||
+									block == Blocks.SOUL_SAND ||
+									block == Blocks.MOSSY_COBBLESTONE ||
+									block == Blocks.MOSSY_COBBLESTONE_SLAB ||
 									block == Blocks.MOSSY_COBBLESTONE_STAIRS ||
-									block == Blocks.MOSSY_STONE_BRICKS || 
-									block == Blocks.MOSSY_STONE_BRICK_STAIRS || 
-									block == Blocks.MOSSY_STONE_BRICK_SLAB || 
-									block == Blocks.STONE_BRICKS || 
-									block == Blocks.STONE_BRICK_STAIRS || 
-									block == Blocks.STONE_BRICK_SLAB || 
-									block == Blocks.CRACKED_STONE_BRICKS || 
-									block == Blocks.INFESTED_CRACKED_STONE_BRICKS || 
-									block == Blocks.INFESTED_CHISELED_STONE_BRICKS|| 
-									block == Blocks.INFESTED_COBBLESTONE || 
-									block == Blocks.INFESTED_MOSSY_STONE_BRICKS || 
-									block == Blocks.END_STONE || 
-									block == Blocks.NETHERRACK || 
-									block == Blocks.NETHER_BRICKS || 
-									block == Blocks.NETHER_BRICK_FENCE || 
-									block == Blocks.NETHER_BRICK_STAIRS)
+									block == Blocks.MOSSY_STONE_BRICKS ||
+									block == Blocks.MOSSY_STONE_BRICK_STAIRS ||
+									block == Blocks.MOSSY_STONE_BRICK_SLAB ||
+									block == Blocks.STONE_BRICKS ||
+									block == Blocks.STONE_BRICK_STAIRS ||
+									block == Blocks.STONE_BRICK_SLAB ||
+									block == Blocks.CRACKED_STONE_BRICKS ||
+									block == Blocks.INFESTED_CRACKED_STONE_BRICKS ||
+									block == Blocks.INFESTED_CHISELED_STONE_BRICKS||
+									block == Blocks.INFESTED_COBBLESTONE ||
+									block == Blocks.INFESTED_MOSSY_STONE_BRICKS ||
+									block == Blocks.END_STONE ||
+									block == Blocks.NETHERRACK)
 							{
 								poslist.add(player.getPosition().add(x, y, z));
 							}
 						}
-					}	
+					}
 				}
-				
+
 
 				if(delayedBreakMode)
 				{
@@ -146,9 +143,9 @@ public class ItemCustomRingMiner extends Item
 									}
 									else
 									{
-										world.destroyBlock(breakPos, reverseRingMiner);	
+										world.destroyBlock(breakPos, reverseRingMiner);
 									}
-			                    	
+
 			                        i++;
 			                    }
 			                    else
@@ -156,7 +153,7 @@ public class ItemCustomRingMiner extends Item
 			                        MinecraftForge.EVENT_BUS.unregister(this);
 			                    }
 			                }
-			            });			
+			            });
 					}
 				}
 				else
@@ -168,29 +165,29 @@ public class ItemCustomRingMiner extends Item
 						{
 							BlockPos targetpos = poslist.get(i);
 							block = world.getBlockState(targetpos).getBlock();
-							
-							if(player.isSneaking())   
+
+							if(player.isSneaking())
 							{
 								world.destroyBlock(targetpos, !reverseRingMiner);
 							}
 							else
 							{
-								world.destroyBlock(targetpos, reverseRingMiner);	
+								world.destroyBlock(targetpos, reverseRingMiner);
 							}
-						}				
-					}				
+						}
+					}
 				}
 			}
         }
         return new ActionResult<ItemStack>(ActionResultType.SUCCESS, stack);
 	}
-	
+
 	@OnlyIn(Dist.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line1").applyTextStyle(TextFormatting.GREEN)));
-		
+
 		if(reverseRingMiner)
 		{
 			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line4").applyTextStyle(TextFormatting.YELLOW)));
@@ -201,18 +198,18 @@ public class ItemCustomRingMiner extends Item
 			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line2").applyTextStyle(TextFormatting.YELLOW)));
 			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line3").applyTextStyle(TextFormatting.YELLOW)));
 		}
-		
+
 
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line6").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring.cooldown", ringMinerCooldown).applyTextStyle(TextFormatting.LIGHT_PURPLE)));
-		
+
 		if(delayedBreakMode)
 		{
-			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.mode.line2").applyTextStyle(TextFormatting.LIGHT_PURPLE)));	
+			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.mode.line2").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
 		}
 		else
 		{
-			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.mode.line1").applyTextStyle(TextFormatting.LIGHT_PURPLE)));	
-		}		
-	} 
+			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.mode.line1").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		}
+	}
 }

@@ -1,6 +1,5 @@
 package com.kwpugh.gobber2.config;
 
-import net.minecraft.item.Food;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 public class GobberConfigBuilder
@@ -61,7 +60,7 @@ public class GobberConfigBuilder
     public static ForgeConfigSpec.DoubleValue GOOEY_BEEF_SATURATION;
     public static ForgeConfigSpec.IntValue GOOEY_BEEFSTEW_HUNGER;
     public static ForgeConfigSpec.DoubleValue GOOEY_BEEFSTEW_SATURATION;
-    
+
     public static ForgeConfigSpec.IntValue NETHER_GOO_HUNGER;
     public static ForgeConfigSpec.DoubleValue NETHER_GOO_SATURATION;
     public static ForgeConfigSpec.IntValue NETHER_GOOEY_APPLE_HUNGER;
@@ -72,7 +71,7 @@ public class GobberConfigBuilder
     public static ForgeConfigSpec.DoubleValue NETHER_GOOEY_BEEF_SATURATION;
     public static ForgeConfigSpec.IntValue NETHER_GOOEY_BEEFSTEW_HUNGER;
     public static ForgeConfigSpec.DoubleValue NETHER_GOOEY_BEEFSTEW_SATURATION;
-    
+
     public static ForgeConfigSpec.IntValue HEALER_RADIUS;
     public static ForgeConfigSpec.IntValue PROTECTOR_RADIUS;
     public static ForgeConfigSpec.IntValue DEFENDER_RADIUS;
@@ -85,7 +84,6 @@ public class GobberConfigBuilder
 
     public static ForgeConfigSpec.BooleanValue ENABLE_DRAGON_ARMOR_VOID_PROTECTION;
     public static ForgeConfigSpec.BooleanValue ENABLE_DRAGON_KILL_EVERY_KILL;
-
 
     public static void init(ForgeConfigSpec.Builder SERVER_BUILDER)
     {
@@ -101,10 +99,10 @@ public class GobberConfigBuilder
         GOOEY_BEEF_SATURATION = SERVER_BUILDER.comment("Gooey beef saturation value [0-5, default: 0.9]").defineInRange("gooeyBeefSaturation", 0.9, 0, 5.0);
         GOOEY_BEEFSTEW_HUNGER = SERVER_BUILDER.comment("Gooey beefstew hunger value [0-25, default: 10]").defineInRange("gooeyBeefstewHunger", 10, 0, 25);
         GOOEY_BEEFSTEW_SATURATION = SERVER_BUILDER.comment("Gooey beefstew saturation value [0-5, default: 1.0]").defineInRange("gooeyBeefstewSaturation", 1.0, 0, 5.0);
-        
+
         SERVER_BUILDER.pop();
 
-        
+
         SERVER_BUILDER.comment("Nether Gobber Food Values").push("nether_gobber_foods");
 
         NETHER_GOO_HUNGER = SERVER_BUILDER.comment("Nether Goo hunger value [0-25, default: 7]").defineInRange("netherGooHunger", 9, 0, 25);
@@ -117,10 +115,10 @@ public class GobberConfigBuilder
         NETHER_GOOEY_BEEF_SATURATION = SERVER_BUILDER.comment("Nether Gooey beef saturation value [0-5, default: 0.9]").defineInRange("netherGooeyBeefSaturation", 1.2, 0, 5.0);
         NETHER_GOOEY_BEEFSTEW_HUNGER = SERVER_BUILDER.comment("Nether Gooey beefstew hunger value [0-25, default: 10]").defineInRange("netherGooeyBeefstewHunger", 14, 0, 25);
         NETHER_GOOEY_BEEFSTEW_SATURATION = SERVER_BUILDER.comment("Nether Gooey beefstew saturation value [0-5, default: 1.0]").defineInRange("netherGooeyBeefstewSaturation", 1.5, 0, 5.0);
-        
+
         SERVER_BUILDER.pop();
-        
-        
+
+
     	SERVER_BUILDER.comment("Gobber Ore Generation").push("gobber2_ore");
 
         GOBBER2_ORE_GENERATION = SERVER_BUILDER.comment("Generate Gobber Ore in the world [true / false]").define("gobberOreGeneration", true);
@@ -238,8 +236,8 @@ public class GobberConfigBuilder
         ENABLE_DRAGON_ARMOR_VOID_PROTECTION = SERVER_BUILDER.comment("Enable Dragon Armor Void Protection [true / false]").define("enableDragonArmorVoidProtection", false);
 
         SERVER_BUILDER.pop();
-        
-        
+
+
         SERVER_BUILDER.comment("Dragon Egg With Every Kill").push("dragon_egg_kill");
 
         ENABLE_DRAGON_KILL_EVERY_KILL = SERVER_BUILDER.comment("Enable Dragon Egg drops on every kill [true / false]").define("enableDragonEggEveryKill", false);

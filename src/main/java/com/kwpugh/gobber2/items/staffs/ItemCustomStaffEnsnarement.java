@@ -9,6 +9,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.entity.monster.MonsterEntity;
+import net.minecraft.entity.monster.PhantomEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.GolemEntity;
 import net.minecraft.entity.passive.horse.DonkeyEntity;
@@ -45,8 +46,8 @@ public class ItemCustomStaffEnsnarement extends Item
         		!entity.isNonBoss() ||
         		!entity.isAlive())
         	return false;
-        	      
-        if (  (stack.getOrCreateChildTag("mob_data").isEmpty()) && 
+
+        if (  (stack.getOrCreateChildTag("mob_data").isEmpty()) &&
         		(entity instanceof AnimalEntity ||
         				entity instanceof HorseEntity ||
         				entity instanceof DonkeyEntity ||
@@ -54,7 +55,8 @@ public class ItemCustomStaffEnsnarement extends Item
         				entity instanceof MuleEntity ||
         				entity instanceof GolemEntity ||
         				entity instanceof MonsterEntity ||
-        				entity instanceof VillagerEntity
+        				entity instanceof VillagerEntity ||
+        				entity instanceof PhantomEntity
         				))
 		{
 			CompoundNBT tag = entity.serializeNBT();
@@ -78,7 +80,7 @@ public class ItemCustomStaffEnsnarement extends Item
 			BlockPos pos = iuc.getPos().offset(iuc.getFace());
 			if (!iuc.getWorld().isRemote)
 			{
-				Entity entity = EntityType.func_220335_a(tag, iuc.getWorld(), a -> a);
+				Entity entity = EntityType.loadEntityAndExecute(tag, iuc.getWorld(), a -> a);
 				if (entity != null)
 				{
 					entity.setPosition(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
@@ -101,21 +103,21 @@ public class ItemCustomStaffEnsnarement extends Item
 	{
 		CompoundNBT tag = super.getShareTag(stack);
 		CompoundNBT mob = new CompoundNBT();
-		
+
 		if (tag == null)
 		{
 			return null;
 		}
-		
+
 		tag = tag.copy();
-		
+
 		if (tag.getCompound("mob_data").contains("id"))
 		{
 			mob.putString("id", tag.getCompound("mob_data").getString("id"));
 		}
 
 		tag.put("mob_data", mob);
-		
+
 		return tag;
 	}
 
@@ -124,14 +126,14 @@ public class ItemCustomStaffEnsnarement extends Item
 	{
 		return stack.hasTag() && !stack.getOrCreateChildTag("mob_data").isEmpty();
 	}
-	
+
 	@OnlyIn(Dist.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_ensnarement.line1").applyTextStyle(TextFormatting.GREEN)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_ensnarement.line2").applyTextStyle(TextFormatting.GREEN)));
-		
+
 		if (stack.hasTag())
 		{
 			CompoundNBT tag = stack.getOrCreateChildTag("mob_data");
