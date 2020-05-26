@@ -7,7 +7,8 @@ import net.minecraftforge.fml.ModList;
 
 public enum SupportMods implements IStringSerializable
 {
-    CURIOS("curios");
+    CURIOS("curios"),
+	MINECOLONIES("minecolonies");
 
     private final String modid;
     private final boolean loaded;

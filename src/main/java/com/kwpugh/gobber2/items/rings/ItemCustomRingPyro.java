@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.kwpugh.gobber2.util.SupportMods;
+
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.Entity;
@@ -59,7 +61,7 @@ public class ItemCustomRingPyro extends Item
 
 					MobEntity hostileMob = scanForHostileMobs(world, x, y, z, d0, d1);
 
-					if(hostileMob != null)
+					if(hostileMob != null && !SupportMods.MINECOLONIES.isLoaded())   //until I figure out a way to not kill friendly Mercs
 					{
 						hostileMob.addPotionEffect(new EffectInstance(Effects.LEVITATION, 3600, 0, false, false));
 						hostileMob.setFire(80);
