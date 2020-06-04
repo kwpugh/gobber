@@ -4,11 +4,10 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.kwpugh.gobber2.util.SupportMods;
-
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.boss.WitherEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonEntity;
@@ -20,6 +19,7 @@ import net.minecraft.entity.monster.GuardianEntity;
 import net.minecraft.entity.monster.VexEntity;
 import net.minecraft.entity.monster.VindicatorEntity;
 import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -61,7 +61,7 @@ public class ItemCustomRingPyro extends Item
 
 					MobEntity hostileMob = scanForHostileMobs(world, x, y, z, d0, d1);
 
-					if(hostileMob != null && !SupportMods.MINECOLONIES.isLoaded())   //until I figure out a way to not kill friendly Mercs
+					if(hostileMob != null) //&& !SupportMods.MINECOLONIES.isLoaded())   //until I figure out a way to not kill friendly Mercs
 					{
 						hostileMob.addPotionEffect(new EffectInstance(Effects.LEVITATION, 3600, 0, false, false));
 						hostileMob.setFire(80);
@@ -84,8 +84,12 @@ public class ItemCustomRingPyro extends Item
 
 		for (MobEntity entitymob : list)
 		{
+			EntityClassification isCreature = entitymob.getEntity().getClassification(true);
+
 			// Exclude these mobs
-			if (entitymob instanceof AnimalEntity ||
+			if (isCreature == EntityClassification.CREATURE ||
+					entitymob instanceof IronGolemEntity ||
+					entitymob instanceof AnimalEntity ||
 					entitymob instanceof VillagerEntity ||
 					entitymob instanceof WanderingTraderEntity ||
 					entitymob instanceof AgeableEntity ||
@@ -105,6 +109,7 @@ public class ItemCustomRingPyro extends Item
 				return closestMob;
 			}
 		}
+
 		return null;
 	}
 

@@ -15,6 +15,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.FireBlock;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.boss.WitherEntity;
@@ -53,7 +54,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class BlockProtector extends Block
 {
 	int radius = GobberConfigBuilder.PROTECTOR_RADIUS.get();
-	
+
 
 	public BlockProtector(Properties properties)
 	{
@@ -77,21 +78,21 @@ public class BlockProtector extends Block
     	{
 			player.sendMessage(new TranslationTextComponent("item.gobber2.block_protector.line1", radius).applyTextStyle(TextFormatting.GREEN));
     	}
-		
+
 		return ActionResultType.SUCCESS;
 	}
-  
+
 	@Override
 	public void tick(BlockState state,ServerWorld world, BlockPos pos, Random random)
-	{		
+	{
 		if(!world.isRemote)
 		{
 			world.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), random.nextInt(minTickTime));
-			
-			BlockPos posUp = pos.up();		
+
+			BlockPos posUp = pos.up();
 			BlockState flaming = ((FireBlock)Blocks.FIRE).getStateForPlacement(world, posUp);
 			world.setBlockState(posUp, flaming, 11);
-			
+
 			List<Entity> entities = world.getEntitiesWithinAABB(LivingEntity.class, new AxisAlignedBB(pos.getX() - radius, pos.getY() - radius, pos.getZ() - radius, pos.getX() + radius, pos.getY() + radius, pos.getZ() + radius), e -> (e instanceof LivingEntity));
 			for(Entity entity : entities)
 			{
@@ -101,16 +102,19 @@ public class BlockProtector extends Block
 
 					int newfoodlevel = 1;
 					float newsatlevel = 0.035F;
-					PlayerSpecialAbilities.giveRegenEffect(world, player, null, newfoodlevel, newsatlevel);   
+					PlayerSpecialAbilities.giveRegenEffect(world, player, null, newfoodlevel, newsatlevel);
 				}
-			   
-				// These types of mobs are excluded 
-				if(entity instanceof PlayerEntity ||
+
+				EntityClassification isCreature = entity.getEntity().getClassification(true);
+
+				// These types of mobs are excluded
+				if(isCreature == EntityClassification.CREATURE ||
+					entity instanceof PlayerEntity ||
 					entity instanceof ArmorStandEntity ||
-					entity instanceof VillagerEntity || 
+					entity instanceof VillagerEntity ||
 					entity instanceof WanderingTraderEntity ||
-					entity instanceof AnimalEntity || 
-					entity instanceof IronGolemEntity || 
+					entity instanceof AnimalEntity ||
+					entity instanceof IronGolemEntity ||
 					entity instanceof DolphinEntity ||
 					entity instanceof WaterMobEntity ||
 					entity instanceof GuardianEntity ||
@@ -126,7 +130,7 @@ public class BlockProtector extends Block
 				{
 					continue;
 				}
-		   
+
 				if(entity instanceof MobEntity)
 				{
 					((MobEntity) entity).spawnExplosionParticle();
@@ -135,13 +139,13 @@ public class BlockProtector extends Block
 			}
 		}
 	}
-  
+
 	@Override
 	public BlockRenderType getRenderType(BlockState state)
 	{
 		return BlockRenderType.MODEL;
 	}
-  
+
 	@OnlyIn(Dist.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
