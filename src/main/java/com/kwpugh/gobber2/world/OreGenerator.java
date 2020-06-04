@@ -20,7 +20,7 @@ public class OreGenerator
     public static void setupOregen()
     {
         for(Biome biome : ForgeRegistries.BIOMES)
-        {               
+        { 
         	if(GobberConfigBuilder.GOBBER2_ORE_GENERATION.get())
         		biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(
         			new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockInit.GOBBER2_ORE.get().getDefaultState(), GobberConfigBuilder.GOBBER2_ORE_SIZE.get())).withPlacement(Placement.COUNT_RANGE.configure(
