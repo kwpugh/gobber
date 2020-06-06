@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.kwpugh.gobber2.config.GobberConfigBuilder;
+
 import net.minecraft.block.BambooBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -31,6 +33,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ItemCustomStaffHarvest extends Item
 { 
+	boolean staffHarvestReplant = GobberConfigBuilder.STAFF_HARVEST_REPLANT.get();
+	
 	public ItemCustomStaffHarvest(Properties properties)
 	{
 		super(properties);
@@ -72,7 +76,11 @@ public class ItemCustomStaffHarvest extends Item
 					if(maxAge)
 					{
 						world.destroyBlock(targetPos, true);
-						world.setBlockState(targetPos, defaultState);	
+						
+						if(staffHarvestReplant)
+						{
+							world.setBlockState(targetPos, defaultState);	
+						}
 					}
 				}
     		}    	

@@ -47,6 +47,9 @@ public class GobberConfigBuilder
     public static ForgeConfigSpec.IntValue STAFF_FARMER_TICK_DELAY;
     public static ForgeConfigSpec.IntValue STAFF_FARMER_RADIUS;
 
+    public static ForgeConfigSpec.BooleanValue STAFF_HARVEST_REPLANT;
+    public static ForgeConfigSpec.BooleanValue STAFF_FARMER_REPLANT;
+    
     public static ForgeConfigSpec.IntValue MEDALLION_EXP_ORBS;
     public static ForgeConfigSpec.IntValue MEDALLION_EXP_LOOT;
 
@@ -201,6 +204,14 @@ public class GobberConfigBuilder
 
         SERVER_BUILDER.pop();
 
+        
+        SERVER_BUILDER.comment("Auto Replanting Settings").push("replanting_settings");
+      
+        STAFF_HARVEST_REPLANT = SERVER_BUILDER.comment("Should the Staff of Harvest auto-replant? [true / false]").define("StaffHarvestReplant", true);
+        STAFF_FARMER_REPLANT = SERVER_BUILDER.comment("Should the Staff of the Farmer auto-replant? [true / false]").define("StaffFarmerReplant", true);
+
+        SERVER_BUILDER.pop();
+        
 
         SERVER_BUILDER.comment("Medallion of Experience Settings").push("medallion_exp_settings");
 

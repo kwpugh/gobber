@@ -37,6 +37,7 @@ public class ItemCustomStaffFarmer extends Item
 {
 	int radius = GobberConfigBuilder.STAFF_FARMER_RADIUS.get();
 	int baseTickDelay = GobberConfigBuilder.STAFF_FARMER_TICK_DELAY.get();
+	boolean staffFarmerReplant = GobberConfigBuilder.STAFF_FARMER_REPLANT.get();
 	
 	public ItemCustomStaffFarmer(Properties properties)
 	{
@@ -97,7 +98,11 @@ public class ItemCustomStaffFarmer extends Item
 					if(maxAge)
 					{
 						world.destroyBlock(targetPos, true);
-						world.setBlockState(targetPos, defaultState);	
+						
+						if(staffFarmerReplant)
+						{
+							world.setBlockState(targetPos, defaultState);	
+						}
 					}
 				}
     		}    	
