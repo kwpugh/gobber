@@ -9,6 +9,7 @@ import com.kwpugh.gobber2.config.GobberConfigBuilder;
 import net.minecraft.block.BambooBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.BushBlock;
 import net.minecraft.block.CactusBlock;
 import net.minecraft.block.CocoaBlock;
 import net.minecraft.block.CropsBlock;
@@ -63,6 +64,7 @@ public class ItemCustomStaffHarvest extends Item
 						block instanceof CactusBlock ||
 						block instanceof SugarCaneBlock ||
 						block instanceof NetherWartBlock ||
+						block instanceof BushBlock ||
 						block instanceof BambooBlock)
 				{
 					world.destroyBlock(targetPos, true);
