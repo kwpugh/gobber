@@ -13,7 +13,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '2.3.3'
+version = '2.3.4'
 group = 'com.kwpugh.gobber2' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'Gobber2-1.16.3'
 
