@@ -10,7 +10,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -30,19 +30,19 @@ public class ItemCustomRingTraveler extends Item
 	{
 		ActionResult<ItemStack> result = super.onItemRightClick(world, player, hand);
  
-    	Vec3d look = player.getLookVec().normalize();
+		Vector3d look = player.getLookVec().normalize();
 		double lookX = look.x;
 		double lookY = look.y;
 		double lookZ = look.z;
 		
 		//Get some vertical height to start
-		if(player.onGround && !player.isSneaking())	
+		if(player.isOnGround() && !player.isSneaking())	
 		{
 			player.setMotion(lookX * 0.0, lookY * 4.5, lookZ * 0.0);
 		}
         
 		//Once aloft, provide some horizontal movement and/or additional vetical movement
-		if(!player.onGround)
+		if(!player.isOnGround())
 		{
 			player.addVelocity(lookX * 0.6, lookY * 0.0, lookZ * 0.6);
 		}
@@ -53,7 +53,7 @@ public class ItemCustomRingTraveler extends Item
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_traveler.line1").applyTextStyle(TextFormatting.GREEN)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_traveler.line2").applyTextStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_traveler.line1").mergeStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_traveler.line2").mergeStyle(TextFormatting.YELLOW)));
 	}
 }

@@ -25,6 +25,6 @@ public class DragonElytra extends Item
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.dragon_elytra.tip").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.dragon_elytra.tip").mergeStyle(TextFormatting.LIGHT_PURPLE)));
 	}
 }

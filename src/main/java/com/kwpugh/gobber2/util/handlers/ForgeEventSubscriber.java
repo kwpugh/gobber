@@ -19,7 +19,6 @@ import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
 import net.minecraftforge.event.entity.living.LootingLevelEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
-import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -112,22 +111,22 @@ public final class ForgeEventSubscriber
     }
     
     //Ensures the Fortune drop chance will be 100%
-    @SubscribeEvent
-    public static void onMiningFortuneEvent(HarvestDropsEvent event)
-    {
-    	if (event.getState().getBlock() instanceof OreBlock)
-    	{   		
-    		if(event.getHarvester() instanceof PlayerEntity)
-    		{
-    			PlayerEntity player = (PlayerEntity) event.getHarvester();
-    			
-    			if (PlayerEquipsUtil.isPlayerGotExpToken(player))
-    			{   				
-    				event.setDropChance(1.0F);
-    			}
-    		}
-    	}
-    }
+//    @SubscribeEvent
+//    public static void onMiningFortuneEvent(HarvestDropsEvent event)
+//    {
+//    	if (event.getState().getBlock() instanceof OreBlock)
+//    	{   		
+//    		if(event.getHarvester() instanceof PlayerEntity)
+//    		{
+//    			PlayerEntity player = (PlayerEntity) event.getHarvester();
+//    			
+//    			if (PlayerEquipsUtil.isPlayerGotExpToken(player))
+//    			{   				
+//    				event.setDropChance(1.0F);
+//    			}
+//    		}
+//    	}
+//    }
     
     //Gives greater XP when killing mobs that normally drop XP on death
     @SubscribeEvent
@@ -178,8 +177,8 @@ public final class ForgeEventSubscriber
         {    
         	if(PlayerEquipsUtil.isPlayerGotHasteRing(player))
         	{
-        		if(net.minecraftforge.common.ForgeHooks.canToolHarvestBlock(event.getPlayer().world, pos, stack))
-        		{
+//        		if(net.minecraftforge.common.ForgeHooks.canToolHarvestBlock(event.getPlayer().world, pos, stack))
+//        		{
         			if(block == Blocks.OBSIDIAN)
         			{
         				event.setNewSpeed(GobberConfigBuilder.HASTE_RING_BREAK_SPEED.get() * 8);
@@ -189,7 +188,7 @@ public final class ForgeEventSubscriber
         				event.setNewSpeed(GobberConfigBuilder.HASTE_RING_BREAK_SPEED.get());
         			}
 						
-        		}
+//        		}
         	}
         }
     }

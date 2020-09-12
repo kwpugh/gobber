@@ -10,7 +10,6 @@ import com.kwpugh.gobber2.config.GobberConfigBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
-import net.minecraft.block.LogBlock;
 import net.minecraft.block.MushroomBlock;
 import net.minecraft.block.VineBlock;
 import net.minecraft.client.util.ITooltipFlag;
@@ -72,7 +71,8 @@ public class ItemCustomRingLumberjack extends Item
 							block = world.getBlockState(pos).getBlock();
 							
 							if (block instanceof LeavesBlock || 
-									block instanceof LogBlock ||
+									//block instanceof LogBlock ||
+									BlockTags.LOGS.contains(block) ||
 									block instanceof MushroomBlock ||
 									block.isIn(BlockTags.LEAVES) ||
 									block.isIn(BlockTags.LOGS) ||
@@ -182,10 +182,10 @@ public class ItemCustomRingLumberjack extends Item
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_lumberjack.line1").applyTextStyle(TextFormatting.GREEN)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_lumberjack.line2").applyTextStyle(TextFormatting.GREEN)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_lumberjack.line3").applyTextStyle(TextFormatting.YELLOW)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_lumberjack.line4").applyTextStyle(TextFormatting.YELLOW)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring.cooldown",ringLumberjackCooldown).applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_lumberjack.line1").mergeStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_lumberjack.line2").mergeStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_lumberjack.line3").mergeStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_lumberjack.line4").mergeStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring.cooldown",ringLumberjackCooldown).mergeStyle(TextFormatting.LIGHT_PURPLE)));
 	} 
 }

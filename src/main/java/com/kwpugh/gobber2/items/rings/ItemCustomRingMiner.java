@@ -186,30 +186,30 @@ public class ItemCustomRingMiner extends Item
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line1").applyTextStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line1").mergeStyle(TextFormatting.GREEN)));
 
 		if(reverseRingMiner)
 		{
-			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line4").applyTextStyle(TextFormatting.YELLOW)));
-			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line5").applyTextStyle(TextFormatting.YELLOW)));
+			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line4").mergeStyle(TextFormatting.YELLOW)));
+			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line5").mergeStyle(TextFormatting.YELLOW)));
 		}
 		else
 		{
-			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line2").applyTextStyle(TextFormatting.YELLOW)));
-			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line3").applyTextStyle(TextFormatting.YELLOW)));
+			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line2").mergeStyle(TextFormatting.YELLOW)));
+			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line3").mergeStyle(TextFormatting.YELLOW)));
 		}
 
 
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line6").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring.cooldown", ringMinerCooldown).applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line6").mergeStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring.cooldown", ringMinerCooldown).mergeStyle(TextFormatting.LIGHT_PURPLE)));
 
 		if(delayedBreakMode)
 		{
-			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.mode.line2").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.mode.line2").mergeStyle(TextFormatting.LIGHT_PURPLE)));
 		}
 		else
 		{
-			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.mode.line1").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.mode.line1").mergeStyle(TextFormatting.LIGHT_PURPLE)));
 		}
 	}
 }

@@ -48,16 +48,16 @@ public class RepairTickUtil
 			}
 		}
 		
-		if (SupportMods.CURIOS.isLoaded())
-	    {
-			if (CuriosUtil.findItem(ItemInit.GOBBER2_RING_REPAIR.get(), player) != ItemStack.EMPTY)
-			{
-				if (player.ticksExisted % repairTickRate == 0)
-	    		{
-					repair(player, inv);
-	   		 	}  
-		    }
-	    }  
+//		if (SupportMods.CURIOS.isLoaded())
+//	    {
+//			if (CuriosUtil.findItem(ItemInit.GOBBER2_RING_REPAIR.get(), player) != ItemStack.EMPTY)
+//			{
+//				if (player.ticksExisted % repairTickRate == 0)
+//	    		{
+//					repair(player, inv);
+//	   		 	}  
+//		    }
+//	    }  
 	}
 	
 	private static void repair(PlayerEntity player, PlayerInventory inv)

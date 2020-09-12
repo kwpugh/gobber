@@ -159,7 +159,7 @@ public class ItemCustomPaxelStars extends PaxelBase
         if(!world.isRemote && player.isSneaking())
         {
             EnableUtil.changeEnabled(player, hand);
-            player.sendMessage(new TranslationTextComponent("item.gobber2.gobber2_paxel_stars.line4", EnableUtil.isEnabled(stack)).applyTextStyle(TextFormatting.RED));
+            player.sendStatusMessage(new TranslationTextComponent("item.gobber2.gobber2_paxel_stars.line4", EnableUtil.isEnabled(stack)).mergeStyle(TextFormatting.RED), true);
             return new ActionResult<ItemStack>(ActionResultType.SUCCESS, player.getHeldItem(hand));
         }
         return super.onItemRightClick(world, player, hand);
@@ -182,9 +182,9 @@ public class ItemCustomPaxelStars extends PaxelBase
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_paxel_stars.line2").applyTextStyle(TextFormatting.YELLOW)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_paxel_stars.line3").applyTextStyle(TextFormatting.YELLOW)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_paxel_stars.line4", EnableUtil.isEnabled(stack)).applyTextStyle(TextFormatting.RED)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_paxel_stars.line5").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_paxel_stars.line2").mergeStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_paxel_stars.line3").mergeStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_paxel_stars.line4", EnableUtil.isEnabled(stack)).mergeStyle(TextFormatting.RED)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_paxel_stars.line5").mergeStyle(TextFormatting.LIGHT_PURPLE)));
 	} 
 }

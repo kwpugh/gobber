@@ -1,7 +1,6 @@
 package com.kwpugh.gobber2.items.rings;
 
 import java.util.List;
-
 import javax.annotation.Nullable;
 
 import net.minecraft.client.util.ITooltipFlag;
@@ -19,13 +18,13 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
-import net.minecraft.world.dimension.DimensionType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ItemCustomRingReturn extends Item
 {
 	private static int duration = 25;
+	//private boolean oneTimeUse = GeneralModConfig.ONE_TIME_USE.get();
 	
     public ItemCustomRingReturn(Properties properties)
     {
@@ -45,32 +44,37 @@ public class ItemCustomRingReturn extends Item
     {
         if(!world.isRemote())
         {
-            PlayerEntity player = (ServerPlayerEntity) entity;
-            BlockPos bedLoc = player.getBedLocation(player.dimension);
- 
-            if((world.getDimension().getType() == DimensionType.OVERWORLD))
-     		{
-                if (bedLoc == null)
-                {   
-                    player.sendStatusMessage(new TranslationTextComponent("item.gobber2.gobber2_ring_return.line2"), true);
-                    return stack;
+            ServerPlayerEntity player = (ServerPlayerEntity) entity;
+           
+            if(world.getDimensionKey().equals(World.OVERWORLD)) //if dimension is Overworld
+            {          	  
+                if(player.func_241140_K_() != null) //player bed location not null
+                {                	
+                	BlockPos bedLoc = player.func_241140_K_(); //get player bed position
+                	
+                	if (player.isPassenger())
+                	{
+                		player.stopRiding();
+                	}
+                	
+                    setPositionAndUpdate(entity, world, bedLoc);
+                    player.sendStatusMessage(new TranslationTextComponent("item.gobber2.ring_return.line1").mergeStyle(TextFormatting.GREEN), true); 
                 }
-                
-                if (entity.getRidingEntity() != null) {
-                     entity.stopRiding();
+                else
+                {
+                	 player.sendStatusMessage(new TranslationTextComponent("item.gobber2.ring_return.line2").mergeStyle(TextFormatting.GREEN), true);
+                     return stack;
                 }
-                setPositionAndUpdate(entity, world, bedLoc);
-                player.sendStatusMessage(new TranslationTextComponent("item.gobber2.gobber2_ring_return.line1"), true);    	
-     		}
+            }
             else
             {
-				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_return.line4").applyTextStyle(TextFormatting.GREEN)));
+				player.sendStatusMessage((new TranslationTextComponent("item.gobber2.ring_return.line4").mergeStyle(TextFormatting.GREEN)), true);
             }
         }
         
-        return stack;
-    }
-    
+        return stack;        
+    }    
+  
     @Override
     public int getUseDuration(ItemStack stack)
     {
@@ -93,8 +97,8 @@ public class ItemCustomRingReturn extends Item
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_return.line3").applyTextStyle(TextFormatting.GREEN)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_return.line2").applyTextStyle(TextFormatting.YELLOW)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_return.line4").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.ring_return.line3").mergeStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.ring_return.line2").mergeStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.ring_return.line4").mergeStyle(TextFormatting.LIGHT_PURPLE)));
 	} 
 }

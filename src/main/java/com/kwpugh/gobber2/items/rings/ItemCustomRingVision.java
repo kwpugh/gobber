@@ -51,7 +51,7 @@ public class ItemCustomRingVision extends Item
         if(!world.isRemote && player.isSneaking())
         {
             EnableUtil.changeEnabled(player, hand);
-            player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_vision.line2", EnableUtil.isEnabled(stack)).applyTextStyle(TextFormatting.GREEN)));
+            player.sendStatusMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_vision.line2", EnableUtil.isEnabled(stack)).mergeStyle(TextFormatting.GREEN)), true);
             return new ActionResult<ItemStack>(ActionResultType.SUCCESS, player.getHeldItem(hand));
         }
         return super.onItemRightClick(world, player, hand);
@@ -61,8 +61,8 @@ public class ItemCustomRingVision extends Item
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_vision.line1").applyTextStyle(TextFormatting.GREEN)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_vision.line2", EnableUtil.isEnabled(stack)).applyTextStyle(TextFormatting.RED)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_vision.line3").applyTextStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_vision.line1").mergeStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_vision.line2", EnableUtil.isEnabled(stack)).mergeStyle(TextFormatting.RED)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_vision.line3").mergeStyle(TextFormatting.YELLOW)));
 	} 
 }

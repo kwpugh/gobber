@@ -102,11 +102,11 @@ public class ItemCustomArmorGobber extends ArmorItem
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor.line1").applyTextStyle(TextFormatting.AQUA)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor.line2").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor.line3").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor.line4").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor.line5").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor.line6").applyTextStyle(TextFormatting.GOLD)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor.line1").mergeStyle(TextFormatting.AQUA)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor.line2").mergeStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor.line3").mergeStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor.line4").mergeStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor.line5").mergeStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor.line6").mergeStyle(TextFormatting.GOLD)));
 	}
 }

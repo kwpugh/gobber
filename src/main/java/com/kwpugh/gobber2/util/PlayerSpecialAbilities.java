@@ -1,8 +1,6 @@
 package com.kwpugh.gobber2.util;
 
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
@@ -23,7 +21,7 @@ public class PlayerSpecialAbilities
 	//Set player health beyond normal max health
 	public static void giveNewMaxHealth(World world, PlayerEntity player, ItemStack itemstack, double newMax)
 	{		
-		player.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(newMax);
+		//player.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(newMax);
 		float healthAsFloat = (float) newMax;
 		player.setHealth(healthAsFloat);
 		

@@ -26,6 +26,6 @@ public class ItemCustomSeedEnd extends BlockNamedItem
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_seed_end.line1").applyTextStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_seed_end.line1").mergeStyle(TextFormatting.GREEN)));
 	} 
 }

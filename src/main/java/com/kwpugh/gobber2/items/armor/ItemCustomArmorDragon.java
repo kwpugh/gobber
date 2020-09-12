@@ -8,7 +8,6 @@ import com.kwpugh.gobber2.init.ItemInit;
 import com.kwpugh.gobber2.util.PlayerSpecialAbilities;
 
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
@@ -52,15 +51,15 @@ public class ItemCustomArmorDragon extends ArmorItem
 	
 		boolean wasWearingDragonArmorLastTick = player.getPersistentData().getBoolean("wearingFullDragonArmor");
 	  
-		if(!iswearingFullDragonArmor && wasWearingDragonArmorLastTick && !player.isCreative())
-		{
-			player.abilities.allowFlying = false;
-			player.abilities.isFlying = false;
-		}
-		else if((iswearingFullDragonArmor) && (player.dimension.getId() == -1 || player.dimension.getId() == 0 || player.dimension.getId() == 1 ))
-		{
-			player.abilities.allowFlying = true;
-		}
+//		if(!iswearingFullDragonArmor && wasWearingDragonArmorLastTick && !player.isCreative())
+//		{
+//			player.abilities.allowFlying = false;
+//			player.abilities.isFlying = false;
+//		}
+//		else if((iswearingFullDragonArmor) && (player.dimension.getId() == -1 || player.dimension.getId() == 0 || player.dimension.getId() == 1 ))
+//		{
+//			player.abilities.allowFlying = true;
+//		}
 		player.getPersistentData().putBoolean("wearingFullDragonArmor", iswearingFullDragonArmor);
 	
 		if(iswearingFullDragonArmor)
@@ -96,7 +95,7 @@ public class ItemCustomArmorDragon extends ArmorItem
 	  //Chestplate
 	  if(chest.getItem() == ItemInit.GOBBER2_CHESTPLATE_DRAGON.get())
 		{				
-			player.getAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(40.0D); 
+			//player.getAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(40.0D); 
 		 }		
 		  
 	  //Leggings
@@ -136,7 +135,7 @@ public class ItemCustomArmorDragon extends ArmorItem
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_dragon.line1").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_dragon.line2").applyTextStyle(TextFormatting.GOLD)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_dragon.line1").mergeStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_dragon.line2").mergeStyle(TextFormatting.GOLD)));
 	}
 }

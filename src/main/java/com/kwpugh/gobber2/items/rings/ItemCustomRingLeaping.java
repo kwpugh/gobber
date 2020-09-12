@@ -10,7 +10,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -31,19 +31,19 @@ public class ItemCustomRingLeaping extends Item
 	{
 		ActionResult<ItemStack> result = super.onItemRightClick(world, entity, hand);
  
-    	Vec3d look = entity.getLookVec().normalize();
+		Vector3d look = entity.getLookVec().normalize();
 		double lookX = look.x;
 		double lookY = look.y;
 		double lookZ = look.z;
 		
 		//Get some vertical height to start
-		if(entity.onGround && !entity.isCrouching())	
+		if(entity.isOnGround() && !entity.isCrouching())	
 		{
 			entity.setMotion(lookX * 0.0, lookY * 3.0, lookZ * 0.0);
 		}
         
 		//Once aloft, provide some horizontal movement
-		if(!entity.onGround)
+		if(!entity.isOnGround())
 		{	
 			entity.addVelocity(lookX * 0.4, lookY * 0.4, lookZ * 0.4);
 		}
@@ -55,7 +55,7 @@ public class ItemCustomRingLeaping extends Item
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_leaping.line1").applyTextStyle(TextFormatting.GREEN)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_leaping.line2").applyTextStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_leaping.line1").mergeStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_leaping.line2").mergeStyle(TextFormatting.YELLOW)));
 	} 
 }

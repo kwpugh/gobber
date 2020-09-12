@@ -4,7 +4,7 @@ import com.kwpugh.gobber2.config.GobberConfigBuilder;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.boss.dragon.EnderDragonEntity;
-import net.minecraft.world.dimension.EndDimension;
+import net.minecraft.world.World;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.feature.EndPodiumFeature;
 import net.minecraftforge.common.MinecraftForge;
@@ -33,8 +33,9 @@ public class DragonKillHandler
     @SubscribeEvent
     public void LivingDeathEvent(LivingDeathEvent event)
     {
-        if(event.getEntity().getEntityWorld().getDimension() instanceof EndDimension)
-        {
+        //if(event.getEntity().getEntityWorld().getDimension() instanceof EndDimension)
+        if(event.getEntity().getEntityWorld().getDimensionKey().equals(World.THE_END))
+    	{
         	if(GobberConfigBuilder.ENABLE_DRAGON_KILL_EVERY_KILL.get())
         	{
                 if (event.getEntity() instanceof EnderDragonEntity)

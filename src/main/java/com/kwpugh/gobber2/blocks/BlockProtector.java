@@ -76,7 +76,7 @@ public class BlockProtector extends Block
 		worldIn.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), worldIn.rand.nextInt(maxTickTime - minTickTime + 1));
 		if(worldIn.isRemote)
     	{
-			player.sendMessage(new TranslationTextComponent("item.gobber2.block_protector.line1", radius).applyTextStyle(TextFormatting.GREEN));
+			player.sendStatusMessage(new TranslationTextComponent("item.gobber2.block_protector.line1", radius).mergeStyle(TextFormatting.GREEN), true);
     	}
 
 		return ActionResultType.SUCCESS;
@@ -89,9 +89,9 @@ public class BlockProtector extends Block
 		{
 			world.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), random.nextInt(minTickTime));
 
-			BlockPos posUp = pos.up();
-			BlockState flaming = ((FireBlock)Blocks.FIRE).getStateForPlacement(world, posUp);
-			world.setBlockState(posUp, flaming, 11);
+//			BlockPos posUp = pos.up();
+//			BlockState flaming = ((FireBlock)Blocks.FIRE).getStateForPlacement(world, posUp);
+//			world.setBlockState(posUp, flaming, 11);
 
 			List<Entity> entities = world.getEntitiesWithinAABB(LivingEntity.class, new AxisAlignedBB(pos.getX() - radius, pos.getY() - radius, pos.getZ() - radius, pos.getX() + radius, pos.getY() + radius, pos.getZ() + radius), e -> (e instanceof LivingEntity));
 			for(Entity entity : entities)
@@ -150,9 +150,9 @@ public class BlockProtector extends Block
 	public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.block_protector.line2").applyTextStyle(TextFormatting.GREEN)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.block_protector.line3").applyTextStyle(TextFormatting.GREEN)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.block_protector.line4", radius).applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.block_protector.line2").mergeStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.block_protector.line3").mergeStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.block_protector.line4", radius).mergeStyle(TextFormatting.LIGHT_PURPLE)));
 	}
 }
 

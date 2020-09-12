@@ -64,7 +64,7 @@ public class ItemCustomStaffEnsnarement extends Item
 			{
 				entity.remove();
 				stack.getTag().put("mob_data", tag);
-				stack.getTag().putString("name", entity.getDisplayName().getFormattedText());
+				stack.getTag().putString("name", entity.getDisplayName().getString());
 			}
 			return true;
 		}
@@ -131,8 +131,8 @@ public class ItemCustomStaffEnsnarement extends Item
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_ensnarement.line1").applyTextStyle(TextFormatting.GREEN)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_ensnarement.line2").applyTextStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_ensnarement.line1").mergeStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_ensnarement.line2").mergeStyle(TextFormatting.GREEN)));
 
 		if (stack.hasTag())
 		{
@@ -140,14 +140,14 @@ public class ItemCustomStaffEnsnarement extends Item
 
 			if (tag.isEmpty())
 			{
-				tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_ensnarement.line3").applyTextStyle(TextFormatting.GREEN)));
+				tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_ensnarement.line3").mergeStyle(TextFormatting.GREEN)));
 			}
 			else
 			{
-				tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_ensnarement.line4", stack.getTag().getString("name")).applyTextStyle(TextFormatting.GREEN)));
+				tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_ensnarement.line4", stack.getTag().getString("name")).mergeStyle(TextFormatting.GREEN)));
 			}
 		}
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_ensnarement.line5").applyTextStyle(TextFormatting.AQUA)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_ensnarement.line6").applyTextStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_ensnarement.line5").mergeStyle(TextFormatting.AQUA)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_staff_ensnarement.line6").mergeStyle(TextFormatting.YELLOW)));
 	}
 }

@@ -41,7 +41,6 @@ import com.kwpugh.gobber2.items.rings.ItemCustomRingSwiftness;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingTeleport;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingTraveler;
 import com.kwpugh.gobber2.items.rings.ItemCustomRingVision;
-import com.kwpugh.gobber2.items.rings.ItemCustomRingVoid;
 import com.kwpugh.gobber2.items.seeds.ItemCustomSeed;
 import com.kwpugh.gobber2.items.seeds.ItemCustomSeedEnd;
 import com.kwpugh.gobber2.items.seeds.ItemCustomSeedNether;
@@ -66,9 +65,6 @@ import com.kwpugh.gobber2.items.tools.excavator.ItemCustomExcavatorNether;
 import com.kwpugh.gobber2.items.tools.hammer.ItemCustomHammer;
 import com.kwpugh.gobber2.items.tools.hammer.ItemCustomHammerEnd;
 import com.kwpugh.gobber2.items.tools.hammer.ItemCustomHammerNether;
-import com.kwpugh.gobber2.items.tools.hoe.ItemCustomHoe;
-import com.kwpugh.gobber2.items.tools.hoe.ItemCustomHoeEnd;
-import com.kwpugh.gobber2.items.tools.hoe.ItemCustomHoeNether;
 import com.kwpugh.gobber2.items.tools.paxel.ItemCustomPaxel;
 import com.kwpugh.gobber2.items.tools.paxel.ItemCustomPaxelEnd;
 import com.kwpugh.gobber2.items.tools.paxel.ItemCustomPaxelNether;
@@ -90,6 +86,7 @@ import com.kwpugh.gobber2.lists.ToolMaterialList;
 
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -97,7 +94,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class ItemInit
 {
-	public static final DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, Gobber2.modid);
+	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Gobber2.modid);
 
 	public static final RegistryObject<Item> GOBBER2_ORE = ITEMS.register("gobber2_ore", () -> new BlockItem(BlockInit.GOBBER2_ORE.get(), new Item.Properties().group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_ORE_NETHER = ITEMS.register("gobber2_ore_nether", () -> new BlockItem(BlockInit.GOBBER2_ORE_NETHER.get(), new Item.Properties().group(Gobber2.gobber2)));
@@ -143,7 +140,7 @@ public class ItemInit
 	public static final RegistryObject<Item> GOBBER2_SHOVEL = ITEMS.register("gobber2_shovel", () -> new ItemCustomShovel(ToolMaterialList.GOBBER2, 5.0f, -3.0f, new Item.Properties().group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_AXE = ITEMS.register("gobber2_axe", () -> new ItemCustomAxe(ToolMaterialList.GOBBER2, 8.0f, -2.9f, new Item.Properties().group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_TREE_AXE = ITEMS.register("gobber2_tree_axe", () -> new TreeAxeBase(ToolMaterialList.GOBBER2, 8.0f, -2.9f, new Item.Properties().group(Gobber2.gobber2)));
-	public static final RegistryObject<Item> GOBBER2_HOE = ITEMS.register("gobber2_hoe", () -> new ItemCustomHoe(ToolMaterialList.GOBBER2, 2.1f, new Item.Properties().group(Gobber2.gobber2)));
+	public static final RegistryObject<Item> GOBBER2_HOE = ITEMS.register("gobber2_hoe", () -> new HoeItem(ToolMaterialList.GOBBER2, 0, 2.1f, new Item.Properties().group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_HAMMER = ITEMS.register("gobber2_hammer", () -> new ItemCustomHammer(ToolMaterialList.GOBBER2, 7, -2.9f, new Item.Properties().group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_EXCAVATOR = ITEMS.register("gobber2_excavator", () -> new ItemCustomExcavator(ToolMaterialList.GOBBER2, 5.0f, -3.0f, new Item.Properties().group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_PAXEL = ITEMS.register("gobber2_paxel", () -> new ItemCustomPaxel(8, -2.9f, ToolMaterialList.GOBBER2, null, new Item.Properties().group(Gobber2.gobber2)));
@@ -161,7 +158,7 @@ public class ItemInit
 	public static final RegistryObject<Item> GOBBER2_SHOVEL_NETHER = ITEMS.register("gobber2_shovel_nether", () -> new ItemCustomShovelNether(ToolMaterialList.GOBBER2_NETHER, 6.0f, -2.8f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_AXE_NETHER = ITEMS.register("gobber2_axe_nether", () -> new ItemCustomAxeNether(ToolMaterialList.GOBBER2_NETHER, 10.0f, -2.8f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_TREE_AXE_NETHER = ITEMS.register("gobber2_tree_axe_nether", () -> new TreeAxeBase(ToolMaterialList.GOBBER2_NETHER, 10.0f, -2.8f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
-	public static final RegistryObject<Item> GOBBER2_HOE_NETHER = ITEMS.register("gobber2_hoe_nether", () -> new ItemCustomHoeNether(ToolMaterialList.GOBBER2_NETHER, 2.2f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
+	public static final RegistryObject<Item> GOBBER2_HOE_NETHER = ITEMS.register("gobber2_hoe_nether", () -> new HoeItem(ToolMaterialList.GOBBER2_NETHER, 0, 2.2f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_HAMMER_NETHER = ITEMS.register("gobber2_hammer_nether", () -> new ItemCustomHammerNether(ToolMaterialList.GOBBER2_NETHER, 8, -2.8f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_EXCAVATOR_NETHER = ITEMS.register("gobber2_excavator_nether", () -> new ItemCustomExcavatorNether(ToolMaterialList.GOBBER2_NETHER, 6.0f, -2.8f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_PAXEL_NETHER = ITEMS.register("gobber2_paxel_nether", () -> new ItemCustomPaxelNether(10, -2.8f, ToolMaterialList.GOBBER2_NETHER, null, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
@@ -179,7 +176,7 @@ public class ItemInit
 	public static final RegistryObject<Item> GOBBER2_SHOVEL_END = ITEMS.register("gobber2_shovel_end", () -> new ItemCustomShovelEnd(ToolMaterialList.GOBBER2_END, 8.0f, -2.6f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_AXE_END = ITEMS.register("gobber2_axe_end", () -> new ItemCustomAxeEnd(ToolMaterialList.GOBBER2_END, 14.0f, -2.7f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_TREE_AXE_END = ITEMS.register("gobber2_tree_axe_end", () -> new ItemCustomTreeAxeEnd(ToolMaterialList.GOBBER2_END, 14.0f, -2.7f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
-	public static final RegistryObject<Item> GOBBER2_HOE_END = ITEMS.register("gobber2_hoe_end", () -> new ItemCustomHoeEnd(ToolMaterialList.GOBBER2_END, 2.3f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
+	public static final RegistryObject<Item> GOBBER2_HOE_END = ITEMS.register("gobber2_hoe_end", () -> new HoeItem(ToolMaterialList.GOBBER2_END, 0, 2.3f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_HAMMER_END = ITEMS.register("gobber2_hammer_end", () -> new ItemCustomHammerEnd(ToolMaterialList.GOBBER2_END, 10, -2.7f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_EXCAVATOR_END = ITEMS.register("gobber2_excavator_end", () -> new ItemCustomExcavatorEnd(ToolMaterialList.GOBBER2_END, 8.0f, -2.6f, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_PAXEL_END = ITEMS.register("gobber2_paxel_end", () -> new ItemCustomPaxelEnd(13, -2.7f, ToolMaterialList.GOBBER2_END, null, new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
@@ -206,7 +203,7 @@ public class ItemInit
 	public static final RegistryObject<Item> GOBBER2_RING_ASCENT = ITEMS.register("gobber2_ring_ascent", () -> new ItemCustomRingAscent(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_RING_ABOVE = ITEMS.register("gobber2_ring_above", () -> new ItemCustomRingAbove(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_RING_MINER = ITEMS.register("gobber2_ring_miner", () -> new ItemCustomRingMiner(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
-	public static final RegistryObject<Item> GOBBER2_RING_LUMBERJACK = ITEMS.register("gobber2_ring_lumberjack", () -> new ItemCustomRingLumberjack(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
+	//public static final RegistryObject<Item> GOBBER2_RING_LUMBERJACK = ITEMS.register("gobber2_ring_lumberjack", () -> new ItemCustomRingLumberjack(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_RING_FARMER = ITEMS.register("gobber2_ring_farmer", () -> new ItemCustomRingFarmer(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_RING_HUSBANDRY = ITEMS.register("gobber2_ring_husbandry", () -> new ItemCustomRingHusbandry(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_RING_SWIFTNESS = ITEMS.register("gobber2_ring_swiftness", () -> new ItemCustomRingSwiftness(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
@@ -227,12 +224,12 @@ public class ItemInit
 	public static final RegistryObject<Item> GOBBER2_RING_PYRO = ITEMS.register("gobber2_ring_pyro", () -> new ItemCustomRingPyro(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_RING_ENDERCHEST = ITEMS.register("gobber2_ring_enderchest", () -> new ItemCustomRingEnderchest(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_RING_TRAVELER = ITEMS.register("gobber2_ring_traveler", () -> new ItemCustomRingTraveler(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
-	public static final RegistryObject<Item> GOBBER2_RING_VOID = ITEMS.register("gobber2_ring_void", () -> new ItemCustomRingVoid(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
+	//public static final RegistryObject<Item> GOBBER2_RING_VOID = ITEMS.register("gobber2_ring_void", () -> new ItemCustomRingVoid(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_RING_AIRWALKING = ITEMS.register("gobber2_ring_airwalking", () -> new ItemCustomRingAirwalking(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_RING_STEALTH = ITEMS.register("gobber2_ring_stealth", () -> new ItemCustomRingStealth(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_RING_TELEPORT = ITEMS.register("gobber2_ring_teleport", () -> new ItemCustomRingTeleport(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_RING_BLINK = ITEMS.register("gobber2_ring_blink", () -> new ItemCustomRingBlink(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
-	public static final RegistryObject<Item> GOBBER2_RING_EXPLORER = ITEMS.register("gobber2_ring_explorer", () -> new ItemCustomRingExplorer(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
+	//public static final RegistryObject<Item> GOBBER2_RING_EXPLORER = ITEMS.register("gobber2_ring_explorer", () -> new ItemCustomRingExplorer(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
 
 	public static final RegistryObject<Item> GOBBER2_MEDALLION = ITEMS.register("gobber2_medallion", () -> new Item(new Item.Properties().group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_MEDALLION_STEPPING = ITEMS.register("gobber2_medallion_stepping", () -> new ItemCustomMedallionStepping(new Item.Properties().maxStackSize(1).group(Gobber2.gobber2)));
@@ -268,6 +265,6 @@ public class ItemInit
 	public static final RegistryObject<Item> BLOCK_HEALER = ITEMS.register("block_healer", () -> new BlockItem(BlockInit.BLOCK_HEALER.get(), new Item.Properties().group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> BLOCK_PROTECTOR = ITEMS.register("block_protector", () -> new BlockItem(BlockInit.BLOCK_PROTECTOR.get(), new Item.Properties().group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> BLOCK_DEFENDER = ITEMS.register("block_defender", () -> new BlockItem(BlockInit.BLOCK_DEFENDER.get(), new Item.Properties().group(Gobber2.gobber2)));
-	public static final RegistryObject<Item> BLOCK_MATURATOR = ITEMS.register("block_maturator", () -> new BlockItem(BlockInit.BLOCK_MATURATOR.get(), new Item.Properties().group(Gobber2.gobber2)));
+	//public static final RegistryObject<Item> BLOCK_MATURATOR = ITEMS.register("block_maturator", () -> new BlockItem(BlockInit.BLOCK_MATURATOR.get(), new Item.Properties().group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> BLOCK_LOOTER = ITEMS.register("block_looter", () -> new BlockItem(BlockInit.BLOCK_LOOTER.get(), new Item.Properties().group(Gobber2.gobber2)));
 }

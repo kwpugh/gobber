@@ -104,7 +104,7 @@ public class ItemCustomRingAttraction extends Item
 		if(!world.isRemote && !(player.isSneaking()))
         {
             EnableUtil.changeEnabled(player, hand);
-            player.sendMessage(new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line2", EnableUtil.isEnabled(stack)).applyTextStyle(TextFormatting.GREEN));
+            player.sendStatusMessage(new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line2", EnableUtil.isEnabled(stack)).mergeStyle(TextFormatting.GREEN), true);
             return new ActionResult<ItemStack>(ActionResultType.SUCCESS, player.getHeldItem(hand));
         }		
 		
@@ -114,31 +114,31 @@ public class ItemCustomRingAttraction extends Item
 			{
 				range = 10;
 				MagnetRangeUtil.setCurrentRange(stack, range);
-				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRangeUtil.getCurrentRange(stack)).applyTextStyle(TextFormatting.GREEN)));
+				player.sendStatusMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRangeUtil.getCurrentRange(stack)).mergeStyle(TextFormatting.GREEN)), true);
 			}
 			else if(range == 10)
 			{
 				range = 12;
 				MagnetRangeUtil.setCurrentRange(stack, range);
-				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRangeUtil.getCurrentRange(stack)).applyTextStyle(TextFormatting.GREEN)));
+				player.sendStatusMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRangeUtil.getCurrentRange(stack)).mergeStyle(TextFormatting.GREEN)), true);
 			}
 			else if(range == 12)
 			{
 				range = 14;
 				MagnetRangeUtil.setCurrentRange(stack, range);
-				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRangeUtil.getCurrentRange(stack)).applyTextStyle(TextFormatting.GREEN)));
+				player.sendStatusMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRangeUtil.getCurrentRange(stack)).mergeStyle(TextFormatting.GREEN)), true);
 			}
 			else if(range == 14)
 			{
 				range = 4;
 				MagnetRangeUtil.setCurrentRange(stack, range);
-				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRangeUtil.getCurrentRange(stack)).applyTextStyle(TextFormatting.GREEN)));
+				player.sendStatusMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRangeUtil.getCurrentRange(stack)).mergeStyle(TextFormatting.GREEN)), true);
 			}
 			else if(range == 4)
 			{
 				range = 8;
 				MagnetRangeUtil.setCurrentRange(stack, range);
-				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRangeUtil.getCurrentRange(stack)).applyTextStyle(TextFormatting.GREEN)));
+				player.sendStatusMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRangeUtil.getCurrentRange(stack)).mergeStyle(TextFormatting.GREEN)), true);
 			}
         }
         
@@ -155,10 +155,10 @@ public class ItemCustomRingAttraction extends Item
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line1").applyTextStyle(TextFormatting.GREEN)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line2", EnableUtil.isEnabled(stack)).applyTextStyle(TextFormatting.GREEN)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line3").applyTextStyle(TextFormatting.YELLOW)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line4").applyTextStyle(TextFormatting.RED)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5",range).applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line1").mergeStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line2", EnableUtil.isEnabled(stack)).mergeStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line3").mergeStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line4").mergeStyle(TextFormatting.RED)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5",range).mergeStyle(TextFormatting.LIGHT_PURPLE)));
 	}     
 }

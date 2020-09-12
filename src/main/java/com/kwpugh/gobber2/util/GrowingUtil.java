@@ -51,11 +51,11 @@ public class GrowingUtil
 					(block instanceof PumpkinBlock) ) 
 			{
 				if (player.ticksExisted % (baseTickDelay) == 0)
-				{
-					blockstate.tick((ServerWorld) world, targetPos, world.rand);
-				}                                                               
+				{	
+					blockstate.randomTick((ServerWorld) world, targetPos, world.getServer().func_241755_D_().getRandom());
+				} 	
 			}
-
+     
 			if ((block instanceof CoralBlock) ||		
 					(block instanceof BambooSaplingBlock) || 
 					(block instanceof BambooBlock)  ||
@@ -70,7 +70,7 @@ public class GrowingUtil
 			{        				
 				if (player.ticksExisted % (baseTickDelay * 2) == 0)
 				{
-					blockstate.tick((ServerWorld) world, targetPos, world.rand);
+					blockstate.randomTick((ServerWorld) world, targetPos, world.getServer().func_241755_D_().getRandom());
 				}                     		
 			}
 

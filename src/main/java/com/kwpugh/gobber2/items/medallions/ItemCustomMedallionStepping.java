@@ -43,7 +43,7 @@ public class ItemCustomMedallionStepping extends Item
     {
 		if(!(player.isCrouching()))
 		{
-			player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_medallion_stepping.line1", player.stepHeight).applyTextStyle(TextFormatting.GREEN)));
+			player.sendStatusMessage((new TranslationTextComponent("item.gobber2.gobber2_medallion_stepping.line1", player.stepHeight).mergeStyle(TextFormatting.GREEN)), true);
 		}
 		
         if(player.isCrouching())
@@ -51,23 +51,23 @@ public class ItemCustomMedallionStepping extends Item
         	if(player.stepHeight < 1.0F)
 		    {
 		    	player.stepHeight = 1.0F;
-		    	player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_medallion_stepping.line2", player.stepHeight).applyTextStyle(TextFormatting.GREEN)));
+		    	player.sendStatusMessage((new TranslationTextComponent("item.gobber2.gobber2_medallion_stepping.line2", player.stepHeight).mergeStyle(TextFormatting.GREEN)), true);
 		    }
 		    else if(player.stepHeight == 1.0F)
 			{
 		    	player.stepHeight = 2.1F;
-		    	player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_medallion_stepping.line2", player.stepHeight).applyTextStyle(TextFormatting.GREEN)));
+		    	player.sendStatusMessage((new TranslationTextComponent("item.gobber2.gobber2_medallion_stepping.line2", player.stepHeight).mergeStyle(TextFormatting.GREEN)), true);
 			}
 			else if(player.stepHeight == 2.1F)
 			{
 				player.stepHeight = 3.1F;
-				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_medallion_stepping.line2", player.stepHeight).applyTextStyle(TextFormatting.GREEN)));
+				player.sendStatusMessage((new TranslationTextComponent("item.gobber2.gobber2_medallion_stepping.line2", player.stepHeight).mergeStyle(TextFormatting.GREEN)), true);
 			}
 			else if(player.stepHeight == 3.1F)
 			{
 				player.stepHeight = 0.6F;
-				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_medallion_stepping.line3").applyTextStyle(TextFormatting.GREEN)));
-				player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_medallion_stepping.line4").applyTextStyle(TextFormatting.GREEN)));
+				player.sendStatusMessage((new TranslationTextComponent("item.gobber2.gobber2_medallion_stepping.line3").mergeStyle(TextFormatting.GREEN)), true);
+				player.sendStatusMessage((new TranslationTextComponent("item.gobber2.gobber2_medallion_stepping.line4").mergeStyle(TextFormatting.GREEN)), true);
 			}		    
 		    
         	currentStepHeight = player.stepHeight;
@@ -81,8 +81,8 @@ public class ItemCustomMedallionStepping extends Item
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_medallion_stepping.line5").applyTextStyle(TextFormatting.GREEN)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_medallion_stepping.line6").applyTextStyle(TextFormatting.YELLOW)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_medallion_stepping.line7").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_medallion_stepping.line5").mergeStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_medallion_stepping.line6").mergeStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_medallion_stepping.line7").mergeStyle(TextFormatting.LIGHT_PURPLE)));
 	} 
 }

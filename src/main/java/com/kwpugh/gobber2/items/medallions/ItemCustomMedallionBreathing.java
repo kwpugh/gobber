@@ -51,7 +51,7 @@ public class ItemCustomMedallionBreathing extends Item
         if(!world.isRemote && player.isCrouching())
         {
             EnableUtil.changeEnabled(player, hand);
-            player.sendMessage((new TranslationTextComponent("item.gobber2.gobber2_medallion_breathing.line2", EnableUtil.isEnabled(stack)).applyTextStyle(TextFormatting.GREEN)));
+            player.sendStatusMessage((new TranslationTextComponent("item.gobber2.gobber2_medallion_breathing.line2", EnableUtil.isEnabled(stack)).mergeStyle(TextFormatting.GREEN)), true);
             return new ActionResult<ItemStack>(ActionResultType.SUCCESS, player.getHeldItem(hand));
         }
         return super.onItemRightClick(world, player, hand);
@@ -61,8 +61,8 @@ public class ItemCustomMedallionBreathing extends Item
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_medallion_breathing.line1").applyTextStyle(TextFormatting.GREEN)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_medallion_breathing.line2", EnableUtil.isEnabled(stack)).applyTextStyle(TextFormatting.GREEN)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_medallion_breathing.line3").applyTextStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_medallion_breathing.line1").mergeStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_medallion_breathing.line2", EnableUtil.isEnabled(stack)).mergeStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_medallion_breathing.line3").mergeStyle(TextFormatting.YELLOW)));
 	}     
 }

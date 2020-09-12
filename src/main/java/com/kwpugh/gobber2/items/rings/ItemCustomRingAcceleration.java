@@ -12,7 +12,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -40,9 +40,9 @@ public class ItemCustomRingAcceleration extends Item
 		 if(equippedMain == itemstack)  //Only works while in the main hand
 		 {   			
 			 // Right-click while in air gives acceleration in direction looking
-			if(!player.onGround)
+			if(!player.isOnGround())
 			{
-				Vec3d look = player.getLookVec().normalize();
+				Vector3d look = player.getLookVec().normalize();
 				double lookX = look.x;
 				double lookY = look.y;
 				double lookZ = look.z;
@@ -64,7 +64,7 @@ public class ItemCustomRingAcceleration extends Item
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_acceleration.line1").applyTextStyle(TextFormatting.GREEN)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_acceleration.line2").applyTextStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_acceleration.line1").mergeStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_acceleration.line2").mergeStyle(TextFormatting.YELLOW)));
 	}  
 }

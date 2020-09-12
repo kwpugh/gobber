@@ -38,7 +38,7 @@ public class ItemCustomRingSunshine extends Item
 			{
 				if(world.getWorldInfo().isRaining())
 				{
-					world.getWorldInfo().setRainTime(1);
+					world.getWorldInfo().setRaining(false); //used to be setRainTime(1)
 				}
 			}
         }
@@ -49,7 +49,7 @@ public class ItemCustomRingSunshine extends Item
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_sunshine.line1").applyTextStyle(TextFormatting.GREEN)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_sunshine.line2").applyTextStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_sunshine.line1").mergeStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_sunshine.line2").mergeStyle(TextFormatting.YELLOW)));
 	} 
 }

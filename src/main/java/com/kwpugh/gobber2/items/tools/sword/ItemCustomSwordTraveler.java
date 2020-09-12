@@ -14,7 +14,7 @@ import net.minecraft.item.SwordItem;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -34,19 +34,19 @@ public class ItemCustomSwordTraveler extends SwordItem
 	{
 		ActionResult<ItemStack> result = super.onItemRightClick(world, entity, hand);
  
-    	Vec3d look = entity.getLookVec().normalize();
+		Vector3d look = entity.getLookVec().normalize();
 		double lookX = look.x;
 		double lookY = look.y;
 		double lookZ = look.z;
 		
 		//Get some vertical height to start
-		if(entity.onGround && !entity.isCrouching())	
+		if(entity.isOnGround() && !entity.isCrouching())	
 		{
 			entity.setMotion(lookX * 0.0, lookY * 4.5, lookZ * 0.0);
 		}
         
 		//Once aloft, provide some horizontal movement
-		if(!entity.onGround)
+		if(!entity.isOnGround())
 		{	
 			entity.addVelocity(lookX * 0.6, lookY * 0.6, lookZ * 0.6);
 		}
@@ -86,7 +86,7 @@ public class ItemCustomSwordTraveler extends SwordItem
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_sword_traveler.line1").applyTextStyle(TextFormatting.GREEN)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_sword_traveler.line2").applyTextStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_sword_traveler.line1").mergeStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_sword_traveler.line2").mergeStyle(TextFormatting.YELLOW)));
 	} 
 }

@@ -25,6 +25,6 @@ public class BlockOreEnd extends OreBlock
 	public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ore_end.line1").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ore_end.line1").mergeStyle(TextFormatting.LIGHT_PURPLE)));
 	}
 }

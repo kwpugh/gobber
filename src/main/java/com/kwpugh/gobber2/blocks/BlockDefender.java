@@ -46,6 +46,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
@@ -75,22 +76,22 @@ public class BlockDefender extends Block
 		worldIn.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), worldIn.rand.nextInt(maxTickTime - minTickTime + 1));
 		if(worldIn.isRemote)
     	{
-			player.sendMessage(new TranslationTextComponent("item.gobber2.block_defender.line1", radius).applyTextStyle(TextFormatting.GREEN));
+			player.sendStatusMessage(new TranslationTextComponent("item.gobber2.block_defender.line1", radius).mergeStyle(TextFormatting.GREEN), true);
     	}
 
 		return ActionResultType.SUCCESS;
 	}
 
 	@Override
-	public void tick(BlockState state,ServerWorld world, BlockPos pos, Random random)
+	public void tick(BlockState state, ServerWorld world, BlockPos pos, Random random)
 	{
 		if(!world.isRemote)
 		{
 			world.getPendingBlockTicks().scheduleTick(pos, this, this.tickRate(world) + random.nextInt(10));
 
-			BlockPos posUp = pos.up();
-			BlockState flaming = ((FireBlock)Blocks.FIRE).getStateForPlacement(world, posUp);
-			world.setBlockState(posUp, flaming, 11);
+//			BlockPos posUp = pos.up();
+//			BlockState flaming = ((FireBlock)Blocks.FIRE).getStateForPlacement(world, posUp);
+//			world.setBlockState(posUp, flaming, 11);
 
 			List<Entity> entities = world.getEntitiesWithinAABB(LivingEntity.class, new AxisAlignedBB(pos.getX() - radius, pos.getY() - radius, pos.getZ() - radius, pos.getX() + radius, pos.getY() + radius, pos.getZ() + radius), e -> (e instanceof LivingEntity));
 			for(Entity entity : entities)
@@ -139,6 +140,11 @@ public class BlockDefender extends Block
 		}
 	}
 
+	private int tickRate(IWorldReader world)
+	{
+		return 10;
+	}
+
 	@Override
 	public BlockRenderType getRenderType(BlockState state)
 	{
@@ -149,9 +155,9 @@ public class BlockDefender extends Block
 	public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.block_defender.line2").applyTextStyle(TextFormatting.GREEN)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.block_defender.line3").applyTextStyle(TextFormatting.GREEN)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.block_defender.line4", radius).applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.block_defender.line2").mergeStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.block_defender.line3").mergeStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.block_defender.line4", radius).mergeStyle(TextFormatting.LIGHT_PURPLE)));
 	}
 }
 

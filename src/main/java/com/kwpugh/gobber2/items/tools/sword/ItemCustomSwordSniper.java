@@ -49,7 +49,7 @@ public class ItemCustomSwordSniper extends SwordItem
 		    if(player.isSneaking())
 		    {
 		        EnableUtil.changeEnabled(player, hand);
-		        player.sendMessage(new TranslationTextComponent("item.gobber2.gobber2_sword_sniper.line4", EnableUtil.isEnabled(stack)).applyTextStyle(TextFormatting.RED));
+		        player.sendStatusMessage(new TranslationTextComponent("item.gobber2.gobber2_sword_sniper.line4", EnableUtil.isEnabled(stack)).mergeStyle(TextFormatting.RED), true);
 		        
 		    }
 		    
@@ -58,7 +58,7 @@ public class ItemCustomSwordSniper extends SwordItem
 	            ArrowItem itemarrow = (ArrowItem)Items.ARROW;
 	            AbstractArrowEntity entityarrow = itemarrow.createArrow(world, new ItemStack(Items.ARROW), player);
 	            float arrowVelocity = 60.0F;
-	            entityarrow.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, arrowVelocity, 1.0F);
+	            entityarrow.func_234612_a_(player, player.rotationPitch, player.rotationYaw, 0.0F, arrowVelocity, 1.0F);
 	            entityarrow.setDamage(1);
 	            world.addEntity(entityarrow);
 	            entityarrow.pickupStatus = AbstractArrowEntity.PickupStatus.DISALLOWED;
@@ -105,10 +105,10 @@ public class ItemCustomSwordSniper extends SwordItem
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_sword_sniper.line1").applyTextStyle(TextFormatting.GREEN)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_sword_sniper.line2").applyTextStyle(TextFormatting.YELLOW)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_sword_sniper.line3").applyTextStyle(TextFormatting.YELLOW)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_sword_sniper.line4", EnableUtil.isEnabled(stack)).applyTextStyle(TextFormatting.RED)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_sword_sniper.line5").applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_sword_sniper.line1").mergeStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_sword_sniper.line2").mergeStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_sword_sniper.line3").mergeStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_sword_sniper.line4", EnableUtil.isEnabled(stack)).mergeStyle(TextFormatting.RED)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_sword_sniper.line5").mergeStyle(TextFormatting.LIGHT_PURPLE)));
 	}  
 }

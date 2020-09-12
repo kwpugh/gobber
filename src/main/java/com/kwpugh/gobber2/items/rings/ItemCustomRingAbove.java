@@ -21,13 +21,8 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
-import net.minecraft.world.dimension.DimensionType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-
-/*
- * Based on work by: Maciej916 in Ma-Essentials
- */
 
 public class ItemCustomRingAbove extends Item
 {
@@ -42,14 +37,15 @@ public class ItemCustomRingAbove extends Item
 	{
 		ItemStack stack = player.getHeldItem(hand);
 	
-		if (world.getDimension().getType() != DimensionType.OVERWORLD)
+		//if (world.getDimension().getType() != DimensionType.OVERWORLD)
+		if(!world.getDimensionKey().equals(World.OVERWORLD))
 		{
 			player.sendStatusMessage(new TranslationTextComponent("item.gobber2.gobber2_ring_above.line5"), true);
 		}
 		
 		player.getCooldownTracker().setCooldown(this, ringAboveCooldown);
 		
-		if (!world.isRemote && (world.getDimension().getType() == DimensionType.OVERWORLD))
+		if (!world.isRemote && (world.getDimensionKey().equals(World.OVERWORLD)))
 		{
 			if(player.isSneaking())
 			{
@@ -87,7 +83,8 @@ public class ItemCustomRingAbove extends Item
 			{	
 				//Checking from top of world downward
 				double x = player.getPosX();
-				double y = world.getMaxHeight();
+				//double y = world.getMaxHeight();
+				double y = 255;
 				double z = player.getPosZ();
 				
 				Chunk chunk = world.getChunk((int) player.getPosX() >> 4, (int)player.getPosZ() >> 4);
@@ -123,10 +120,10 @@ public class ItemCustomRingAbove extends Item
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_above.line1").applyTextStyle(TextFormatting.GREEN)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_above.line2").applyTextStyle(TextFormatting.YELLOW)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_above.line3").applyTextStyle(TextFormatting.YELLOW)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_above.line4").applyTextStyle(TextFormatting.RED)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring.cooldown",ringAboveCooldown).applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_above.line1").mergeStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_above.line2").mergeStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_above.line3").mergeStyle(TextFormatting.YELLOW)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_above.line4").mergeStyle(TextFormatting.RED)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring.cooldown",ringAboveCooldown).mergeStyle(TextFormatting.LIGHT_PURPLE)));
 	} 	
 }

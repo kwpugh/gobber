@@ -12,14 +12,12 @@ import net.minecraft.block.BambooSaplingBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.CactusBlock;
 import net.minecraft.block.ChorusFlowerBlock;
 import net.minecraft.block.CocoaBlock;
 import net.minecraft.block.CoralBlock;
 import net.minecraft.block.CoralPlantBlock;
 import net.minecraft.block.CropsBlock;
-import net.minecraft.block.FireBlock;
 import net.minecraft.block.MelonBlock;
 import net.minecraft.block.NetherWartBlock;
 import net.minecraft.block.PumpkinBlock;
@@ -48,6 +46,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
@@ -78,7 +77,7 @@ public class BlockMaturator extends Block
     	worldIn.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), worldIn.rand.nextInt(maxTickTime - minTickTime + 1));
     	if(worldIn.isRemote)
     	{
-    		player.sendMessage(new TranslationTextComponent("item.gobber2.block_maturator.line1", radius).applyTextStyle(TextFormatting.GREEN));
+    		player.sendStatusMessage(new TranslationTextComponent("item.gobber2.block_maturator.line1", radius).mergeStyle(TextFormatting.GREEN), true);
     	}
     	
         return ActionResultType.SUCCESS;
@@ -93,9 +92,9 @@ public class BlockMaturator extends Block
 		{
     		world.getPendingBlockTicks().scheduleTick(pos, this, this.tickRate(world) + rand.nextInt(minTickTime));
     		
-			BlockPos posUp = pos.up();		
-			BlockState flaming = ((FireBlock)Blocks.FIRE).getStateForPlacement(world, posUp);
-			world.setBlockState(posUp, flaming, 11);
+//			BlockPos posUp = pos.up();		
+//			BlockState flaming = ((FireBlock)Blocks.FIRE).getStateForPlacement(world, posUp);
+//			world.setBlockState(posUp, flaming, 11);
 			
     		for (BlockPos targetPos : BlockPos.getAllInBoxMutable(pos.add(-radius, -2, -radius), pos.add(radius, rediusVertical, radius)))
 			{
@@ -123,7 +122,7 @@ public class BlockMaturator extends Block
                 		(state1.getBlock() instanceof SeaPickleBlock) ||
                 		(state1.getBlock() instanceof ChorusFlowerBlock)  ) 
                 {  
-		        	state1.tick((ServerWorld) world, targetPos, world.rand); 	                                                             
+		        	state1.tick((ServerWorld) world, targetPos, world.rand); 
                 }
 			}
     		
@@ -139,6 +138,13 @@ public class BlockMaturator extends Block
 		}
     }	
 	
+
+
+	private int tickRate(IWorldReader world)
+	{
+		return 10;
+	}
+
 	@Override
 	public BlockRenderType getRenderType(BlockState state)
 	{
@@ -149,7 +155,7 @@ public class BlockMaturator extends Block
 	public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.block_maturator.line2").applyTextStyle(TextFormatting.GREEN)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.block_maturator.line3", radius).applyTextStyle(TextFormatting.LIGHT_PURPLE)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.block_maturator.line2").mergeStyle(TextFormatting.GREEN)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.block_maturator.line3", radius).mergeStyle(TextFormatting.LIGHT_PURPLE)));
 	}
 }
