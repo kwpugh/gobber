@@ -265,6 +265,6 @@ public class ItemInit
 	public static final RegistryObject<Item> BLOCK_HEALER = ITEMS.register("block_healer", () -> new BlockItem(BlockInit.BLOCK_HEALER.get(), new Item.Properties().group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> BLOCK_PROTECTOR = ITEMS.register("block_protector", () -> new BlockItem(BlockInit.BLOCK_PROTECTOR.get(), new Item.Properties().group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> BLOCK_DEFENDER = ITEMS.register("block_defender", () -> new BlockItem(BlockInit.BLOCK_DEFENDER.get(), new Item.Properties().group(Gobber2.gobber2)));
-	//public static final RegistryObject<Item> BLOCK_MATURATOR = ITEMS.register("block_maturator", () -> new BlockItem(BlockInit.BLOCK_MATURATOR.get(), new Item.Properties().group(Gobber2.gobber2)));
+	public static final RegistryObject<Item> BLOCK_MATURATOR = ITEMS.register("block_maturator", () -> new BlockItem(BlockInit.BLOCK_MATURATOR.get(), new Item.Properties().group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> BLOCK_LOOTER = ITEMS.register("block_looter", () -> new BlockItem(BlockInit.BLOCK_LOOTER.get(), new Item.Properties().group(Gobber2.gobber2)));
 }

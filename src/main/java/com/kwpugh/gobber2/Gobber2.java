@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import com.kwpugh.gobber2.config.GobberConfig;
 import com.kwpugh.gobber2.init.BlockInit;
 import com.kwpugh.gobber2.init.ItemInit;
+import com.kwpugh.gobber2.init.TileInit;
 import com.kwpugh.gobber2.util.BlockRenders;
 import com.kwpugh.gobber2.util.Gobber2_Group;
 import com.kwpugh.gobber2.util.PlayerSpecialAbilities;
@@ -24,8 +25,7 @@ import net.minecraftforge.fml.loading.FMLPaths;
 
 @Mod(Gobber2.modid)
 public class Gobber2 
-{
-	
+{	
 	public static Gobber2 instance;
 		
 	public static final String modid = "gobber2";
@@ -40,6 +40,7 @@ public class Gobber2
 		
 		BlockInit.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
     	ItemInit.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+    	TileInit.TILE_ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
     	
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::modSetup);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);

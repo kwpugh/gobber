@@ -1,6 +1,5 @@
 package com.kwpugh.gobber2.world;
 
-
 import com.google.common.collect.ImmutableList;
 import java.util.stream.Collectors;
 import java.util.function.Supplier;
@@ -15,13 +14,8 @@ import com.kwpugh.gobber2.world.feature.CustomOreFeature;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
-import net.minecraft.world.gen.feature.template.BlockMatchRuleTest;
-import net.minecraft.world.gen.feature.template.RuleTest;
-import net.minecraft.world.gen.feature.template.TagMatchRuleTest;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.block.Blocks;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.WorldGenRegistries;
@@ -30,6 +24,7 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = Gobber2.modid, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class OreGenerator
 {
+	public static ConfiguredFeature<?, ?> GOBBER2_LUCKY_BLOCK;
 	public static ConfiguredFeature<?, ?> GOBBER2_ORE;
 	public static ConfiguredFeature<?, ?> GOBBER2_ORE_NETHER;
 	public static ConfiguredFeature<?, ?> GOBBER2_ORE_END;
@@ -37,6 +32,9 @@ public class OreGenerator
 	@SuppressWarnings("deprecation")
 	public static void addFeatures()
 	{
+		OreGenerator.GOBBER2_LUCKY_BLOCK = configuredFeature("gobber_lucky_block", Feature.ORE.withConfiguration(new OreFeatureConfig
+				(OreFeatureConfig.FillerBlockType.field_241882_a, BlockInit.GOBBER2_LUCKY_BLOCK.get().getDefaultState(), GobberConfigBuilder.GOBBER2_LUCKY_BLOCK_SIZE.get())).func_242733_d(GobberConfigBuilder.GOBBER2_LUCKY_BLOCK_MAX_HEIGHT.get()).func_242728_a().func_242731_b(GobberConfigBuilder.GOBBER2_LUCKY_BLOCK_CHANCE.get()));
+		
 		OreGenerator.GOBBER2_ORE = configuredFeature("ore_gobber", Feature.ORE.withConfiguration(new OreFeatureConfig
 				(OreFeatureConfig.FillerBlockType.field_241882_a, BlockInit.GOBBER2_ORE.get().getDefaultState(), GobberConfigBuilder.GOBBER2_ORE_SIZE.get())).func_242733_d(GobberConfigBuilder.GOBBER2_ORE_MAX_HEIGHT.get()).func_242728_a().func_242731_b(GobberConfigBuilder.GOBBER2_ORE_CHANCE.get()));
 		
@@ -53,6 +51,11 @@ public class OreGenerator
             	if(GobberConfigBuilder.GOBBER2_ORE_GENERATION.get())
             	{
             		addFeatureToBiome(biome, GenerationStage.Decoration.UNDERGROUND_ORES, OreGenerator.GOBBER2_ORE); 
+            	}
+            	
+            	if(GobberConfigBuilder.GOBBER2_LUCKY_BLOCK_GENERATION.get())
+            	{
+            		addFeatureToBiome(biome, GenerationStage.Decoration.UNDERGROUND_ORES, OreGenerator.GOBBER2_LUCKY_BLOCK); 
             	}
         	}
             

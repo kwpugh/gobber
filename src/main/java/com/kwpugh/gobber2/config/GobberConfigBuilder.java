@@ -82,7 +82,7 @@ public class GobberConfigBuilder
     public static ForgeConfigSpec.IntValue MATURATOR_RADIUS;
     public static ForgeConfigSpec.IntValue MATURATOR_VERTICAL_RANGE;
     public static ForgeConfigSpec.IntValue MATURATOR_MIN_TICK;
-    public static ForgeConfigSpec.IntValue MATURATOR_MAX_TICK;
+    //public static ForgeConfigSpec.IntValue MATURATOR_MAX_TICK;
     public static ForgeConfigSpec.BooleanValue ENABLE_MATURATOR_ANIMAL_EFFECT;
 
     public static ForgeConfigSpec.BooleanValue ENABLE_DRAGON_ARMOR_VOID_PROTECTION;
@@ -235,9 +235,9 @@ public class GobberConfigBuilder
 
         MATURATOR_RADIUS = SERVER_BUILDER.comment("Block range for Maturator block effects [default: 16]").defineInRange("maturatorRange", 10, 0, 20);
         MATURATOR_VERTICAL_RANGE = SERVER_BUILDER.comment("Vertical block range for Maturator block effects [default: 10]").defineInRange("maturatorVerticalRange", 5, 0, 10);
-        MATURATOR_MIN_TICK = SERVER_BUILDER.comment("Min interval of world ticks for the Maturator [default: 120]").defineInRange("maturatorMinTick", 120, 0, 240);
-        MATURATOR_MAX_TICK = SERVER_BUILDER.comment("Max interval of world ticks for the Maturator [default: 240]").defineInRange("maturatorMaxTick", 240, 0, 480);
-        ENABLE_MATURATOR_ANIMAL_EFFECT = SERVER_BUILDER.comment("Enable Maturator effect on baby animals [true / false]").define("enableMaturatorAnimalEffect", false);
+        MATURATOR_MIN_TICK = SERVER_BUILDER.comment("Min interval of world ticks for the Maturator [default: 40]").defineInRange("maturatorMinTick", 40, 1, 1000);
+        //MATURATOR_MAX_TICK = SERVER_BUILDER.comment("Max interval of world ticks for the Maturator [default: 240]").defineInRange("maturatorMaxTick", 240, 0, 480);
+        //ENABLE_MATURATOR_ANIMAL_EFFECT = SERVER_BUILDER.comment("Enable Maturator effect on baby animals [true / false]").define("enableMaturatorAnimalEffect", false);
 
         SERVER_BUILDER.pop();
 

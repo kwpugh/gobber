@@ -1,148 +1,46 @@
 package com.kwpugh.gobber2.blocks;
 
 import java.util.List;
-import java.util.Random;
 
 import javax.annotation.Nullable;
 
 import com.kwpugh.gobber2.config.GobberConfigBuilder;
+import com.kwpugh.gobber2.init.TileInit;
 
-import net.minecraft.block.BambooBlock;
-import net.minecraft.block.BambooSaplingBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.CactusBlock;
-import net.minecraft.block.ChorusFlowerBlock;
-import net.minecraft.block.CocoaBlock;
-import net.minecraft.block.CoralBlock;
-import net.minecraft.block.CoralPlantBlock;
-import net.minecraft.block.CropsBlock;
-import net.minecraft.block.MelonBlock;
-import net.minecraft.block.NetherWartBlock;
-import net.minecraft.block.PumpkinBlock;
-import net.minecraft.block.SaplingBlock;
-import net.minecraft.block.SeaGrassBlock;
-import net.minecraft.block.SeaPickleBlock;
-import net.minecraft.block.StemBlock;
-import net.minecraft.block.StemGrownBlock;
-import net.minecraft.block.SugarCaneBlock;
-import net.minecraft.block.SweetBerryBushBlock;
-import net.minecraft.block.TallSeaGrassBlock;
-import net.minecraft.block.VineBlock;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.AgeableEntity;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.passive.AnimalEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BlockMaturator extends Block
 {
 	int radius = GobberConfigBuilder.MATURATOR_RADIUS.get();
-	int rediusVertical = GobberConfigBuilder.MATURATOR_VERTICAL_RANGE.get();
-	
-	int minTickTime = GobberConfigBuilder.MATURATOR_MIN_TICK.get();
-	int maxTickTime = GobberConfigBuilder.MATURATOR_MAX_TICK.get();
 	
 	public BlockMaturator(Properties properties)
 	{
 		super(properties);
 	}
-	
+	 	
 	@Override
-	public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean isMoving)
+	public boolean hasTileEntity(final BlockState state) 
 	{
-		world.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), world.rand.nextInt(maxTickTime - minTickTime + 1));
+		return true;
 	}
-	
-    @Override
-    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit)
-    {
-    	worldIn.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), worldIn.rand.nextInt(maxTickTime - minTickTime + 1));
-    	if(worldIn.isRemote)
-    	{
-    		player.sendStatusMessage(new TranslationTextComponent("item.gobber2.block_maturator.line1", radius).mergeStyle(TextFormatting.GREEN), true);
-    	}
-    	
-        return ActionResultType.SUCCESS;
-    }
-    
-    @Override
-    public void tick(BlockState state, ServerWorld world, BlockPos pos, Random rand)
-    {
-    	boolean enableMaturatorAnimalEffect = GobberConfigBuilder.ENABLE_MATURATOR_ANIMAL_EFFECT.get();
-    	
-    	if(!world.isRemote)
-		{
-    		world.getPendingBlockTicks().scheduleTick(pos, this, this.tickRate(world) + rand.nextInt(minTickTime));
-    		
-//			BlockPos posUp = pos.up();		
-//			BlockState flaming = ((FireBlock)Blocks.FIRE).getStateForPlacement(world, posUp);
-//			world.setBlockState(posUp, flaming, 11);
-			
-    		for (BlockPos targetPos : BlockPos.getAllInBoxMutable(pos.add(-radius, -2, -radius), pos.add(radius, rediusVertical, radius)))
-			{
-				BlockState state1 = world.getBlockState(targetPos);
-				
-		        if ((state1.getBlock() instanceof CropsBlock) ||
-                		(state1.getBlock() instanceof SaplingBlock) ||
-                		(state1.getBlock() instanceof VineBlock) ||                     		               
-                		(state1.getBlock() instanceof SugarCaneBlock) ||
-                		(state1.getBlock() instanceof SweetBerryBushBlock) ||
-                		(state1.getBlock() instanceof NetherWartBlock) ||
-                		(state1.getBlock() instanceof CactusBlock) ||
-                		(state1.getBlock() instanceof MelonBlock) ||
-                		(state1.getBlock() instanceof StemBlock) ||
-                		(state1.getBlock() instanceof PumpkinBlock) ||
-                		(state1.getBlock() instanceof CoralBlock) ||		
-                		(state1.getBlock() instanceof BambooSaplingBlock) || 
-                		(state1.getBlock() instanceof BambooBlock)  ||
-                		(state1.getBlock() instanceof CocoaBlock) || 
-                		(state1.getBlock() instanceof StemGrownBlock) ||
-                		(state1.getBlock() instanceof CoralPlantBlock) ||
-                		(state1.getBlock() instanceof CoralBlock) ||
-                		(state1.getBlock() instanceof TallSeaGrassBlock) ||
-                		(state1.getBlock() instanceof SeaGrassBlock) ||
-                		(state1.getBlock() instanceof SeaPickleBlock) ||
-                		(state1.getBlock() instanceof ChorusFlowerBlock)  ) 
-                {  
-		        	state1.tick((ServerWorld) world, targetPos, world.rand); 
-                }
-			}
-    		
-    		if(enableMaturatorAnimalEffect)
-    		{
-        		List<Entity> entities = world.getEntitiesWithinAABB(AnimalEntity.class, new AxisAlignedBB(pos.getX() - radius, pos.getY() - radius, pos.getZ() - radius, pos.getX() + radius, pos.getY() + radius, pos.getZ() + radius), e -> (e instanceof LivingEntity));
-    			for(Entity entity : entities)
-    			{
-    				((AgeableEntity) entity).ageUp(120,true);;
-    				
-    			}    			
-    		}
-		}
-    }	
-	
 
-
-	private int tickRate(IWorldReader world)
+	@Nullable
+	@Override
+	public TileEntity createTileEntity(final BlockState state, final IBlockReader world) 
 	{
-		return 10;
+		// Always use TileEntityType#create to allow registry overrides to work.
+		return TileInit.BLOCK_MATURATOR.get().create();
 	}
 
 	@Override

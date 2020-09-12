@@ -52,5 +52,5 @@ public class BlockInit
 	public static final RegistryObject<Block> BLOCK_PROTECTOR = BLOCKS.register("block_protector", () -> new BlockProtector(Block.Properties.create(Material.IRON, MaterialColor.IRON).hardnessAndResistance(3.0F, 3.0F).sound(SoundType.METAL)));
 	public static final RegistryObject<Block> BLOCK_DEFENDER = BLOCKS.register("block_defender", () -> new BlockDefender(Block.Properties.create(Material.IRON, MaterialColor.IRON).hardnessAndResistance(3.0F, 3.0F).sound(SoundType.METAL)));
 	public static final RegistryObject<Block> BLOCK_LOOTER = BLOCKS.register("block_looter", () -> new BlockLooter(Block.Properties.create(Material.IRON, MaterialColor.IRON).hardnessAndResistance(3.0F, 3.0F).sound(SoundType.METAL)));
-	//public static final RegistryObject<Block> BLOCK_MATURATOR = BLOCKS.register("block_maturator", () -> new BlockMaturator(Block.Properties.create(Material.IRON, MaterialColor.IRON).hardnessAndResistance(3.0F, 3.0F).sound(SoundType.METAL)));	
+	public static final RegistryObject<Block> BLOCK_MATURATOR = BLOCKS.register("block_maturator", () -> new BlockMaturator(Block.Properties.create(Material.IRON, MaterialColor.IRON).hardnessAndResistance(3.0F, 3.0F).sound(SoundType.METAL)));	
 }
