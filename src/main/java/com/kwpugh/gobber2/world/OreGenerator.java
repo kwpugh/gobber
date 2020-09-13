@@ -50,12 +50,14 @@ public class OreGenerator
         	{
             	if(GobberConfigBuilder.GOBBER2_ORE_GENERATION.get())
             	{
-            		addFeatureToBiome(biome, GenerationStage.Decoration.UNDERGROUND_ORES, OreGenerator.GOBBER2_ORE); 
+            		//addFeatureToBiome(biome, GenerationStage.Decoration.UNDERGROUND_ORES, OreGenerator.GOBBER2_ORE); 
+            		BiomeUtil.addFeature(biome, GenerationStage.Decoration.UNDERGROUND_ORES, OreGenerator.GOBBER2_ORE); 
             	}
             	
             	if(GobberConfigBuilder.GOBBER2_LUCKY_BLOCK_GENERATION.get())
             	{
-            		addFeatureToBiome(biome, GenerationStage.Decoration.UNDERGROUND_ORES, OreGenerator.GOBBER2_LUCKY_BLOCK); 
+            		//addFeatureToBiome(biome, GenerationStage.Decoration.UNDERGROUND_ORES, OreGenerator.GOBBER2_LUCKY_BLOCK); 
+            		BiomeUtil.addFeature(biome, GenerationStage.Decoration.UNDERGROUND_ORES, OreGenerator.GOBBER2_LUCKY_BLOCK);
             	}
         	}
             
@@ -63,7 +65,8 @@ public class OreGenerator
         	{
             	if(GobberConfigBuilder.GOBBER2_ORE_NETHER_GENERATION.get())
             	{
-            		addFeatureToBiome(biome, GenerationStage.Decoration.UNDERGROUND_ORES, OreGenerator.GOBBER2_ORE_NETHER); 
+            		//addFeatureToBiome(biome, GenerationStage.Decoration.UNDERGROUND_ORES, OreGenerator.GOBBER2_ORE_NETHER);
+            		BiomeUtil.addFeature(biome, GenerationStage.Decoration.UNDERGROUND_ORES, OreGenerator.GOBBER2_ORE_NETHER);
             	}
         	}
             
@@ -71,7 +74,8 @@ public class OreGenerator
         	{
             	if(GobberConfigBuilder.GOBBER2_ORE_END_GENERATION.get())
             	{
-            		addFeatureToBiome(biome, GenerationStage.Decoration.UNDERGROUND_ORES, OreGenerator.GOBBER2_ORE_END); 
+            		//addFeatureToBiome(biome, GenerationStage.Decoration.UNDERGROUND_ORES, OreGenerator.GOBBER2_ORE_END); 
+            		BiomeUtil.addFeature(biome, GenerationStage.Decoration.UNDERGROUND_ORES, OreGenerator.GOBBER2_ORE_END); 
             	}
         	}
         }
@@ -82,27 +86,12 @@ public class OreGenerator
         Registry.register(WorldGenRegistries.field_243653_e, new ResourceLocation("gobber2", registryName), configuredFeature);
         return configuredFeature;
     }
-    
-	
-// Possible check for mutable list?
-//
-//	public static <C extends IFeatureConfig, PC extends IPlacementConfig> void addFeature(Biome biome, Decoration stage, ConfiguredFeature<?, ?> feature)
-//	{
-//		if (getGenSettings(biome).field_242484_f instanceof ImmutableList || (getGenSettings(biome).field_242484_f.size() > stage.ordinal() && getGenSettings(biome).field_242484_f.get(stage.ordinal()) instanceof ImmutableList))
-//			getGenSettings(biome).field_242484_f = makeListMutable(getGenSettings(biome).field_242484_f, GenUtil::makeListMutable);
-//
-//		while (getGenSettings(biome).field_242484_f.size() <= stage.ordinal())
-//			getGenSettings(biome).field_242484_f.add(Lists.newArrayList());
-//
-//		getGenSettings(biome).field_242484_f.get(stage.ordinal()).add(() -> feature);
-//	}
-
-		
 	
 	public static void addFeatureToBiome(Biome biome, GenerationStage.Decoration feature, ConfiguredFeature<?, ?> configuredFeature) 
 	{
         ConvertImmutableFeatures(biome);
         List<List<Supplier<ConfiguredFeature<?, ?>>>> biomeFeatures = biome.func_242440_e().field_242484_f;
+        
         while (biomeFeatures.size() <= feature.ordinal()) 
         {
             biomeFeatures.add(Lists.newArrayList());
@@ -112,7 +101,7 @@ public class OreGenerator
     }
     
     private static void ConvertImmutableFeatures(final Biome biome)
-    {
+    {   		
         if (biome.func_242440_e().field_242484_f instanceof ImmutableList)
         {
             biome.func_242440_e().field_242484_f = biome.func_242440_e().field_242484_f.stream().map(Lists::newArrayList).collect(Collectors.toList());

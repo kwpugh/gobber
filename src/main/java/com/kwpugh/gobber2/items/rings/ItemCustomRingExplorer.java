@@ -55,7 +55,7 @@ public class ItemCustomRingExplorer extends Item
 		
 		if (!world.isRemote)
 		{
-				ServerPlayerEntity serverPlayer = (ServerPlayerEntity)player;
+				//ServerPlayerEntity serverPlayer = (ServerPlayerEntity)player;
 				ServerWorld serverWorld = (ServerWorld)world;		
 				BlockPos worldSpawn = serverWorld.getSpawnPoint();
 			

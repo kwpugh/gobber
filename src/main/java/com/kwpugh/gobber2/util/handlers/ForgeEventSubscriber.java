@@ -169,8 +169,8 @@ public final class ForgeEventSubscriber
     public static void breakingBlockSpeed(PlayerEvent.BreakSpeed event)
     {
         PlayerEntity player = event.getPlayer();
-        ItemStack stack = player.getHeldItemMainhand(); 
-        BlockPos pos = event.getPos();
+        //ItemStack stack = player.getHeldItemMainhand(); 
+        //BlockPos pos = event.getPos();
         Block block = event.getState().getBlock();
         
         if (player != null && !(player instanceof FakePlayer) && !player.isCreative())

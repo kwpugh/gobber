@@ -9,7 +9,7 @@ license="MIT"
 
 [[mods]] #mandatory
 modId="gobber2" #mandatory
-version="2.3.4" #mandatory
+version="2.3.7" #mandatory
 displayName="Gobber 2" #mandatory
 description='''
 Gobber into 1.16, It continues...!

@@ -64,7 +64,7 @@ public class ItemCustomRingAttraction extends Item
 			for (BlockPos targetPos : BlockPos.getAllInBoxMutable(playerPos.add(-range, -2, -range), playerPos.add(range, 3, range)))
 			{
 				BlockState blockstate = world.getBlockState(targetPos);
-				Block block = blockstate.getBlock();
+				//Block block = blockstate.getBlock();
 				
 				if ((blockstate.getBlock() == Blocks.COAL_BLOCK))
 				{
