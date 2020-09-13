@@ -51,15 +51,15 @@ public class ItemCustomArmorDragon extends ArmorItem
 	
 		boolean wasWearingDragonArmorLastTick = player.getPersistentData().getBoolean("wearingFullDragonArmor");
 	  
-//		if(!iswearingFullDragonArmor && wasWearingDragonArmorLastTick && !player.isCreative())
-//		{
-//			player.abilities.allowFlying = false;
-//			player.abilities.isFlying = false;
-//		}
-//		else if((iswearingFullDragonArmor) && (player.dimension.getId() == -1 || player.dimension.getId() == 0 || player.dimension.getId() == 1 ))
-//		{
-//			player.abilities.allowFlying = true;
-//		}
+		if(!iswearingFullDragonArmor && wasWearingDragonArmorLastTick && !player.isCreative())
+		{
+			player.abilities.allowFlying = false;
+			player.abilities.isFlying = false;
+		}
+		else if((iswearingFullDragonArmor) && (world.getDimensionKey().equals(World.OVERWORLD) || world.getDimensionKey().equals(World.THE_NETHER) || world.getDimensionKey().equals(World.THE_END)))
+		{
+			player.abilities.allowFlying = true;
+		}
 		player.getPersistentData().putBoolean("wearingFullDragonArmor", iswearingFullDragonArmor);
 	
 		if(iswearingFullDragonArmor)
@@ -80,8 +80,8 @@ public class ItemCustomArmorDragon extends ArmorItem
 	
 		//Check ArmorUtil for additional perks applied to armor
 	
-	  //Helmet
-	  if(head.getItem() == ItemInit.GOBBER2_HELMET_DRAGON.get())
+		//Helmet
+		if(head.getItem() == ItemInit.GOBBER2_HELMET_DRAGON.get())
 		{
 			PlayerSpecialAbilities.giveYellowHearts(world, player, stack, 20, 0.66F);
 			
@@ -92,14 +92,14 @@ public class ItemCustomArmorDragon extends ArmorItem
 			PlayerSpecialAbilities.giveNoExtraHearts(world, player, stack);
 		}
 	  	  
-	  //Chestplate
-	  if(chest.getItem() == ItemInit.GOBBER2_CHESTPLATE_DRAGON.get())
+		//Chestplate
+		if(chest.getItem() == ItemInit.GOBBER2_CHESTPLATE_DRAGON.get())
 		{				
 			//player.getAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(40.0D); 
-		 }		
+		}		
 		  
-	  //Leggings
-	  if(legs.getItem() == ItemInit.GOBBER2_LEGGINGS_DRAGON.get())
+		//Leggings
+		if(legs.getItem() == ItemInit.GOBBER2_LEGGINGS_DRAGON.get())
 		{
 	  	PlayerSpecialAbilities.giveConduitEffect(world, player, stack);
 		}
@@ -108,15 +108,15 @@ public class ItemCustomArmorDragon extends ArmorItem
 			//something
 		}		
 	  	  
-	  //Boots
-	  if(feet.getItem() == ItemInit.GOBBER2_BOOTS_DRAGON.get())
+		//Boots
+		if(feet.getItem() == ItemInit.GOBBER2_BOOTS_DRAGON.get())
 		{
-	  	PlayerSpecialAbilities.giveDolphinEffect(world, player, stack);
-	  }
+			PlayerSpecialAbilities.giveDolphinEffect(world, player, stack);
+		}
 		else
-	  {
+		{
 			//something
-	  }		
+		}		
 	}
 
 	@Override

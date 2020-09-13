@@ -83,6 +83,22 @@ public class OreGenerator
         return configuredFeature;
     }
     
+	
+// Possible check for mutable list?
+//
+//	public static <C extends IFeatureConfig, PC extends IPlacementConfig> void addFeature(Biome biome, Decoration stage, ConfiguredFeature<?, ?> feature)
+//	{
+//		if (getGenSettings(biome).field_242484_f instanceof ImmutableList || (getGenSettings(biome).field_242484_f.size() > stage.ordinal() && getGenSettings(biome).field_242484_f.get(stage.ordinal()) instanceof ImmutableList))
+//			getGenSettings(biome).field_242484_f = makeListMutable(getGenSettings(biome).field_242484_f, GenUtil::makeListMutable);
+//
+//		while (getGenSettings(biome).field_242484_f.size() <= stage.ordinal())
+//			getGenSettings(biome).field_242484_f.add(Lists.newArrayList());
+//
+//		getGenSettings(biome).field_242484_f.get(stage.ordinal()).add(() -> feature);
+//	}
+
+		
+	
 	public static void addFeatureToBiome(Biome biome, GenerationStage.Decoration feature, ConfiguredFeature<?, ?> configuredFeature) 
 	{
         ConvertImmutableFeatures(biome);
@@ -91,6 +107,7 @@ public class OreGenerator
         {
             biomeFeatures.add(Lists.newArrayList());
         }
+        
         biomeFeatures.get(feature.ordinal()).add(() -> configuredFeature);
     }
     

@@ -30,10 +30,6 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-/*
- * Based on work by: Maciej916 in Ma-Essentials
- */
-
 public class ItemCustomRingExplorer extends Item
 {
 	public ItemCustomRingExplorer(Properties properties)
@@ -50,10 +46,7 @@ public class ItemCustomRingExplorer extends Item
 	{
 		ItemStack stack = player.getHeldItem(hand);
 		player.getCooldownTracker().setCooldown(this, ringExplorerCooldown);
-		ServerPlayerEntity serverPlayer = (ServerPlayerEntity)player;
-		ServerWorld serverWorld = (ServerWorld)world;
-		
-		BlockPos worldSpawn = serverWorld.getSpawnPoint();
+	
 		
 		if (!world.getDimensionKey().equals(World.OVERWORLD))
 		{
@@ -62,7 +55,11 @@ public class ItemCustomRingExplorer extends Item
 		
 		if (!world.isRemote)
 		{
-			  Random rand = new Random();
+				ServerPlayerEntity serverPlayer = (ServerPlayerEntity)player;
+				ServerWorld serverWorld = (ServerWorld)world;		
+				BlockPos worldSpawn = serverWorld.getSpawnPoint();
+			
+				Random rand = new Random();
 
 		        int x = (int) Math.round(worldSpawn.getX()) + rand.nextInt(max + min) - min;
 		        //int y = world.getMaxHeight();

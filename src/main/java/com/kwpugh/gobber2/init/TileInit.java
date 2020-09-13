@@ -10,7 +10,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public final class TileInit 
 {
-
 	public static final DeferredRegister<TileEntityType<?>> TILE_ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, Gobber2.modid);
 
 	// We don't have a datafixer for our TileEntities, so we pass null into build.

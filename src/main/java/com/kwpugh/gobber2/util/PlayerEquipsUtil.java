@@ -9,11 +9,6 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 
-/*
- * Inspired and adapted from Sinhika's code in NetherRocks
- * 
- */
-
 public final class PlayerEquipsUtil
 {
     @Nonnull

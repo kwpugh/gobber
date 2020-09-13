@@ -13,7 +13,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '2.3.4'
+version = '2.3.6'
 group = 'com.kwpugh.gobber2' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'Gobber2-1.16.3'
 
@@ -60,6 +60,9 @@ repositories {
 dependencies {
     //compileOnly fg.deobf("mezz.jei:jei-1.15.2:6.0.0.2:api")
     //runtimeOnly fg.deobf("mezz.jei:jei-1.15.2:6.0.0.2")
+    
+   compileOnly fg.deobf("mezz.jei:jei-1.16.2:7.3.2.25:api")
+   runtimeOnly fg.deobf("mezz.jei:jei-1.16.2:7.3.2.25")
 }
 
 

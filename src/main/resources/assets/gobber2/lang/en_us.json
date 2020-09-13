@@ -435,7 +435,7 @@
 	"item.gobber2.block_maturator.jei.line1": "The Maturator provides growth boost to many plants and crops in a defined area, centered around the block. Block radius can be adjusted in config file",
 	"item.gobber2.block_maturator.jei.line2": "Works on:",
 	"item.gobber2.block_maturator.jei.line3": "Sapling, Vine, Sugarcane, Sweet Berry, Cactus, Melon, Pumpkin, Bamboo, Cococa, Chorus flower, Netherwart and many other modded crops based off of these.",
-	"item.gobber2.block_maturator.jei.line4": "Min and Mix tick updates can be adjusted in the config",
+	"item.gobber2.block_maturator.jei.line4": "Min tick updates can be adjusted in the config",
 
 
 	"itemGroup.gobber2": "Gobber 2"
