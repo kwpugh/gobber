@@ -8,6 +8,7 @@ import com.kwpugh.gobber2.init.BlockInit;
 import com.kwpugh.gobber2.init.ItemInit;
 import com.kwpugh.gobber2.init.TileInit;
 import com.kwpugh.gobber2.util.BlockRenders;
+import com.kwpugh.gobber2.util.CuriosModCheck;
 import com.kwpugh.gobber2.util.Gobber2_Group;
 import com.kwpugh.gobber2.util.PlayerSpecialAbilities;
 import com.kwpugh.gobber2.util.handlers.DragonKillHandler;
@@ -15,6 +16,7 @@ import com.kwpugh.gobber2.world.OreGenerator;
 
 import net.minecraft.item.ItemGroup;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -22,6 +24,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLDedicatedServerSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
+import top.theillusivec4.curios.api.SlotTypeMessage;
 
 @Mod(Gobber2.modid)
 public class Gobber2 
@@ -69,11 +72,11 @@ public class Gobber2
 
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
-//        if (SupportMods.CURIOS.isLoaded())
-//        {
-//        	InterModComms.sendTo("curios", CuriosAPI.IMC.REGISTER_TYPE, () -> new CurioIMCMessage("ring").setSize(4));
-//        	InterModComms.sendTo("curios", CuriosAPI.IMC.REGISTER_TYPE, () -> new CurioIMCMessage("belt").setSize(2));
-//        }
+        if (CuriosModCheck.CURIOS.isLoaded())
+        {
+        	InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder("belt").size(2).build());
+        	InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder("ring").size(4).build());
+        }
         
         logger.info("Gobber IMC setup");
     }

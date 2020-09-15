@@ -104,13 +104,13 @@ public final class PlayerEquipsUtil
 		}
 		
 		//Is the ring in a Curios slot?
-//		if (SupportMods.CURIOS.isLoaded())
-//	    {
-//			if (CuriosUtil.findItem(ItemInit.GOBBER2_RING_PHOENIX.get(), player) != ItemStack.EMPTY)
-//			{
-//				return true;
-//		    }
-//	    }
+		if (CuriosModCheck.CURIOS.isLoaded())
+	    {
+			if (CuriosUtil.findItem(ItemInit.GOBBER2_RING_PHOENIX.get(), player) != ItemStack.EMPTY)
+			{
+				return true;
+		    }
+	    }
       		
         return false;
     }
@@ -144,13 +144,13 @@ public final class PlayerEquipsUtil
 		}
 		
 		//Checks Curios slots
-//		if (SupportMods.CURIOS.isLoaded())
-//	    {
-//			if (CuriosUtil.findItem(ItemInit.GOBBER2_RING_HASTE.get(), player) != ItemStack.EMPTY)
-//			{
-//				return true;
-//		    }
-//	    } 
+		if (CuriosModCheck.CURIOS.isLoaded())
+	    {
+			if (CuriosUtil.findItem(ItemInit.GOBBER2_RING_HASTE.get(), player) != ItemStack.EMPTY)
+			{
+				return true;
+		    }
+	    } 
 		
         return false;
     } 
@@ -170,13 +170,13 @@ public final class PlayerEquipsUtil
 		}
 		
 		//Checks Curios slots
-//		if (SupportMods.CURIOS.isLoaded())
-//	    {
-//			if (CuriosUtil.findItem(ItemInit.GOBBER2_MEDALLION_EXP.get(), player) != ItemStack.EMPTY)
-//			{
-//				return true;
-//		    }
-//	    } 
+		if (CuriosModCheck.CURIOS.isLoaded())
+	    {
+			if (CuriosUtil.findItem(ItemInit.GOBBER2_MEDALLION_EXP.get(), player) != ItemStack.EMPTY)
+			{
+				return true;
+		    }
+	    } 
 		
         return false;
     } 

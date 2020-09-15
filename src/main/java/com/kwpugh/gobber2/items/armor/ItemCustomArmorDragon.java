@@ -95,7 +95,7 @@ public class ItemCustomArmorDragon extends ArmorItem
 		//Chestplate
 		if(chest.getItem() == ItemInit.GOBBER2_CHESTPLATE_DRAGON.get())
 		{				
-			//player.getAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(40.0D); 
+			//something
 		}		
 		  
 		//Leggings

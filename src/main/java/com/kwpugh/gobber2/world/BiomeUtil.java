@@ -15,6 +15,13 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.placement.IPlacementConfig;
 
+/*
+ * Credit: Taken from Premium Woods by ModdingLegacy
+ * 
+ * This code prevents conflicts with multiple mods accessing immutable list
+ * 
+ */
+
 public class BiomeUtil
 {
 	public static boolean doesBiomeMatch(Biome biomeIn, RegistryKey<Biome> wantedBiomeIn)

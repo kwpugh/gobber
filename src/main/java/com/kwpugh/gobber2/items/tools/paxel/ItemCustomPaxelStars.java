@@ -15,6 +15,7 @@ import net.minecraft.block.CampfireBlock;
 import net.minecraft.block.HorizontalBlock;
 import net.minecraft.block.RotatedPillarBlock;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
@@ -165,6 +166,23 @@ public class ItemCustomPaxelStars extends PaxelBase
         return super.onItemRightClick(world, player, hand);
     }
 
+	@Override
+    public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker)
+    {
+		stack.setDamage(0);  //no damage
+        
+        return true;
+    }
+
+    public boolean onBlockDestroyed(ItemStack stack, World worldIn, BlockState state, BlockPos pos, LivingEntity entityLiving)
+    {
+        if (!worldIn.isRemote && (double)state.getBlockHardness(worldIn, pos) != 0.0D)
+        {
+            stack.setDamage(0);
+        }
+        return true;
+    }
+    
 	@Override
 	public void onCreated(ItemStack stack, World worldIn, PlayerEntity playerIn)
 	{

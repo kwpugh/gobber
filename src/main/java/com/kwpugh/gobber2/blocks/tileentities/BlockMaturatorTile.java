@@ -34,7 +34,7 @@ public class BlockMaturatorTile extends TileEntity implements ITickableTileEntit
 	int radius = GobberConfigBuilder.MATURATOR_RADIUS.get();
 	int rediusVertical = GobberConfigBuilder.MATURATOR_VERTICAL_RANGE.get();
 	int minTickInterval = GobberConfigBuilder.MATURATOR_MIN_TICK.get();
-	
+
     public BlockMaturatorTile()
 	{
 		super(TileInit.BLOCK_MATURATOR.get());
