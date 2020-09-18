@@ -1,51 +1,22 @@
 package com.kwpugh.gobber2.blocks;
 
 import java.util.List;
-import java.util.Random;
 
 import javax.annotation.Nullable;
 
 import com.kwpugh.gobber2.config.GobberConfigBuilder;
+import com.kwpugh.gobber2.init.TileInit;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.item.ExperienceOrbEntity;
-import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.entity.monster.BlazeEntity;
-import net.minecraft.entity.monster.CreeperEntity;
-import net.minecraft.entity.monster.EndermanEntity;
-import net.minecraft.entity.monster.PhantomEntity;
-import net.minecraft.entity.monster.PillagerEntity;
-import net.minecraft.entity.monster.RavagerEntity;
-import net.minecraft.entity.monster.SkeletonEntity;
-import net.minecraft.entity.monster.SlimeEntity;
-import net.minecraft.entity.monster.SpellcastingIllagerEntity;
-import net.minecraft.entity.monster.SpiderEntity;
-import net.minecraft.entity.monster.StrayEntity;
-import net.minecraft.entity.monster.VindicatorEntity;
-import net.minecraft.entity.monster.WitchEntity;
-import net.minecraft.entity.monster.WitherSkeletonEntity;
-import net.minecraft.entity.monster.ZombieEntity;
-import net.minecraft.entity.monster.ZombieVillagerEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -58,159 +29,17 @@ public class BlockLooter extends Block
 		super(properties);
 	}
 
-	int minTickTime = 5;
-	int maxTickTime = 20;
-
-	//Start it up when placed
-	@Override
-	public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean isMoving)
+	public boolean hasTileEntity(final BlockState state) 
 	{
-		world.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), world.rand.nextInt(maxTickTime - minTickTime + 1));
+		return true;
 	}
 
-	//Start it up if right-clicked on
+	@Nullable
 	@Override
-	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit)
+	public TileEntity createTileEntity(final BlockState state, final IBlockReader world) 
 	{
-		worldIn.getPendingBlockTicks().scheduleTick(pos, state.getBlock(), worldIn.rand.nextInt(maxTickTime - minTickTime + 1));
-		if(worldIn.isRemote)
-    	{
-			player.sendStatusMessage(new TranslationTextComponent("item.gobber2.block_looter.line1", radius).mergeStyle(TextFormatting.GREEN), true);
-    	}
-		
-		return ActionResultType.SUCCESS;
-	}
-       
-	@Override
-	public void tick(BlockState state,ServerWorld world, BlockPos pos,  Random random)
-	{	
-		if(!world.isRemote)
-		{			   
-			world.getPendingBlockTicks().scheduleTick(pos, this, this.tickRate(world) + random.nextInt(10));
-			
-//			BlockPos posUp = pos.up();		
-//			BlockState flaming = ((FireBlock)Blocks.FIRE).getStateForPlacement(world, posUp);
-//			world.setBlockState(posUp, flaming, 11);
-			
-			//Scan the radius for LivingEntity and store in list
-			List<Entity> mobs = world.getEntitiesWithinAABB(LivingEntity.class, new AxisAlignedBB(pos.getX() - radius, pos.getY() - radius, pos.getZ() - radius, pos.getX() + radius, pos.getY() + radius, pos.getZ() + radius), e -> (e instanceof LivingEntity));
-			for(Entity mob : mobs)
-			{				
-				if(mob instanceof ZombieEntity || mob instanceof ZombieVillagerEntity)
-				{
-					((MobEntity) mob).spawnExplosionParticle();
-					mob.remove(true);
-					ItemStack drop = new ItemStack(Items.GOLD_INGOT);				
-					world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
-					world.addEntity(new ExperienceOrbEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, 1));
-				}
-				
-				if(mob instanceof SpiderEntity)
-				{
-					((MobEntity) mob).spawnExplosionParticle();
-					mob.remove(true);
-					ItemStack drop = new ItemStack(Items.STRING);				
-					world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
-					world.addEntity(new ExperienceOrbEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, 1));
-				}
-				
-				if(mob instanceof SkeletonEntity || mob instanceof StrayEntity)
-				{
-					((MobEntity) mob).spawnExplosionParticle();
-					mob.remove(true);
-					ItemStack drop = new ItemStack(Items.BONE);				
-					world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
-					world.addEntity(new ExperienceOrbEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, 1));
-				}
-				
-				if(mob instanceof PillagerEntity || mob instanceof RavagerEntity)
-				{
-					((MobEntity) mob).spawnExplosionParticle();
-					mob.remove(true);
-					ItemStack drop = new ItemStack(Items.IRON_INGOT);				
-					world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
-					world.addEntity(new ExperienceOrbEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, 1));
-				}
-				
-				if(mob instanceof CreeperEntity)
-				{
-					((MobEntity) mob).spawnExplosionParticle();
-					mob.remove(true);
-					ItemStack drop = new ItemStack(Items.GUNPOWDER);				
-					world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
-					world.addEntity(new ExperienceOrbEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, 1));
-				}
-			
-				if(mob instanceof SlimeEntity)
-				{
-					((MobEntity) mob).spawnExplosionParticle();
-					mob.remove(true);
-					ItemStack drop = new ItemStack(Items.SLIME_BALL);				
-					world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
-					world.addEntity(new ExperienceOrbEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, 1));
-				}
-				
-				if(mob instanceof WitchEntity)
-				{
-					((MobEntity) mob).spawnExplosionParticle();
-					mob.remove(true);
-					ItemStack drop = new ItemStack(Items.EMERALD);				
-					world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
-					world.addEntity(new ExperienceOrbEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, 1));
-				}
-				
-				if(mob instanceof EndermanEntity)
-				{
-					((MobEntity) mob).spawnExplosionParticle();
-					mob.remove(true);
-					ItemStack drop = new ItemStack(Items.ENDER_PEARL);				
-					world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
-					world.addEntity(new ExperienceOrbEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, 1));
-				}
-				
-				if(mob instanceof BlazeEntity)
-				{
-					((MobEntity) mob).spawnExplosionParticle();
-					mob.remove(true);
-					ItemStack drop = new ItemStack(Items.BLAZE_ROD);				
-					world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
-					world.addEntity(new ExperienceOrbEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, 1));
-				}
-				
-				if(mob instanceof WitherSkeletonEntity)
-				{
-					((MobEntity) mob).spawnExplosionParticle();
-					mob.remove(true);
-					ItemStack drop = new ItemStack(Items.WITHER_SKELETON_SKULL);				
-					world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
-					world.addEntity(new ExperienceOrbEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, 1));
-				}
-				
-				if(mob instanceof PhantomEntity)
-				{
-					((MobEntity) mob).spawnExplosionParticle();
-					mob.remove(true);
-					ItemStack drop = new ItemStack(Items.PHANTOM_MEMBRANE);				
-					world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
-					world.addEntity(new ExperienceOrbEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, 1));
-				}
-				
-				if(mob instanceof VindicatorEntity || mob instanceof SpellcastingIllagerEntity)
-				{
-					((MobEntity) mob).spawnExplosionParticle();
-					mob.remove(true);
-					ItemStack drop = new ItemStack(Items.DIAMOND);				
-					world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
-					world.addEntity(new ExperienceOrbEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, 1));
-				}
-		   }
-		}
-	}
-  
-	private int tickRate(ServerWorld world)
-	{
-		// TODO Auto-generated method stub
-		return 0;
+		// Always use TileEntityType#create to allow registry overrides to work.
+		return TileInit.BLOCK_LOOTER.get().create();
 	}
 
 	@Override
