@@ -1,34 +1,35 @@
 package com.kwpugh.gobber2.world;
 
-import com.google.common.collect.ImmutableList;
-import java.util.stream.Collectors;
-import java.util.function.Supplier;
 import java.util.List;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.kwpugh.gobber2.Gobber2;
 import com.kwpugh.gobber2.config.GobberConfigBuilder;
 import com.kwpugh.gobber2.init.BlockInit;
 import com.kwpugh.gobber2.world.feature.CustomOreFeature;
 
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.OreFeatureConfig;
-import net.minecraft.world.gen.GenerationStage;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.WorldGenRegistries;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = Gobber2.modid, bus = Mod.EventBusSubscriber.Bus.MOD)
+
 public class OreGenerator
 {
 	public static ConfiguredFeature<?, ?> GOBBER2_LUCKY_BLOCK;
 	public static ConfiguredFeature<?, ?> GOBBER2_ORE;
 	public static ConfiguredFeature<?, ?> GOBBER2_ORE_NETHER;
 	public static ConfiguredFeature<?, ?> GOBBER2_ORE_END;
-	   
+	    
 	@SuppressWarnings("deprecation")
 	public static void addFeatures()
 	{
@@ -50,13 +51,11 @@ public class OreGenerator
         	{
             	if(GobberConfigBuilder.GOBBER2_ORE_GENERATION.get())
             	{
-            		//addFeatureToBiome(biome, GenerationStage.Decoration.UNDERGROUND_ORES, OreGenerator.GOBBER2_ORE); 
             		BiomeUtil.addFeature(biome, GenerationStage.Decoration.UNDERGROUND_ORES, OreGenerator.GOBBER2_ORE); 
             	}
             	
             	if(GobberConfigBuilder.GOBBER2_LUCKY_BLOCK_GENERATION.get())
             	{
-            		//addFeatureToBiome(biome, GenerationStage.Decoration.UNDERGROUND_ORES, OreGenerator.GOBBER2_LUCKY_BLOCK); 
             		BiomeUtil.addFeature(biome, GenerationStage.Decoration.UNDERGROUND_ORES, OreGenerator.GOBBER2_LUCKY_BLOCK);
             	}
         	}
@@ -65,7 +64,6 @@ public class OreGenerator
         	{
             	if(GobberConfigBuilder.GOBBER2_ORE_NETHER_GENERATION.get())
             	{
-            		//addFeatureToBiome(biome, GenerationStage.Decoration.UNDERGROUND_ORES, OreGenerator.GOBBER2_ORE_NETHER);
             		BiomeUtil.addFeature(biome, GenerationStage.Decoration.UNDERGROUND_ORES, OreGenerator.GOBBER2_ORE_NETHER);
             	}
         	}
@@ -74,7 +72,6 @@ public class OreGenerator
         	{
             	if(GobberConfigBuilder.GOBBER2_ORE_END_GENERATION.get())
             	{
-            		//addFeatureToBiome(biome, GenerationStage.Decoration.UNDERGROUND_ORES, OreGenerator.GOBBER2_ORE_END); 
             		BiomeUtil.addFeature(biome, GenerationStage.Decoration.UNDERGROUND_ORES, OreGenerator.GOBBER2_ORE_END); 
             	}
         	}
