@@ -110,6 +110,9 @@ public class ItemCustomRingMiner extends Item
 									block == Blocks.INFESTED_COBBLESTONE ||
 									block == Blocks.INFESTED_MOSSY_STONE_BRICKS ||
 									block == Blocks.END_STONE ||
+									block == Blocks.BASALT ||
+									block == Blocks.BLACKSTONE ||
+									block == Blocks.MAGMA_BLOCK ||
 									block == Blocks.NETHERRACK)
 							{
 								poslist.add(player.getPosition().add(x, y, z));
