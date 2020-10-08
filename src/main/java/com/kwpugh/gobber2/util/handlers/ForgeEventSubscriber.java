@@ -8,6 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.OreBlock;
 import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.monster.CreeperEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.util.FakePlayer;
@@ -94,16 +95,19 @@ public final class ForgeEventSubscriber
     public static void onKillingLootEvent(LootingLevelEvent event)
     {
     	if (event.getEntity() instanceof MobEntity)
-    	{   		
-    		if(event.getDamageSource().getTrueSource() instanceof PlayerEntity)
+    	{  
+    		if(!(event.getEntity() instanceof CreeperEntity))
     		{
-    			PlayerEntity player = (PlayerEntity) event.getDamageSource().getTrueSource();
-    			
-    			//Give extra XP when killing a mob
-    			if (PlayerEquipsUtil.isPlayerGotExpToken(player))
-    			{
-    				event.setLootingLevel(extraLoot);
-    			}
+    			if(event.getDamageSource().getTrueSource() instanceof PlayerEntity)
+        		{
+        			PlayerEntity player = (PlayerEntity) event.getDamageSource().getTrueSource();
+        			
+        			//Give extra XP when killing a mob
+        			if (PlayerEquipsUtil.isPlayerGotExpToken(player))
+        			{
+        				event.setLootingLevel(extraLoot);
+        			}
+        		}		
     		}
     	}
     }
