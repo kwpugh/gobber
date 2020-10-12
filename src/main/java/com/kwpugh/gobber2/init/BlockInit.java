@@ -30,9 +30,9 @@ public class BlockInit
 {
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Gobber2.modid);
 
-	public static final RegistryObject<Block> GOBBER2_ORE = BLOCKS.register("gobber2_ore", () -> new BlockOreGobber(Block.Properties.create(Material.ROCK, MaterialColor.IRON).hardnessAndResistance(5.0F, 5.0F).harvestTool(ToolType.PICKAXE).harvestLevel(3).sound(SoundType.STONE)));
-	public static final RegistryObject<Block> GOBBER2_ORE_NETHER = BLOCKS.register("gobber2_ore_nether", () -> new BlockOreNether(Block.Properties.create(Material.ROCK, MaterialColor.IRON).hardnessAndResistance(5.0F, 5.0F).harvestTool(ToolType.PICKAXE).harvestLevel(4).sound(SoundType.STONE)));
-	public static final RegistryObject<Block> GOBBER2_ORE_END = BLOCKS.register("gobber2_ore_end", () -> new BlockOreEnd(Block.Properties.create(Material.ROCK, MaterialColor.IRON).hardnessAndResistance(5.0F, 5.0F).harvestTool(ToolType.PICKAXE).harvestLevel(5).sound(SoundType.STONE)));
+	public static final RegistryObject<Block> GOBBER2_ORE = BLOCKS.register("gobber2_ore", () -> new BlockOreGobber(Block.Properties.create(Material.ROCK, MaterialColor.IRON).hardnessAndResistance(5.0F, 5.0F).setRequiresTool().harvestTool(ToolType.PICKAXE).harvestLevel(3).sound(SoundType.STONE)));
+	public static final RegistryObject<Block> GOBBER2_ORE_NETHER = BLOCKS.register("gobber2_ore_nether", () -> new BlockOreNether(Block.Properties.create(Material.ROCK, MaterialColor.IRON).hardnessAndResistance(5.0F, 5.0F).setRequiresTool().harvestTool(ToolType.PICKAXE).harvestLevel(4).sound(SoundType.STONE)));
+	public static final RegistryObject<Block> GOBBER2_ORE_END = BLOCKS.register("gobber2_ore_end", () -> new BlockOreEnd(Block.Properties.create(Material.ROCK, MaterialColor.IRON).hardnessAndResistance(5.0F, 5.0F).setRequiresTool().harvestTool(ToolType.PICKAXE).harvestLevel(5).sound(SoundType.STONE)));
 	
 	public static final RegistryObject<Block> GOBBER2_BLOCK = BLOCKS.register("gobber2_block", () -> new BlockGobberBlock(Block.Properties.create(Material.IRON, MaterialColor.IRON).hardnessAndResistance(3.0F, 3.0F).sound(SoundType.METAL)));
 	public static final RegistryObject<Block> GOBBER2_BLOCK_NETHER = BLOCKS.register("gobber2_block_nether", () -> new BlockNetherBlock(Block.Properties.create(Material.IRON, MaterialColor.IRON).hardnessAndResistance(3.0F, 3.0F).sound(SoundType.METAL)));
