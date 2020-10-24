@@ -20,7 +20,7 @@ public class BlockOreEnd extends OreBlock
 	{
 		super(properties);
 	}
-	
+
 	@OnlyIn(Dist.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{

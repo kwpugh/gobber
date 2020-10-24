@@ -18,18 +18,10 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.Features;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = Gobber2.modid, bus = Mod.EventBusSubscriber.Bus.MOD)
-
-
-//public static final ConfiguredFeature<?, ?> field_243897_bq = func_243968_a("ore_coal", Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.field_241882_a, Features.States.field_244045_ai, 17)).func_242733_d(128).func_242728_a().func_242731_b(20));
-//public static final ConfiguredFeature<?, ?> field_243898_br = func_243968_a("ore_iron", Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.field_241882_a, Features.States.field_244046_aj, 9)).func_242733_d(64).func_242728_a().func_242731_b(20));
-
-
-
 public class OreGenerator
 {
 	public static ConfiguredFeature<?, ?> GOBBER2_LUCKY_BLOCK;
