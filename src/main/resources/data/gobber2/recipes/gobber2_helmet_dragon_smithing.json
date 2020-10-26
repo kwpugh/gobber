@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "gobber2:gobber2_helmet_end"
+  },
+  "addition": {
+    "item": "gobber2:dragon_star"
+  },
+  "result": {
+    "item": "gobber2:gobber2_helmet_dragon"
+  }
+}

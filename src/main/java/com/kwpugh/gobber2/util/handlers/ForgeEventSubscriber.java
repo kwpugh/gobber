@@ -8,6 +8,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.OreBlock;
 import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.boss.WitherEntity;
+import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.monster.CreeperEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.DamageSource;
@@ -96,7 +98,7 @@ public final class ForgeEventSubscriber
     {
     	if (event.getEntity() instanceof MobEntity)
     	{  
-    		if(!(event.getEntity() instanceof CreeperEntity))
+    		if(!(event.getEntity() instanceof CreeperEntity) || !(event.getEntity() instanceof WitherEntity) || !(event.getEntity() instanceof EnderDragonEntity))
     		{
     			if(event.getDamageSource().getTrueSource() instanceof PlayerEntity)
         		{

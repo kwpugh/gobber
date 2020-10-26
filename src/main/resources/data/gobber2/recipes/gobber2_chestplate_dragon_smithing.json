@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "gobber2:gobber2_chestplate_end"
+  },
+  "addition": {
+    "item": "gobber2:dragon_elytra"
+  },
+  "result": {
+    "item": "gobber2:gobber2_chestplate_dragon"
+  }
+}
