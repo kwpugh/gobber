@@ -8,9 +8,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.OreBlock;
 import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.boss.WitherEntity;
-import net.minecraft.entity.boss.dragon.EnderDragonEntity;
-import net.minecraft.entity.monster.CreeperEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.util.FakePlayer;
@@ -91,46 +88,25 @@ public final class ForgeEventSubscriber
     		}
         }
     }    
-       
+    
     //Gives extra loot drops when killing a mob
     @SubscribeEvent
     public static void onKillingLootEvent(LootingLevelEvent event)
-    {
-    	if (event.getEntity() instanceof MobEntity)
-    	{  
-    		if(!(event.getEntity() instanceof CreeperEntity) || !(event.getEntity() instanceof WitherEntity) || !(event.getEntity() instanceof EnderDragonEntity))
-    		{
-    			if(event.getDamageSource().getTrueSource() instanceof PlayerEntity)
-        		{
-        			PlayerEntity player = (PlayerEntity) event.getDamageSource().getTrueSource();
-        			
-        			//Give extra XP when killing a mob
-        			if (PlayerEquipsUtil.isPlayerGotExpToken(player))
-        			{
-        				event.setLootingLevel(extraLoot);
-        			}
-        		}		
-    		}
-    	}
+    {    	
+    	if(event.getDamageSource() !=null && event.getDamageSource().getTrueSource() !=null)
+    	{	
+			if(event.getEntity() instanceof MobEntity && event.getDamageSource().getTrueSource() instanceof PlayerEntity)
+			{
+				PlayerEntity player = (PlayerEntity) event.getDamageSource().getTrueSource();
+				
+				//Give extra XP when killing a mob
+				if (PlayerEquipsUtil.isPlayerGotExpToken(player))
+				{
+					event.setLootingLevel(extraLoot);
+				}
+			}
+    	} 	
     }
-    
-    //Ensures the Fortune drop chance will be 100%
-//    @SubscribeEvent
-//    public static void onMiningFortuneEvent(HarvestDropsEvent event)
-//    {
-//    	if (event.getState().getBlock() instanceof OreBlock)
-//    	{   		
-//    		if(event.getHarvester() instanceof PlayerEntity)
-//    		{
-//    			PlayerEntity player = (PlayerEntity) event.getHarvester();
-//    			
-//    			if (PlayerEquipsUtil.isPlayerGotExpToken(player))
-//    			{   				
-//    				event.setDropChance(1.0F);
-//    			}
-//    		}
-//    	}
-//    }
     
     //Gives greater XP when killing mobs that normally drop XP on death
     @SubscribeEvent
@@ -181,18 +157,14 @@ public final class ForgeEventSubscriber
         {    
         	if(PlayerEquipsUtil.isPlayerGotHasteRing(player))
         	{
-//        		if(net.minecraftforge.common.ForgeHooks.canToolHarvestBlock(event.getPlayer().world, pos, stack))
-//        		{
-        			if(block == Blocks.OBSIDIAN)
-        			{
-        				event.setNewSpeed(GobberConfigBuilder.HASTE_RING_BREAK_SPEED.get() * 8);
-        			}
-        			else
-        			{
-        				event.setNewSpeed(GobberConfigBuilder.HASTE_RING_BREAK_SPEED.get());
-        			}
-						
-//        		}
+				if(block == Blocks.OBSIDIAN)
+				{
+					event.setNewSpeed(GobberConfigBuilder.HASTE_RING_BREAK_SPEED.get() * 8);
+				}
+				else
+				{
+					event.setNewSpeed(GobberConfigBuilder.HASTE_RING_BREAK_SPEED.get());
+				}						
         	}
         }
     }
