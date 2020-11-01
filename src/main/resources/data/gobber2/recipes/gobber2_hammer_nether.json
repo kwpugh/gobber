@@ -4,7 +4,7 @@
     "pattern":
     [
         "AAA",
-        " B ",
+        "ABA",
         " B "
     ],
     
@@ -12,7 +12,7 @@
     {
         "A":
         {
-            "item": "gobber2:gobber2_block_nether"
+            "item": "gobber2:gobber2_ingot_nether"
         },      
         "B":
         {
