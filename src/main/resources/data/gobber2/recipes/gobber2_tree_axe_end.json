@@ -3,14 +3,15 @@
 	
 	"pattern":
 	[
-		"II ",
+		"IB ",
 		"IS ",
 		" S "
 	],
 	
 	"key":
 	{
-		"I": { "item": "gobber2:gobber2_block_end" },
+		"B": { "item": "gobber2:gobber2_block_end" },
+		"I": { "item": "gobber2:gobber2_ingot_end" },
 		"S": { "item": "gobber2:gobber2_rod_end" }	
 	},
 	

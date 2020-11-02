@@ -7,7 +7,6 @@ import javax.annotation.Nullable;
 import com.kwpugh.gobber2.util.EnableUtil;
 import com.kwpugh.gobber2.util.MagnetRangeUtil;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.util.ITooltipFlag;
@@ -36,7 +35,7 @@ public class ItemCustomRingAttraction extends Item
 		super(properties);
 	}
 	
-	int range;
+	static int range;
 
 	public void inventoryTick(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected)
 	{	
@@ -153,12 +152,19 @@ public class ItemCustomRingAttraction extends Item
 	  
 	@OnlyIn(Dist.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
-	{
+	{	
 		super.addInformation(stack, worldIn, tooltip, flagIn);
+		
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line1").mergeStyle(TextFormatting.GREEN)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line2", EnableUtil.isEnabled(stack)).mergeStyle(TextFormatting.GREEN)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line3").mergeStyle(TextFormatting.YELLOW)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line4").mergeStyle(TextFormatting.RED)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5",range).mergeStyle(TextFormatting.LIGHT_PURPLE)));
+		
+		if(EnableUtil.isEnabled(stack))  // Will still show range 0 on first use until range is changed
+		{
+			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5",MagnetRangeUtil.getCurrentRange(stack)).mergeStyle(TextFormatting.LIGHT_PURPLE)));	
+		}
+		
+	
 	}     
 }

@@ -16,6 +16,7 @@ import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
 import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
 import net.minecraftforge.event.entity.living.LootingLevelEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -88,7 +89,7 @@ public final class ForgeEventSubscriber
     		}
         }
     }    
-    
+
     //Gives extra loot drops when killing a mob
     @SubscribeEvent
     public static void onKillingLootEvent(LootingLevelEvent event)
