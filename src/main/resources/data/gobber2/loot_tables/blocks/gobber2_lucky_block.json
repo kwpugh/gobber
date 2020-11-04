@@ -44,6 +44,21 @@
 		  "type": "minecraft:item",
 		  "weight": 20,
 		  "name": "gobber2:gobber2_goo_nether"
+		},
+		{
+		  "type": "minecraft:item",
+		  "weight": 20,
+		  "name": "gobber2:gobber2_foo"
+		},
+		{
+		  "type": "minecraft:item",
+		  "weight": 20,
+		  "name": "gobber2:gobber2_foo_nether"
+		},
+		{
+		  "type": "minecraft:item",
+		  "weight": 20,
+		  "name": "gobber2:gobber2_foo_end"
 		}
 		
       ],

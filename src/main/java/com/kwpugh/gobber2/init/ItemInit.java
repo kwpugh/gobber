@@ -109,7 +109,7 @@ public class ItemInit
 	public static final RegistryObject<Item> GOBBER2_GLASS = ITEMS.register("gobber2_glass", () -> new BlockItem(BlockInit.GOBBER2_GLASS.get(), new Item.Properties().group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_GLASS_NETHER = ITEMS.register("gobber2_glass_nether", () -> new BlockItem(BlockInit.GOBBER2_GLASS_NETHER.get(), new Item.Properties().group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_GLASS_END = ITEMS.register("gobber2_glass_end", () -> new BlockItem(BlockInit.GOBBER2_GLASS_END.get(), new Item.Properties().group(Gobber2.gobber2)));
-
+	
 	public static final RegistryObject<Item> GOBBER2_GLOBETTE = ITEMS.register("gobber2_globette", () -> new Item(new Item.Properties().group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_GLOBETTE_NETHER = ITEMS.register("gobber2_globette_nether", () -> new Item(new Item.Properties().group(Gobber2.gobber2)));
 	public static final RegistryObject<Item> GOBBER2_GLOBETTE_END = ITEMS.register("gobber2_globette_end", () -> new Item(new Item.Properties().group(Gobber2.gobber2)));
