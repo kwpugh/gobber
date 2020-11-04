@@ -72,8 +72,12 @@ public class ItemCustomRingExplorer extends Item
 		        if ( (biome.getCategory().getName().equals("ocean")) || 
 		        	(biome.getCategory().getName().equals("river")) || 
 		        	(biome.getCategory().getName().equals("beach"))  )
-		        {
-		        	player.getCooldownTracker().removeCooldown(this);
+		        {	
+		        	if(world.isRemote)  //test for server
+		        	{
+		        		player.getCooldownTracker().removeCooldown(this);
+		        	}
+		        	
 		        	return onItemRightClick(world, player, hand);
 		        }
 
