@@ -22,7 +22,6 @@ import net.minecraft.entity.monster.GuardianEntity;
 import net.minecraft.entity.monster.SpellcastingIllagerEntity;
 import net.minecraft.entity.monster.VexEntity;
 import net.minecraft.entity.monster.VindicatorEntity;
-import net.minecraft.entity.monster.WitherSkeletonEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.DolphinEntity;
 import net.minecraft.entity.passive.IronGolemEntity;
@@ -78,7 +77,6 @@ public class BlockProtectorTile extends TileEntity implements ITickableTileEntit
 					entity instanceof VindicatorEntity ||
 					entity instanceof GhastEntity ||
 					entity instanceof BlazeEntity ||
-					entity instanceof WitherSkeletonEntity ||
 					entity instanceof WitherEntity ||
 					entity instanceof EnderDragonEntity)
 				{
