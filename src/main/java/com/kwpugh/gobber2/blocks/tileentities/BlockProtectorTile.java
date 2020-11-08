@@ -76,7 +76,6 @@ public class BlockProtectorTile extends TileEntity implements ITickableTileEntit
 					entity instanceof VexEntity ||
 					entity instanceof VindicatorEntity ||
 					entity instanceof GhastEntity ||
-					entity instanceof BlazeEntity ||
 					entity instanceof WitherEntity ||
 					entity instanceof EnderDragonEntity)
 				{

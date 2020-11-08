@@ -15,6 +15,7 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
@@ -72,6 +73,8 @@ public class ItemCustomRingMiner extends Item
 							String blockForgeTags = block.getTags().toString();
 
 							if (block == Blocks.STONE ||
+									block.isIn(BlockTags.field_242172_aH) ||   // base_stone_overworld
+									block.isIn(BlockTags.field_242173_aI) ||   // base_stone_nether
 									blockForgeTags.contains("forge:stone") ||
 									blockForgeTags.contains("forge:sandstone") ||
 									blockForgeTags.contains("forge:sand") ||

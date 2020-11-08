@@ -13,9 +13,11 @@ import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.monster.BlazeEntity;
 import net.minecraft.entity.monster.CreeperEntity;
 import net.minecraft.entity.monster.EndermanEntity;
+import net.minecraft.entity.monster.HoglinEntity;
 import net.minecraft.entity.monster.PhantomEntity;
 import net.minecraft.entity.monster.PillagerEntity;
 import net.minecraft.entity.monster.RavagerEntity;
+import net.minecraft.entity.monster.SilverfishEntity;
 import net.minecraft.entity.monster.SkeletonEntity;
 import net.minecraft.entity.monster.SlimeEntity;
 import net.minecraft.entity.monster.SpellcastingIllagerEntity;
@@ -24,6 +26,7 @@ import net.minecraft.entity.monster.StrayEntity;
 import net.minecraft.entity.monster.VindicatorEntity;
 import net.minecraft.entity.monster.WitchEntity;
 import net.minecraft.entity.monster.WitherSkeletonEntity;
+import net.minecraft.entity.monster.ZoglinEntity;
 import net.minecraft.entity.monster.ZombieEntity;
 import net.minecraft.entity.monster.ZombieVillagerEntity;
 import net.minecraft.item.ItemStack;
@@ -104,7 +107,7 @@ public class BlockLooterTile extends TileEntity implements ITickableTileEntity
 					world.addEntity(new ExperienceOrbEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, 1));
 				}
 				
-				if(mob instanceof WitchEntity)
+				if(mob instanceof WitchEntity || mob instanceof SilverfishEntity)
 				{
 					((MobEntity) mob).spawnExplosionParticle();
 					mob.remove(true);
@@ -154,6 +157,15 @@ public class BlockLooterTile extends TileEntity implements ITickableTileEntity
 					((MobEntity) mob).spawnExplosionParticle();
 					mob.remove(true);
 					ItemStack drop = new ItemStack(Items.DIAMOND);				
+					world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
+					world.addEntity(new ExperienceOrbEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, 1));
+				}
+				
+				if(mob instanceof HoglinEntity || mob instanceof ZoglinEntity)
+				{
+					((MobEntity) mob).spawnExplosionParticle();
+					mob.remove(true);
+					ItemStack drop = new ItemStack(Items.LEATHER);				
 					world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
 					world.addEntity(new ExperienceOrbEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, 1));
 				}

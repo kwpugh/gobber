@@ -15,7 +15,6 @@ import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.item.ArmorStandEntity;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.entity.merchant.villager.WanderingTraderEntity;
-import net.minecraft.entity.monster.BlazeEntity;
 import net.minecraft.entity.monster.ElderGuardianEntity;
 import net.minecraft.entity.monster.GhastEntity;
 import net.minecraft.entity.monster.GuardianEntity;
@@ -75,7 +74,6 @@ public class BlockDefenderTile extends TileEntity implements ITickableTileEntity
 					entity instanceof VexEntity ||
 					entity instanceof VindicatorEntity ||
 					entity instanceof GhastEntity ||
-					entity instanceof BlazeEntity ||
 					entity instanceof WitherEntity ||
 					entity instanceof EnderDragonEntity)
 				{
