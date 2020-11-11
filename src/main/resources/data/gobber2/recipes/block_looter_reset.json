@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "gobber2:block_looter"
+    }
+  ],
+  "result": {
+    "item": "gobber2:block_looter"
+  }
+}

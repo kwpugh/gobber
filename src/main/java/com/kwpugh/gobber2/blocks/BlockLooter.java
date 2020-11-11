@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.kwpugh.gobber2.blocks.tileentities.BlockLooterTile;
 import com.kwpugh.gobber2.config.GobberConfigBuilder;
 import com.kwpugh.gobber2.init.TileInit;
 
@@ -11,12 +12,15 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -42,6 +46,15 @@ public class BlockLooter extends Block
 		return TileInit.BLOCK_LOOTER.get().create();
 	}
 
+	public void interactWith(World worldIn, BlockPos pos, PlayerEntity player) 
+	{
+	    TileEntity tileentity = worldIn.getTileEntity(pos);
+	    if (tileentity instanceof BlockLooterTile) 
+	    {
+	    	//TBD
+	    }
+	}
+	  
 	@Override
 	public BlockRenderType getRenderType(BlockState state)
 	{

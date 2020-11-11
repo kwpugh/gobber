@@ -43,7 +43,15 @@ public class ItemCustomArmorGobber extends ArmorItem
 	    			legs.getItem() == ItemInit.GOBBER2_LEGGINGS.get() && 
 	    			feet.getItem() == ItemInit.GOBBER2_BOOTS.get())
 	    	{
-				player.removeActivePotionEffect(Effects.POISON);
+				if(player.getActivePotionEffect(Effects.POISON) != null)
+				{
+					player.removePotionEffect(Effects.POISON);
+				}
+				
+				if(player.getActivePotionEffect(Effects.WITHER) != null)
+				{
+					player.removePotionEffect(Effects.WITHER);
+				}
 	    	}	
 		    
 	    	//Check ArmorUtil for additional perks applied to armor

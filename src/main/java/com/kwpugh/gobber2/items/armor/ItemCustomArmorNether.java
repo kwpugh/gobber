@@ -42,8 +42,15 @@ public class ItemCustomArmorNether extends ArmorItem
     			legs.getItem() == ItemInit.GOBBER2_LEGGINGS_NETHER.get() && 
     			feet.getItem() == ItemInit.GOBBER2_BOOTS_NETHER.get())
     	{
-			player.removeActivePotionEffect(Effects.POISON);
-			player.removeActivePotionEffect(Effects.WITHER);	
+			if(player.getActivePotionEffect(Effects.POISON) != null)
+			{
+				player.removePotionEffect(Effects.POISON);
+			}
+			
+			if(player.getActivePotionEffect(Effects.WITHER) != null)
+			{
+				player.removePotionEffect(Effects.WITHER);
+			}
     	}	
 
     	//Check ArmorUtil for additional perks applied to armor

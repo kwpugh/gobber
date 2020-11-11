@@ -51,16 +51,55 @@ public class ItemCustomArmorEnd extends ArmorItem
 		if(isWearingFullEndArmor)
 		{
 			//Additional full set bonuses
-			player.removeActivePotionEffect(Effects.BLINDNESS);
-			player.removeActivePotionEffect(Effects.SLOWNESS);
-			player.removeActivePotionEffect(Effects.MINING_FATIGUE);
-			player.removeActivePotionEffect(Effects.INSTANT_DAMAGE);
-			player.removeActivePotionEffect(Effects.NAUSEA);
-			player.removeActivePotionEffect(Effects.HUNGER);
-			player.removeActivePotionEffect(Effects.POISON);
-			player.removeActivePotionEffect(Effects.WITHER);
-			player.removeActivePotionEffect(Effects.UNLUCK);
-			player.removeActivePotionEffect(Effects.WEAKNESS);
+			if(player.getActivePotionEffect(Effects.BLINDNESS) != null)
+			{
+				player.removePotionEffect(Effects.BLINDNESS);
+			}
+	
+			if(player.getActivePotionEffect(Effects.SLOWNESS) != null)
+			{
+				player.removePotionEffect(Effects.SLOWNESS);
+			}
+			
+			if(player.getActivePotionEffect(Effects.MINING_FATIGUE) != null)
+			{
+				player.removePotionEffect(Effects.MINING_FATIGUE);
+			}
+			
+			if(player.getActivePotionEffect(Effects.INSTANT_DAMAGE) != null)
+			{
+				player.removePotionEffect(Effects.INSTANT_DAMAGE);
+			}
+			
+			if(player.getActivePotionEffect(Effects.NAUSEA) != null)
+			{
+				player.removePotionEffect(Effects.NAUSEA);
+			}
+			
+			if(player.getActivePotionEffect(Effects.HUNGER) != null)
+			{
+				player.removePotionEffect(Effects.HUNGER);
+			}
+			
+			if(player.getActivePotionEffect(Effects.POISON) != null)
+			{
+				player.removePotionEffect(Effects.POISON);
+			}
+			
+			if(player.getActivePotionEffect(Effects.WITHER) != null)
+			{
+				player.removePotionEffect(Effects.WITHER);
+			}
+			
+			if(player.getActivePotionEffect(Effects.UNLUCK) != null)
+			{
+				player.removePotionEffect(Effects.UNLUCK);
+			}
+			
+			if(player.getActivePotionEffect(Effects.WEAKNESS) != null)
+			{
+				player.removePotionEffect(Effects.WEAKNESS);
+			}
 		} 
      
 		//Check ArmorUtil for additional perks applied to armor

@@ -8,6 +8,7 @@ import com.kwpugh.gobber2.init.TileInit;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.item.ArmorStandEntity;
 import net.minecraft.entity.item.ExperienceOrbEntity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.monster.BlazeEntity;
@@ -38,6 +39,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 public class BlockLooterTile extends TileEntity implements ITickableTileEntity 
 {	
 	int radius = GobberConfigBuilder.LOOTER_RADIUS.get();
+	boolean xpOnly = false;
 	
     public BlockLooterTile()
 	{
@@ -52,13 +54,22 @@ public class BlockLooterTile extends TileEntity implements ITickableTileEntity
 			//Scan the radius for LivingEntity and store in list
 			List<Entity> mobs = world.getEntitiesWithinAABB(LivingEntity.class, new AxisAlignedBB(pos.getX() - radius, pos.getY() - radius, pos.getZ() - radius, pos.getX() + radius, pos.getY() + radius, pos.getZ() + radius), e -> (e instanceof LivingEntity));
 			for(Entity mob : mobs)
-			{				
+			{
+				if(mob instanceof ArmorStandEntity)
+				{
+					xpOnly = true;
+				}
+
 				if(mob instanceof ZombieEntity || mob instanceof ZombieVillagerEntity)
 				{
 					((MobEntity) mob).spawnExplosionParticle();
 					mob.remove(true);
-					ItemStack drop = new ItemStack(Items.GOLD_INGOT);				
-					world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
+					if(!xpOnly)
+					{
+						ItemStack drop = new ItemStack(Items.GOLD_INGOT);				
+						world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
+					}
+				
 					world.addEntity(new ExperienceOrbEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, 1));
 				}
 				
@@ -66,17 +77,25 @@ public class BlockLooterTile extends TileEntity implements ITickableTileEntity
 				{
 					((MobEntity) mob).spawnExplosionParticle();
 					mob.remove(true);
-					ItemStack drop = new ItemStack(Items.STRING);				
-					world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
+					if(!xpOnly)
+					{
+						ItemStack drop = new ItemStack(Items.STRING);				
+						world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
+					}
+					
 					world.addEntity(new ExperienceOrbEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, 1));
 				}
 				
 				if(mob instanceof SkeletonEntity || mob instanceof StrayEntity)
-				{
+				{		
 					((MobEntity) mob).spawnExplosionParticle();
 					mob.remove(true);
-					ItemStack drop = new ItemStack(Items.BONE);				
-					world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
+					if(!xpOnly)
+					{
+						ItemStack drop = new ItemStack(Items.BONE);				
+						world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
+					}					
+		
 					world.addEntity(new ExperienceOrbEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, 1));
 				}
 				
@@ -93,8 +112,12 @@ public class BlockLooterTile extends TileEntity implements ITickableTileEntity
 				{
 					((MobEntity) mob).spawnExplosionParticle();
 					mob.remove(true);
-					ItemStack drop = new ItemStack(Items.GUNPOWDER);				
-					world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
+					if(!xpOnly)
+					{					
+						ItemStack drop = new ItemStack(Items.GUNPOWDER);				
+						world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
+					}
+
 					world.addEntity(new ExperienceOrbEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, 1));
 				}
 			
@@ -102,8 +125,12 @@ public class BlockLooterTile extends TileEntity implements ITickableTileEntity
 				{
 					((MobEntity) mob).spawnExplosionParticle();
 					mob.remove(true);
-					ItemStack drop = new ItemStack(Items.SLIME_BALL);				
-					world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
+					if(!xpOnly)
+					{	
+						ItemStack drop = new ItemStack(Items.SLIME_BALL);				
+						world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
+					}
+					
 					world.addEntity(new ExperienceOrbEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, 1));
 				}
 				
@@ -111,8 +138,12 @@ public class BlockLooterTile extends TileEntity implements ITickableTileEntity
 				{
 					((MobEntity) mob).spawnExplosionParticle();
 					mob.remove(true);
-					ItemStack drop = new ItemStack(Items.EMERALD);				
-					world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
+					if(!xpOnly)
+					{
+						ItemStack drop = new ItemStack(Items.EMERALD);				
+						world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
+					}
+
 					world.addEntity(new ExperienceOrbEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, 1));
 				}
 				
@@ -120,8 +151,12 @@ public class BlockLooterTile extends TileEntity implements ITickableTileEntity
 				{
 					((MobEntity) mob).spawnExplosionParticle();
 					mob.remove(true);
-					ItemStack drop = new ItemStack(Items.ENDER_PEARL);				
-					world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
+					if(!xpOnly)
+					{
+						ItemStack drop = new ItemStack(Items.ENDER_PEARL);				
+						world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
+					}
+			
 					world.addEntity(new ExperienceOrbEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, 1));
 				}
 				
@@ -129,8 +164,12 @@ public class BlockLooterTile extends TileEntity implements ITickableTileEntity
 				{
 					((MobEntity) mob).spawnExplosionParticle();
 					mob.remove(true);
-					ItemStack drop = new ItemStack(Items.BLAZE_ROD);				
-					world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
+					if(!xpOnly)
+					{
+						ItemStack drop = new ItemStack(Items.BLAZE_ROD);				
+						world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
+					}
+		
 					world.addEntity(new ExperienceOrbEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, 1));
 				}
 				
@@ -138,8 +177,12 @@ public class BlockLooterTile extends TileEntity implements ITickableTileEntity
 				{
 					((MobEntity) mob).spawnExplosionParticle();
 					mob.remove(true);
-					ItemStack drop = new ItemStack(Items.WITHER_SKELETON_SKULL);				
-					world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
+					if(!xpOnly)
+					{
+						ItemStack drop = new ItemStack(Items.WITHER_SKELETON_SKULL);				
+						world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
+					}
+				
 					world.addEntity(new ExperienceOrbEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, 1));
 				}
 				
@@ -147,8 +190,12 @@ public class BlockLooterTile extends TileEntity implements ITickableTileEntity
 				{
 					((MobEntity) mob).spawnExplosionParticle();
 					mob.remove(true);
-					ItemStack drop = new ItemStack(Items.PHANTOM_MEMBRANE);				
-					world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
+					if(!xpOnly)
+					{
+						ItemStack drop = new ItemStack(Items.PHANTOM_MEMBRANE);				
+						world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
+					}
+				
 					world.addEntity(new ExperienceOrbEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, 1));
 				}
 				
@@ -156,8 +203,12 @@ public class BlockLooterTile extends TileEntity implements ITickableTileEntity
 				{
 					((MobEntity) mob).spawnExplosionParticle();
 					mob.remove(true);
-					ItemStack drop = new ItemStack(Items.DIAMOND);				
-					world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
+					if(!xpOnly)
+					{
+						ItemStack drop = new ItemStack(Items.DIAMOND);				
+						world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
+					}
+				
 					world.addEntity(new ExperienceOrbEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, 1));
 				}
 				
@@ -165,8 +216,12 @@ public class BlockLooterTile extends TileEntity implements ITickableTileEntity
 				{
 					((MobEntity) mob).spawnExplosionParticle();
 					mob.remove(true);
-					ItemStack drop = new ItemStack(Items.LEATHER);				
-					world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
+					if(!xpOnly)
+					{
+						ItemStack drop = new ItemStack(Items.LEATHER);				
+						world.addEntity(new ItemEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, drop));
+					}
+				
 					world.addEntity(new ExperienceOrbEntity(world, pos.getX()+3, pos.getY(), pos.getZ()+3, 1));
 				}
 		   }

@@ -59,8 +59,11 @@ public class JEIDescriptions implements IModPlugin
 				"item.gobber2.block_looter.jei.line12",
 				"item.gobber2.block_looter.jei.line13",
 				"item.gobber2.block_looter.jei.line14",
+				"item.gobber2.block_looter.jei.line15",
 				" ",
-				"item.gobber2.block_looter.jei.line15");
+				"item.gobber2.block_looter.jei.line16",
+				" ",
+				"item.gobber2.block_looter.jei.line17");
 		
 		registry.addIngredientInfo(new ItemStack(ItemInit.BLOCK_MATURATOR.get()), VanillaTypes.ITEM, 
 				"item.gobber2.block_maturator.jei.line1",
