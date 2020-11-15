@@ -100,14 +100,14 @@ public class ItemCustomRingAttraction extends Item
     {
 		ItemStack stack = player.getHeldItem(hand);	
 		
-		if(!world.isRemote && !(player.isSneaking()))
+		if((!world.isRemote) && (!player.isSneaking()))
         {
             EnableUtil.changeEnabled(player, hand);
             player.sendStatusMessage(new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line2", EnableUtil.isEnabled(stack)).mergeStyle(TextFormatting.GREEN), true);
             return new ActionResult<ItemStack>(ActionResultType.SUCCESS, player.getHeldItem(hand));
         }		
 		
-        if(!world.isRemote && player.isSneaking())
+        if((!world.isRemote) && (player.isSneaking()))
         {
 			if(range == 8)
 			{
@@ -163,8 +163,6 @@ public class ItemCustomRingAttraction extends Item
 		if(EnableUtil.isEnabled(stack))  // Will still show range 0 on first use until range is changed
 		{
 			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5",MagnetRangeUtil.getCurrentRange(stack)).mergeStyle(TextFormatting.LIGHT_PURPLE)));	
-		}
-		
-	
+		}	
 	}     
 }
