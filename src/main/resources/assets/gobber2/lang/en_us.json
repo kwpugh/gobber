@@ -240,6 +240,8 @@
 
 	"item.gobber2.gobber2_ring_haste": "Ring of Haste",
 	"item.gobber2.gobber2_ring_haste.line1": "Provide player with improved block breaking speed",
+	"item.gobber2.gobber2_ring_haste.line2": "Haste ability active: %s",
+	"item.gobber2.gobber2_ring_haste.line3": "Sneak right-click to toggle on/off",
 
 	"item.gobber2.gobber2_ring_void": "Ring of the Void",
 	"item.gobber2.gobber2_ring_void.line1": "Teleports the player to the End",

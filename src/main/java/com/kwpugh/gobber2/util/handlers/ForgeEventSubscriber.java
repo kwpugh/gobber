@@ -9,6 +9,8 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.OreBlock;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
@@ -16,7 +18,6 @@ import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
 import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
 import net.minecraftforge.event.entity.living.LootingLevelEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -145,28 +146,28 @@ public final class ForgeEventSubscriber
     	
     }
     
-    //Gives a much faster breaking speed when using proper tool
-    @SubscribeEvent
-    public static void breakingBlockSpeed(PlayerEvent.BreakSpeed event)
-    {
-        PlayerEntity player = event.getPlayer();
-        //ItemStack stack = player.getHeldItemMainhand(); 
-        //BlockPos pos = event.getPos();
-        Block block = event.getState().getBlock();
-        
-        if (player != null && !(player instanceof FakePlayer) && !player.isCreative())
-        {    
-        	if(PlayerEquipsUtil.isPlayerGotHasteRing(player))
-        	{
-				if(block == Blocks.OBSIDIAN)
-				{
-					event.setNewSpeed(GobberConfigBuilder.HASTE_RING_BREAK_SPEED.get() * 8);
-				}
-				else
-				{
-					event.setNewSpeed(GobberConfigBuilder.HASTE_RING_BREAK_SPEED.get());
-				}						
-        	}
-        }
-    }
+//    //Gives a much faster breaking speed when using proper tool
+//    @SubscribeEvent
+//    public static void breakingBlockSpeed(PlayerEvent.BreakSpeed event)
+//    {
+//        PlayerEntity player = event.getPlayer();
+//        //ItemStack stack = player.getHeldItemMainhand(); 
+//        //BlockPos pos = event.getPos();
+//        Block block = event.getState().getBlock();
+//        
+//        if (player != null && !(player instanceof FakePlayer) && !player.isCreative())
+//        {    
+//        	if(PlayerEquipsUtil.isPlayerGotHasteRing(player))
+//        	{
+//				if(block == Blocks.OBSIDIAN)
+//				{
+//					event.setNewSpeed(GobberConfigBuilder.HASTE_RING_BREAK_SPEED.get() * 8);
+//				}
+//				else
+//				{
+//					event.setNewSpeed(GobberConfigBuilder.HASTE_RING_BREAK_SPEED.get());
+//				}						
+//        	}
+//        }
+//    }
 } 

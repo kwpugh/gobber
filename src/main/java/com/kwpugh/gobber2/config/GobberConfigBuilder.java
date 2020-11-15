@@ -191,7 +191,7 @@ public class GobberConfigBuilder
         DELAY_BREAK_MODE = SERVER_BUILDER.comment("Uses a delayed break mode to reduce stutter and potential lag on Ring of Miner and Ring of Lumberjack [true / false]").define("delayedBreakMode", true);
         RING_ACCELERATION_VELOCITY = SERVER_BUILDER.comment("Ring of Acceleration - amount of velocity applied [default: .18]").defineInRange("ringAccelerationVelocity", .18, 0.0, .30);
         RING_REPAIR_DELAY = SERVER_BUILDER.comment("Ring of Repair - Delay time between repair ticks [default: 120]").defineInRange("ringRepairDelay", 120, 20, 600);
-        HASTE_RING_BREAK_SPEED = SERVER_BUILDER.comment("Ring of Haste - Block break speed [default: 30]").defineInRange("ringHasteBreakSpeed", 30, 10, 100);
+        //HASTE_RING_BREAK_SPEED = SERVER_BUILDER.comment("Ring of Haste - Block break speed [default: 30]").defineInRange("ringHasteBreakSpeed", 30, 10, 100);
 
         SERVER_BUILDER.pop();
 
