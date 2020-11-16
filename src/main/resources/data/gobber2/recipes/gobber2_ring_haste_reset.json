@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "gobber2:gobber2_ring_haste"
+    }
+  ],
+  "result": {
+    "item": "gobber2:gobber2_ring_haste"
+  }
+}

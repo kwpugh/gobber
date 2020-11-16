@@ -1,12 +1,14 @@
 package com.kwpugh.gobber2;
 
-
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.inventory.container.PlayerContainer;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
@@ -16,15 +18,17 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 import static net.minecraft.item.ItemModelsProperties.func_239418_a_;
 
+import org.lwjgl.glfw.GLFW;
+
 import com.kwpugh.gobber2.init.ItemInit;
 
 @SuppressWarnings("unused")
 @Mod.EventBusSubscriber(modid = Gobber2.modid, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Gobber2Client
-{   
+{ 	  
     @SubscribeEvent
     public static void setModelProperties(FMLClientSetupEvent event)
-    {
+    {        
     	func_239418_a_(ItemInit.GOBBER2_BOW.get(), new ResourceLocation("pull"), (itemStack, world, livingEntity) -> {
             if (livingEntity == null)
             {
