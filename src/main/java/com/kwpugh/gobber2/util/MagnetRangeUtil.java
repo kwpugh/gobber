@@ -27,8 +27,7 @@ public class MagnetRangeUtil
         if(!stack.hasTag())
         {
             stack.setTag(new CompoundNBT());
-        }
-        
+        }      
         stack.getTag().putInt("currentRange", newRange);
         stack.getTag().putBoolean("currentlySet", true);
     }

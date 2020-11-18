@@ -74,5 +74,49 @@ public class AnvilEventHandler
 			event.setCost(10);
 			event.setOutput(output);
 		}
+		
+		if(left.getItem().equals(ItemInit.GOBBER2_HELMET_DRAGON.get()) && right.getItem().equals(Items.DRAGON_BREATH))
+		{			
+			ItemStack output = new ItemStack(ItemInit.GOBBER2_HELMET_DRAGON.get());
+			output.addEnchantment(Enchantments.THORNS, 5);
+			output.addEnchantment(Enchantments.PROTECTION, 5);
+			output.addEnchantment(Enchantments.PROJECTILE_PROTECTION, 5);
+			output.setDisplayName(new StringTextComponent("Thorny Dragon Helmet"));
+			event.setCost(10);
+			event.setOutput(output);
+		}
+		
+		if(left.getItem().equals(ItemInit.GOBBER2_CHESTPLATE_DRAGON.get()) && right.getItem().equals(Items.DRAGON_BREATH))
+		{			
+			ItemStack output = new ItemStack(ItemInit.GOBBER2_CHESTPLATE_DRAGON.get());
+			output.addEnchantment(Enchantments.THORNS, 5);
+			output.addEnchantment(Enchantments.PROTECTION, 5);
+			output.addEnchantment(Enchantments.PROJECTILE_PROTECTION, 5);
+			output.setDisplayName(new StringTextComponent("Thorny Dragon Chestplate"));
+			event.setCost(10);
+			event.setOutput(output);
+		}
+	
+		if(left.getItem().equals(ItemInit.GOBBER2_LEGGINGS_DRAGON.get()) && right.getItem().equals(Items.DRAGON_BREATH))
+		{			
+			ItemStack output = new ItemStack(ItemInit.GOBBER2_LEGGINGS_DRAGON.get());
+			output.addEnchantment(Enchantments.THORNS, 5);
+			output.addEnchantment(Enchantments.PROTECTION, 5);
+			output.addEnchantment(Enchantments.PROJECTILE_PROTECTION, 5);
+			output.setDisplayName(new StringTextComponent("Thorny Dragon Leggings"));
+			event.setCost(10);
+			event.setOutput(output);
+		}
+		
+		if(left.getItem().equals(ItemInit.GOBBER2_BOOTS_DRAGON.get()) && right.getItem().equals(Items.DRAGON_BREATH))
+		{			
+			ItemStack output = new ItemStack(ItemInit.GOBBER2_BOOTS_DRAGON.get());
+			output.addEnchantment(Enchantments.THORNS, 5);
+			output.addEnchantment(Enchantments.PROTECTION, 5);
+			output.addEnchantment(Enchantments.PROJECTILE_PROTECTION, 5);
+			output.setDisplayName(new StringTextComponent("Thorny Dragon Boots"));
+			event.setCost(10);
+			event.setOutput(output);
+		}
 	}
 }

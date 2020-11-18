@@ -52,7 +52,7 @@ public class ItemCustomRingHaste extends Item
         if(!world.isRemote && player.isSneaking())
         {
             EnableUtil.changeEnabled(player, hand);
-            player.sendStatusMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_vision.line2", EnableUtil.isEnabled(stack)).mergeStyle(TextFormatting.GREEN)), true);
+            player.sendStatusMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_haste.line2", EnableUtil.isEnabled(stack)).mergeStyle(TextFormatting.GREEN)), true);
             return new ActionResult<ItemStack>(ActionResultType.SUCCESS, player.getHeldItem(hand));
         }
         return super.onItemRightClick(world, player, hand);
