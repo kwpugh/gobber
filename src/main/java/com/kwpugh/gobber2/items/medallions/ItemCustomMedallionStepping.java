@@ -47,7 +47,7 @@ public class ItemCustomMedallionStepping extends Item
 		}
 		
         if(player.isCrouching())
-        {   
+        {       	
         	if(player.stepHeight < 1.0F)
 		    {
 		    	player.stepHeight = 1.0F;

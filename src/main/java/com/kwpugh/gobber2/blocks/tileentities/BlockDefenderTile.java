@@ -33,6 +33,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 public class BlockDefenderTile extends TileEntity implements ITickableTileEntity 
 {	
 	int radius = GobberConfigBuilder.DEFENDER_RADIUS.get();
+	boolean killFish = GobberConfigBuilder.DEFENDER_KILL_FISH.get();
 	
     public BlockDefenderTile()
 	{
@@ -67,7 +68,7 @@ public class BlockDefenderTile extends TileEntity implements ITickableTileEntity
 					entity instanceof AnimalEntity ||
 					entity instanceof IronGolemEntity ||
 					entity instanceof DolphinEntity ||
-					entity instanceof WaterMobEntity ||
+					(killFish == false && entity instanceof WaterMobEntity) ||
 					entity instanceof GuardianEntity ||
 					entity instanceof ElderGuardianEntity ||
 					entity instanceof SpellcastingIllagerEntity ||
@@ -79,7 +80,13 @@ public class BlockDefenderTile extends TileEntity implements ITickableTileEntity
 				{
 					continue;
 				}
-
+				
+				if(entity instanceof WaterMobEntity && killFish == true)
+				{
+					((MobEntity) entity).spawnExplosionParticle();
+					entity.remove(true);
+				}
+				
 				if(entity instanceof MobEntity)
 				{
 					((MobEntity) entity).spawnExplosionParticle();

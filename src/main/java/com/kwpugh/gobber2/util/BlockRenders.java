@@ -18,5 +18,6 @@ public class BlockRenders
 		RenderTypeLookup.setRenderLayer(BlockInit.GOBBER2_GLASS.get(), translucent);	
 		RenderTypeLookup.setRenderLayer(BlockInit.GOBBER2_GLASS_NETHER.get(), translucent);	
 		RenderTypeLookup.setRenderLayer(BlockInit.GOBBER2_GLASS_END.get(), translucent);
+		RenderTypeLookup.setRenderLayer(BlockInit.CLEAR_GLASS.get(), translucent);
 	}	
 }

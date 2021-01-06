@@ -13,10 +13,15 @@ package com.kwpugh.gobber2.items.tools.hoe;
 //
 //public class ItemCustomHoeNether extends HoeItem
 //{
-//	public ItemCustomHoeNether(IItemTier tier, float attackSpeedIn, Properties builder)
+//public ItemCustomHoeNether(IItemTier p_i231595_1_, int p_i231595_2_, float p_i231595_3_, Properties p_i231595_4_)
 //	{
-//		super(tier, attackSpeedIn, builder);
+//		super(p_i231595_1_, p_i231595_2_, p_i231595_3_, p_i231595_4_);
 //	}
+//
+////	public ItemCustomHoeNether(IItemTier tier, float attackSpeedIn, Properties builder)
+////	{
+////		super(tier, attackSpeedIn, builder);
+////	}
 //	
 //	public void inventoryTick(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected)
 //	{		

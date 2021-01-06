@@ -5,7 +5,9 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.entity.monster.MonsterEntity;
@@ -41,14 +43,13 @@ public class ItemCustomStaffEnsnarement extends Item
 
 	@Override
 	public boolean onLeftClickEntity(ItemStack stack, PlayerEntity player, Entity entity)
-	{
-      if (entity instanceof PlayerEntity ||
-        		!entity.isNonBoss() ||
-        		!entity.isAlive())
-        	return false;
+	{		
+		if (entity instanceof PlayerEntity || !entity.isNonBoss() || !entity.isAlive())
+    
+			return false;
 
-        if (  (stack.getOrCreateChildTag("mob_data").isEmpty()) &&
-        		(entity instanceof AnimalEntity ||
+        if((stack.getOrCreateChildTag("mob_data").isEmpty()) &&
+        		(entity instanceof AnimalEntity ||	
         				entity instanceof HorseEntity ||
         				entity instanceof DonkeyEntity ||
         				entity instanceof LlamaEntity ||
@@ -56,18 +57,20 @@ public class ItemCustomStaffEnsnarement extends Item
         				entity instanceof GolemEntity ||
         				entity instanceof MonsterEntity ||
         				entity instanceof VillagerEntity ||
-        				entity instanceof PhantomEntity
-        				))
-		{
-			CompoundNBT tag = entity.serializeNBT();
-			if (!player.world.isRemote)
+        				entity instanceof PhantomEntity))
 			{
-				entity.remove();
-				stack.getTag().put("mob_data", tag);
-				stack.getTag().putString("name", entity.getDisplayName().getString());
+        		CompoundNBT tag = entity.serializeNBT();
+		
+        		if (!player.world.isRemote)
+        		{
+        			entity.remove();
+        			stack.getTag().put("mob_data", tag);
+        			stack.getTag().putString("name", entity.getDisplayName().getString());
+        		}
+
+        		return true;
 			}
-			return true;
-		}
+        
 		return super.onLeftClickEntity(stack, player, entity);
 	}
 

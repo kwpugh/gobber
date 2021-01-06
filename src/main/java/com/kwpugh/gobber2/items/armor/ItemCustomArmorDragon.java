@@ -154,7 +154,7 @@ public class ItemCustomArmorDragon extends ArmorItem
 		//Boots
 		if(feet.getItem() == ItemInit.GOBBER2_BOOTS_DRAGON.get())
 		{
-			PlayerSpecialAbilities.giveDolphinEffect(world, player, stack);
+			//something
 		}
 		else
 		{

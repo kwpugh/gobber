@@ -1,6 +1,7 @@
 package com.kwpugh.gobber2.init;
 
 import com.kwpugh.gobber2.Gobber2;
+import com.kwpugh.gobber2.blocks.BlockClearGlass;
 import com.kwpugh.gobber2.blocks.BlockDefender;
 import com.kwpugh.gobber2.blocks.BlockEndBlock;
 import com.kwpugh.gobber2.blocks.BlockGobberBlock;
@@ -40,9 +41,10 @@ public class BlockInit
 	
 	public static final RegistryObject<Block> GOBBER2_LUCKY_BLOCK = BLOCKS.register("gobber2_lucky_block", () -> new Block(Block.Properties.create(Material.ROCK, MaterialColor.STONE).hardnessAndResistance(3.0F, 3.0F).sound(SoundType.STONE)));
 	
-	public static final RegistryObject<Block> GOBBER2_GLASS = BLOCKS.register("gobber2_glass", () -> new BlockGobberGlass(Block.Properties.create(Material.GLASS, MaterialColor.STONE).hardnessAndResistance(2.0F, 2.0F).sound(SoundType.GLASS)));
-	public static final RegistryObject<Block> GOBBER2_GLASS_NETHER = BLOCKS.register("gobber2_glass_nether", () -> new BlockGobberGlassNether(Block.Properties.create(Material.GLASS, MaterialColor.STONE).hardnessAndResistance(2.0F, 2.0F).sound(SoundType.GLASS)));
-	public static final RegistryObject<Block> GOBBER2_GLASS_END = BLOCKS.register("gobber2_glass_end", () -> new BlockGobberGlassEnd(Block.Properties.create(Material.GLASS, MaterialColor.STONE).hardnessAndResistance(2.0F, 2.0F).sound(SoundType.GLASS)));
+	public static final RegistryObject<Block> GOBBER2_GLASS = BLOCKS.register("gobber2_glass", () -> new BlockGobberGlass(Block.Properties.create(Material.GLASS, MaterialColor.STONE).hardnessAndResistance(2.0F, 2.0F).notSolid().setLightLevel((state) -> { return 15; }).sound(SoundType.GLASS)));
+	public static final RegistryObject<Block> GOBBER2_GLASS_NETHER = BLOCKS.register("gobber2_glass_nether", () -> new BlockGobberGlassNether(Block.Properties.create(Material.GLASS, MaterialColor.STONE).hardnessAndResistance(2.0F, 2.0F).notSolid().setLightLevel((state) -> { return 15; }).sound(SoundType.GLASS)));
+	public static final RegistryObject<Block> GOBBER2_GLASS_END = BLOCKS.register("gobber2_glass_end", () -> new BlockGobberGlassEnd(Block.Properties.create(Material.GLASS, MaterialColor.STONE).hardnessAndResistance(2.0F, 2.0F).notSolid().setLightLevel((state) -> { return 15; }).sound(SoundType.GLASS)));
+	public static final RegistryObject<Block> CLEAR_GLASS = BLOCKS.register("clear_glass", () -> new BlockClearGlass(Block.Properties.create(Material.GLASS, MaterialColor.STONE).hardnessAndResistance(2.0F, 2.0F).notSolid().setLightLevel((state) -> { return 15; }).sound(SoundType.GLASS)));
 	
 	public static final RegistryObject<Block> GOBBER2_PLANT = BLOCKS.register("gobber2_plant", () -> new BlockGobberPlant("gobber2_plant", Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0f, 0.0f).sound(SoundType.CROP)));
 	public static final RegistryObject<Block> GOBBER2_PLANT_NETHER = BLOCKS.register("gobber2_plant_nether", () -> new BlockGobberPlant("gobber2_plant_nether", Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0f, 0.0f).sound(SoundType.CROP)));

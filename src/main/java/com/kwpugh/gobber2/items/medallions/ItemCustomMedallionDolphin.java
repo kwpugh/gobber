@@ -38,7 +38,7 @@ public class ItemCustomMedallionDolphin extends Item
 
 			if (player.ticksExisted % 180 == 0)
 			{
-				player.addPotionEffect(new EffectInstance(Effects.DOLPHINS_GRACE, 260, 2, false, false));
+				player.addPotionEffect(new EffectInstance(Effects.DOLPHINS_GRACE, 600, 2, false, false));
 			} 
 		}
 	}	

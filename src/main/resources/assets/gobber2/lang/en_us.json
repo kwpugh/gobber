@@ -1,4 +1,7 @@
 {
+    "key.toggleRingAttraction": "Toggle Ring of Attraction on/off",
+    "key.categories.gobber2": "Gobber",
+    
 	"block.gobber2.gobber2_lucky_block": "Gobber Lucky Block",
 
 	"block.gobber2.gobber2_ore": "Gobber Ore",
@@ -120,7 +123,7 @@
 	"item.gobber2.gobber2_armor_end.line1": "Helmet: Rapid auto-feeding with saturation, water breathing and aborption hearts",
 	"item.gobber2.gobber2_armor_end.line2": "Chestplate: Fire protection and knockback resistance",
 	"item.gobber2.gobber2_armor_end.line3": "Leggings: Conduit Power in water and No fall damage",
-	"item.gobber2.gobber2_armor_end.line4": "Boots: Dolphin's Grace in water",
+	"item.gobber2.gobber2_armor_end.line4": "Boots: None",
 	"item.gobber2.gobber2_armor_end.line5": "Full suit bonus: Negative effect protection",
 	"item.gobber2.gobber2_helmet_end": "End Helmet",
 	"item.gobber2.gobber2_chestplate_end": "End Chestplate",
@@ -180,6 +183,7 @@
 	"item.gobber2.gobber2_ring_attraction.line3": "Works while in player inventory",
 	"item.gobber2.gobber2_ring_attraction.line4": "Right-click to toggle on/off, sneak + right-click to cycle through ranges",
 	"item.gobber2.gobber2_ring_attraction.line5": "Attraction range set to: %s",
+	"item.gobber2.gobber2_ring_attraction.line6": "Hold Sneak to to temporarily disable attraction",
 	"item.gobber2.gobber2_ring_enderchest": "Ring of the Enderchest",
 	"item.gobber2.gobber2_ring_enderchest.line1": "Provides player access to their Enderchest",
 	"item.gobber2.gobber2_ring_enderchest.line2": "Right-click to use",
@@ -279,8 +283,6 @@
 	"item.gobber2.gobber2_ring_explorer.line2": "Min/max search range: %s %s",
 	"item.gobber2.gobber2_ring_explorer.line3": "Right-click to use.",
 
-
-
 	"item.gobber2.gobber2_staff_sniper": "Staff of the Sniper",
 	"item.gobber2.gobber2_staff_sniper.line1": "Fires very precise arrows at high velocity",
 	"item.gobber2.gobber2_staff_sniper.line2": "Right-click in player main hand",
@@ -312,6 +314,7 @@
 	"item.gobber2.gobber2_staff_nature.line1": "Converts saplings between types",
 	"item.gobber2.gobber2_staff_nature.line2": "Converts between cane and bamboo",
 	"item.gobber2.gobber2_staff_nature.line3": "Right-click to use",
+	"item.gobber2.gobber2_staff_nature.line4": "Sneak + right-click to convert vaniila glass to clear glass",
 
 
 	"item.gobber2.gobber2_medallion": "Gobber Medallion",
@@ -331,6 +334,8 @@
 	"item.gobber2.gobber2_medallion_glowing.line3": "Sneak right-click to toggle on/off",
 	"item.gobber2.gobber2_medallion_exp": "Medallion of Experience",
 	"item.gobber2.gobber2_medallion_exp.line1": "More XP drops and loot when killing hostile mobs",
+	"item.gobber2.gobber2_medallion_exp.line2": "Currently stored xp points:  %s",
+	"item.gobber2.gobber2_medallion_exp.line3": "Sneak + right-click to store xp, right-click to retrieve xp",
 	"item.gobber2.gobber2_medallion_conduit": "Medallion of Conduit Power",
 	"item.gobber2.gobber2_medallion_conduit.line1": "Conduit Power ability active: %s",
 	"item.gobber2.gobber2_medallion_conduit.line2": "Provides player with Conduit Power effect",
@@ -380,6 +385,7 @@
 	"block.gobber2.gobber2_glass": "Gobber Glass",
 	"block.gobber2.gobber2_glass_nether": "Nether Glass",
 	"block.gobber2.gobber2_glass_end": "End Glass",
+	"block.gobber2.clear_glass": "Clear Glass",
 
 	"block.gobber2.block_healer": "The Healer",
 	"item.gobber2.block_healer": "The Healer",

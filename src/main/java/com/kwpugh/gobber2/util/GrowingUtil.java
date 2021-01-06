@@ -10,6 +10,7 @@ import net.minecraft.block.CocoaBlock;
 import net.minecraft.block.CoralBlock;
 import net.minecraft.block.CoralPlantBlock;
 import net.minecraft.block.CropsBlock;
+import net.minecraft.block.FungusBlock;
 import net.minecraft.block.GrassBlock;
 import net.minecraft.block.MelonBlock;
 import net.minecraft.block.NetherWartBlock;
@@ -80,6 +81,14 @@ public class GrowingUtil
 				{
 					((GrassBlock) block).grow((ServerWorld) world, world.rand, targetPos, blockstate);	
 				}
+			}
+			
+			if(block instanceof FungusBlock)
+			{
+				if (player.ticksExisted % (baseTickDelay * 6 ) == 0)
+				{
+					((FungusBlock) block).grow((ServerWorld) world, world.rand, targetPos, blockstate);
+				}	
 			}
 		}
 	}

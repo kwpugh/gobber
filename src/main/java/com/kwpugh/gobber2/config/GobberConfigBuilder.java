@@ -40,7 +40,8 @@ public class GobberConfigBuilder
     public static ForgeConfigSpec.BooleanValue DELAY_BREAK_MODE;
     public static ForgeConfigSpec.DoubleValue RING_ACCELERATION_VELOCITY;
     public static ForgeConfigSpec.IntValue RING_REPAIR_DELAY;
-    public static ForgeConfigSpec.IntValue HASTE_RING_BREAK_SPEED;
+    public static ForgeConfigSpec.IntValue RING_ATTRACTION_BLOCK_DISTANCE;
+    public static ForgeConfigSpec.BooleanValue RING_ATTRACTION_MODE;
 
     public static ForgeConfigSpec.IntValue RING_FARMER_TICK_DELAY;
     public static ForgeConfigSpec.IntValue RING_FARMER_RADIUS;
@@ -77,15 +78,16 @@ public class GobberConfigBuilder
 
     public static ForgeConfigSpec.IntValue HEALER_RADIUS;
     public static ForgeConfigSpec.IntValue PROTECTOR_RADIUS;
+    public static ForgeConfigSpec.BooleanValue PROTECTOR_KILL_FISH;
     public static ForgeConfigSpec.IntValue DEFENDER_RADIUS;
+    public static ForgeConfigSpec.BooleanValue DEFENDER_KILL_FISH;
     public static ForgeConfigSpec.IntValue LOOTER_RADIUS;
     public static ForgeConfigSpec.IntValue MATURATOR_RADIUS;
     public static ForgeConfigSpec.IntValue MATURATOR_VERTICAL_RANGE;
     public static ForgeConfigSpec.IntValue MATURATOR_MIN_TICK;
-    //public static ForgeConfigSpec.IntValue MATURATOR_MAX_TICK;
-    public static ForgeConfigSpec.BooleanValue ENABLE_MATURATOR_ANIMAL_EFFECT;
 
     public static ForgeConfigSpec.BooleanValue ENABLE_DRAGON_ARMOR_VOID_PROTECTION;
+    public static ForgeConfigSpec.BooleanValue ENABLE_DRAGON_STAR_OFFHAND;
     public static ForgeConfigSpec.BooleanValue ENABLE_DRAGON_KILL_EVERY_KILL;
 
     public static void init(ForgeConfigSpec.Builder SERVER_BUILDER)
@@ -137,10 +139,10 @@ public class GobberConfigBuilder
     	SERVER_BUILDER.comment("Gobber Ore Generation").push("gobber2_ore");
 
         GOBBER2_ORE_GENERATION = SERVER_BUILDER.comment("Generate Gobber Ore in the world [true / false]").define("gobberOreGeneration", true);
-        GOBBER2_ORE_SIZE = SERVER_BUILDER.comment("Size of Gobber Ore pockets [0-100, default: 3]").defineInRange("gobberOreSize", 4, 0, 100);
-        GOBBER2_ORE_CHANCE = SERVER_BUILDER.comment("Chances of Gobber Ore pocket being generated [0-100, default: 10]").defineInRange("gobberOreChance", 15, 0, 100);
+        GOBBER2_ORE_SIZE = SERVER_BUILDER.comment("Size of Gobber Ore pockets [0-100, default: 4]").defineInRange("gobberOreSize", 4, 0, 100);
+        GOBBER2_ORE_CHANCE = SERVER_BUILDER.comment("Chances of Gobber Ore pocket being generated [0-100, default: 15]").defineInRange("gobberOreChance", 15, 0, 100);
         //GOBBER2_ORE_MIN_HEIGHT = SERVER_BUILDER.comment("Minimal height for Gobber Ore pocket generation, [0-255, default: 20]").defineInRange("gobberOreMinHeight", 20, 0, 255);
-        GOBBER2_ORE_MAX_HEIGHT = SERVER_BUILDER.comment("Maximal height for Gobber Ore pocket generation [0-255, default: 30]").defineInRange("gobberOreMaxHeight", 50, 0, 255);
+        GOBBER2_ORE_MAX_HEIGHT = SERVER_BUILDER.comment("Maximal height for Gobber Ore pocket generation [0-255, default: 30]").defineInRange("gobberOreMaxHeight", 30, 0, 255);
 
         SERVER_BUILDER.pop();
 
@@ -148,10 +150,10 @@ public class GobberConfigBuilder
         SERVER_BUILDER.comment("Gobber Nether Ore Generation").push("gobber2_ore_nether");
 
         GOBBER2_ORE_NETHER_GENERATION = SERVER_BUILDER.comment("Generate Gobber Nether Ore in the world [true / false]").define("gobberOreNetherGeneration", true);
-        GOBBER2_ORE_NETHER_SIZE = SERVER_BUILDER.comment("Size of Gobber Nether Ore pockets [0-100, default: 1]").defineInRange("gobberOreNetherSize", 3, 0, 100);
-        GOBBER2_ORE_NETHER_CHANCE = SERVER_BUILDER.comment("Chances of Gobber Nether Ore pocket being generated [0-100, default: 10]").defineInRange("gobberOreNetherChance", 80, 0, 100);
+        GOBBER2_ORE_NETHER_SIZE = SERVER_BUILDER.comment("Size of Gobber Nether Ore pockets [0-100, default: 3]").defineInRange("gobberOreNetherSize", 3, 0, 100);
+        GOBBER2_ORE_NETHER_CHANCE = SERVER_BUILDER.comment("Chances of Gobber Nether Ore pocket being generated [0-100, default: 80]").defineInRange("gobberOreNetherChance", 80, 0, 100);
         //GOBBER2_ORE_NETHER_MIN_HEIGHT = SERVER_BUILDER.comment("Minimal height for Gobber Nether Ore pocket generation, [0-255, default: 5]").defineInRange("gobberOreNetherMinHeight", 20, 0, 255);
-        GOBBER2_ORE_NETHER_MAX_HEIGHT = SERVER_BUILDER.comment("Maximal height for Gobber Nether Ore pocket generation [0-255, default: 50]").defineInRange("gobberOreNetherMaxHeight", 255, 0, 255);
+        GOBBER2_ORE_NETHER_MAX_HEIGHT = SERVER_BUILDER.comment("Maximal height for Gobber Nether Ore pocket generation [0-255, default: 255]").defineInRange("gobberOreNetherMaxHeight", 255, 0, 255);
 
         SERVER_BUILDER.pop();
 
@@ -159,20 +161,19 @@ public class GobberConfigBuilder
         SERVER_BUILDER.comment("Gobber End Ore Generation").push("gobber2_ore_end");
 
         GOBBER2_ORE_END_GENERATION = SERVER_BUILDER.comment("Generate Gobber End Ore in the world [true / false]").define("gobberOreEndGeneration", true);
-        //GOBBER2_ORE_END_COUNT = SERVER_BUILDER.comment("Count of Gobber End Ore possibly being generated [0-800, default: 90]").defineInRange("gobberOreEndCount", 90, 0, 800);
 
         SERVER_BUILDER.pop();
 
 
         SERVER_BUILDER.comment("Item Cooldown Settings").push("item_cooldown_settings");
 
-        RING_BLINK_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Ring of Blink cooldown [0-120, default: 60]").defineInRange("ringBlinkCooldown", 60, 0, 120);
-        RING_LUMBERJACK_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Ring of the Lumberjack cooldown [0-240, default: 80]").defineInRange("ringLumberjackCooldown", 80, 0, 120);
-        RING_MINER_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Ring of the Miner cooldown [0-240, default: 80]").defineInRange("ringMinerCooldown", 80, 0, 120);
-        RING_ABOVE_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Ring of Above cooldown [0-240, default: 80]").defineInRange("ringAboveCooldown", 80, 0, 120);
-        RING_EXPLORER_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Ring of the Explorer cooldown [0-1200, default: 480]").defineInRange("ringExplorerCooldown", 480, 0, 1200);
-        SNIPER_SWORD_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Sword of the Sniper cooldown [0-120, default: 60]").defineInRange("swordSniperCooldown", 60, 0, 120);
-        SNIPER_STAFF_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Staff of the Sniper cooldown [0-120, default: 60]").defineInRange("staffSniperCooldown", 60, 0, 120);
+        RING_BLINK_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Ring of Blink cooldown [0-3600, default: 60]").defineInRange("ringBlinkCooldown", 60, 0, 3600);
+        RING_LUMBERJACK_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Ring of the Lumberjack cooldown [0-3600, default: 80]").defineInRange("ringLumberjackCooldown", 80, 0, 3600);
+        RING_MINER_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Ring of the Miner cooldown [0-3600, default: 80]").defineInRange("ringMinerCooldown", 80, 0, 3600);
+        RING_ABOVE_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Ring of Above cooldown [0-3600, default: 80]").defineInRange("ringAboveCooldown", 80, 0, 3600);
+        RING_EXPLORER_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Ring of the Explorer cooldown [0-3600, default: 480]").defineInRange("ringExplorerCooldown", 480, 0, 3600);
+        SNIPER_SWORD_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Sword of the Sniper cooldown [0-3600, default: 60]").defineInRange("swordSniperCooldown", 60, 0, 3600);
+        SNIPER_STAFF_COOLDOWN = SERVER_BUILDER.comment("Number of ticks duration for the Staff of the Sniper cooldown [0-3600, default: 60]").defineInRange("staffSniperCooldown", 60, 0, 3600);
 
         SERVER_BUILDER.pop();
 
@@ -191,7 +192,8 @@ public class GobberConfigBuilder
         DELAY_BREAK_MODE = SERVER_BUILDER.comment("Uses a delayed break mode to reduce stutter and potential lag on Ring of Miner and Ring of Lumberjack [true / false]").define("delayedBreakMode", true);
         RING_ACCELERATION_VELOCITY = SERVER_BUILDER.comment("Ring of Acceleration - amount of velocity applied [default: .18]").defineInRange("ringAccelerationVelocity", .18, 0.0, .30);
         RING_REPAIR_DELAY = SERVER_BUILDER.comment("Ring of Repair - Delay time between repair ticks [default: 120]").defineInRange("ringRepairDelay", 120, 20, 600);
-        //HASTE_RING_BREAK_SPEED = SERVER_BUILDER.comment("Ring of Haste - Block break speed [default: 30]").defineInRange("ringHasteBreakSpeed", 30, 10, 100);
+        RING_ATTRACTION_BLOCK_DISTANCE = SERVER_BUILDER.comment("Ring of Attraction - Distance coal blocks magnet effect [default: 5]").defineInRange("ringAttractionBlocking", 5, 0, 15);
+        RING_ATTRACTION_MODE = SERVER_BUILDER.comment("Ring of Attraction - Items are instantly placed in player inventory  [true / false]").define("ringAttractionMode", false);
 
         SERVER_BUILDER.pop();
 
@@ -226,7 +228,9 @@ public class GobberConfigBuilder
 
         HEALER_RADIUS = SERVER_BUILDER.comment("Block range for Healer block effects [default: 12]").defineInRange("healerRange", 12, 0, 16);
         PROTECTOR_RADIUS = SERVER_BUILDER.comment("Block range for Protector block effects [default: 24]").defineInRange("protectorRange", 24, 0, 32);
+        PROTECTOR_KILL_FISH = SERVER_BUILDER.comment("Should the Protector kill fish [true / false]").define("protectorKillFish", false);
         DEFENDER_RADIUS = SERVER_BUILDER.comment("Block range for Defender block effects [default: 32]").defineInRange("defenderRange", 32, 0, 64);
+        DEFENDER_KILL_FISH = SERVER_BUILDER.comment("Should the Defender kill fish [true / false]").define("defenderKillFish", false);
         LOOTER_RADIUS = SERVER_BUILDER.comment("Block rangefor Looter block effects [default: 24]").defineInRange("looterRange", 24, 0, 32);
 
         SERVER_BUILDER.pop();
@@ -237,12 +241,17 @@ public class GobberConfigBuilder
         MATURATOR_RADIUS = SERVER_BUILDER.comment("Block range for Maturator block effects [default: 16]").defineInRange("maturatorRange", 10, 0, 20);
         MATURATOR_VERTICAL_RANGE = SERVER_BUILDER.comment("Vertical block range for Maturator block effects [default: 10]").defineInRange("maturatorVerticalRange", 5, 0, 10);
         MATURATOR_MIN_TICK = SERVER_BUILDER.comment("Min interval of world ticks for the Maturator [default: 40]").defineInRange("maturatorMinTick", 40, 1, 1000);
-        //MATURATOR_MAX_TICK = SERVER_BUILDER.comment("Max interval of world ticks for the Maturator [default: 240]").defineInRange("maturatorMaxTick", 240, 0, 480);
-        //ENABLE_MATURATOR_ANIMAL_EFFECT = SERVER_BUILDER.comment("Enable Maturator effect on baby animals [true / false]").define("enableMaturatorAnimalEffect", false);
 
         SERVER_BUILDER.pop();
 
 
+        SERVER_BUILDER.comment("Dragon Star Special").push("dragonStar_special");
+
+        ENABLE_DRAGON_STAR_OFFHAND = SERVER_BUILDER.comment("Enable Dragon Star Offhannd Function [true / false]").define("enableDragonStarOffhand", true);
+
+        SERVER_BUILDER.pop();
+        
+        
         SERVER_BUILDER.comment("Enable Dragon Armor Void Protect - immune to /kill command").push("dragon_armor_void");
 
         ENABLE_DRAGON_ARMOR_VOID_PROTECTION = SERVER_BUILDER.comment("Enable Dragon Armor Void Protection [true / false]").define("enableDragonArmorVoidProtection", false);

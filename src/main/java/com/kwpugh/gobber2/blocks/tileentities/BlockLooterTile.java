@@ -30,6 +30,8 @@ import net.minecraft.entity.monster.WitherSkeletonEntity;
 import net.minecraft.entity.monster.ZoglinEntity;
 import net.minecraft.entity.monster.ZombieEntity;
 import net.minecraft.entity.monster.ZombieVillagerEntity;
+import net.minecraft.entity.monster.piglin.PiglinBruteEntity;
+import net.minecraft.entity.monster.piglin.PiglinEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.tileentity.ITickableTileEntity;
@@ -40,7 +42,6 @@ public class BlockLooterTile extends TileEntity implements ITickableTileEntity
 {	
 	int radius = GobberConfigBuilder.LOOTER_RADIUS.get();
 	boolean xpOnly = false;
-	
     public BlockLooterTile()
 	{
 		super(TileInit.BLOCK_LOOTER.get());
@@ -49,7 +50,7 @@ public class BlockLooterTile extends TileEntity implements ITickableTileEntity
 	@Override
     public void tick() 
     {
-		if(world != null && !world.isRemote)
+		if(world != null && !world.isRemote && !world.isBlockPowered(pos))
 		{
 			//Scan the radius for LivingEntity and store in list
 			List<Entity> mobs = world.getEntitiesWithinAABB(LivingEntity.class, new AxisAlignedBB(pos.getX() - radius, pos.getY() - radius, pos.getZ() - radius, pos.getX() + radius, pos.getY() + radius, pos.getZ() + radius), e -> (e instanceof LivingEntity));
@@ -60,7 +61,7 @@ public class BlockLooterTile extends TileEntity implements ITickableTileEntity
 					xpOnly = true;
 				}
 
-				if(mob instanceof ZombieEntity || mob instanceof ZombieVillagerEntity)
+				if(mob instanceof ZombieEntity || mob instanceof ZombieVillagerEntity || mob instanceof PiglinBruteEntity || mob instanceof PiglinEntity)
 				{
 					((MobEntity) mob).spawnExplosionParticle();
 					mob.remove(true);

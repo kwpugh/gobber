@@ -47,7 +47,10 @@ public class ItemCustomRingAscent extends Item
 	{			
 		if(entity instanceof PlayerEntity && entity.isSneaking())
 		{
-			((LivingEntity) entity).removeActivePotionEffect(Effects.LEVITATION);	
+			if(((LivingEntity) entity).getActivePotionEffect(Effects.LEVITATION) != null)
+			{
+				((LivingEntity) entity).removeActivePotionEffect(Effects.LEVITATION);
+			}	
 		}	
 	}
 	

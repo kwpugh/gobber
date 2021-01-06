@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import com.kwpugh.gobber2.config.GobberConfigBuilder;
+import com.kwpugh.gobber2.init.ItemInit;
 import com.kwpugh.gobber2.util.EnableUtil;
 
 import net.minecraft.block.BlockState;
@@ -14,6 +15,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.item.ArrowItem;
 import net.minecraft.item.IItemTier;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.SwordItem;
@@ -36,21 +38,33 @@ public class ItemCustomSwordSniper extends SwordItem
 	}
 
 	int swordSniperCooldown = GobberConfigBuilder.SNIPER_SWORD_COOLDOWN.get();
+	boolean enableDragonStar = GobberConfigBuilder.ENABLE_DRAGON_STAR_OFFHAND.get();
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand)
 	{
 		ItemStack stack = player.getHeldItem(hand);
+		ItemStack offHand = player.getHeldItemOffhand();
+		Item stack2 = offHand.getItem().asItem();
 		
-		player.getCooldownTracker().setCooldown(this, swordSniperCooldown);
+		// Set sword cooldown if no dragon star in offhand	
+		if(      !(stack2 == ItemInit.DRAGON_STAR.get())      )
+		{
+			player.getCooldownTracker().setCooldown(this, swordSniperCooldown);
+		}
 		
+		// Set cooldown if special function is false in config
+		if(!enableDragonStar)
+		{
+			player.getCooldownTracker().setCooldown(this, swordSniperCooldown);
+		}
+				
 		if(!world.isRemote)
 		{
 		    if(player.isSneaking())
 		    {
 		        EnableUtil.changeEnabled(player, hand);
-		        player.sendStatusMessage(new TranslationTextComponent("item.gobber2.gobber2_sword_sniper.line4", EnableUtil.isEnabled(stack)).mergeStyle(TextFormatting.RED), true);
-		        
+		        player.sendStatusMessage(new TranslationTextComponent("item.gobber2.gobber2_sword_sniper.line4", EnableUtil.isEnabled(stack)).mergeStyle(TextFormatting.RED), true);		        
 		    }
 		    
 		    if(EnableUtil.isEnabled(stack))

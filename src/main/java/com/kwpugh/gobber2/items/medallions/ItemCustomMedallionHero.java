@@ -38,7 +38,7 @@ public class ItemCustomMedallionHero extends Item
 
 			if (player.ticksExisted % 180 == 0)
 			{
-				player.addPotionEffect(new EffectInstance(Effects.HERO_OF_THE_VILLAGE, 260, 2, false, false));
+				player.addPotionEffect(new EffectInstance(Effects.HERO_OF_THE_VILLAGE, 600, 2, false, false));
 			} 
 		}
 	}	

@@ -55,7 +55,7 @@ public class ItemCustomRingBlaze extends Item
 						{	
 							hostileMob.spawnExplosionParticle();
 							hostileMob.remove();
-							hostileMob.entityDropItem(Items.BLAZE_ROD, 2);
+							hostileMob.entityDropItem(Items.BLAZE_ROD, 3);
 						}
 					}	
 				}

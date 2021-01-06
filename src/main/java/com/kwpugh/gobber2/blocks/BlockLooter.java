@@ -54,7 +54,7 @@ public class BlockLooter extends Block
 	    	//TBD
 	    }
 	}
-	  
+	
 	@Override
 	public BlockRenderType getRenderType(BlockState state)
 	{

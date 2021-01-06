@@ -37,9 +37,9 @@ public class ItemCustomRingHaste extends Item
 		{
 			PlayerEntity player = (PlayerEntity)entity;
 
-			if (player.ticksExisted % 240 == 0)
+			if (player.ticksExisted % 180 == 0)
 			{
-				player.addPotionEffect(new EffectInstance(Effects.HASTE, 520, 1, false, false));
+				player.addPotionEffect(new EffectInstance(Effects.HASTE, 600, 1, false, false));
 			} 		
 		}
 	}

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.kwpugh.gobber2.config.GobberConfigBuilder;
 import com.kwpugh.gobber2.util.EnableUtil;
 import com.kwpugh.gobber2.util.MagnetRangeUtil;
 
@@ -35,16 +36,20 @@ public class ItemCustomRingAttraction extends Item
 		super(properties);
 	}
 	
+	int ringAttractionBlocking = GobberConfigBuilder.RING_ATTRACTION_BLOCK_DISTANCE.get();
+	boolean ringAttractionMode = GobberConfigBuilder.RING_ATTRACTION_MODE.get();
+	
 	static int range;
-
+	
 	public void inventoryTick(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected)
-	{	
+	{
 		if(entity instanceof PlayerEntity && !world.isRemote && EnableUtil.isEnabled(stack))
 		{
 			PlayerEntity player = (PlayerEntity)entity;
 			
 			boolean init = MagnetRangeUtil.getCurrentlySet(stack);
 			
+			// Set default range or read range from NBT if it exists
 			if(!init)
 			{
 				range = 8;
@@ -60,10 +65,9 @@ public class ItemCustomRingAttraction extends Item
 
 			// Check for a particular block that stops the attraction
 			BlockPos playerPos = new BlockPos(player.getPositionVec());
-			for (BlockPos targetPos : BlockPos.getAllInBoxMutable(playerPos.add(-range, -2, -range), playerPos.add(range, 3, range)))
+			for (BlockPos targetPos : BlockPos.getAllInBoxMutable(playerPos.add(-range, -ringAttractionBlocking, -range), playerPos.add(range, ringAttractionBlocking, range)))
 			{
 				BlockState blockstate = world.getBlockState(targetPos);
-				//Block block = blockstate.getBlock();
 				
 				if ((blockstate.getBlock() == Blocks.COAL_BLOCK))
 				{
@@ -76,9 +80,16 @@ public class ItemCustomRingAttraction extends Item
 			for(ItemEntity e: items)
 			{
 				if(!player.isSneaking() && !e.getPersistentData().getBoolean("PreventRemoteMovement"))
-				{						
-					double factor = 0.035;
-					e.addVelocity((x - e.getPosX()) * factor, (y - e.getPosY()+1.25) * factor, (z - e.getPosZ()) * factor);
+				{
+					if(ringAttractionMode)
+					{
+						e.onCollideWithPlayer(player);
+					}
+					else
+					{
+						double factor = 0.035;
+						e.addVelocity((x - e.getPosX()) * factor, (y - e.getPosY()+1.25) * factor, (z - e.getPosZ()) * factor);	
+					}
 				}
 			}
 
@@ -87,9 +98,16 @@ public class ItemCustomRingAttraction extends Item
 			for(ExperienceOrbEntity orb: xp)
 			{
 				if(!player.isSneaking())
-				{						
-					double factor = 0.035;
-					orb.addVelocity((x - orb.getPosX()) * factor, (y - orb.getPosY()+1.25) * factor, (z - orb.getPosZ()) * factor);
+				{ 
+					if(ringAttractionMode)
+					{
+						orb.onCollideWithPlayer(player);
+					}
+					else
+					{
+						double factor = 0.035;
+						orb.addVelocity((x - orb.getPosX()) * factor, (y - orb.getPosY()+1.25) * factor, (z - orb.getPosZ()) * factor);	
+					}
 				}
 			}
 		}
@@ -108,36 +126,36 @@ public class ItemCustomRingAttraction extends Item
         }		
 		
         if((!world.isRemote) && (player.isSneaking()))
-        {
-			if(range == 8)
+        {       	
+        	switch(range)
 			{
-				range = 10;
-				MagnetRangeUtil.setCurrentRange(stack, range);
-				player.sendStatusMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRangeUtil.getCurrentRange(stack)).mergeStyle(TextFormatting.GREEN)), true);
-			}
-			else if(range == 10)
-			{
-				range = 12;
-				MagnetRangeUtil.setCurrentRange(stack, range);
-				player.sendStatusMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRangeUtil.getCurrentRange(stack)).mergeStyle(TextFormatting.GREEN)), true);
-			}
-			else if(range == 12)
-			{
-				range = 14;
-				MagnetRangeUtil.setCurrentRange(stack, range);
-				player.sendStatusMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRangeUtil.getCurrentRange(stack)).mergeStyle(TextFormatting.GREEN)), true);
-			}
-			else if(range == 14)
-			{
-				range = 4;
-				MagnetRangeUtil.setCurrentRange(stack, range);
-				player.sendStatusMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRangeUtil.getCurrentRange(stack)).mergeStyle(TextFormatting.GREEN)), true);
-			}
-			else if(range == 4)
-			{
-				range = 8;
-				MagnetRangeUtil.setCurrentRange(stack, range);
-				player.sendStatusMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRangeUtil.getCurrentRange(stack)).mergeStyle(TextFormatting.GREEN)), true);
+				case 8:
+					range = 10;
+					MagnetRangeUtil.setCurrentRange(stack, range);
+					player.sendStatusMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRangeUtil.getCurrentRange(stack)).mergeStyle(TextFormatting.GREEN)), true);
+					break;
+				case 10:
+					range = 12;
+					MagnetRangeUtil.setCurrentRange(stack, range);
+					player.sendStatusMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRangeUtil.getCurrentRange(stack)).mergeStyle(TextFormatting.GREEN)), true);
+					break;
+				case 12:
+					range = 14;
+					MagnetRangeUtil.setCurrentRange(stack, range);
+					player.sendStatusMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRangeUtil.getCurrentRange(stack)).mergeStyle(TextFormatting.GREEN)), true);
+					break;
+				case 14:
+					range = 4;
+					MagnetRangeUtil.setCurrentRange(stack, range);
+					player.sendStatusMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRangeUtil.getCurrentRange(stack)).mergeStyle(TextFormatting.GREEN)), true);
+					break;			
+				case 4:
+					range = 8;
+					MagnetRangeUtil.setCurrentRange(stack, range);
+					player.sendStatusMessage((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line5", MagnetRangeUtil.getCurrentRange(stack)).mergeStyle(TextFormatting.GREEN)), true);
+					break;		
+				default:
+					break;
 			}
         }
         
@@ -159,6 +177,7 @@ public class ItemCustomRingAttraction extends Item
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line2", EnableUtil.isEnabled(stack)).mergeStyle(TextFormatting.GREEN)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line3").mergeStyle(TextFormatting.YELLOW)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line4").mergeStyle(TextFormatting.RED)));
+		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_attraction.line6").mergeStyle(TextFormatting.BLUE)));
 		
 		if(EnableUtil.isEnabled(stack))  // Will still show range 0 on first use until range is changed
 		{

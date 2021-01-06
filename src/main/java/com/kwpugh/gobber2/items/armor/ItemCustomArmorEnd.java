@@ -27,7 +27,7 @@ public class ItemCustomArmorEnd extends ArmorItem
 	{
 		super(materialIn, slots, builder);
 	}
-		  
+	
 	@Override
 	public void onArmorTick(final ItemStack stack, final World world, final PlayerEntity player)
 	{
@@ -121,7 +121,7 @@ public class ItemCustomArmorEnd extends ArmorItem
 	    //Chestplate
 	    if(chest.getItem() == ItemInit.GOBBER2_CHESTPLATE_END.get())
 		{				
-	 		//player.getAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(40.0D); 
+	 		//something
 		 }		
 
 	    
@@ -141,7 +141,7 @@ public class ItemCustomArmorEnd extends ArmorItem
 	    //Boots
 	    if(feet.getItem() == ItemInit.GOBBER2_BOOTS_END.get())
 		{
-	    	PlayerSpecialAbilities.giveDolphinEffect(world, player, stack);
+	    	//something
 	    }
 		else
 	    {

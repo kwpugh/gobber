@@ -18,10 +18,9 @@ package com.kwpugh.gobber2.items.tools.hoe;
 //
 //public class ItemCustomHoe extends HoeItem
 //{	
-//	public ItemCustomHoe(Properties properties)
-//	{
-//		// TODO Auto-generated constructor stub
-//	}
+//public ItemCustomHoe()
+//
+//
 //
 //	@Override
 //    public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn)

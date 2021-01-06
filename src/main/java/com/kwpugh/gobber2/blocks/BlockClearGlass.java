@@ -14,13 +14,13 @@ import net.minecraft.world.IBlockReader;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class BlockGobberGlassNether extends GlassBlock
-{
-	public BlockGobberGlassNether(Properties properties)
+public class BlockClearGlass extends GlassBlock
+{ 
+	public BlockClearGlass(Properties properties)
 	{
 		super(properties);
 	}  
-
+	 
 	@OnlyIn(Dist.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{

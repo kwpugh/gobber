@@ -17,6 +17,7 @@ import net.minecraft.item.Items;
 import net.minecraft.item.SwordItem;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
@@ -51,12 +52,20 @@ public class ItemCustomSwordNether extends SwordItem
 	       	target.entityDropItem(Items.WITHER_SKELETON_SKULL, 1);
 	    }
 	 
+		if (attacker.world.getDimensionKey() == World.THE_NETHER  &&
+				attacker instanceof PlayerEntity) 
+		{
+			DamageSource source = DamageSource.causePlayerDamage((PlayerEntity) attacker);
+			source.setMagicDamage().setDamageBypassesArmor();
+			target.attackEntityFrom(source, 30);
+		}
+		
 		stack.damageItem(1, attacker, (p_220045_0_) -> {
 	         p_220045_0_.sendBreakAnimation(EquipmentSlotType.MAINHAND);
 	    	});
 	      
 		return true;
-}
+	}
 	
 	@Override
 	public boolean isBookEnchantable(ItemStack stack, ItemStack book)

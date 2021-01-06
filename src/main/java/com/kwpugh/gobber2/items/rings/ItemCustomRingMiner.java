@@ -62,11 +62,11 @@ public class ItemCustomRingMiner extends Item
 				Block block;
 				List<BlockPos> poslist = new ArrayList<BlockPos>();
 
-				for (int x = -5; x <= 5; x++)
+				for (int x = 5; x >= -5; x--)
 				{
-					for (int y = 0; y <= 4; y++)
+					for (int y = 4; y >= 0; y--)
 					{
-						for (int z = -5; z <= 5; z++)
+						for (int z = 5; z >= -5; z--)
 						{
 							BlockPos pos = player.getPosition().add(x, y, z);
 							block = world.getBlockState(pos).getBlock();
@@ -117,6 +117,8 @@ public class ItemCustomRingMiner extends Item
 									block == Blocks.BASALT ||
 									block == Blocks.BLACKSTONE ||
 									block == Blocks.MAGMA_BLOCK ||
+									block == Blocks.NETHER_WART_BLOCK ||
+									block == Blocks.WARPED_WART_BLOCK ||
 									block == Blocks.NETHERRACK)
 							{
 								poslist.add(player.getPosition().add(x, y, z));
@@ -125,12 +127,12 @@ public class ItemCustomRingMiner extends Item
 					}
 				}
 
-
 				if(delayedBreakMode)
 				{
 					//Test code for block break delay
 					if (!poslist.isEmpty())
 					{
+						//List<BlockPos> reversedPosList = reverseList(poslist);
 						MinecraftForge.EVENT_BUS.register(new Object()
 			            {
 			                int delay = BREAK_DELAY;
@@ -144,6 +146,7 @@ public class ItemCustomRingMiner extends Item
 			                    if (i < poslist.size())
 			                    {
 			                        BlockPos breakPos = poslist.get(i);
+			                        
 			                    	if(shiftKeyPressed)    //NOTE: shift key needs to be held down through the delayed block breaking to get drops
 									{
 										world.destroyBlock(breakPos, !reverseRingMiner);
@@ -205,7 +208,6 @@ public class ItemCustomRingMiner extends Item
 			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line2").mergeStyle(TextFormatting.YELLOW)));
 			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line3").mergeStyle(TextFormatting.YELLOW)));
 		}
-
 
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring_miner.line6").mergeStyle(TextFormatting.LIGHT_PURPLE)));
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_ring.cooldown", ringMinerCooldown).mergeStyle(TextFormatting.LIGHT_PURPLE)));

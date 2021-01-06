@@ -64,7 +64,7 @@ public class ItemCustomRingPyro extends Item
 					if(hostileMob != null) //&& !SupportMods.MINECOLONIES.isLoaded())   //until I figure out a way to not kill friendly Mercs
 					{
 						hostileMob.addPotionEffect(new EffectInstance(Effects.LEVITATION, 3600, 0, false, false));
-						hostileMob.setFire(80);
+						hostileMob.setFire(120);
 					}
 				}
 			}

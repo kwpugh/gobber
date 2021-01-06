@@ -55,7 +55,7 @@ public class HammerUtil
             }
         }
     }
-
+    
     public static void attemptBreak(World world, BlockPos pos, PlayerEntity player, Set<Material> effectiveMaterials)
     {
 
@@ -68,8 +68,11 @@ public class HammerUtil
         
         if(isEffective && !witherImmune && isWithinHarvestLevel)	
         {
-        	world.destroyBlock(pos, false);  //true or false?
-	    	Block.spawnDrops(state, world, pos, null, player, player.getHeldItemMainhand());
+        	if(!state.hasTileEntity())
+        	{
+        	  	world.destroyBlock(pos, false);  //true or false?
+    	    	Block.spawnDrops(state, world, pos, null, player, player.getHeldItemMainhand());
+        	}   
         }
     }
     	

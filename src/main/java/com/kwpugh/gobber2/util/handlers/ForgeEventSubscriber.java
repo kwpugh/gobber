@@ -6,18 +6,15 @@ import com.kwpugh.gobber2.util.PlayerEquipsUtil;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.OreBlock;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
-import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
 import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
 import net.minecraftforge.event.entity.living.LootingLevelEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -131,43 +128,29 @@ public final class ForgeEventSubscriber
     @SubscribeEvent
     public static void onMiningExpDropEvent(BreakEvent event)
     {
-    	if(event.getState().getBlock() instanceof OreBlock)
+    	Block block = event.getState().getBlock();
+    	
+    	if(block == Blocks.REDSTONE_ORE ||
+    			block == Blocks.COAL_ORE ||
+    			block == Blocks.LAPIS_ORE ||
+    			block == Blocks.DIAMOND_ORE ||
+    			block == Blocks.EMERALD_ORE ||
+    			block == Blocks.NETHER_QUARTZ_ORE)
     	{
        		if(event.getPlayer() instanceof PlayerEntity)
     		{
     			PlayerEntity player = (PlayerEntity) event.getPlayer();
 
     			if (PlayerEquipsUtil.isPlayerGotExpToken(player))
-    			{   				
-    				event.setExpToDrop(extraXPOrbs);
+    			{ 
+    				if(!(EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, player.getHeldItemMainhand()) != 0))
+    				{
+    					event.setExpToDrop(extraXPOrbs);
+    				}
+    				
     			}
     		}
     	}
     	
     }
-    
-//    //Gives a much faster breaking speed when using proper tool
-//    @SubscribeEvent
-//    public static void breakingBlockSpeed(PlayerEvent.BreakSpeed event)
-//    {
-//        PlayerEntity player = event.getPlayer();
-//        //ItemStack stack = player.getHeldItemMainhand(); 
-//        //BlockPos pos = event.getPos();
-//        Block block = event.getState().getBlock();
-//        
-//        if (player != null && !(player instanceof FakePlayer) && !player.isCreative())
-//        {    
-//        	if(PlayerEquipsUtil.isPlayerGotHasteRing(player))
-//        	{
-//				if(block == Blocks.OBSIDIAN)
-//				{
-//					event.setNewSpeed(GobberConfigBuilder.HASTE_RING_BREAK_SPEED.get() * 8);
-//				}
-//				else
-//				{
-//					event.setNewSpeed(GobberConfigBuilder.HASTE_RING_BREAK_SPEED.get());
-//				}						
-//        	}
-//        }
-//    }
 } 

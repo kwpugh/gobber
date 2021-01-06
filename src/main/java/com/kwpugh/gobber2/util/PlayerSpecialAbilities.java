@@ -96,7 +96,7 @@ public class PlayerSpecialAbilities
 	{
 		if (player.ticksExisted % 180 == 0 && player.isInWater())
 		{
-			player.addPotionEffect(new EffectInstance(Effects.DOLPHINS_GRACE, 260, 0, false, false));
+			player.addPotionEffect(new EffectInstance(Effects.DOLPHINS_GRACE, 600, 0, false, false));
 		} 
 	}
 	
@@ -105,7 +105,7 @@ public class PlayerSpecialAbilities
 	{
 		if (player.ticksExisted % 180 == 0 && player.isInWater())
 		{
-			player.addPotionEffect(new EffectInstance(Effects.CONDUIT_POWER, 260, 2, false, false));
+			player.addPotionEffect(new EffectInstance(Effects.CONDUIT_POWER, 600, 2, false, false));
 		} 
 	}
 }

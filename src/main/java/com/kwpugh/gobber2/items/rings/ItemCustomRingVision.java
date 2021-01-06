@@ -36,9 +36,9 @@ public class ItemCustomRingVision extends Item
 		{
 			PlayerEntity player = (PlayerEntity)entity;
 
-			if (player.ticksExisted % 240 == 0)
+			if (player.ticksExisted % 180 == 0)
 			{
-				player.addPotionEffect(new EffectInstance(Effects.NIGHT_VISION, 520, 0, false, false));
+				player.addPotionEffect(new EffectInstance(Effects.NIGHT_VISION, 600, 0, false, false));
 			} 		
 		}
 	}	
