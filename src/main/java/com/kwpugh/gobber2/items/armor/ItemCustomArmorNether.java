@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.kwpugh.gobber2.config.GobberConfigBuilder;
 import com.kwpugh.gobber2.init.ItemInit;
 import com.kwpugh.gobber2.util.PlayerSpecialAbilities;
 
@@ -28,9 +29,12 @@ public class ItemCustomArmorNether extends ArmorItem
 		super(materialIn, slots, builder);
 	}
 	
+	boolean enablePerks = GobberConfigBuilder.ENABLE_GOBBER_NETHER_ARMOR_HEALTH_PERKS.get();
+	
 	@Override
 	public void onArmorTick(final ItemStack stack, final World world, final PlayerEntity player)
 	{
+		if(!enablePerks) return;
 		ItemStack head = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
 		ItemStack chest = player.getItemStackFromSlot(EquipmentSlotType.CHEST);
 		ItemStack legs = player.getItemStackFromSlot(EquipmentSlotType.LEGS);
@@ -111,10 +115,14 @@ public class ItemCustomArmorNether extends ArmorItem
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_nether.line1").mergeStyle(TextFormatting.AQUA)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_nether.line2").mergeStyle(TextFormatting.LIGHT_PURPLE)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_nether.line3").mergeStyle(TextFormatting.LIGHT_PURPLE)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_nether.line4").mergeStyle(TextFormatting.LIGHT_PURPLE)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_nether.line5").mergeStyle(TextFormatting.LIGHT_PURPLE)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_nether.line6").mergeStyle(TextFormatting.GOLD)));
+		
+		if(enablePerks)
+		{
+			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_nether.line2").mergeStyle(TextFormatting.LIGHT_PURPLE)));
+			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_nether.line3").mergeStyle(TextFormatting.LIGHT_PURPLE)));
+			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_nether.line4").mergeStyle(TextFormatting.LIGHT_PURPLE)));
+			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_nether.line5").mergeStyle(TextFormatting.LIGHT_PURPLE)));
+			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_nether.line6").mergeStyle(TextFormatting.GOLD)));	
+		}
 	}
 }

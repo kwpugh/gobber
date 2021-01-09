@@ -67,7 +67,7 @@ public class ItemCustomStaffStars extends Item
     		return ActionResultType.FAIL;
     	}
     	
-    	if(iuc.getWorld().getBlockState(torchPos).isAir())
+    	if(iuc.getWorld().getBlockState(torchPos).isAir() || iuc.getWorld().getBlockState(torchPos).getFluidState().isSource())
     	{		
     		if (isWallTorch)
     		{

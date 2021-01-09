@@ -135,7 +135,7 @@ public class ItemCustomPaxelStars extends PaxelBase
     		return ActionResultType.FAIL;
     	}
     	
-    	if(iuc.getWorld().getBlockState(torchPos).isAir())
+    	if(iuc.getWorld().getBlockState(torchPos).isAir() || iuc.getWorld().getBlockState(torchPos).getFluidState().isSource())
     	{
     		if (isWallTorch)
     		{

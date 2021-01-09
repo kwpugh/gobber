@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.kwpugh.gobber2.config.GobberConfigBuilder;
 import com.kwpugh.gobber2.init.ItemInit;
 import com.kwpugh.gobber2.util.PlayerSpecialAbilities;
 
@@ -28,11 +29,13 @@ public class ItemCustomArmorEnd extends ArmorItem
 		super(materialIn, slots, builder);
 	}
 	
+	boolean enablePerks = GobberConfigBuilder.ENABLE_GOBBER_END_ARMOR_HEALTH_PERKS.get();
+	
 	@Override
 	public void onArmorTick(final ItemStack stack, final World world, final PlayerEntity player)
 	{
-		//Full Set Bonus
-			
+		if(!enablePerks) return;
+		//Full Set Bonus			
 		ItemStack head = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
 		ItemStack chest = player.getItemStackFromSlot(EquipmentSlotType.CHEST);
 		ItemStack legs = player.getItemStackFromSlot(EquipmentSlotType.LEGS);
@@ -154,7 +157,13 @@ public class ItemCustomArmorEnd extends ArmorItem
 	{
 		return true;
 	}
-
+	
+	@Override
+	public void onCreated(ItemStack stack, World worldIn, PlayerEntity playerIn)
+	{
+		stack.getOrCreateTag().putBoolean("Unbreakable", true);
+	}
+	
 	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
 	{
@@ -165,10 +174,14 @@ public class ItemCustomArmorEnd extends ArmorItem
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_end.line1").mergeStyle(TextFormatting.LIGHT_PURPLE)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_end.line2").mergeStyle(TextFormatting.LIGHT_PURPLE)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_end.line3").mergeStyle(TextFormatting.LIGHT_PURPLE)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_end.line4").mergeStyle(TextFormatting.LIGHT_PURPLE)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_end.line5").mergeStyle(TextFormatting.GOLD)));
+		
+		if(enablePerks)
+		{
+			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_end.line1").mergeStyle(TextFormatting.LIGHT_PURPLE)));
+			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_end.line2").mergeStyle(TextFormatting.LIGHT_PURPLE)));
+			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_end.line3").mergeStyle(TextFormatting.LIGHT_PURPLE)));
+			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_end.line4").mergeStyle(TextFormatting.LIGHT_PURPLE)));
+			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_end.line5").mergeStyle(TextFormatting.GOLD)));	
+		}
 	}
 }

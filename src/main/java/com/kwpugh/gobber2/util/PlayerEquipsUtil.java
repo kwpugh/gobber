@@ -25,7 +25,7 @@ public final class PlayerEquipsUtil
     	ItemStack legs = player.getItemStackFromSlot(EquipmentSlotType.LEGS);
     	ItemStack feet = player.getItemStackFromSlot(EquipmentSlotType.FEET);
     	
-	    //Head piece
+	    //Full suit
     	if(head.getItem() == ItemInit.GOBBER2_HELMET_DRAGON.get() &&
       			chest.getItem() == ItemInit.GOBBER2_CHESTPLATE_DRAGON.get() &&
       			legs.getItem() == ItemInit.GOBBER2_LEGGINGS_DRAGON.get() &&

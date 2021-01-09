@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.kwpugh.gobber2.config.GobberConfigBuilder;
 import com.kwpugh.gobber2.init.ItemInit;
 import com.kwpugh.gobber2.util.PlayerSpecialAbilities;
 
@@ -27,7 +28,9 @@ public class ItemCustomArmorDragon extends ArmorItem
 	{
 		super(materialIn, slots, builder);
 	}	
-	  
+	
+	boolean enablePerks = GobberConfigBuilder.ENABLE_GOBBER_DRAGON_ARMOR_HEALTH_PERKS.get();
+	
 	@Override
 	public void onArmorTick(final ItemStack stack, final World world, final PlayerEntity player)
 	{
@@ -62,79 +65,83 @@ public class ItemCustomArmorDragon extends ArmorItem
 		}
 		player.getPersistentData().putBoolean("wearingFullDragonArmor", iswearingFullDragonArmor);
 	
-		if(iswearingFullDragonArmor)
+
+		if(enablePerks)
 		{
-			//Additional full set bonuses			
-			if(player.getActivePotionEffect(Effects.BLINDNESS) != null)
+			if(iswearingFullDragonArmor)
 			{
-				player.removePotionEffect(Effects.BLINDNESS);
-			}
-	
-			if(player.getActivePotionEffect(Effects.SLOWNESS) != null)
+				//Additional full set bonuses			
+				if(player.getActivePotionEffect(Effects.BLINDNESS) != null)
+				{
+					player.removePotionEffect(Effects.BLINDNESS);
+				}
+		
+				if(player.getActivePotionEffect(Effects.SLOWNESS) != null)
+				{
+					player.removePotionEffect(Effects.SLOWNESS);
+				}
+				
+				if(player.getActivePotionEffect(Effects.MINING_FATIGUE) != null)
+				{
+					player.removePotionEffect(Effects.MINING_FATIGUE);
+				}
+				
+				if(player.getActivePotionEffect(Effects.INSTANT_DAMAGE) != null)
+				{
+					player.removePotionEffect(Effects.INSTANT_DAMAGE);
+				}
+				
+				if(player.getActivePotionEffect(Effects.NAUSEA) != null)
+				{
+					player.removePotionEffect(Effects.NAUSEA);
+				}
+				
+				if(player.getActivePotionEffect(Effects.HUNGER) != null)
+				{
+					player.removePotionEffect(Effects.HUNGER);
+				}
+				
+				if(player.getActivePotionEffect(Effects.POISON) != null)
+				{
+					player.removePotionEffect(Effects.POISON);
+				}
+				
+				if(player.getActivePotionEffect(Effects.WITHER) != null)
+				{
+					player.removePotionEffect(Effects.WITHER);
+				}
+				
+				if(player.getActivePotionEffect(Effects.LEVITATION) != null)
+				{
+					player.removePotionEffect(Effects.LEVITATION);
+				}
+				
+				if(player.getActivePotionEffect(Effects.UNLUCK) != null)
+				{
+					player.removePotionEffect(Effects.UNLUCK);
+				}
+				
+				if(player.getActivePotionEffect(Effects.WEAKNESS) != null)
+				{
+					player.removePotionEffect(Effects.WEAKNESS);
+				}
+			} 
+		
+			//Check ArmorUtil for additional perks applied to armor
+		
+			//Helmet
+			if(head.getItem() == ItemInit.GOBBER2_HELMET_DRAGON.get())
 			{
-				player.removePotionEffect(Effects.SLOWNESS);
+				PlayerSpecialAbilities.giveYellowHearts(world, player, stack, 20, 0.66F);
+				
+				PlayerSpecialAbilities.giveRegenEffect(world, player, stack, 1, 0.15F);			
 			}
-			
-			if(player.getActivePotionEffect(Effects.MINING_FATIGUE) != null)
+			else
 			{
-				player.removePotionEffect(Effects.MINING_FATIGUE);
-			}
-			
-			if(player.getActivePotionEffect(Effects.INSTANT_DAMAGE) != null)
-			{
-				player.removePotionEffect(Effects.INSTANT_DAMAGE);
-			}
-			
-			if(player.getActivePotionEffect(Effects.NAUSEA) != null)
-			{
-				player.removePotionEffect(Effects.NAUSEA);
-			}
-			
-			if(player.getActivePotionEffect(Effects.HUNGER) != null)
-			{
-				player.removePotionEffect(Effects.HUNGER);
-			}
-			
-			if(player.getActivePotionEffect(Effects.POISON) != null)
-			{
-				player.removePotionEffect(Effects.POISON);
-			}
-			
-			if(player.getActivePotionEffect(Effects.WITHER) != null)
-			{
-				player.removePotionEffect(Effects.WITHER);
-			}
-			
-			if(player.getActivePotionEffect(Effects.LEVITATION) != null)
-			{
-				player.removePotionEffect(Effects.LEVITATION);
-			}
-			
-			if(player.getActivePotionEffect(Effects.UNLUCK) != null)
-			{
-				player.removePotionEffect(Effects.UNLUCK);
-			}
-			
-			if(player.getActivePotionEffect(Effects.WEAKNESS) != null)
-			{
-				player.removePotionEffect(Effects.WEAKNESS);
-			}
-		} 
-	
-		//Check ArmorUtil for additional perks applied to armor
-	
-		//Helmet
-		if(head.getItem() == ItemInit.GOBBER2_HELMET_DRAGON.get())
-		{
-			PlayerSpecialAbilities.giveYellowHearts(world, player, stack, 20, 0.66F);
-			
-			PlayerSpecialAbilities.giveRegenEffect(world, player, stack, 1, 0.15F);			
+				PlayerSpecialAbilities.giveNoExtraHearts(world, player, stack);
+			}			
 		}
-		else
-		{
-			PlayerSpecialAbilities.giveNoExtraHearts(world, player, stack);
-		}
-	  	  
+
 		//Chestplate
 		if(chest.getItem() == ItemInit.GOBBER2_CHESTPLATE_DRAGON.get())
 		{				
@@ -169,6 +176,12 @@ public class ItemCustomArmorDragon extends ArmorItem
 	}
 
 	@Override
+	public void onCreated(ItemStack stack, World worldIn, PlayerEntity playerIn)
+	{
+		stack.getOrCreateTag().putBoolean("Unbreakable", true);
+	}
+	
+	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
 	{
 		return repair.getItem() == ItemInit.GOBBER2_ARMOR_REPAIR.get();
@@ -179,6 +192,10 @@ public class ItemCustomArmorDragon extends ArmorItem
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_dragon.line1").mergeStyle(TextFormatting.LIGHT_PURPLE)));
-		tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_dragon.line2").mergeStyle(TextFormatting.GOLD)));
+		
+		if(enablePerks)
+		{
+			tooltip.add((new TranslationTextComponent("item.gobber2.gobber2_armor_dragon.line2").mergeStyle(TextFormatting.GOLD)));	
+		}
 	}
 }

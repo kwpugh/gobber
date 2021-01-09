@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.kwpugh.gobber2.config.GobberConfigBuilder;
+
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
@@ -19,6 +21,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -32,7 +35,10 @@ public class ItemCustomRingDismissal extends Item
 	{
 		super(properties);
 	}
-
+	double velocity = GobberConfigBuilder.RING_DISMISSAL_VELOCITY.get();
+	double lift = GobberConfigBuilder.RING_DISMISSAL_LIFT.get();
+	double range = GobberConfigBuilder.RING_DISMISSAL_RANGE.get();
+	
 	public void inventoryTick(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected)
 	{
 		if(entity instanceof PlayerEntity && !world.isRemote)
@@ -45,18 +51,23 @@ public class ItemCustomRingDismissal extends Item
 			{
 				if(stack == equipped)
 				{
+					Vector3d look = player.getLookVec().normalize();	
+					double lookX = look.getX();
+					double lookY = look.getY();
+					double lookZ = look.getZ();
+										
 					double x = player.getPosX();
 					double y = player.getPosY();
 					double z = player.getPosZ();
 
-					double d0 = 9.0D;
+					double d0 = range;
 					double d1 = 4.0D;
 
 					MobEntity hostileMob = scanForHostileMobs(world, x, y, z, d0, d1);
 
 					if(hostileMob != null)
 					{
-						hostileMob.addVelocity(3, 1, 3);
+						hostileMob.addVelocity(lookX * velocity, lookY * lift, lookZ * velocity);
 					}
 				}
 			}

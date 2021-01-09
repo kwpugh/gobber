@@ -10,7 +10,7 @@
 	
 	"key":
 	{
-		"I": { "item": "gobber2:gobber2_ingot_end" },
+		"I": { "item": "gobber2:gobber2_rod_end" },
 		"S": { "item": "minecraft:string" }	
 	},
 	

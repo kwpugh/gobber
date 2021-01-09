@@ -37,10 +37,8 @@ public class Gobber2
     
 	public Gobber2() 
 	{
-		instance = this;
-		
+		instance = this;		
 		GobberConfig.loadConfig(GobberConfig.CONFIG, FMLPaths.CONFIGDIR.get().resolve("gobber-general.toml"));
-		
 		BlockInit.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
     	ItemInit.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
     	TileInit.TILE_ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());

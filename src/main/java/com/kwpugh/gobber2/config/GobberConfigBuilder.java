@@ -42,6 +42,9 @@ public class GobberConfigBuilder
     public static ForgeConfigSpec.IntValue RING_REPAIR_DELAY;
     public static ForgeConfigSpec.IntValue RING_ATTRACTION_BLOCK_DISTANCE;
     public static ForgeConfigSpec.BooleanValue RING_ATTRACTION_MODE;
+    public static ForgeConfigSpec.DoubleValue RING_DISMISSAL_VELOCITY;
+    public static ForgeConfigSpec.DoubleValue RING_DISMISSAL_LIFT;
+    public static ForgeConfigSpec.DoubleValue RING_DISMISSAL_RANGE;
 
     public static ForgeConfigSpec.IntValue RING_FARMER_TICK_DELAY;
     public static ForgeConfigSpec.IntValue RING_FARMER_RADIUS;
@@ -86,6 +89,11 @@ public class GobberConfigBuilder
     public static ForgeConfigSpec.IntValue MATURATOR_VERTICAL_RANGE;
     public static ForgeConfigSpec.IntValue MATURATOR_MIN_TICK;
 
+    public static ForgeConfigSpec.BooleanValue ENABLE_GOBBER_ARMOR_HEALTH_PERKS;
+    public static ForgeConfigSpec.BooleanValue ENABLE_GOBBER_NETHER_ARMOR_HEALTH_PERKS;
+    public static ForgeConfigSpec.BooleanValue ENABLE_GOBBER_END_ARMOR_HEALTH_PERKS;
+    public static ForgeConfigSpec.BooleanValue ENABLE_GOBBER_DRAGON_ARMOR_HEALTH_PERKS;
+    
     public static ForgeConfigSpec.BooleanValue ENABLE_DRAGON_ARMOR_VOID_PROTECTION;
     public static ForgeConfigSpec.BooleanValue ENABLE_DRAGON_STAR_OFFHAND;
     public static ForgeConfigSpec.BooleanValue ENABLE_DRAGON_KILL_EVERY_KILL;
@@ -194,6 +202,9 @@ public class GobberConfigBuilder
         RING_REPAIR_DELAY = SERVER_BUILDER.comment("Ring of Repair - Delay time between repair ticks [default: 120]").defineInRange("ringRepairDelay", 120, 20, 600);
         RING_ATTRACTION_BLOCK_DISTANCE = SERVER_BUILDER.comment("Ring of Attraction - Distance coal blocks magnet effect [default: 5]").defineInRange("ringAttractionBlocking", 5, 0, 15);
         RING_ATTRACTION_MODE = SERVER_BUILDER.comment("Ring of Attraction - Items are instantly placed in player inventory  [true / false]").define("ringAttractionMode", false);
+        RING_DISMISSAL_VELOCITY = SERVER_BUILDER.comment("Ring of Dismissal - Sets the horizontal velocity [default: 3.0]").defineInRange("ringDismissalVelocity", 3.0, 0.0, 15.0);
+        RING_DISMISSAL_LIFT = SERVER_BUILDER.comment("Ring of Dismissal - Sets the vertical lift [default: 1.5]").defineInRange("ringDismissalLift", 1.5, 0.0, 15.0);
+        RING_DISMISSAL_RANGE = SERVER_BUILDER.comment("Ring of Dismissal - Sets the horizontal range to detect mobs [default: 9.0]").defineInRange("ringDismissalLift", 9.0, 0.0, 16.0);
 
         SERVER_BUILDER.pop();
 
@@ -212,6 +223,16 @@ public class GobberConfigBuilder
       
         STAFF_HARVEST_REPLANT = SERVER_BUILDER.comment("Should the Staff of Harvest auto-replant? [true / false]").define("StaffHarvestReplant", true);
         STAFF_FARMER_REPLANT = SERVER_BUILDER.comment("Should the Staff of the Farmer auto-replant? [true / false]").define("StaffFarmerReplant", true);
+
+        SERVER_BUILDER.pop();
+
+        
+        SERVER_BUILDER.comment("Armor Health Perks Settings").push("armor_health_perk_settings");
+
+        ENABLE_GOBBER_ARMOR_HEALTH_PERKS = SERVER_BUILDER.comment("Enable/disable Gobber Armor health perks").define("gobberArmorHealthPerks", true);
+        ENABLE_GOBBER_NETHER_ARMOR_HEALTH_PERKS = SERVER_BUILDER.comment("Enable/disable Gobber Nether Armor health perks").define("gobberNetherArmorHealthPerks", true);
+        ENABLE_GOBBER_END_ARMOR_HEALTH_PERKS = SERVER_BUILDER.comment("Enable/disable Gobber End Armor health perks").define("gobberEndArmorHealthPerks", true);
+        ENABLE_GOBBER_DRAGON_ARMOR_HEALTH_PERKS = SERVER_BUILDER.comment("Enable/disable Gobber Dragon Armor health perks").define("gobberDragonArmorHealthPerks", true);
 
         SERVER_BUILDER.pop();
         
