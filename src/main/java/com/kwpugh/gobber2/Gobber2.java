@@ -29,8 +29,7 @@ import top.theillusivec4.curios.api.SlotTypeMessage;
 @Mod(Gobber2.modid)
 public class Gobber2 
 {	
-	public static Gobber2 instance;
-		
+	public static Gobber2 instance;		
 	public static final String modid = "gobber2";
 	public static final Logger logger = LogManager.getLogger(modid);	
 	public static final ItemGroup gobber2 = new Gobber2_Group();

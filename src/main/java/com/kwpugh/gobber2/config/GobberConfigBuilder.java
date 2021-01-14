@@ -202,9 +202,9 @@ public class GobberConfigBuilder
         RING_REPAIR_DELAY = SERVER_BUILDER.comment("Ring of Repair - Delay time between repair ticks [default: 120]").defineInRange("ringRepairDelay", 120, 20, 600);
         RING_ATTRACTION_BLOCK_DISTANCE = SERVER_BUILDER.comment("Ring of Attraction - Distance coal blocks magnet effect [default: 5]").defineInRange("ringAttractionBlocking", 5, 0, 15);
         RING_ATTRACTION_MODE = SERVER_BUILDER.comment("Ring of Attraction - Items are instantly placed in player inventory  [true / false]").define("ringAttractionMode", false);
-        RING_DISMISSAL_VELOCITY = SERVER_BUILDER.comment("Ring of Dismissal - Sets the horizontal velocity [default: 3.0]").defineInRange("ringDismissalVelocity", 3.0, 0.0, 15.0);
+        RING_DISMISSAL_VELOCITY = SERVER_BUILDER.comment("Ring of Dismissal - Sets the horizontal velocity [default: 0.2]").defineInRange("ringDismissalVelocity", 0.2, 0.0, 15.0);
         RING_DISMISSAL_LIFT = SERVER_BUILDER.comment("Ring of Dismissal - Sets the vertical lift [default: 1.5]").defineInRange("ringDismissalLift", 1.5, 0.0, 15.0);
-        RING_DISMISSAL_RANGE = SERVER_BUILDER.comment("Ring of Dismissal - Sets the horizontal range to detect mobs [default: 9.0]").defineInRange("ringDismissalLift", 9.0, 0.0, 16.0);
+        RING_DISMISSAL_RANGE = SERVER_BUILDER.comment("Ring of Dismissal - Sets the horizontal range to detect mobs [default: 8.0]").defineInRange("ringDismissalLift", 8.0, 0.0, 16.0);
 
         SERVER_BUILDER.pop();
 
