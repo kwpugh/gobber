@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.HorizontalBlock;
 import net.minecraft.client.util.ITooltipFlag;
@@ -33,6 +34,9 @@ public class ItemCustomStaffStars extends Item
     {    	
     	BlockPos torchPos;
     	BlockPos pos = iuc.getPos();
+    	BlockState blockstate = iuc.getWorld().getBlockState(pos);
+    	World world = iuc.getWorld();
+    	
 		if(iuc.getWorld().getBlockState(pos).getBlock() == Blocks.TORCH
 				|| iuc.getWorld().getBlockState(pos).getBlock() == Blocks.WALL_TORCH)
 		{
@@ -67,18 +71,22 @@ public class ItemCustomStaffStars extends Item
     		return ActionResultType.FAIL;
     	}
     	
-    	if(iuc.getWorld().getBlockState(torchPos).isAir())
-    	{		
-    		if (isWallTorch)
+    	if(iuc.getWorld().getBlockState(torchPos).isAir() || iuc.getWorld().getBlockState(torchPos).getFluidState().isSource())
+    	{	
+    		if(blockstate.isNormalCube(world, pos))
     		{
-    			iuc.getWorld().setBlockState(torchPos, Blocks.WALL_TORCH.getDefaultState().with(HorizontalBlock.HORIZONTAL_FACING, iuc.getFace()));
-    			iuc.getWorld().playSound(null, iuc.getPlayer().getPosition(), SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.NEUTRAL, 8.0F, (float) (0.7F + (Math.random()*0.3D)));
+    			if (isWallTorch)
+        		{
+        			iuc.getWorld().setBlockState(torchPos, Blocks.WALL_TORCH.getDefaultState().with(HorizontalBlock.HORIZONTAL_FACING, iuc.getFace()));
+        			iuc.getWorld().playSound(null, iuc.getPlayer().getPosition(), SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.NEUTRAL, 8.0F, (float) (0.7F + (Math.random()*0.3D)));
+        		}
+        		else
+        		{
+        			iuc.getWorld().setBlockState(torchPos, Blocks.TORCH.getDefaultState());
+        			iuc.getWorld().playSound(null, iuc.getPlayer().getPosition(), SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.NEUTRAL, 8.0F, (float) (0.7F + (Math.random()*0.3D)));
+        		}			
     		}
-    		else
-    		{
-    			iuc.getWorld().setBlockState(torchPos, Blocks.TORCH.getDefaultState());
-    			iuc.getWorld().playSound(null, iuc.getPlayer().getPosition(), SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.NEUTRAL, 8.0F, (float) (0.7F + (Math.random()*0.3D)));
-    		}
+    
     		return ActionResultType.SUCCESS;
     	}
     	return ActionResultType.FAIL;

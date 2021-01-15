@@ -15,6 +15,7 @@ import net.minecraft.block.CampfireBlock;
 import net.minecraft.block.HorizontalBlock;
 import net.minecraft.block.RotatedPillarBlock;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
@@ -134,18 +135,22 @@ public class ItemCustomPaxelStars extends PaxelBase
     		return ActionResultType.FAIL;
     	}
     	
-    	if(iuc.getWorld().getBlockState(torchPos).isAir())
-    	{
-    		if (isWallTorch)
+    	if(iuc.getWorld().getBlockState(torchPos).isAir() || iuc.getWorld().getBlockState(torchPos).getFluidState().isSource())
+    	{	
+    		if(blockstate.isNormalCube(world, pos))
     		{
-    			iuc.getWorld().setBlockState(torchPos, Blocks.WALL_TORCH.getDefaultState().with(HorizontalBlock.HORIZONTAL_FACING, iuc.getFace()));
-    			iuc.getWorld().playSound(null, iuc.getPlayer().getPosition(), SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.NEUTRAL, 8.0F, (float) (0.7F + (Math.random()*0.3D)));
+    			if (isWallTorch)
+        		{
+        			iuc.getWorld().setBlockState(torchPos, Blocks.WALL_TORCH.getDefaultState().with(HorizontalBlock.HORIZONTAL_FACING, iuc.getFace()));
+        			iuc.getWorld().playSound(null, iuc.getPlayer().getPosition(), SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.NEUTRAL, 8.0F, (float) (0.7F + (Math.random()*0.3D)));
+        		}
+        		else
+        		{
+        			iuc.getWorld().setBlockState(torchPos, Blocks.TORCH.getDefaultState());
+        			iuc.getWorld().playSound(null, iuc.getPlayer().getPosition(), SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.NEUTRAL, 8.0F, (float) (0.7F + (Math.random()*0.3D)));
+        		}			
     		}
-    		else
-    		{
-    			iuc.getWorld().setBlockState(torchPos, Blocks.TORCH.getDefaultState());
-    			iuc.getWorld().playSound(null, iuc.getPlayer().getPosition(), SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.NEUTRAL, 8.0F, (float) (0.7F + (Math.random()*0.3D)));
-    		}
+    
     		return ActionResultType.SUCCESS;
     	}
     	return ActionResultType.FAIL;
@@ -165,6 +170,23 @@ public class ItemCustomPaxelStars extends PaxelBase
         return super.onItemRightClick(world, player, hand);
     }
 
+	@Override
+    public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker)
+    {
+		stack.setDamage(0);  //no damage
+        
+        return true;
+    }
+
+    public boolean onBlockDestroyed(ItemStack stack, World worldIn, BlockState state, BlockPos pos, LivingEntity entityLiving)
+    {
+        if (!worldIn.isRemote && (double)state.getBlockHardness(worldIn, pos) != 0.0D)
+        {
+            stack.setDamage(0);
+        }
+        return true;
+    }
+    
 	@Override
 	public void onCreated(ItemStack stack, World worldIn, PlayerEntity playerIn)
 	{
