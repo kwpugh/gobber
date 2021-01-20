@@ -41,29 +41,24 @@ public class Gobber2
 		BlockInit.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
     	ItemInit.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
     	TileInit.TILE_ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
-    	
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::modSetup);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::serverSetup);
-		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
-		
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);		
 		MinecraftForge.EVENT_BUS.register(this);
 	}
     
 	private void modSetup(final FMLCommonSetupEvent event)
 	{
-		OreGenerator.addFeatures();
-		
+		OreGenerator.addFeatures();		
 		MinecraftForge.EVENT_BUS.register(new PlayerSpecialAbilities());
-		MinecraftForge.EVENT_BUS.register(new DragonKillHandler());
-		
+		MinecraftForge.EVENT_BUS.register(new DragonKillHandler());		
 		logger.info("Gobber common setup");
 	}
 	
 	private void clientSetup(final FMLClientSetupEvent event)
 	{
-		BlockRenders.defineRenders();
-		
+		BlockRenders.defineRenders();		
 		logger.info("Gobber client setup");
 	}
 
