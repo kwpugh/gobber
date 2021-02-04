@@ -64,7 +64,7 @@ public class ItemCustomArmorGobber extends ArmorItem
 		    //Helmet
 		    if(head.getItem() == ItemInit.GOBBER2_HELMET.get())
 			{
-				PlayerSpecialAbilities.giveRegenEffect(world, player, stack, 1, 0.0F);			
+				PlayerSpecialAbilities.giveRegenEffect(world, player, stack, 1, 0.02F);			
 			}
 			else
 			{

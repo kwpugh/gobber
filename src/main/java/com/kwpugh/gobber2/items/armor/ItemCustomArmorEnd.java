@@ -110,8 +110,7 @@ public class ItemCustomArmorEnd extends ArmorItem
 	    //Helmet
 	    if(head.getItem() == ItemInit.GOBBER2_HELMET_END.get())
 		{
-			PlayerSpecialAbilities.giveYellowHearts(world, player, stack, 10, 0.33F);
-			
+			PlayerSpecialAbilities.giveYellowHearts(world, player, stack, 10, 0.33F);			
 			PlayerSpecialAbilities.giveRegenEffect(world, player, stack, 1, 0.10F);			
 		}
 		else
@@ -132,7 +131,7 @@ public class ItemCustomArmorEnd extends ArmorItem
 	    //Leggings
 	    if(legs.getItem() == ItemInit.GOBBER2_LEGGINGS_END.get())
 		{
-	    	PlayerSpecialAbilities.giveConduitEffect(world, player, stack);
+	    	//TBD
 		}
 		else
 		{

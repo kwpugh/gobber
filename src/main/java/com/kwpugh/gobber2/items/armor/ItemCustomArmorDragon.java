@@ -132,8 +132,7 @@ public class ItemCustomArmorDragon extends ArmorItem
 			//Helmet
 			if(head.getItem() == ItemInit.GOBBER2_HELMET_DRAGON.get())
 			{
-				PlayerSpecialAbilities.giveYellowHearts(world, player, stack, 20, 0.66F);
-				
+				PlayerSpecialAbilities.giveYellowHearts(world, player, stack, 20, 0.66F);				
 				PlayerSpecialAbilities.giveRegenEffect(world, player, stack, 1, 0.15F);			
 			}
 			else
@@ -151,7 +150,7 @@ public class ItemCustomArmorDragon extends ArmorItem
 		//Leggings
 		if(legs.getItem() == ItemInit.GOBBER2_LEGGINGS_DRAGON.get())
 		{
-	  	PlayerSpecialAbilities.giveConduitEffect(world, player, stack);
+			//TBD
 		}
 		else
 		{

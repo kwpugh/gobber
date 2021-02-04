@@ -73,8 +73,8 @@ public class ItemCustomRingMiner extends Item
 							String blockForgeTags = block.getTags().toString();
 
 							if (block == Blocks.STONE ||
-									block.isIn(BlockTags.field_242172_aH) ||   // base_stone_overworld
-									block.isIn(BlockTags.field_242173_aI) ||   // base_stone_nether
+									block.isIn(BlockTags.BASE_STONE_OVERWORLD) ||   // base_stone_overworld
+									block.isIn(BlockTags.BASE_STONE_NETHER) ||   // base_stone_nether
 									blockForgeTags.contains("forge:stone") ||
 									blockForgeTags.contains("forge:sandstone") ||
 									blockForgeTags.contains("forge:sand") ||

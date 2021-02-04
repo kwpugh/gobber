@@ -57,13 +57,11 @@ public class ItemCustomArmorNether extends ArmorItem
 			}
     	}	
 
-    	//Check ArmorUtil for additional perks applied to armor
-    	
+    	//Check ArmorUtil for additional perks applied to armor   	
 	    //Helmet
 	    if(head.getItem() == ItemInit.GOBBER2_HELMET_NETHER.get())
 		{
 			PlayerSpecialAbilities.giveYellowHearts(world, player, stack, 4, 0.33F);
-
 			PlayerSpecialAbilities.giveRegenEffect(world, player, stack, 1, 0.05F);			
 		}
 //		else
@@ -75,7 +73,7 @@ public class ItemCustomArmorNether extends ArmorItem
 	    if(chest.getItem() == ItemInit.GOBBER2_CHESTPLATE_NETHER.get())
 		{
 	 		//player.getAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(40.0D); 
-		 }		
+		}		
 	    
 	    //Leggings
 	    if(legs.getItem() == ItemInit.GOBBER2_LEGGINGS_NETHER.get())
