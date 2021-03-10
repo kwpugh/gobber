@@ -30,7 +30,8 @@ public class ItemCustomArmorNether extends ArmorItem
 	}
 	
 	boolean enablePerks = GobberConfigBuilder.ENABLE_GOBBER_NETHER_ARMOR_HEALTH_PERKS.get();
-	
+	int hunger = GobberConfigBuilder.GOBBER_NETHER_ARMOR_HUNGER.get();
+	double saturation = GobberConfigBuilder.GOBBER_NETHER_ARMOR_SATURATION.get();
 	@Override
 	public void onArmorTick(final ItemStack stack, final World world, final PlayerEntity player)
 	{
@@ -62,17 +63,14 @@ public class ItemCustomArmorNether extends ArmorItem
 	    if(head.getItem() == ItemInit.GOBBER2_HELMET_NETHER.get())
 		{
 			PlayerSpecialAbilities.giveYellowHearts(world, player, stack, 4, 0.33F);
-			PlayerSpecialAbilities.giveRegenEffect(world, player, stack, 1, 0.05F);			
+			PlayerSpecialAbilities.giveRegenEffect(world, player, stack, hunger, (float) saturation);	
+			//PlayerSpecialAbilities.giveRegenEffect(world, player, stack, 1, 0.05F);			
 		}
-//		else
-//		{
-//			PlayerSpecialAbilities.giveNoExtraHearts(world, player, stack);
-//		}
 	    
 	    //Chestplate
 	    if(chest.getItem() == ItemInit.GOBBER2_CHESTPLATE_NETHER.get())
 		{
-	 		//player.getAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(40.0D); 
+	 		// TBD
 		}		
 	    
 	    //Leggings

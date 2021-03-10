@@ -30,6 +30,8 @@ public class ItemCustomArmorEnd extends ArmorItem
 	}
 	
 	boolean enablePerks = GobberConfigBuilder.ENABLE_GOBBER_END_ARMOR_HEALTH_PERKS.get();
+	int hunger = GobberConfigBuilder.GOBBER_END_ARMOR_HUNGER.get();
+	double saturation = GobberConfigBuilder.GOBBER_END_ARMOR_SATURATION.get();
 	
 	@Override
 	public void onArmorTick(final ItemStack stack, final World world, final PlayerEntity player)
@@ -110,8 +112,9 @@ public class ItemCustomArmorEnd extends ArmorItem
 	    //Helmet
 	    if(head.getItem() == ItemInit.GOBBER2_HELMET_END.get())
 		{
-			PlayerSpecialAbilities.giveYellowHearts(world, player, stack, 10, 0.33F);			
-			PlayerSpecialAbilities.giveRegenEffect(world, player, stack, 1, 0.10F);			
+			PlayerSpecialAbilities.giveYellowHearts(world, player, stack, 10, 0.33F);	
+			PlayerSpecialAbilities.giveRegenEffect(world, player, stack, hunger, (float) saturation);	
+			//PlayerSpecialAbilities.giveRegenEffect(world, player, stack, 1, 0.10F);			
 		}
 		else
 		{

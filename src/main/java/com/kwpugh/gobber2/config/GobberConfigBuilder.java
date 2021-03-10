@@ -89,6 +89,15 @@ public class GobberConfigBuilder
     public static ForgeConfigSpec.IntValue MATURATOR_VERTICAL_RANGE;
     public static ForgeConfigSpec.IntValue MATURATOR_MIN_TICK;
 
+    public static ForgeConfigSpec.IntValue GOBBER_ARMOR_HUNGER;
+    public static ForgeConfigSpec.DoubleValue GOBBER_ARMOR_SATURATION;
+    public static ForgeConfigSpec.IntValue GOBBER_NETHER_ARMOR_HUNGER;
+    public static ForgeConfigSpec.DoubleValue GOBBER_NETHER_ARMOR_SATURATION;
+    public static ForgeConfigSpec.IntValue GOBBER_END_ARMOR_HUNGER;
+    public static ForgeConfigSpec.DoubleValue GOBBER_END_ARMOR_SATURATION;
+    public static ForgeConfigSpec.IntValue GOBBER_DRAGON_ARMOR_HUNGER;
+    public static ForgeConfigSpec.DoubleValue GOBBER_DRAGON_ARMOR_SATURATION;
+    
     public static ForgeConfigSpec.BooleanValue ENABLE_GOBBER_ARMOR_HEALTH_PERKS;
     public static ForgeConfigSpec.BooleanValue ENABLE_GOBBER_NETHER_ARMOR_HEALTH_PERKS;
     public static ForgeConfigSpec.BooleanValue ENABLE_GOBBER_END_ARMOR_HEALTH_PERKS;
@@ -226,6 +235,20 @@ public class GobberConfigBuilder
 
         SERVER_BUILDER.pop();
 
+        
+        SERVER_BUILDER.comment("Armor Hunger/Saturation Settings").push("armor_health_settings");
+
+        GOBBER_ARMOR_HUNGER = SERVER_BUILDER.comment("Amount of hunger point to restore per interval").defineInRange("gobberArmorHunger", 4, 0, 10);
+        GOBBER_ARMOR_SATURATION = SERVER_BUILDER.comment("Amount of saturation point to restore per interval").defineInRange("gobberArmorSaturation", .02, 0.0, 10.0);
+        GOBBER_NETHER_ARMOR_HUNGER = SERVER_BUILDER.comment("Amount of hunger point to restore per interval").defineInRange("gobberNetherArmorHunger", 1, 0, 10);
+        GOBBER_NETHER_ARMOR_SATURATION = SERVER_BUILDER.comment("Amount of saturation point to restore per interval").defineInRange("gobberNetherArmorSaturation", .05, 0.0, 10.0);
+        GOBBER_END_ARMOR_HUNGER = SERVER_BUILDER.comment("Amount of hunger point to restore per interval").defineInRange("gobberEndArmorHunger", 1, 0, 10);
+        GOBBER_END_ARMOR_SATURATION = SERVER_BUILDER.comment("Amount of saturation point to restore per interval").defineInRange("gobberEndArmorSaturation", .10, 0.0, 10.0);
+        GOBBER_DRAGON_ARMOR_HUNGER = SERVER_BUILDER.comment("Amount of hunger point to restore per interval").defineInRange("gobberDragonArmorHunger", 1, 0, 10);
+        GOBBER_DRAGON_ARMOR_SATURATION = SERVER_BUILDER.comment("Amount of saturation point to restore per interval").defineInRange("gobberDragonArmorSaturation", .15, 0.0, 10.0);
+        
+        SERVER_BUILDER.pop();
+        
         
         SERVER_BUILDER.comment("Armor Health Perks Settings").push("armor_health_perk_settings");
 

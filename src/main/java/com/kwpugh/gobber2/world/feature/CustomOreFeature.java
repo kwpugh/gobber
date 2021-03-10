@@ -11,7 +11,7 @@ import net.minecraft.world.gen.feature.template.RuleTest;
 public class CustomOreFeature implements IFeatureConfig
 {
    public static final Codec<CustomOreFeature> field_236566_a_ = RecordCodecBuilder.create((p_236568_0_) -> {
-      return p_236568_0_.group(RuleTest.field_237127_c_.fieldOf("target").forGetter((p_236570_0_) -> {
+      return p_236568_0_.group(RuleTest.CODEC.fieldOf("target").forGetter((p_236570_0_) -> {
          return p_236570_0_.target;
       }), BlockState.CODEC.fieldOf("state").forGetter((p_236569_0_) -> {
          return p_236569_0_.state;

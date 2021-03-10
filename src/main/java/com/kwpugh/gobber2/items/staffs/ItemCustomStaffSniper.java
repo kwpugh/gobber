@@ -42,7 +42,7 @@ public class ItemCustomStaffSniper extends Item
             ArrowItem itemarrow = (ArrowItem)Items.ARROW;
             AbstractArrowEntity entityarrow = itemarrow.createArrow(worldIn, new ItemStack(Items.ARROW), playerIn);
             float arrowVelocity = 60.0F;
-            entityarrow.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, arrowVelocity, 1.0F);
+            entityarrow.setDirectionAndMovement(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, arrowVelocity, 1.0F);
             entityarrow.setDamage(1);
             worldIn.addEntity(entityarrow);
             entityarrow.pickupStatus = AbstractArrowEntity.PickupStatus.DISALLOWED;

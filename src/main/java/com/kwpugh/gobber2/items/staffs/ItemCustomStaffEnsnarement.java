@@ -5,9 +5,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.entity.monster.MonsterEntity;
@@ -44,7 +42,7 @@ public class ItemCustomStaffEnsnarement extends Item
 	@Override
 	public boolean onLeftClickEntity(ItemStack stack, PlayerEntity player, Entity entity)
 	{		
-		if (entity instanceof PlayerEntity || !entity.isNonBoss() || !entity.isAlive())
+		if (entity instanceof PlayerEntity || !entity.canChangeDimension() || !entity.isAlive())
     
 			return false;
 

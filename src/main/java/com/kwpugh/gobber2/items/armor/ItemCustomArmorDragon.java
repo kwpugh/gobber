@@ -30,6 +30,8 @@ public class ItemCustomArmorDragon extends ArmorItem
 	}	
 	
 	boolean enablePerks = GobberConfigBuilder.ENABLE_GOBBER_DRAGON_ARMOR_HEALTH_PERKS.get();
+	int hunger = GobberConfigBuilder.GOBBER_DRAGON_ARMOR_HUNGER.get();
+	double saturation = GobberConfigBuilder.GOBBER_DRAGON_ARMOR_SATURATION.get();
 	
 	@Override
 	public void onArmorTick(final ItemStack stack, final World world, final PlayerEntity player)
@@ -132,8 +134,9 @@ public class ItemCustomArmorDragon extends ArmorItem
 			//Helmet
 			if(head.getItem() == ItemInit.GOBBER2_HELMET_DRAGON.get())
 			{
-				PlayerSpecialAbilities.giveYellowHearts(world, player, stack, 20, 0.66F);				
-				PlayerSpecialAbilities.giveRegenEffect(world, player, stack, 1, 0.15F);			
+				PlayerSpecialAbilities.giveYellowHearts(world, player, stack, 20, 0.66F);	
+				PlayerSpecialAbilities.giveRegenEffect(world, player, stack, hunger, (float) saturation);	
+				//PlayerSpecialAbilities.giveRegenEffect(world, player, stack, 1, 0.15F);			
 			}
 			else
 			{
